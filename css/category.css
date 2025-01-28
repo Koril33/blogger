@@ -51,16 +51,16 @@ hr {
 
 .category {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     width: clamp(250px, 40%, 800px);
     border: 2px solid #ffe9a5;
 }
 
 .article {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     width: clamp(250px, 40%, 800px);
     border: 2px solid #c1f2ef;
 }
