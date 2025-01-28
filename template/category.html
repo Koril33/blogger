@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类 | {{ category_name }}</title>
+    <link href="https://djhx.site/blog/css/category.css" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <a href="/blog/index.html" class="brand">阿辉的博客</a>
+    <div class="nav-links">
+        <a href="/blog/database/index.html">database</a>
+        <a href="/blog/network/index.html">network</a>
+        <a href="/blog/linux/index.html">linux</a>
+        <a href="/blog/about/index.html">about</a>
+        <a href="/blog/docker/index.html">docker</a>
+        <a href="/blog/nginx/index.html">nginx</a>
+        <a href="/blog/program/index.html">program</a>
+    </div>
+</nav>
+
+<div class="category-container">
+    {% if not categories %}
+        <h1>暂无内容</h1>
+    {% endif %}
+
+    {% for item in categories %}
+
+    <div class="{{ 'article' if item['type'] == 'article' else 'category' }}">
+        <a href="{{ item['href'] }}">
+            <h2>
+                {{ item['name'] }}
+            </h2>
+        </a>
+        {% if item['metadata'] is not none %}
+            <div class="article-metadata">
+                <strong>Date:</strong> {{ item.metadata.date }}<br>
+                <strong>Summary:</strong> {{ item.metadata.summary }}
+            </div>
+        {% endif %}
+    </div>
+
+    {% endfor %}
+</div>
+</body>
+</html>
