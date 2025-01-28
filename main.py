@@ -63,11 +63,31 @@ def walk_dir(dir_path_str: str) -> Node:
 
 
 def md_to_html(md_file_path: Path) -> str:
+    """
+    markdown -> html
+    :param md_file_path: markdown 文件的路径对象
+    :return: html str
+    """
+
     import markdown
 
+    def remove_metadata(content: str) -> str:
+        """
+        删除文章开头的 YAML 元信息
+        :param content: markdown 内容
+        """
+        lines = content.splitlines()
+        if lines and lines[0] == '---':
+            for i in range(1, len(lines)):
+                if lines[i] == '---':
+                    return '\n'.join(lines[i+1:])
+        return md_content
+
     with open(md_file_path, mode='r', encoding='utf-8') as md_file:
+        md_content = md_file.read()
+        md_content = remove_metadata(md_content)
         return markdown.markdown(
-            md_file.read(),
+            md_content,
             extensions=[
                 'markdown.extensions.toc',
                 'markdown.extensions.tables',
@@ -94,6 +114,27 @@ def gen_category_index(categories: list, category_name) -> str:
         template = Template(template_content)
         html = template.render(categories=categories, category_name=category_name)
         return html
+
+
+# 自定义排序函数
+def sort_categories(item):
+    """
+    对 categories 排序，type = category 排在所有 type = article 前
+    category 按照 name 字典顺序 a-z 排序
+    article 按照 metadata 的 date 字段（格式：2024-02-03T14:44:42+08:00）降序排列。
+    :param item:
+    :return:
+    """
+    from datetime import datetime
+    if item['type'] == 'category':
+        # 分类优先，按 name 排序
+        return 0, item['name'].lower()
+    elif item['type'] == 'article':
+        # 文章按日期降序排序，优先级次于 category
+        # 将日期解析为 datetime 对象，若无日期则排在最后
+        date = item['metadata'].get('date')
+        parsed_date = datetime.fromisoformat(date) if date else datetime(year=1970, month=1, day=1)
+        return 1, -parsed_date.timestamp()
 
 
 def gen_blog_dir(root: Node):
@@ -129,6 +170,7 @@ def gen_blog_dir(root: Node):
                         'href': relative_path,
                         'metadata': child.metadata,
                     })
+            categories.sort(key=sort_categories)
             with open(category_index, mode='w', encoding='utf-8') as f:
                 f.write(gen_category_index(categories, node.source_path.name))
 
@@ -164,7 +206,10 @@ def read_metadata(md_file_path):
 
 
 def parse_metadata(metadata):
-    """将元数据解析为字典"""
+    """
+    将元数据解析为字典
+    title, date, summary
+    """
     meta_dict = {}
     for line in metadata.split('\n'):
         if ':' in line:
