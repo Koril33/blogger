@@ -1,52 +1,79 @@
 import shutil
 from collections import deque
 from pathlib import Path
-
+import logging
+import sys
+import time
 from bs4 import BeautifulSoup
+
+logger = logging.getLogger(__name__)
+ch = logging.StreamHandler(sys.stdout)
+fmt = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(filename)s :: %(message)s')
+ch.setFormatter(fmt)
+logger.addHandler(ch)
+logger.setLevel(logging.DEBUG)
 
 
 class Node:
     cache_map = {}
-    def __init__(self, source_path, destination_path):
+    def __init__(self, source_path, destination_path, node_type):
+        # 该节点的源目录路径
         self.source_path = source_path
+        # 该节点生成的结果目录路径
         self.destination_path = destination_path
+        # 子节点
         self.children = []
-        self.node_type = None
+        # 节点类型：
+        # 1. category 包含多个子目录
+        # 2. article 包含一个 index.md 文件和 images 目录
+        # 3. leaf index.md 或者 images 目录
+        self.node_type = node_type
+        # 描述分类或者文章的元信息（比如：文章的标题，简介和日期）
         self.metadata = None
+
         Node.cache_map[source_path] = self
 
     def __str__(self):
         return f'path={self.source_path}'
 
 
-def walk_dir(dir_path_str: str) -> Node:
+def walk_dir(dir_path_str: str, destination_blog_dir_name: str) -> Node:
     """
     遍历目录，构造树结构
-    :param dir_path_str: 目标目录
+    :param dir_path_str: 存放博客 md 文件的目录的字符串
+    :param destination_blog_dir_name: 生成博客目录的名称
     :return: 树结构的根节点
     """
+
+    start = int(time.time() * 1000)
     q = deque()
     dir_path = Path(dir_path_str)
     q.append(dir_path)
-    destination_root_dir = dir_path.parent.joinpath('public')
+
+    # 生成目录的根路径
+    destination_root_dir = dir_path.parent.joinpath(destination_blog_dir_name)
+    logger.info(f'源路经: {dir_path}, 目标路径: {destination_root_dir}')
+
     root = None
+
+    # 层次遍历
     while q:
         item = q.popleft()
         if Path.is_dir(item):
             [q.append(e) for e in item.iterdir()]
 
+        # node 类型判定
         node_type = 'leaf'
         if Path.is_dir(item):
             node_type = 'category'
+            # 如果目录包含 index.md 则是文章目录节点
             for e in item.iterdir():
                 if e.name == 'index.md':
                     node_type = 'article'
                     break
 
-
         if not root:
-            root = Node(item, destination_root_dir)
-            root.node_type = node_type
+            root = Node(item, destination_root_dir, node_type)
         else:
             cur_node = Node.cache_map[item.parent]
             # 计算相对路径
@@ -55,9 +82,10 @@ def walk_dir(dir_path_str: str) -> Node:
             destination_path = destination_root_dir / relative_path
             if destination_path.name == 'index.md':
                 destination_path = destination_path.parent / Path('index.html')
-            n = Node(item, destination_path)
-            n.node_type = node_type
+            n = Node(item, destination_path, node_type)
             cur_node.children.append(n)
+    end = int(time.time() * 1000)
+    logger.info(f'构造树耗时: {end - start} ms')
 
     return root
 
@@ -116,7 +144,6 @@ def gen_category_index(categories: list, category_name) -> str:
         return html
 
 
-# 自定义排序函数
 def sort_categories(item):
     """
     对 categories 排序，type = category 排在所有 type = article 前
@@ -143,17 +170,22 @@ def gen_blog_dir(root: Node):
     :param root: 树结构根节点
     :return:
     """
+
+    start = int(time.time() * 1000)
+
     q = deque()
     q.append(root)
 
     # 清理之前生成的 root destination
     if Path.exists(root.destination_path):
-        print('存在 root destination 目录，进行删除')
+        logger.info(f'存在目标目录: {root.destination_path}，进行删除')
         shutil.rmtree(root.destination_path)
 
     while q:
         node = q.popleft()
         [q.append(child) for child in node.children]
+
+        # 对三种不同类型的节点分别进行处理
 
         if node.node_type == 'category' and node.source_path.name != 'images':
             Path.mkdir(node.destination_path, parents=True, exist_ok=True)
@@ -184,6 +216,9 @@ def gen_blog_dir(root: Node):
                     f.write(gen_article_index(node.source_path, node.source_path.parent.name))
             else:
                 shutil.copy(node.source_path, node.destination_path)
+
+    end = int(time.time() * 1000)
+    logger.info(f'生成目标目录耗时: {end - start} ms')
 
 
 def cp_css(dir_path_str: str):
@@ -219,10 +254,11 @@ def parse_metadata(metadata):
 
 
 def main():
-    dir_path_str = '/home/koril/project/djhx.site/blog'
-    root_node = walk_dir(dir_path_str)
+    blog_dir_path_str = '/home/koril/project/djhx.site/blog'
+    destination_blog_dir_name = 'public'
+    root_node = walk_dir(blog_dir_path_str, destination_blog_dir_name)
     gen_blog_dir(root_node)
-    cp_css(dir_path_str)
+    cp_css(blog_dir_path_str)
 
 
 if __name__ == '__main__':
