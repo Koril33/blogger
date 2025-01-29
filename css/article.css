@@ -157,3 +157,11 @@ nav .nav-links a {
 nav .nav-links a:hover {
   color: #4caf50;
 }
+
+.site-footer {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
