@@ -253,13 +253,62 @@ def parse_metadata(metadata):
     return meta_dict
 
 
+def deploy(server_name: str, compress_blog_path: str):
+    from fabric import Config, Connection
+    from getpass import getpass
+    logger.info(f'开始部署, 目标服务器: {server_name}, 压缩目录: {compress_blog_path}')
+    # 连接
+    sudo_pass = getpass("[sudo]: ")
+    config = Config(overrides={'sudo': {'password': sudo_pass}})
+    c = Connection(server_name, config=config)
+    # 将 public.tar.gz 上传到服务器的用户家目录下
+    c.put(compress_blog_path, remote='/home/koril/')
+    # 删除原先的备份
+    c.sudo('rm -rf /var/www/dingjinghui.site/blog.bak')
+    logger.info('先前的 blog.bak 已删除')
+    # 备份原先的数据
+    c.sudo('mv /var/www/dingjinghui.site/blog /var/www/dingjinghui.site/blog.bak')
+    logger.info('已备份 blog 目录')
+    # 移动 public.tar.gz
+    c.sudo('mv /home/koril/public.tar.gz /var/www/dingjinghui.site/')
+    logger.info('public.tar.gz 移动至目标部署目录下')
+    # 解压
+    c.sudo('tar -xzf /var/www/dingjinghui.site/public.tar.gz -C /var/www/dingjinghui.site/')
+    logger.info('解压完成')
+    c.sudo('rm /var/www/dingjinghui.site/public.tar.gz')
+    logger.info('public.tar.gz 已删除')
+    c.sudo('mv /var/www/dingjinghui.site/public /var/www/dingjinghui.site/blog')
+    logger.info('public -> blog 部署完成')
+
+
+def compress_dir(blog_path: str):
+    import tarfile
+
+    logger.info(f'压缩指定目录: {blog_path}')
+
+    source_dir = blog_path
+    output_tar = Path(blog_path).parent / Path('public.tar.gz')
+
+    with tarfile.open(output_tar, "w:gz") as tar:
+        tar.add(source_dir, arcname="public")
+
+    logger.info(f'压缩成功: {output_tar}')
+
+
 def main():
+    start = int(time.time() * 1000)
+
     blog_dir_path_str = '/home/koril/project/djhx.site/blog'
     destination_blog_dir_name = 'public'
     root_node = walk_dir(blog_dir_path_str, destination_blog_dir_name)
     gen_blog_dir(root_node)
     cp_css(blog_dir_path_str)
+    compress_dir(str(root_node.destination_path))
+    deploy('djhx.site', '/home/koril/project/djhx.site/public.tar.gz')
 
+    end = int(time.time() * 1000)
+
+    logger.info(f'任务完成, 共耗时: {end - start} ms')
 
 if __name__ == '__main__':
     main()
