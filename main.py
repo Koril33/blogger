@@ -226,11 +226,14 @@ def gen_blog_dir(root: Node):
     logger.info(f'生成目标目录耗时: {end - start} ms')
 
 
-def cp_css(dir_path_str: str):
+def cp_resource(dir_path_str: str):
     dir_path = Path(dir_path_str)
-    destination_root_dir = dir_path.parent.joinpath('public').joinpath('css')
-    shutil.copytree('./css', str(destination_root_dir.absolute()))
-
+    # 拷贝 css
+    css_destination_root_dir = dir_path.parent.joinpath('public').joinpath('css')
+    shutil.copytree('./css', str(css_destination_root_dir.absolute()))
+    # 拷贝 images
+    images_destination_root_dir = dir_path.parent.joinpath('public').joinpath('images')
+    shutil.copytree('./images', str(images_destination_root_dir.absolute()))
 
 def read_metadata(md_file_path):
     import re
@@ -307,7 +310,7 @@ def main():
     destination_blog_dir_name = 'public'
     root_node = walk_dir(blog_dir_path_str, destination_blog_dir_name)
     gen_blog_dir(root_node)
-    cp_css(blog_dir_path_str)
+    cp_resource(blog_dir_path_str)
     compress_dir(str(root_node.destination_path))
     deploy('djhx.site', '/home/koril/project/djhx.site/public.tar.gz')
 
