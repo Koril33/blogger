@@ -13,6 +13,8 @@ ch.setFormatter(fmt)
 logger.addHandler(ch)
 logger.setLevel(logging.DEBUG)
 
+ignore_item = ['.git', 'LICENSE']
+
 
 class Node:
     cache_map = {}
@@ -59,6 +61,9 @@ def walk_dir(dir_path_str: str, destination_blog_dir_name: str) -> Node:
     # 层次遍历
     while q:
         item = q.popleft()
+        if item.name in ignore_item:
+            logger.info(f'略过: {item.name}')
+            continue
         if Path.is_dir(item):
             [q.append(e) for e in item.iterdir()]
 
