@@ -6,6 +6,7 @@ import sys
 import time
 from bs4 import BeautifulSoup
 
+# 日志配置
 logger = logging.getLogger(__name__)
 ch = logging.StreamHandler(sys.stdout)
 fmt = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(filename)s :: %(message)s')
