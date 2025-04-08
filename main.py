@@ -307,13 +307,13 @@ def compress_dir(blog_path: str):
 def main():
     start = int(time.time() * 1000)
 
-    blog_dir_path_str = '/home/koril/project/djhx.site/blog'
+    blog_dir_path_str = '/home/koril/Documents/djhx.site/blog'
     destination_blog_dir_name = 'public'
     root_node = walk_dir(blog_dir_path_str, destination_blog_dir_name)
     gen_blog_dir(root_node)
     cp_resource(blog_dir_path_str)
     compress_dir(str(root_node.destination_path))
-    deploy('djhx.site', '/home/koril/project/djhx.site/public.tar.gz')
+    deploy('djhx.site', '/home/koril/Documents/djhx.site/public.tar.gz')
 
     end = int(time.time() * 1000)
 
