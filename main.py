@@ -1,10 +1,13 @@
 import shutil
+import tarfile
 from collections import deque
 from pathlib import Path
 import logging
 import sys
 import time
 from bs4 import BeautifulSoup
+from getpass import getpass
+from fabric import Config, Connection
 
 # 日志配置
 logger = logging.getLogger(__name__)
@@ -262,62 +265,76 @@ def parse_metadata(metadata):
     return meta_dict
 
 
-def deploy(server_name: str, compress_blog_path: str):
-    from fabric import Config, Connection
-    from getpass import getpass
-    logger.info(f'开始部署, 目标服务器: {server_name}, 压缩目录: {compress_blog_path}')
-    # 连接
+def compress_dir(blog_path: Path) -> Path:
+    """
+    将指定目录压缩为 public.tar.gz
+    """
+    logger.info(f'压缩目录: {blog_path}')
+    output_tar = blog_path.parent / 'public.tar.gz'
+
+    with tarfile.open(output_tar, "w:gz") as tar:
+        tar.add(str(blog_path), arcname="public")
+
+    logger.info(f'压缩完成: {output_tar}')
+    return output_tar
+
+def deploy(server_name: str, local_tar_path: Path, remote_web_root: str = '/var/www/dingjinghui.site/'):
+    """
+    将 tar.gz 文件部署到远程服务器
+    """
+    logger.info(f'开始部署 -> 服务器: {server_name}，文件: {local_tar_path}')
+
     sudo_pass = getpass("[sudo]: ")
     config = Config(overrides={'sudo': {'password': sudo_pass}})
     c = Connection(server_name, config=config)
-    # 将 public.tar.gz 上传到服务器的用户家目录下
-    c.put(compress_blog_path, remote='/home/koril/')
-    # 删除原先的备份
-    c.sudo('rm -rf /var/www/dingjinghui.site/blog.bak')
-    logger.info('先前的 blog.bak 已删除')
-    # 备份原先的数据
-    c.sudo('mv /var/www/dingjinghui.site/blog /var/www/dingjinghui.site/blog.bak')
-    logger.info('已备份 blog 目录')
-    # 移动 public.tar.gz
-    c.sudo('mv /home/koril/public.tar.gz /var/www/dingjinghui.site/')
-    logger.info('public.tar.gz 移动至目标部署目录下')
-    # 解压
-    c.sudo('tar -xzf /var/www/dingjinghui.site/public.tar.gz -C /var/www/dingjinghui.site/')
-    logger.info('解压完成')
-    c.sudo('rm /var/www/dingjinghui.site/public.tar.gz')
-    logger.info('public.tar.gz 已删除')
-    c.sudo('mv /var/www/dingjinghui.site/public /var/www/dingjinghui.site/blog')
-    logger.info('public -> blog 部署完成')
 
+    remote_home_path = f'/home/{c.user}'
+    remote_tar_path = f'{remote_home_path}/{local_tar_path.name}'
+    remote_target_path = f'{remote_web_root}blog'
 
-def compress_dir(blog_path: str):
-    import tarfile
+    try:
+        # 上传
+        c.put(str(local_tar_path), remote=remote_home_path)
+        logger.info('上传完成')
 
-    logger.info(f'压缩指定目录: {blog_path}')
+        # 删除旧备份
+        c.sudo(f'rm -rf {remote_web_root}blog.bak')
+        logger.info('旧 blog.bak 删除')
 
-    source_dir = blog_path
-    output_tar = Path(blog_path).parent / Path('public.tar.gz')
+        # 备份 blog
+        c.sudo(f'mv {remote_target_path} {remote_target_path}.bak')
+        logger.info('blog -> blog.bak')
 
-    with tarfile.open(output_tar, "w:gz") as tar:
-        tar.add(source_dir, arcname="public")
+        # 移动 tar.gz 并解压
+        c.sudo(f'mv {remote_tar_path} {remote_web_root}')
+        c.sudo(f'tar -xzf {remote_web_root}{local_tar_path.name} -C {remote_web_root}')
+        logger.info('解压完成')
 
-    logger.info(f'压缩成功: {output_tar}')
+        # 清理
+        c.sudo(f'rm {remote_web_root}{local_tar_path.name}')
+        c.sudo(f'mv {remote_web_root}public {remote_target_path}')
+        logger.info('部署完成')
 
+    except Exception as e:
+        logger.exception(f"部署失败")
+        raise
 
 def main():
-    start = int(time.time() * 1000)
+    start = time.time()
 
-    blog_dir_path_str = '/home/koril/Documents/djhx.site/blog'
-    destination_blog_dir_name = 'public'
-    root_node = walk_dir(blog_dir_path_str, destination_blog_dir_name)
+    blog_dir = Path('/home/koril/Documents/djhx.site/blog')
+    public_name = 'public'
+
+    logger.info("开始生成博客文件结构...")
+    root_node = walk_dir(str(blog_dir), public_name)
     gen_blog_dir(root_node)
-    cp_resource(blog_dir_path_str)
-    compress_dir(str(root_node.destination_path))
-    deploy('djhx.site', '/home/koril/Documents/djhx.site/public.tar.gz')
+    cp_resource(str(blog_dir))
 
-    end = int(time.time() * 1000)
+    tar_path = compress_dir(root_node.destination_path)
+    deploy('djhx.site', tar_path)
 
-    logger.info(f'任务完成, 共耗时: {end - start} ms')
+    end = time.time()
+    logger.info(f'任务完成，总耗时: {(end - start) * 1000:.0f} ms')
 
 if __name__ == '__main__':
     main()
