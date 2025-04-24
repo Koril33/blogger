@@ -309,7 +309,7 @@ def compress_dir(blog_path: Path) -> Path:
     logger.info(f'压缩完成: {output_tar}')
     return output_tar
 
-def deploy(server_name: str, local_tar_path: Path, remote_web_root: str = '/var/www/dingjinghui.site/'):
+def deploy(server_name: str, local_tar_path: Path, remote_web_root: str):
     """
     将 tar.gz 文件部署到远程服务器
     """
@@ -317,7 +317,7 @@ def deploy(server_name: str, local_tar_path: Path, remote_web_root: str = '/var/
 
     sudo_pass = getpass("[sudo]: ")
     config = Config(overrides={'sudo': {'password': sudo_pass}})
-    c = Connection(server_name, config=config)
+    c = Connection(host=server_name, user='koril', config=config, connect_kwargs={'password': sudo_pass})
 
     remote_home_path = f'/home/{c.user}'
     remote_tar_path = f'{remote_home_path}/{local_tar_path.name}'
@@ -354,6 +354,7 @@ def main():
     start = time.time()
 
     blog_dir = Path('/home/koril/Documents/djhx.site/blog')
+    # blog_dir = Path('C:\\Project\\MyProject\\djhx.site\\blog')
     public_name = 'public'
 
     logger.info("开始生成博客文件结构...")
@@ -362,7 +363,7 @@ def main():
     cp_resource(str(blog_dir))
 
     tar_path = compress_dir(root_node.destination_path)
-    deploy('djhx.site', tar_path)
+    deploy('djhx.site', tar_path, '/var/www/djhx.site/')
 
     end = time.time()
     logger.info(f'任务完成，总耗时: {(end - start) * 1000:.0f} ms')
