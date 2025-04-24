@@ -138,8 +138,39 @@ def gen_article_index(md_file_path: Path, article_name):
     with open('./template/article.html', mode='r', encoding='utf-8') as f:
         bs1 = BeautifulSoup(f, "html.parser")
         bs2 = BeautifulSoup(md_to_html(md_file_path), "html.parser")
-        bs1.find('article').append(bs2)
+
+        article_metadata = read_metadata(md_file_path)
+
+        article_tag = bs1.find('article')
+        # 添加 h1 标题
+        h1_tag = bs1.new_tag('h1')
+        h1_tag.string = article_name
+        article_tag.insert(0, h1_tag)
+
+        # 添加日期信息
+        time_tag = bs1.new_tag('time', datetime=article_metadata["date"])
+        time_tag.string = '时间: ' + article_metadata["date"]
+
+        # 添加摘要信息
+        summary_tag = bs1.new_tag('p')
+        summary_tag.string = '摘要: ' + article_metadata["summary"]
+
+        # 包裹元信息
+        meta_wrapper = bs1.new_tag('div', **{"class": "article-meta"})
+        meta_wrapper.append(time_tag)
+        meta_wrapper.append(bs1.new_tag('br'))
+        meta_wrapper.append(summary_tag)
+
+        # 插入到 h1 之后
+        h1_tag.insert_after(meta_wrapper)
+
+        # 添加标题和正文之间的换行符
+        article_tag.append(bs1.new_tag('hr'))
+        # 添加正文内容
+        article_tag.append(bs2)
+        # 修改页面标题
         bs1.find('title').string = f'文章 | {article_name}'
+
         return bs1.prettify()
 
 
