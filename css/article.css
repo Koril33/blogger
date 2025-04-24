@@ -1,19 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    background-color: wheat;
+    background-color: #121212;
 }
 
 article {
-    margin: 0 auto;
-    width: 60%;
-    background-color: beige;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin: 50px auto;
+    width: 50%;
+    background-color: #303030;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 80px;
 }
 
 article h1 {
@@ -21,24 +16,28 @@ article h1 {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 30px;
+    color: aliceblue;
 }
 
 article h2 {
     font-size: 2.2em;
     margin-top: 30px;
     margin-bottom: 20px;
+    color: cadetblue;
 }
 
 article h3, article h4, article h5, article h6 {
     font-size: 1.8em;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: darkcyan;
 }
 
 article p {
     font-size: 1.2em;
-    line-height: 2.5em;
+    line-height: 2.2em;
     margin-bottom: 20px;
+    color: wheat;
 }
 
 article img {
@@ -47,13 +46,13 @@ article img {
 }
 
 code {
-    background-color: #f4f4f4; /* 设置浅灰色背景 */
     border: 1px solid #ddd;   /* 添加边框 */
     border-radius: 4px;       /* 圆角边框 */
-    padding: 2px 4px;         /* 内边距 */
     font-family: monospace;   /* 使用等宽字体 */
-    font-size: 0.95em;        /* 稍微缩小字体 */
-    color: #c7254e;           /* 设置代码颜色 */
+    font-size: 1.5em;        /* 稍微缩小字体 */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
 }
 
 blockquote {
@@ -87,8 +86,12 @@ table tr:nth-child(even) {
     background-color: #f9f9f9;    /* 奇偶行背景交替 */
 }
 
+table tr:nth-child(odd) {
+    background-color: #e0e0e0;
+}
+
 table tr:hover {
-    background-color: #f1f1f1;    /* 鼠标悬停高亮 */
+    background-color: #ffe9a5;    /* 鼠标悬停高亮 */
 }
 
 ul, ol {
@@ -119,49 +122,23 @@ ol li::marker {
 
 li {
     font-size: 1rem;             /* 设置字体大小 */
-    color: #333;                 /* 设置文字颜色 */
+    color: aquamarine;                 /* 设置文字颜色 */
 }
 
 li:hover {
-    color: #0074d9;              /* 鼠标悬停时改变文字颜色 */
+    color: antiquewhite;              /* 鼠标悬停时改变文字颜色 */
 }
 
 hr {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
+.article-meta time, .article-meta p {
+    font-size: 0.9em;
+    color: aquamarine;
 }
 
-nav .brand {
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #4caf50;
-}
-
-nav .nav-links a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: #fff;
-  transition: color 0.3s;
-}
-
-nav .nav-links a:hover {
-  color: #4caf50;
-}
-
-.site-footer {
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
+a {
+    color: deeppink;
 }

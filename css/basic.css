@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+nav .brand {
+  font-size: 1.6em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #4caf50;
+}
+
+nav .nav-links a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+nav .nav-links a:hover {
+  color: #4caf50;
+}
+
+.site-footer {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
