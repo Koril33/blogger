@@ -22,6 +22,7 @@ ignore_item = ['.git', 'LICENSE']
 
 class Node:
     cache_map = {}
+
     def __init__(self, source_path, destination_path, node_type):
         # 该节点的源目录路径
         self.source_path = source_path
@@ -117,7 +118,7 @@ def md_to_html(md_file_path: Path) -> str:
         if lines and lines[0] == '---':
             for i in range(1, len(lines)):
                 if lines[i] == '---':
-                    return '\n'.join(lines[i+1:])
+                    return '\n'.join(lines[i + 1:])
         return md_content
 
     with open(md_file_path, mode='r', encoding='utf-8') as md_file:
@@ -270,6 +271,7 @@ def cp_resource(dir_path_str: str):
     images_destination_root_dir = dir_path.parent.joinpath('public').joinpath('images')
     shutil.copytree('./images', str(images_destination_root_dir.absolute()))
 
+
 def read_metadata(md_file_path):
     import re
     with open(md_file_path, 'r', encoding='utf-8') as file:
@@ -308,6 +310,7 @@ def compress_dir(blog_path: Path) -> Path:
 
     logger.info(f'压缩完成: {output_tar}')
     return output_tar
+
 
 def deploy(server_name: str, local_tar_path: Path, remote_web_root: str):
     """
@@ -350,6 +353,7 @@ def deploy(server_name: str, local_tar_path: Path, remote_web_root: str):
         logger.exception(f"部署失败")
         raise
 
+
 def main():
     start = time.time()
 
@@ -367,6 +371,7 @@ def main():
 
     end = time.time()
     logger.info(f'任务完成，总耗时: {(end - start) * 1000:.0f} ms')
+
 
 if __name__ == '__main__':
     main()
