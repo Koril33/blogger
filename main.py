@@ -247,6 +247,9 @@ def gen_blog_dir(root: Node):
             with open(category_index, mode='w', encoding='utf-8') as f:
                 f.write(gen_category_index(categories, node.source_path.name))
 
+        if node.node_type == 'category' and node.source_path.name == 'images':
+            Path.mkdir(node.destination_path, parents=True, exist_ok=True)
+
         if node.node_type == 'article':
             Path.mkdir(node.destination_path, parents=True, exist_ok=True)
 
