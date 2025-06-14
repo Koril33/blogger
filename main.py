@@ -1,6 +1,6 @@
 import shutil
 import tarfile
-from collections import deque
+from collections import deque, OrderedDict
 from pathlib import Path
 import logging
 import sys
@@ -8,6 +8,7 @@ import time
 from bs4 import BeautifulSoup
 from getpass import getpass
 from fabric import Config, Connection
+from jinja2 import Template
 
 # 日志配置
 logger = logging.getLogger(__name__)
@@ -176,7 +177,6 @@ def gen_article_index(md_file_path: Path, article_name):
 
 
 def gen_category_index(categories: list, category_name) -> str:
-    from jinja2 import Template
 
     with open('./template/category.html', mode='r', encoding='utf-8') as f:
         template_content = f.read()
@@ -263,6 +263,57 @@ def gen_blog_dir(root: Node):
 
     end = int(time.time() * 1000)
     logger.info(f'生成目标目录耗时: {end - start} ms')
+
+
+def gen_blog_archive(blog_dir, public_name, root: Node):
+    """
+    生成博客 archive 页面
+    按照年份分栏，日期排序，展示所有的博客文章
+    """
+
+    root_node_path = root.destination_path
+
+    q = deque()
+    q.append(root)
+    articles = []
+    while q:
+        node = q.popleft()
+        [q.append(child) for child in node.children]
+        if node.node_type == 'article':
+            articles.append(node)
+
+    archives = OrderedDict()
+    # 先将所有文章按日期降序排列
+    articles_sorted = sorted(articles, key=lambda a: a.metadata['date'], reverse=True)
+
+    for article in articles_sorted:
+        article_name = article.source_path.name
+        full_path = article.destination_path / Path('index.html')
+        base_path = blog_dir.with_name(public_name)
+        url = full_path.relative_to(base_path)
+
+        article_datetime = article.metadata.get('date')
+        article_year = article_datetime[:4]
+        article_date = article_datetime[:10]
+        if article_year not in archives:
+            archives[article_year] = {
+                'articles': [],
+                'total': 0,
+            }
+
+        archives[article_year]['articles'].append({
+            'date': article_date,
+            'title': article_name,
+            'url': url
+        })
+        archives[article_year]['total'] += 1
+
+    with open('./template/archive.html', mode='r', encoding='utf-8') as f:
+        template_content = f.read()
+        template = Template(template_content)
+        html = template.render(archives=archives)
+
+    root_node_path.joinpath('archive.html').write_text(data=html, encoding='utf-8')
 
 
 def cp_resource(dir_path_str: str):
@@ -367,6 +418,7 @@ def main():
     logger.info("开始生成博客文件结构...")
     root_node = walk_dir(str(blog_dir), public_name)
     gen_blog_dir(root_node)
+    gen_blog_archive(blog_dir, public_name, root_node)
     cp_resource(str(blog_dir))
 
     tar_path = compress_dir(root_node.destination_path)
