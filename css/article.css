@@ -49,10 +49,11 @@ code {
     border: 1px solid #ddd;   /* 添加边框 */
     border-radius: 4px;       /* 圆角边框 */
     font-family: monospace;   /* 使用等宽字体 */
-    font-size: 1.5em;        /* 稍微缩小字体 */
+    font-size: 1.2em;        /* 稍微缩小字体 */
     margin-top: 20px;
     margin-bottom: 20px;
     color: white;
+    padding: 3px;
 }
 
 blockquote {
@@ -65,33 +66,35 @@ blockquote {
 }
 
 table {
-    width: 100%;                  /* 表格宽度为100% */
-    border-collapse: collapse;    /* 合并边框 */
-    margin: 1em 0;                /* 设置表格的外边距 */
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    background-color: #1e1e1e; /* 表格整体背景 */
+    color: #ccc;               /* 默认文字颜色 */
 }
 
 table th, table td {
-    border: 1px solid #ddd;       /* 添加边框 */
-    padding: 8px;                 /* 单元格内边距 */
-    text-align: left;             /* 文本左对齐 */
+    border: 1px solid #444;    /* 深色边框 */
+    padding: 8px;
+    text-align: left;
 }
 
 table th {
-    background-color: #f4f4f4;    /* 表头背景色 */
-    color: #333;                  /* 表头文字颜色 */
-    font-weight: bold;            /* 加粗表头文字 */
+    background-color: #2e2e2e; /* 表头背景色 */
+    color: #fff;               /* 表头文字颜色 */
+    font-weight: bold;
 }
 
 table tr:nth-child(even) {
-    background-color: #f9f9f9;    /* 奇偶行背景交替 */
+    background-color: #2a2a2a; /* 偶数行背景色 */
 }
 
 table tr:nth-child(odd) {
-    background-color: #e0e0e0;
+    background-color: #242424; /* 奇数行背景色 */
 }
 
 table tr:hover {
-    background-color: #ffe9a5;    /* 鼠标悬停高亮 */
+    background-color: #555522; /* 鼠标悬停高亮色 */
 }
 
 ul, ol {
