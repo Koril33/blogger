@@ -57,10 +57,10 @@ code {
 }
 
 blockquote {
+    background-color: dimgrey;
     margin: 1em 0;                 /* 设置上下间距 */
     padding: 0.5em 1em;            /* 内边距 */
     border-left: 4px solid #0074d9; /* 左侧蓝色边框 */
-    background-color: #f9f9f9;     /* 浅灰背景 */
     color: #555;                   /* 设置文本颜色 */
     font-style: italic;            /* 倾斜字体 */
 }
