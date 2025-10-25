@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from getpass import getpass
 from fabric import Config, Connection
 from jinja2 import Template
+import markdown
 
 # 日志配置
 logger = logging.getLogger(__name__)
@@ -107,8 +108,6 @@ def md_to_html(md_file_path: Path) -> str:
     :param md_file_path: markdown 文件的路径对象
     :return: html str
     """
-
-    import markdown
 
     def remove_metadata(content: str) -> str:
         """
@@ -411,7 +410,7 @@ def deploy(server_name: str, local_tar_path: Path, remote_web_root: str):
 def main():
     start = time.time()
 
-    blog_dir = Path('/home/koril/Documents/djhx.site/blog')
+    blog_dir = Path('/home/koril/project/blog')
     # blog_dir = Path('C:\\Project\\MyProject\\djhx.site\\blog')
     public_name = 'public'
 
