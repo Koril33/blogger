@@ -40,7 +40,7 @@ def run(
     typer.echo(f"目标服务器部署地址: {server_target}")
     typer.echo(f"是否部署: {'是' if deploy else '否'}")
 
-    root_node = generate_blog(str(origin))
+    root_node = generate_blog(str(origin), str(target))
 
     if deploy and server and server_target:
         tar_path = compress_dir(root_node.destination_path)

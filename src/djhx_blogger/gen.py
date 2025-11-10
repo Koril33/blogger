@@ -44,11 +44,12 @@ class Node:
         return f'path={self.source_path}'
 
 
-def walk_dir(dir_path_str: str, destination_blog_dir_name: str) -> Node:
+def walk_dir(dir_path_str: str, destination_blog_dir_path_str: str, target_name: str='public') -> Node:
     """
     遍历目录，构造树结构
     :param dir_path_str: 存放博客 md 文件的目录的字符串
-    :param destination_blog_dir_name: 生成博客目录的名称
+    :param destination_blog_dir_path_str: 生成博客目录的地址
+    :param target_name: 生成博客的目录名称
     :return: 树结构的根节点
     """
 
@@ -58,7 +59,7 @@ def walk_dir(dir_path_str: str, destination_blog_dir_name: str) -> Node:
     q.append(dir_path)
 
     # 生成目录的根路径
-    destination_root_dir = dir_path.parent.joinpath(destination_blog_dir_name)
+    destination_root_dir = Path(destination_blog_dir_path_str).joinpath(target_name)
     logger.info(f'源路经: {dir_path}, 目标路径: {destination_root_dir}')
 
     root = None
@@ -259,7 +260,7 @@ def gen_blog_dir(root: Node):
     logger.info(f'生成目标目录耗时: {end - start} ms')
 
 
-def gen_blog_archive(blog_dir_str, public_name, root: Node):
+def gen_blog_archive(blog_dir_str: str, blog_target_dir_str: str, root: Node, target_name: str='public'):
     """
     生成博客 archive 页面
     按照年份分栏，日期排序，展示所有的博客文章
@@ -284,7 +285,7 @@ def gen_blog_archive(blog_dir_str, public_name, root: Node):
     for article in articles_sorted:
         article_name = article.source_path.name
         full_path = article.destination_path / Path('index.html')
-        base_path = blog_dir.with_name(public_name)
+        base_path = Path(blog_target_dir_str) / Path(target_name)
         url = full_path.relative_to(base_path)
 
         article_datetime = article.metadata.get('date')
@@ -310,10 +311,9 @@ def gen_blog_archive(blog_dir_str, public_name, root: Node):
     root_node_path.joinpath('archive.html').write_text(data=html, encoding='utf-8')
 
 
-def cp_resource(dir_path_str: str):
+def cp_resource(blog_target_path_str: str):
     """将包内 static 资源复制到目标目录下的 public/"""
-    dir_path = Path(dir_path_str)
-    public_dir = dir_path.parent / "public"
+    public_dir = Path(blog_target_path_str) / "public"
 
     # 1. 复制 css/
     css_src = str(resources.files("djhx_blogger.static").joinpath("css"))
@@ -352,15 +352,14 @@ def parse_metadata(metadata):
     return meta_dict
 
 
-def generate_blog(blog_dir: str):
+def generate_blog(blog_dir: str, blog_target: str):
     start = time.time()
-    public_name = 'public'
 
     logger.info("开始生成博客文件结构...")
-    root_node = walk_dir(blog_dir, public_name)
+    root_node = walk_dir(blog_dir, blog_target)
     gen_blog_dir(root_node)
-    gen_blog_archive(blog_dir, public_name, root_node)
-    cp_resource(str(blog_dir))
+    gen_blog_archive(blog_dir, blog_target, root_node)
+    cp_resource(blog_target)
 
     end = time.time()
     logger.info(f'生成静态博客 {blog_dir}, 任务完成, 总耗时: {int((end-start)*1000)} ms')
