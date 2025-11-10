@@ -20,3 +20,8 @@ blg -n "C:\Users\ABC\Desktop\"
 ```shell
 blg  blg -o "C:\Users\ABC\Desktop\simple-blog\"
 ```
+
+## TODO
+
+1. 图片压缩
+2. 博客网站 title 和 nav-bar 的模板化
