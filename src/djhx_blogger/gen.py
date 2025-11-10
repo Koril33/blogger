@@ -1,25 +1,23 @@
 import shutil
-import tarfile
-from collections import deque, OrderedDict
-from pathlib import Path
-import logging
-import sys
 import time
-from bs4 import BeautifulSoup
-from getpass import getpass
-from fabric import Config, Connection
-from jinja2 import Template
-import markdown
+from collections import deque, OrderedDict
+from importlib import resources
+from pathlib import Path
 
-# 日志配置
-logger = logging.getLogger(__name__)
-ch = logging.StreamHandler(sys.stdout)
-fmt = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(filename)s :: %(message)s')
-ch.setFormatter(fmt)
-logger.addHandler(ch)
-logger.setLevel(logging.DEBUG)
+import markdown
+from bs4 import BeautifulSoup
+from jinja2 import Template
+
+from .log_config import app_logger
+
+logger = app_logger
 
 ignore_item = ['.git', 'LICENSE']
+
+def load_template(name: str) -> str:
+    """读取 static/template/ 下的模板文件"""
+    file_path = resources.files("djhx_blogger.static.template").joinpath(name)
+    return file_path.read_text(encoding="utf-8")
 
 
 class Node:
@@ -136,52 +134,49 @@ def md_to_html(md_file_path: Path) -> str:
 
 
 def gen_article_index(md_file_path: Path, article_name):
-    with open('./template/article.html', mode='r', encoding='utf-8') as f:
-        bs1 = BeautifulSoup(f, "html.parser")
-        bs2 = BeautifulSoup(md_to_html(md_file_path), "html.parser")
 
-        article_metadata = read_metadata(md_file_path)
+    bs1 = BeautifulSoup(load_template('article.html'), "html.parser")
+    bs2 = BeautifulSoup(md_to_html(md_file_path), "html.parser")
 
-        article_tag = bs1.find('article')
-        # 添加 h1 标题
-        h1_tag = bs1.new_tag('h1')
-        h1_tag.string = article_name
-        article_tag.insert(0, h1_tag)
+    article_metadata = read_metadata(md_file_path)
 
-        # 添加日期信息
-        time_tag = bs1.new_tag('time', datetime=article_metadata["date"])
-        time_tag.string = '时间: ' + article_metadata["date"]
+    article_tag = bs1.find('article')
+    # 添加 h1 标题
+    h1_tag = bs1.new_tag('h1')
+    h1_tag.string = article_name
+    article_tag.insert(0, h1_tag)
 
-        # 添加摘要信息
-        summary_tag = bs1.new_tag('p')
-        summary_tag.string = '摘要: ' + article_metadata["summary"]
+    # 添加日期信息
+    time_tag = bs1.new_tag('time', datetime=article_metadata["date"])
+    time_tag.string = '时间: ' + article_metadata["date"]
 
-        # 包裹元信息
-        meta_wrapper = bs1.new_tag('div', **{"class": "article-meta"})
-        meta_wrapper.append(time_tag)
-        meta_wrapper.append(bs1.new_tag('br'))
-        meta_wrapper.append(summary_tag)
+    # 添加摘要信息
+    summary_tag = bs1.new_tag('p')
+    summary_tag.string = '摘要: ' + article_metadata["summary"]
 
-        # 插入到 h1 之后
-        h1_tag.insert_after(meta_wrapper)
+    # 包裹元信息
+    meta_wrapper = bs1.new_tag('div', **{"class": "article-meta"})
+    meta_wrapper.append(time_tag)
+    meta_wrapper.append(bs1.new_tag('br'))
+    meta_wrapper.append(summary_tag)
 
-        # 添加标题和正文之间的换行符
-        article_tag.append(bs1.new_tag('hr'))
-        # 添加正文内容
-        article_tag.append(bs2)
-        # 修改页面标题
-        bs1.find('title').string = f'文章 | {article_name}'
+    # 插入到 h1 之后
+    h1_tag.insert_after(meta_wrapper)
 
-        return bs1.prettify()
+    # 添加标题和正文之间的换行符
+    article_tag.append(bs1.new_tag('hr'))
+    # 添加正文内容
+    article_tag.append(bs2)
+    # 修改页面标题
+    bs1.find('title').string = f'文章 | {article_name}'
+
+    return bs1.prettify()
 
 
 def gen_category_index(categories: list, category_name) -> str:
-
-    with open('./template/category.html', mode='r', encoding='utf-8') as f:
-        template_content = f.read()
-        template = Template(template_content)
-        html = template.render(categories=categories, category_name=category_name)
-        return html
+    template = Template(load_template('category.html'))
+    html = template.render(categories=categories, category_name=category_name)
+    return html
 
 
 def sort_categories(item):
@@ -264,13 +259,14 @@ def gen_blog_dir(root: Node):
     logger.info(f'生成目标目录耗时: {end - start} ms')
 
 
-def gen_blog_archive(blog_dir, public_name, root: Node):
+def gen_blog_archive(blog_dir_str, public_name, root: Node):
     """
     生成博客 archive 页面
     按照年份分栏，日期排序，展示所有的博客文章
     """
 
     root_node_path = root.destination_path
+    blog_dir = Path(blog_dir_str)
 
     q = deque()
     q.append(root)
@@ -307,22 +303,27 @@ def gen_blog_archive(blog_dir, public_name, root: Node):
         })
         archives[article_year]['total'] += 1
 
-    with open('./template/archive.html', mode='r', encoding='utf-8') as f:
-        template_content = f.read()
-        template = Template(template_content)
-        html = template.render(archives=archives)
+
+    template = Template(load_template('archive.html'))
+    html = template.render(archives=archives)
 
     root_node_path.joinpath('archive.html').write_text(data=html, encoding='utf-8')
 
 
 def cp_resource(dir_path_str: str):
+    """将包内 static 资源复制到目标目录下的 public/"""
     dir_path = Path(dir_path_str)
-    # 拷贝 css
-    css_destination_root_dir = dir_path.parent.joinpath('public').joinpath('css')
-    shutil.copytree('./css', str(css_destination_root_dir.absolute()))
-    # 拷贝 images
-    images_destination_root_dir = dir_path.parent.joinpath('public').joinpath('images')
-    shutil.copytree('./images', str(images_destination_root_dir.absolute()))
+    public_dir = dir_path.parent / "public"
+
+    # 1. 复制 css/
+    css_src = str(resources.files("djhx_blogger.static").joinpath("css"))
+    css_dst = public_dir / "css"
+    shutil.copytree(css_src, css_dst, dirs_exist_ok=True)
+
+    # 2. 复制 images/
+    images_src = str(resources.files("djhx_blogger.static").joinpath("images"))
+    images_dst = public_dir / "images"
+    shutil.copytree(images_src, images_dst, dirs_exist_ok=True)
 
 
 def read_metadata(md_file_path):
@@ -351,81 +352,16 @@ def parse_metadata(metadata):
     return meta_dict
 
 
-def compress_dir(blog_path: Path) -> Path:
-    """
-    将指定目录压缩为 public.tar.gz
-    """
-    logger.info(f'压缩目录: {blog_path}')
-    output_tar = blog_path.parent / 'public.tar.gz'
-
-    with tarfile.open(output_tar, "w:gz") as tar:
-        tar.add(str(blog_path), arcname="public")
-
-    logger.info(f'压缩完成: {output_tar}')
-    return output_tar
-
-
-def deploy(server_name: str, local_tar_path: Path, remote_web_root: str):
-    """
-    将 tar.gz 文件部署到远程服务器
-    """
-    logger.info(f'开始部署 -> 服务器: {server_name}，文件: {local_tar_path}')
-
-    sudo_pass = getpass("[sudo]: ")
-    config = Config(overrides={'sudo': {'password': sudo_pass}})
-    c = Connection(host=server_name, user='koril', config=config, connect_kwargs={'password': sudo_pass})
-
-    remote_home_path = f'/home/{c.user}'
-    remote_tar_path = f'{remote_home_path}/{local_tar_path.name}'
-    remote_target_path = f'{remote_web_root}blog'
-
-    try:
-        # 上传
-        c.put(str(local_tar_path), remote=remote_home_path)
-        logger.info('上传完成')
-
-        # 删除旧备份
-        c.sudo(f'rm -rf {remote_web_root}blog.bak')
-        logger.info('旧 blog.bak 删除')
-
-        # 备份 blog
-        c.sudo(f'mv {remote_target_path} {remote_target_path}.bak')
-        logger.info('blog -> blog.bak')
-
-        # 移动 tar.gz 并解压
-        c.sudo(f'mv {remote_tar_path} {remote_web_root}')
-        c.sudo(f'tar -xzf {remote_web_root}{local_tar_path.name} -C {remote_web_root}')
-        logger.info('解压完成')
-
-        # 清理
-        c.sudo(f'rm {remote_web_root}{local_tar_path.name}')
-        c.sudo(f'mv {remote_web_root}public {remote_target_path}')
-        logger.info('部署完成')
-
-    except Exception as e:
-        logger.exception(f"部署失败")
-        raise
-
-
-def main():
+def generate_blog(blog_dir: str):
     start = time.time()
-
-    blog_dir = Path('/home/koril/project/blog')
-    # blog_dir = Path('C:\\Project\\MyProject\\djhx.site\\blog')
     public_name = 'public'
 
     logger.info("开始生成博客文件结构...")
-    root_node = walk_dir(str(blog_dir), public_name)
+    root_node = walk_dir(blog_dir, public_name)
     gen_blog_dir(root_node)
     gen_blog_archive(blog_dir, public_name, root_node)
     cp_resource(str(blog_dir))
 
-    tar_path = compress_dir(root_node.destination_path)
-    deploy('djhx.site', tar_path, '/var/www/djhx.site/')
-
     end = time.time()
-    logger.info(f'任务完成，总耗时: {(end - start) * 1000:.0f} ms')
-
-
-if __name__ == '__main__':
-    main()
+    logger.info(f'生成静态博客 {blog_dir}, 任务完成, 总耗时: {int((end-start)*1000)} ms')
+    return root_node
