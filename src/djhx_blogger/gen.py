@@ -364,3 +364,25 @@ def generate_blog(blog_dir: str, blog_target: str):
     end = time.time()
     logger.info(f'生成静态博客 {blog_dir}, 任务完成, 总耗时: {int((end-start)*1000)} ms')
     return root_node
+
+
+def init_new_blog(blog_dir: str):
+    blog_dir_path = Path(blog_dir) / "simple-blog" / "demo-article"
+    blog_dir_path.mkdir(parents=True, exist_ok=True)
+    with open(blog_dir_path / 'index.md', 'w', encoding='utf-8') as file:
+        file.write(f"""---
+title: "Demo Post"
+date: 1970-01-01T08:00:00+08:00
+summary: "simple demo article"
+---\n
+
+# Hello world!\n
+
+## title 1
+
+### title 2
+
+This is a simple demo...
+"""
+        )
+        file.write('')
