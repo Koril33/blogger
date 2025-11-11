@@ -2,6 +2,7 @@ import os
 import shutil
 import time
 from collections import deque, OrderedDict, defaultdict
+from concurrent.futures import ProcessPoolExecutor
 from importlib import resources
 from pathlib import Path
 
@@ -15,6 +16,9 @@ from .log_config import app_logger
 logger = app_logger
 
 ignore_item = ['.git', 'LICENSE']
+
+process_pool = ProcessPoolExecutor(max_workers=os.cpu_count() + 1)
+
 
 def load_template(name: str) -> str:
     """读取 static/template/ 下的模板文件"""
@@ -262,10 +266,9 @@ def gen_blog_dir(root: Node):
             else:
                 # shutil.copy(node.source_path, node.destination_path)
                 # 图片压缩
-                start_time = int(time.time() * 1000)
-                compress_image(node.source_path, node.destination_path)
-                end_time = int(time.time() * 1000)
-                logger.info(f'压缩图片耗时: {(end_time-start_time)} ms | {node.source_path} -> {node.destination_path}')
+                process_pool.submit(compress_image, node.source_path, node.destination_path)
+                logger.info(f'压缩图片: {node.source_path} -> {node.destination_path}')
+                # pass
 
     end = int(time.time() * 1000)
     logger.info(f'生成目标目录耗时: {end - start} ms')
@@ -483,7 +486,7 @@ def generate_blog(blog_dir: str, blog_target: str):
     gen_blog_dir(root_node)
     gen_blog_archive(blog_dir, blog_target, root_node)
     cp_resource(blog_target)
-
+    process_pool.shutdown(wait=True)
     end = time.time()
     logger.info(f'生成静态博客 {blog_dir} -> {root_node.destination_path}, 任务完成, 总耗时: {int((end-start)*1000)} ms')
     print_directory_stats(root_node.destination_path)
