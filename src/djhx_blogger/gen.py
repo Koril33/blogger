@@ -1,6 +1,7 @@
+import os
 import shutil
 import time
-from collections import deque, OrderedDict
+from collections import deque, OrderedDict, defaultdict
 from importlib import resources
 from pathlib import Path
 
@@ -261,7 +262,10 @@ def gen_blog_dir(root: Node):
             else:
                 # shutil.copy(node.source_path, node.destination_path)
                 # 图片压缩
+                start_time = int(time.time() * 1000)
                 compress_image(node.source_path, node.destination_path)
+                end_time = int(time.time() * 1000)
+                logger.info(f'压缩图片耗时: {(end_time-start_time)} ms | {node.source_path} -> {node.destination_path}')
 
     end = int(time.time() * 1000)
     logger.info(f'生成目标目录耗时: {end - start} ms')
@@ -377,6 +381,100 @@ def compress_image(input_path, output_path, quality=70, max_size=(960, 540)):
         img.save(output_path, optimize=True, quality=quality)
 
 
+def analyze_directory_size(directory_path):
+    """
+    分析目录下不同类型文件的数量和占用空间
+
+    参数:
+        directory_path: 要分析的目录路径
+
+    返回:
+        dict: 包含文件类型统计信息的字典
+    """
+    # 存储统计结果的字典
+    file_stats = defaultdict(lambda: {'count': 0, 'size_bytes': 0})
+
+    # 遍历目录及其所有子目录
+    for root, dirs, files in os.walk(directory_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+
+            try:
+                # 获取文件大小
+                file_size = os.path.getsize(file_path)
+
+                # 获取文件扩展名（转换为小写，去掉点）
+                file_ext = Path(file).suffix.lower()
+                if not file_ext:
+                    file_ext = '无扩展名'
+                else:
+                    file_ext = file_ext[1:]  # 去掉前面的点
+
+                # 更新统计信息
+                file_stats[file_ext]['count'] += 1
+                file_stats[file_ext]['size_bytes'] += file_size
+
+            except (OSError, IOError):
+                # 跳过无法访问的文件
+                continue
+
+    return file_stats
+
+
+def format_size(size_bytes):
+    """
+    将字节数转换为易读的格式
+
+    参数:
+        size_bytes: 字节数
+
+    返回:
+        str: 格式化后的大小字符串
+    """
+    if size_bytes == 0:
+        return "0B"
+
+    size_names = ["B", "KB", "MB", "GB", "TB"]
+    i = 0
+    while size_bytes >= 1024 and i < len(size_names) - 1:
+        size_bytes /= 1024.0
+        i += 1
+
+    # 根据大小选择合适的精度
+    if i == 0:  # B
+        return f"{int(size_bytes)}{size_names[i]}"
+    elif i <= 2:  # KB, MB
+        return f"{size_bytes:.1f}{size_names[i]}"
+    else:  # GB, TB
+        return f"{size_bytes:.2f}{size_names[i]}"
+
+
+def print_directory_stats(directory_path):
+    """
+    打印目录统计信息
+
+    参数:
+        directory_path: 要分析的目录路径
+    """
+    stats = analyze_directory_size(directory_path)
+
+    if not stats:
+        print("目录为空或无法访问")
+        return
+
+    # 按文件大小排序
+    sorted_stats = sorted(stats.items(), key=lambda x: x[1]['size_bytes'], reverse=True)
+
+    # 打印表头
+    print(f"{'类型':<10} | {'数量':<6} | {'大小':<10}")
+    print("-" * 30)
+
+    # 打印每种文件类型的统计信息
+    for file_type, data in sorted_stats:
+        count = data['count']
+        size_str = format_size(data['size_bytes'])
+        print(f"{file_type:<10} | {count:<6} | {size_str:<10}")
+
 def generate_blog(blog_dir: str, blog_target: str):
     start = time.time()
 
@@ -387,7 +485,9 @@ def generate_blog(blog_dir: str, blog_target: str):
     cp_resource(blog_target)
 
     end = time.time()
-    logger.info(f'生成静态博客 {blog_dir}, 任务完成, 总耗时: {int((end-start)*1000)} ms')
+    logger.info(f'生成静态博客 {blog_dir} -> {root_node.destination_path}, 任务完成, 总耗时: {int((end-start)*1000)} ms')
+    print_directory_stats(root_node.destination_path)
+
     return root_node
 
 
