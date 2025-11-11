@@ -18,7 +18,7 @@ blg -n "C:\Users\ABC\Desktop\"
 生成静态页面
 
 ```shell
-blg  blg -o "C:\Users\ABC\Desktop\simple-blog\"
+blg -o "C:\Users\ABC\Desktop\simple-blog\"
 ```
 
 ## TODO

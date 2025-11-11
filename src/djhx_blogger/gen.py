@@ -5,6 +5,7 @@ from importlib import resources
 from pathlib import Path
 
 import markdown
+from PIL import Image
 from bs4 import BeautifulSoup
 from jinja2 import Template
 
@@ -18,6 +19,10 @@ def load_template(name: str) -> str:
     """读取 static/template/ 下的模板文件"""
     file_path = resources.files("djhx_blogger.static.template").joinpath(name)
     return file_path.read_text(encoding="utf-8")
+
+def load_image(img_name: str) -> Path:
+    file_path = resources.files("djhx_blogger.static.images").joinpath(img_name)
+    return Path(str(file_path))
 
 
 class Node:
@@ -254,7 +259,9 @@ def gen_blog_dir(root: Node):
                 with open(node.destination_path, mode='w', encoding='utf-8') as f:
                     f.write(gen_article_index(node.source_path, node.source_path.parent.name))
             else:
-                shutil.copy(node.source_path, node.destination_path)
+                # shutil.copy(node.source_path, node.destination_path)
+                # 图片压缩
+                compress_image(node.source_path, node.destination_path)
 
     end = int(time.time() * 1000)
     logger.info(f'生成目标目录耗时: {end - start} ms')
@@ -352,6 +359,24 @@ def parse_metadata(metadata):
     return meta_dict
 
 
+
+def compress_image(input_path, output_path, quality=70, max_size=(960, 540)):
+    """
+    压缩图片到指定质量和最大尺寸。
+    - input_path: 源图片路径
+    - output_path: 输出路径，默认覆盖源文件
+    - quality: 压缩质量(0~100)
+    - max_size: 限制最大宽高（超过则等比缩小）
+    """
+    if not input_path or not output_path:
+        logger.warning(f'图片压缩 input/output path 不能为空')
+        return
+
+    with Image.open(input_path).convert("RGB") as img:
+        img.thumbnail(max_size)
+        img.save(output_path, optimize=True, quality=quality)
+
+
 def generate_blog(blog_dir: str, blog_target: str):
     start = time.time()
 
@@ -368,7 +393,9 @@ def generate_blog(blog_dir: str, blog_target: str):
 
 def init_new_blog(blog_dir: str):
     blog_dir_path = Path(blog_dir) / "simple-blog" / "demo-article"
+    blog_images_dir_path = blog_dir_path / "images"
     blog_dir_path.mkdir(parents=True, exist_ok=True)
+    blog_images_dir_path.mkdir(parents=True, exist_ok=True)
     with open(blog_dir_path / 'index.md', 'w', encoding='utf-8') as file:
         file.write(f"""---
 title: "Demo Post"
@@ -380,9 +407,17 @@ summary: "simple demo article"
 
 ## title 1
 
+mountain images:
+
+![mountain](./images/mountain.jpg)
+
 ### title 2
 
 This is a simple demo...
 """
         )
         file.write('')
+
+    mountain_img = load_image('mountain.jpg')
+    logger.info(mountain_img)
+    shutil.copy2(mountain_img, blog_images_dir_path / 'mountain.jpg')
