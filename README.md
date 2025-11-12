@@ -25,3 +25,5 @@ blg -o "C:\Users\ABC\Desktop\simple-blog\"
 
 1. 图片压缩
 2. 博客网站 title 和 nav-bar 的模板化
+3. 存储配置文件，简化命令行
+4. 创建新的博客模板

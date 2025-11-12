@@ -35,6 +35,9 @@ def deploy_blog(server_name: str, local_tar_path: Path, remote_web_root: str):
 
     remote_home_path = f'/home/{c.user}'
     remote_tar_path = f'{remote_home_path}/{local_tar_path.name}'
+
+    if not remote_web_root.endswith('/'):
+        remote_web_root += '/'
     remote_target_path = f'{remote_web_root}blog'
 
     try:

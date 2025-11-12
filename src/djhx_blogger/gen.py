@@ -3,6 +3,7 @@ import shutil
 import time
 from collections import deque, OrderedDict, defaultdict
 from concurrent.futures import ProcessPoolExecutor
+from datetime import datetime
 from importlib import resources
 from pathlib import Path
 
@@ -524,3 +525,22 @@ This is a simple demo...
     mountain_img = load_image('mountain.jpg')
     logger.info(mountain_img)
     shutil.copy2(mountain_img, blog_images_dir_path / 'mountain.jpg')
+
+
+def init_new_post(blog_dir: str, post_name: str):
+    post_path = Path(blog_dir) / Path(post_name)
+    post_path.mkdir(parents=True, exist_ok=True)
+
+    post_index_path = post_path / 'index.md'
+    if post_index_path.exists():
+        logger.warning(f'post_index_path: {post_index_path} 已经存在')
+        return
+    with open(post_index_path, 'w', encoding='utf-8') as file:
+        file.write(f"""---
+title: "{Path(post_name).name}"
+date: {datetime.now().strftime('%Y-%m-%dT%H:%M:%S')}
+summary: ""
+---
+
+Main Content
+""")
