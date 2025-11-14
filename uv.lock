@@ -314,7 +314,7 @@ wheels = [
 
 [[package]]
 name = "djhx-blogger"
-version = "0.1.11"
+version = "0.1.12"
 source = { virtual = "." }
 dependencies = [
     { name = "beautifulsoup4" },

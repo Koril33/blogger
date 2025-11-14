@@ -4,7 +4,7 @@ from pathlib import Path
 import typer
 from platformdirs import user_config_path
 
-from .deploy import compress_dir, deploy_blog
+from .deploy import compress_dir, deploy_blog, refresh_site_search_db
 from .gen import generate_blog, init_new_blog, init_new_post
 from .log_config import log_init, app_logger
 
@@ -122,3 +122,5 @@ def run(
     if deploy and server and server_target:
         tar_path = compress_dir(root_node.destination_path)
         deploy_blog(server, tar_path, server_target)
+
+        refresh_site_search_db()

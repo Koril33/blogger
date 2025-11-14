@@ -1,6 +1,7 @@
 import tarfile
 from getpass import getpass
 from pathlib import Path
+from urllib import request
 
 from fabric import Connection, Config
 
@@ -66,3 +67,13 @@ def deploy_blog(server_name: str, local_tar_path: Path, remote_web_root: str):
     except Exception as e:
         logger.exception(f"部署失败")
         raise
+
+def refresh_site_search_db():
+    """
+    来自另一个项目——djhx-site-search 的接口
+    部署新的博客成功后，调用该接口，刷新 db 索引
+    """
+    logger.info(f'调用 djhx-site-search refresh-db 接口')
+    url = 'https://search.djhx.site/refresh-db'
+    response = request.urlopen(url).read().decode('utf-8')
+    logger.info(f'djhx-site-search refresh-db response: {response}')
