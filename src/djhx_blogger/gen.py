@@ -147,41 +147,51 @@ def md_to_html(md_file_path: Path) -> str:
 
 def gen_article_index(md_file_path: Path, article_name):
     bs1 = BeautifulSoup(load_template('article.html'), "html.parser")
-    # 注意：这里需要给文章容器增加 'prose' 类，以便渲染 markdown 样式
-    # 如果你在模板里已经写了 <article class="prose...">，这里就不动它
     article_tag = bs1.find('article')
 
     bs2 = BeautifulSoup(md_to_html(md_file_path), "html.parser")
     article_metadata = read_metadata(md_file_path)
 
-    # 1. 修改 H1 样式
-    h1_tag = bs1.new_tag('h1', **{"class": "text-4xl font-extrabold mb-4 dark:text-white"})
+    # --- 1. 艺术化大标题 (H1) ---
+    # 使用 tracking-tighter 紧缩字间距，更有设计感
+    h1_tag = bs1.new_tag('h1', **{
+        "class": "text-4xl md:text-5xl font-black mb-6 text-zinc-900 dark:text-white tracking-tighter leading-tight"
+    })
     h1_tag.string = article_name
-    article_tag.insert(0, h1_tag)
+    article_tag.append(h1_tag)
 
-    # 2. 修改元信息包裹容器
-    meta_wrapper = bs1.new_tag('div', **{"class": "flex flex-wrap gap-4 text-sm text-gray-500 mb-8 not-prose"})
+    # --- 2. 精致元信息栏 (Meta) ---
+    meta_wrapper = bs1.new_tag('div', **{"class": "flex flex-col gap-6 mb-12 not-prose"})
 
-    time_tag = bs1.new_tag('time', datetime=article_metadata["date"])
-    time_tag.string = '📅 ' + article_metadata["date"][:10]
+    # 日期样式：带一个小装饰线
+    date_tag = bs1.new_tag('div', **{
+        "class": "flex items-center gap-2 text-sm font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-widest"})
+    line = bs1.new_tag('span', **{"class": "w-8 h-px bg-zinc-200 dark:bg-zinc-800"})
+    date_tag.append(line)
+    date_tag.append(article_metadata.get("date", "")[:10])
 
-    summary_tag = bs1.new_tag('p', **{
-        "class": "italic w-full border-l-4 border-blue-500 pl-4 py-2 bg-gray-50 dark:bg-gray-800"})
-    summary_tag.string = article_metadata["summary"]
+    # 摘要样式：作为前言，使用大字号、斜体和柔和颜色
+    if article_metadata.get("summary"):
+        summary_tag = bs1.new_tag('p', **{
+            "class": "text-xl md:text-2xl text-zinc-500 dark:text-zinc-400 leading-relaxed font-light italic"
+        })
+        summary_tag.string = article_metadata["summary"]
+        meta_wrapper.append(date_tag)
+        meta_wrapper.append(summary_tag)
 
-    meta_wrapper.append(time_tag)
-    meta_wrapper.append(summary_tag)
-    h1_tag.insert_after(meta_wrapper)
+    article_tag.append(meta_wrapper)
 
-    # 3. 插入正文
-    # 建议给 Markdown 渲染出的内容包裹一层 div 以免破坏 article 布局
-    content_wrapper = bs1.new_tag('div', **{"class": "markdown-content"})
-    content_wrapper.append(bs2)
-    article_tag.append(content_wrapper)
+    # --- 3. 装饰分割线 ---
+    hr = bs1.new_tag('hr', **{"class": "border-zinc-100 dark:border-zinc-800 mb-12"})
+    article_tag.append(hr)
 
-    # 修改标题
+    # --- 4. 正文注入 ---
+    # 为正文包裹一层，确保 prose 样式完美应用
+    content_container = bs1.new_tag('div', **{"class": "article-content"})
+    content_container.append(bs2)
+    article_tag.append(content_container)
+
     bs1.find('title').string = article_name
-
     return bs1.prettify()
 
 

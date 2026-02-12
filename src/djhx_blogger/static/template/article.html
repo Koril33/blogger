@@ -21,9 +21,22 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" rel="stylesheet"/>
     <style>
-        /* 针对文章内 Markdown 渲染出的标签进行深度优化 */
+        /* 1. 改善正文排版，增加行高，文字颜色更柔和 */
+        .prose p {
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #4b5563; /* zinc-600 */
+        }
+        .dark .prose p { color: #a1a1aa; /* zinc-400 */ }
 
-        /* 1. 修复代码块样式冲突：移除 prose 默认给 code 添加的前后引号 */
+        /* 2. 让二级标题（H2）带有艺术感的左侧装饰线 */
+        .prose h2 {
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
         .prose code::before,
         .prose code::after { content: "" !important; }
 
@@ -36,11 +49,26 @@
         }
 
         /* 3. 图片居中与圆角 */
-        .prose img { border-radius: 0.75rem; margin-left: auto; margin-right: auto; }
+        .prose img {
+            border-radius: 0.75rem;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            transition: transform 0.5s ease;
+        }
+        .prose img:hover { transform: scale(1.02); }
 
         /* 4. 表格优化 */
         .prose table { width: 100%; border-collapse: collapse; }
         .prose th { background-color: rgba(156, 163, 175, 0.1); }
+
+        .prose blockquote {
+            border-left: 4px solid #3b82f6;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.05), transparent);
+            padding: 1.5rem;
+            font-style: italic;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
