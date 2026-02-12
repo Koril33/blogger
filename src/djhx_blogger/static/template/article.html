@@ -7,13 +7,16 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
+        // 1. 配置为 class 模式
         tailwind.config = {
-            darkMode: 'media',
-            theme: {
-                extend: {
-                    // 可以在这里微调 prose 的样式
-                }
-            }
+            darkMode: 'class'
+        }
+
+        // 2. 核心逻辑：初始加载时判断主题（放在 head 顶部防止闪烁）
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
         }
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" rel="stylesheet"/>
@@ -43,11 +46,22 @@
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
     <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="/" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">阿辉的博客</a>
-            <div class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="/index.html" class="hover:text-blue-500 transition">Blog</a>
-                <a href="/archive.html" class="hover:text-blue-500 transition">Archive</a>
-                <a href="/about/index.html" class="hover:text-blue-500 transition">About</a>
+            <a href="/" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent shrink-0">
+                阿辉的博客
+            </a>
+
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="/index.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">Blog</a>
+                    <a href="/archive.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">Archive</a>
+                    <a href="/about/index.html" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">About</a>
+                </div>
+
+                <div class="hidden md:block w-px h-4 bg-gray-200 dark:bg-gray-700"></div>
+
+                <button id="theme-toggle" class="group relative h-9 w-9 border border-zinc-200 dark:border-zinc-700 rounded-full flex items-center justify-center transition-all hover:bg-zinc-100 dark:hover:bg-zinc-800 active:scale-90">
+                    <div id="theme-dot" class="w-3 h-3 rounded-full bg-zinc-800 dark:bg-zinc-100 transition-transform duration-500"></div>
+                </button>
             </div>
         </div>
     </nav>
@@ -66,9 +80,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
-        // 确保在内容注入后执行代码高亮
-        document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+        hljs.highlightAll();
+
+        // 主题切换脚本
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeDot = document.getElementById('theme-dot');
+
+        themeToggle.addEventListener('click', () => {
+            // 切换 dark 类
+            const isDark = document.documentElement.classList.toggle('dark');
+
+            // 保存状态
+            localStorage.theme = isDark ? 'dark' : 'light';
+
+            // 按钮动效
+            themeDot.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+                themeDot.style.transform = 'scale(1)';
+            }, 200);
         });
     </script>
 </body>
