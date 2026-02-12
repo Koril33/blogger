@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>归档</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link href="/css/basic.css" rel="stylesheet">
-    <link href="/css/archive.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>归档 | 阿辉的博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'media' }
+    </script>
 </head>
-<body>
-<nav>
-    <a href="/" class="brand">阿辉的小站</a>
-    <div class="nav-links">
-        <a href="/index.html">blog</a>
-        <a href="/archive.html">archive</a>
-        <a href="/about/index.html">about</a>
-        <a href="/hardware/index.html">hardware</a>
-        <a href="/software/index.html">software</a>
-        <a href="/cook/index.html">cook</a>
-    </div>
-</nav>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">阿辉的博客</a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="/index.html" class="hover:text-blue-500 transition">Blog</a>
+                <a href="/archive.html" class="hover:text-blue-500 transition">Archive</a>
+                <a href="/about/index.html" class="hover:text-blue-500 transition">About</a>
+            </div>
+        </div>
+    </nav>
 
-<main class="archive-container">
-    <h1 class="archive-title">归档</h1>
-    {% for year, info in archives.items() %}
-        <section class="archive-year">
-            <h2>{{ year }} - 共计 {{ info.get('total') }} 篇</h2>
-            <ul>
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <h1 class="text-4xl font-black mb-12">Archive</h1>
+
+        {% for year, info in archives.items() %}
+        <section class="mb-12 relative border-l-2 border-gray-200 dark:border-gray-700 ml-4 pl-8">
+            <div class="absolute -left-[11px] top-0 w-5 h-5 bg-blue-500 rounded-full ring-4 ring-white dark:ring-gray-900"></div>
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                {{ year }}
+                <span class="ml-3 px-2 py-0.5 bg-gray-200 dark:bg-gray-800 rounded text-xs font-normal text-gray-500">{{ info.get('total') }} 篇</span>
+            </h2>
+            <ul class="space-y-6">
                 {% for entry in info.get('articles') %}
-                    <li class="archive-item">
-                        <span class="date">{{ entry.date }}</span>：<a href="{{ entry.url }}">{{ entry.title }}</a>
-                    </li>
+                <li class="group">
+                    <a href="{{ entry.url }}" class="flex flex-col md:flex-row md:items-baseline gap-2">
+                        <time class="text-sm font-mono text-gray-400 shrink-0">{{ entry.date[5:] }}</time>
+                        <span class="text-lg group-hover:text-blue-500 transition decoration-blue-500/30 underline-offset-4 group-hover:underline">
+                            {{ entry.title }}
+                        </span>
+                    </a>
+                </li>
                 {% endfor %}
             </ul>
         </section>
-    {% endfor %}
-</main>
-
+        {% endfor %}
+    </main>
 </body>
 </html>

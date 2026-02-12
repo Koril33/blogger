@@ -1,39 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link href="/css/basic.css" rel="stylesheet">
-    <link href="/css/article.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css"
-          rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'media',
+            theme: {
+                extend: {
+                    // 可以在这里微调 prose 的样式
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" rel="stylesheet"/>
+    <style>
+        /* 针对文章内 Markdown 渲染出的标签进行深度优化 */
+
+        /* 1. 修复代码块样式冲突：移除 prose 默认给 code 添加的前后引号 */
+        .prose code::before,
+        .prose code::after { content: "" !important; }
+
+        /* 2. 只有行内代码需要背景，代码块(pre code)不需要 */
+        :not(pre) > code {
+            background-color: rgba(156, 163, 175, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+
+        /* 3. 图片居中与圆角 */
+        .prose img { border-radius: 0.75rem; margin-left: auto; margin-right: auto; }
+
+        /* 4. 表格优化 */
+        .prose table { width: 100%; border-collapse: collapse; }
+        .prose th { background-color: rgba(156, 163, 175, 0.1); }
+    </style>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">阿辉的博客</a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="/index.html" class="hover:text-blue-500 transition">Blog</a>
+                <a href="/archive.html" class="hover:text-blue-500 transition">Archive</a>
+                <a href="/about/index.html" class="hover:text-blue-500 transition">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <article class="prose prose-slate dark:prose-invert lg:prose-xl max-w-none">
+            </article>
+    </main>
+
+    <footer class="max-w-4xl mx-auto px-4 py-12 border-t border-gray-100 dark:border-gray-800 text-center">
+        <p class="text-sm text-gray-400">
+            © 2026 阿辉的博客 ·
+            <a href="https://beian.miit.gov.cn/" target="_blank" class="hover:underline">浙ICP备19051268号</a>
+        </p>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
-        hljs.highlightAll();
+        // 确保在内容注入后执行代码高亮
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
     </script>
-</head>
-<body>
-<nav>
-    <a href="/" class="brand">阿辉的小站</a>
-    <div class="nav-links">
-        <a href="/index.html">blog</a>
-        <a href="/archive.html">archive</a>
-        <a href="/about/index.html">about</a>
-        <a href="/hardware/index.html">hardware</a>
-        <a href="/software/index.html">software</a>
-        <a href="/cook/index.html">cook</a>
-    </div>
-</nav>
-
-<article></article>
-<footer>
-    <p class="site-footer">
-        备案号:
-        <a href="https://beian.miit.gov.cn/" target="_blank">
-            浙ICP备19051268号
-        </a>
-    </p>
-</footer>
 </body>
 </html>

@@ -146,41 +146,41 @@ def md_to_html(md_file_path: Path) -> str:
 
 
 def gen_article_index(md_file_path: Path, article_name):
-
     bs1 = BeautifulSoup(load_template('article.html'), "html.parser")
-    bs2 = BeautifulSoup(md_to_html(md_file_path), "html.parser")
+    # 注意：这里需要给文章容器增加 'prose' 类，以便渲染 markdown 样式
+    # 如果你在模板里已经写了 <article class="prose...">，这里就不动它
+    article_tag = bs1.find('article')
 
+    bs2 = BeautifulSoup(md_to_html(md_file_path), "html.parser")
     article_metadata = read_metadata(md_file_path)
 
-    article_tag = bs1.find('article')
-    # 添加 h1 标题
-    h1_tag = bs1.new_tag('h1')
+    # 1. 修改 H1 样式
+    h1_tag = bs1.new_tag('h1', **{"class": "text-4xl font-extrabold mb-4 dark:text-white"})
     h1_tag.string = article_name
     article_tag.insert(0, h1_tag)
 
-    # 添加日期信息
+    # 2. 修改元信息包裹容器
+    meta_wrapper = bs1.new_tag('div', **{"class": "flex flex-wrap gap-4 text-sm text-gray-500 mb-8 not-prose"})
+
     time_tag = bs1.new_tag('time', datetime=article_metadata["date"])
-    time_tag.string = '时间: ' + article_metadata["date"]
+    time_tag.string = '📅 ' + article_metadata["date"][:10]
 
-    # 添加摘要信息
-    summary_tag = bs1.new_tag('p')
-    summary_tag.string = '摘要: ' + article_metadata["summary"]
+    summary_tag = bs1.new_tag('p', **{
+        "class": "italic w-full border-l-4 border-blue-500 pl-4 py-2 bg-gray-50 dark:bg-gray-800"})
+    summary_tag.string = article_metadata["summary"]
 
-    # 包裹元信息
-    meta_wrapper = bs1.new_tag('div', **{"class": "article-meta"})
     meta_wrapper.append(time_tag)
-    meta_wrapper.append(bs1.new_tag('br'))
     meta_wrapper.append(summary_tag)
-
-    # 插入到 h1 之后
     h1_tag.insert_after(meta_wrapper)
 
-    # 添加标题和正文之间的换行符
-    article_tag.append(bs1.new_tag('hr'))
-    # 添加正文内容
-    article_tag.append(bs2)
-    # 修改页面标题
-    bs1.find('title').string = f'文章 | {article_name}'
+    # 3. 插入正文
+    # 建议给 Markdown 渲染出的内容包裹一层 div 以免破坏 article 布局
+    content_wrapper = bs1.new_tag('div', **{"class": "markdown-content"})
+    content_wrapper.append(bs2)
+    article_tag.append(content_wrapper)
+
+    # 修改标题
+    bs1.find('title').string = article_name
 
     return bs1.prettify()
 
