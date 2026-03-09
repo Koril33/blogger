@@ -1,0 +1,2 @@
+uv build
+uv publish --token <YOUR_PYPI_TOKEN>
