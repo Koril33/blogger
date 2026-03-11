@@ -16,7 +16,6 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" rel="stylesheet"/>
     <style>
-        /* 原有样式保留 */
         .prose p { line-height: 1.8; margin-bottom: 2rem; color: #4b5563; }
         .dark .prose p { color: #a1a1aa; }
         .prose h2 { font-weight: 800; letter-spacing: -0.025em; margin-top: 3rem; margin-bottom: 1.5rem; position: relative; }
@@ -28,10 +27,46 @@
         .prose th { background-color: rgba(156, 163, 175, 0.1); }
         .prose blockquote { border-left: 4px solid #3b82f6; background: linear-gradient(to right, rgba(59, 130, 246, 0.05), transparent); padding: 1.5rem; font-style: italic; border-radius: 0 0.5rem 0.5rem 0; }
 
-        /* 新增：目录平滑滚动 */
-        html { scroll-behavior: smooth; }
 
-        /* 目录激活状态样式 */
+        #post-content {
+            min-width: 0; /* 关键：允许 flex 子元素收缩 */
+            flex: 1;
+        }
+        .prose pre {
+            position: relative;
+            max-width: 100%;
+            overflow-x: auto !important;
+            white-space: pre !important;
+            word-break: normal !important;
+            word-wrap: normal !important;
+        }
+        /* 自定义滚动条 */
+        .prose pre::-webkit-scrollbar { height: 6px; }
+        .prose pre::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 10px; }
+        .prose pre::-webkit-scrollbar-track { background: transparent; }
+
+        /* --- 复制按钮样式 --- */
+        .copy-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            padding: 0.4rem 0.7rem;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(156, 163, 175, 0.3);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+        .prose pre:hover .copy-btn { opacity: 1; }
+        .copy-btn:hover { background: rgba(255, 255, 255, 0.2); color: white; }
+        .copy-btn.copied { color: #10b981; border-color: #10b981; }
+
+        /* 目录样式 */
+        html { scroll-behavior: smooth; }
         .toc-link.active {
             color: #3b82f6;
             border-left-color: #3b82f6;
@@ -42,8 +77,6 @@
             border-left-color: #60a5fa;
             background-color: rgba(96, 165, 250, 0.1);
         }
-
-        /* 隐藏滚动条但保留功能 */
         #toc-container::-webkit-scrollbar { width: 0px; }
     </style>
 </head>
@@ -62,19 +95,15 @@
                 <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-tight">
                     <a href="/index.html" class="relative group py-2">
                         <span class="text-zinc-500 group-hover:text-blue-500 transition">Blog</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-px bg-blue-500 transition-all group-hover:w-full"></span>
                     </a>
                     <a href="/archive.html" class="relative group py-2">
                         <span class="text-zinc-500 group-hover:text-blue-500 transition">Archive</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-px bg-blue-500 transition-all group-hover:w-full"></span>
                     </a>
                     <a href="/about/index.html" class="relative group py-2">
                         <span class="text-zinc-500 group-hover:text-blue-500 transition">About</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-px bg-blue-500 transition-all group-hover:w-full"></span>
                     </a>
                 </div>
-                <div class="hidden md:block w-px h-4 bg-gray-200 dark:bg-gray-700"></div>
-                <button id="theme-toggle" class="group relative h-9 w-9 border border-zinc-200 dark:border-zinc-700 rounded-full flex items-center justify-center transition-all hover:bg-zinc-100 dark:hover:bg-zinc-800 active:scale-90">
+                <button id="theme-toggle" class="group relative h-9 w-9 border border-zinc-200 dark:border-zinc-700 rounded-full flex items-center justify-center transition-all">
                     <div id="theme-dot" class="w-3 h-3 rounded-full bg-zinc-800 dark:bg-zinc-100 transition-transform duration-500"></div>
                 </button>
             </div>
@@ -88,12 +117,11 @@
                     <div class="w-1 h-4 bg-blue-500 rounded-full"></div>
                     <span class="text-xs font-bold uppercase tracking-widest text-gray-400">On This Page</span>
                 </div>
-                <nav id="toc-content" class="flex flex-col border-l border-gray-100 dark:border-gray-800">
-                    </nav>
+                <nav id="toc-content" class="flex flex-col border-l border-gray-100 dark:border-gray-800"></nav>
             </div>
         </aside>
 
-        <article id="post-content" class="prose prose-slate dark:prose-invert lg:prose-xl max-w-none flex-grow"></article>
+        <article id="post-content" class="prose prose-slate dark:prose-invert lg:prose-xl max-w-none"></article>
     </main>
 
     <footer class="max-w-4xl mx-auto px-4 py-12 border-t border-gray-100 dark:border-gray-800 text-center">
@@ -110,53 +138,56 @@
         themeToggle.addEventListener('click', () => {
             const isDark = document.documentElement.classList.toggle('dark');
             localStorage.theme = isDark ? 'dark' : 'light';
-            themeDot.style.transform = 'scale(1.5)';
-            setTimeout(() => { themeDot.style.transform = 'scale(1)'; }, 200);
         });
 
-        // 2. 动态生成目录逻辑
+        // 2. 目录生成与滚动监听
         const postContent = document.getElementById('post-content');
         const tocContent = document.getElementById('toc-content');
-        const headers = postContent.querySelectorAll('h2, h3, h4, h5, h6');
+        const headers = postContent.querySelectorAll('h2, h3, h4');
 
-        if (headers.length > 0) {
-            headers.forEach((header, index) => {
-                // 为没有 ID 的标题生成 ID
-                if (!header.id) {
-                    header.id = `heading-${index}`;
-                }
+        headers.forEach((header, index) => {
+            if (!header.id) header.id = `heading-${index}`;
+            const link = document.createElement('a');
+            link.href = `#${header.id}`;
+            link.innerText = header.innerText;
+            link.className = `toc-link block py-2 px-4 text-sm transition-all border-l-2 border-transparent hover:text-blue-500 text-gray-500 dark:text-gray-400`;
+            const level = parseInt(header.tagName.replace('H', ''));
+            link.style.paddingLeft = `${(level - 1) * 12}px`;
+            tocContent.appendChild(link);
+        });
 
-                const level = parseInt(header.tagName.replace('H', ''));
-                const link = document.createElement('a');
-                link.href = `#${header.id}`;
-                link.innerText = header.innerText;
-
-                // 基础样式：根据层级添加 padding-left
-                link.className = `toc-link block py-2 px-4 text-sm transition-all border-l-2 border-transparent hover:text-blue-500 text-gray-500 dark:text-gray-400`;
-                link.style.paddingLeft = `${(level - 1) * 12}px`;
-
-                tocContent.appendChild(link);
-            });
-        } else {
-            // 如果没有标题，隐藏整个侧边栏
-            document.querySelector('aside').classList.add('hidden');
-        }
-
-        // 3. 滚动高亮逻辑
         const tocLinks = document.querySelectorAll('.toc-link');
         window.addEventListener('scroll', () => {
             let currentId = '';
             headers.forEach(header => {
-                const headerTop = header.getBoundingClientRect().top;
-                if (headerTop < 100) {
-                    currentId = header.id;
-                }
+                if (header.getBoundingClientRect().top < 120) currentId = header.id;
             });
-
             tocLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentId}`) {
-                    link.classList.add('active');
+                link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+            });
+        });
+
+        // 3. 一键复制功能
+        document.querySelectorAll('pre').forEach((pre) => {
+            // 创建复制按钮
+            const button = document.createElement('button');
+            button.className = 'copy-btn';
+            button.innerText = 'Copy';
+
+            pre.appendChild(button);
+
+            button.addEventListener('click', async () => {
+                const code = pre.querySelector('code').innerText;
+                try {
+                    await navigator.clipboard.writeText(code);
+                    button.innerText = 'Copied!';
+                    button.classList.add('copied');
+                    setTimeout(() => {
+                        button.innerText = 'Copy';
+                        button.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('复制失败', err);
                 }
             });
         });
