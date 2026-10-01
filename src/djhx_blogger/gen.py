@@ -1,556 +1,605 @@
+"""Deterministic directory discovery and transactional, incremental site builds."""
+
+from __future__ import annotations
+
+import hashlib
+import json
 import os
 import shutil
+import stat
+import tempfile
 import time
-from collections import deque, OrderedDict, defaultdict
-from concurrent.futures import ProcessPoolExecutor
+import uuid
+from collections import defaultdict, deque
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+from dataclasses import asdict, dataclass, field, replace
 from datetime import datetime
+from functools import lru_cache
 from importlib import resources
+from importlib.metadata import version
 from pathlib import Path
+from urllib.parse import quote, unquote, urlsplit, urlunsplit
 
-import markdown
-from PIL import Image
+import yaml
 from bs4 import BeautifulSoup
-from jinja2 import Template
+from jinja2 import DictLoader, Environment, select_autoescape
+from markupsafe import Markup
+from pygments.formatters import HtmlFormatter
 
-from .log_config import app_logger
+from .config import BloggerError, BuildOptions, SiteConfig
+from .content import Document, date_rank, parse_document, render_markdown
+from .content import md_to_html as md_to_html
+from .content import parse_metadata as parse_metadata
+from .content import read_metadata as read_metadata
+from .images import IMAGE_SUFFIXES, compress_image
+from .log_config import app_logger as logger
 
-logger = app_logger
-
-ignore_item = ['.git', 'LICENSE']
-
-process_pool = ProcessPoolExecutor(max_workers=os.cpu_count() + 1)
-
-
-def load_template(name: str) -> str:
-    """读取 static/template/ 下的模板文件"""
-    file_path = resources.files("djhx_blogger.static.template").joinpath(name)
-    return file_path.read_text(encoding="utf-8")
-
-def load_image(img_name: str) -> Path:
-    file_path = resources.files("djhx_blogger.static.images").joinpath(img_name)
-    return Path(str(file_path))
+MANIFEST = ".blogger-build.json"
+SCHEMA = 1
+IGNORED = {"LICENSE", "node_modules", "__pycache__"}
+RESERVED = {"css", "js", "archive.html", MANIFEST}
 
 
+@dataclass
 class Node:
-    cache_map = {}
-
-    def __init__(self, source_path, destination_path, node_type):
-        # 该节点的源目录路径
-        self.source_path = source_path
-        # 该节点生成的结果目录路径
-        self.destination_path = destination_path
-        # 子节点
-        self.children = []
-        # 节点类型：
-        # 1. category 包含多个子目录
-        # 2. article 包含一个 index.md 文件和 images 目录
-        # 3. leaf index.md 或者 images 目录
-        self.node_type = node_type
-        # 描述分类或者文章的元信息（比如：文章的标题，简介和日期）
-        self.metadata = None
-
-        Node.cache_map[source_path] = self
-
-    def __str__(self):
-        return f'path={self.source_path}'
+    source_path: Path
+    destination_path: Path
+    node_type: str
+    children: list[Node] = field(default_factory=list)
+    metadata: dict | None = None
+    document: Document | None = None
+    asset: bool = False
+    stats: dict = field(default_factory=dict)
 
 
-def walk_dir(dir_path_str: str, destination_blog_dir_path_str: str, target_name: str='public') -> Node:
-    """
-    遍历目录，构造树结构
-    :param dir_path_str: 存放博客 md 文件的目录的字符串
-    :param destination_blog_dir_path_str: 生成博客目录的地址
-    :param target_name: 生成博客的目录名称
-    :return: 树结构的根节点
-    """
+def _linked(path: Path) -> bool:
+    if path.is_symlink() or getattr(path, "is_junction", lambda: False)():
+        return True
+    try:
+        attributes = getattr(path.lstat(), "st_file_attributes", 0)
+    except FileNotFoundError:
+        return False
+    return bool(attributes & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0))
 
-    start = int(time.time() * 1000)
-    q = deque()
-    dir_path = Path(dir_path_str)
-    q.append(dir_path)
 
-    # 生成目录的根路径
-    destination_root_dir = Path(destination_blog_dir_path_str).joinpath(target_name)
-    logger.info(f'源路经: {dir_path}, 目标路径: {destination_root_dir}')
+def _within(path: Path, parent: Path) -> bool:
+    return path == parent or parent in path.parents
 
-    root = None
 
-    # 层次遍历
-    while q:
-        item = q.popleft()
-        if item.name in ignore_item:
-            logger.info(f'略过: {item.name}')
-            continue
-        if Path.is_dir(item):
-            [q.append(e) for e in item.iterdir()]
+def _rename(source: Path, destination: Path):
+    # Windows scanners may briefly retain a file handle after the writer closes it.
+    for attempt in range(6):
+        try:
+            return source.rename(destination)
+        except PermissionError:
+            if os.name != "nt" or attempt == 5:
+                raise
+            time.sleep(0.05 * (attempt + 1))
 
-        # node 类型判定
-        node_type = 'leaf'
-        if Path.is_dir(item):
-            node_type = 'category'
-            # 如果目录包含 index.md 则是文章目录节点
-            for e in item.iterdir():
-                if e.name == 'index.md':
-                    node_type = 'article'
-                    break
 
-        if not root:
-            root = Node(item, destination_root_dir, node_type)
-        else:
-            cur_node = Node.cache_map[item.parent]
-            # 计算相对路径
-            relative_path = item.relative_to(dir_path)
-            # 构造目标路径
-            destination_path = destination_root_dir / relative_path
-            if destination_path.name == 'index.md':
-                destination_path = destination_path.parent / Path('index.html')
-            n = Node(item, destination_path, node_type)
-            cur_node.children.append(n)
-    end = int(time.time() * 1000)
-    logger.info(f'构造树耗时: {end - start} ms')
+def _safe_paths(source: Path, target: Path, name: str) -> tuple[Path, Path]:
+    if name in {"", ".", ".."} or Path(name).name != name or "/" in name or "\\" in name:
+        raise BloggerError("输出目录名必须是单个目录名")
+    if _linked(source) or _linked(target) or _linked(target / name):
+        raise BloggerError("源目录和输出目录不能是符号链接或 junction")
+    source, target = source.resolve(), target.resolve()
+    destination = target / name
+    if not source.is_dir():
+        raise BloggerError(f"源目录不存在或不是目录: {source}")
+    if _within(target, source) or _within(source, destination):
+        raise BloggerError("源目录与输出目录不能重叠；请用 -t 指定博客目录之外的位置")
+    if target.exists() and not target.is_dir():
+        raise BloggerError(f"输出父路径不是目录: {target}")
+    return source, destination
 
+
+def walk_dir(dir_path_str: str, destination_blog_dir_path_str: str, target_name="public") -> Node:
+    source, destination = _safe_paths(
+        Path(dir_path_str), Path(destination_blog_dir_path_str), target_name
+    )
+    root = Node(source, destination, "category")
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        with os.scandir(node.source_path) as entries:
+            children = sorted(entries, key=lambda entry: (entry.name.casefold(), entry.name))
+        mapped = set()
+        for entry in children:
+            if entry.name.startswith(".") or entry.name in IGNORED:
+                continue
+            source_path = Path(entry.path)
+            if _linked(source_path):
+                raise BloggerError(f"拒绝跟随符号链接或 junction: {source_path}")
+            is_directory = entry.is_dir(follow_symlinks=False)
+            if not is_directory and not entry.is_file(follow_symlinks=False):
+                raise BloggerError(f"源文件不是普通文件: {source_path}")
+            asset = node.asset or (is_directory and entry.name == "images")
+            is_markdown = not asset and source_path.suffix.lower() == ".md" and not is_directory
+            output_name = source_path.with_suffix(".html").name if is_markdown else entry.name
+            if is_markdown and source_path.name.lower() == "index.md":
+                output_name = "index.html"
+            if node is root and output_name in RESERVED:
+                raise BloggerError(f"源目录包含保留的输出名称: {entry.name}")
+            # Every content directory owns index.html, except an explicit index.md.
+            if not node.asset and output_name.lower() == "index.html" and not is_markdown:
+                raise BloggerError(f"源文件与生成页面冲突: {source_path}")
+            if output_name.casefold() in mapped:
+                raise BloggerError(f"多个源文件对应同一输出路径: {source_path}")
+            mapped.add(output_name.casefold())
+            child = Node(
+                source_path,
+                node.destination_path / output_name,
+                "category" if is_directory else "leaf",
+                asset=asset,
+            )
+            if is_markdown:
+                child.document = parse_document(source_path)
+                child.metadata = child.document.metadata
+                if source_path.name.lower() == "index.md":
+                    node.node_type = "article"
+                    node.metadata = child.metadata
+            node.children.append(child)
+            if is_directory:
+                queue.append(child)
     return root
 
 
-def md_to_html(md_file_path: Path) -> str:
-    """
-    markdown -> html
-    :param md_file_path: markdown 文件的路径对象
-    :return: html str
-    """
+def _nodes(root: Node):
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        yield node
+        queue.extend(node.children)
 
-    def remove_metadata(content: str) -> str:
-        """
-        删除文章开头的 YAML 元信息
-        :param content: markdown 内容
-        """
-        lines = content.splitlines()
-        if lines and lines[0] == '---':
-            for i in range(1, len(lines)):
-                if lines[i] == '---':
-                    return '\n'.join(lines[i + 1:])
-        return md_content
 
-    with open(md_file_path, mode='r', encoding='utf-8') as md_file:
-        md_content = md_file.read()
-        md_content = remove_metadata(md_content)
-        return markdown.markdown(
-            md_content,
-            extensions=[
-                'markdown.extensions.toc',
-                'markdown.extensions.tables',
-                'markdown.extensions.sane_lists',
-                'markdown.extensions.fenced_code'
-            ]
+def load_template(name: str) -> str:
+    return resources.files("djhx_blogger").joinpath("static", "template", name).read_text("utf-8")
+
+
+def load_image(name: str) -> Path:
+    return Path(str(resources.files("djhx_blogger").joinpath("static", "images", name)))
+
+
+@lru_cache(maxsize=1)
+def _environment() -> Environment:
+    templates = {
+        name: load_template(name)
+        for name in ("base.html", "article.html", "category.html", "archive.html")
+    }
+    return Environment(loader=DictLoader(templates), autoescape=select_autoescape(["html"]))
+
+
+def _context(site: SiteConfig) -> dict:
+    base = site.base_path.rstrip("/") + "/"
+    about = site.about_url
+    if about and not urlsplit(about).scheme:
+        about = base + about.lstrip("/")
+    return {"site": site, "base": base, "about_url": about, "year": datetime.now().year}
+
+
+def _url(path: Path) -> str:
+    return quote(path.as_posix(), safe="/")
+
+
+def _article_html(document: Document, site: SiteConfig, breadcrumbs=()) -> str:
+    content, toc = render_markdown(document.body)
+    soup = BeautifulSoup(content, "html.parser")
+    for image in soup.find_all("img"):
+        image.attrs.setdefault("loading", "lazy")
+        image.attrs.setdefault("decoding", "async")
+    for link in soup.find_all("a", href=True):
+        parsed = urlsplit(link["href"])
+        if not parsed.scheme and not parsed.netloc and parsed.path.lower().endswith(".md"):
+            converted = unquote(parsed.path)[:-3] + ".html"
+            link["href"] = urlunsplit(
+                ("", "", quote(converted, safe="/"), parsed.query, parsed.fragment)
+            )
+    return (
+        _environment()
+        .get_template("article.html")
+        .render(
+            **_context(site),
+            metadata=document.metadata,
+            content=Markup(str(soup)),
+            toc=Markup(toc) if "<li>" in toc else "",
+            breadcrumbs=breadcrumbs,
+            page_kind="article",
         )
+    )
 
 
-def gen_article_index(md_file_path: Path, article_name):
-    bs1 = BeautifulSoup(load_template('article.html'), "html.parser")
-    article_tag = bs1.find('article')
-
-    bs2 = BeautifulSoup(md_to_html(md_file_path), "html.parser")
-    article_metadata = read_metadata(md_file_path)
-
-    # --- 1. 艺术化大标题 (H1) ---
-    # 使用 tracking-tighter 紧缩字间距，更有设计感
-    h1_tag = bs1.new_tag('h1', **{
-        "class": "text-4xl md:text-5xl font-black mb-6 text-zinc-900 dark:text-white tracking-tighter leading-tight"
-    })
-    h1_tag.string = article_name
-    article_tag.append(h1_tag)
-
-    # --- 2. 精致元信息栏 (Meta) ---
-    meta_wrapper = bs1.new_tag('div', **{"class": "flex flex-col gap-6 mb-12 not-prose"})
-
-    # 日期样式：带一个小装饰线
-    date_tag = bs1.new_tag('div', **{
-        "class": "flex items-center gap-2 text-sm font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-widest"})
-    line = bs1.new_tag('span', **{"class": "w-8 h-px bg-zinc-200 dark:bg-zinc-800"})
-    date_tag.append(line)
-    date_tag.append(article_metadata.get("date", "")[:10])
-
-    # 摘要样式：作为前言，使用大字号、斜体和柔和颜色
-    if article_metadata.get("summary"):
-        summary_tag = bs1.new_tag('p', **{
-            "class": "text-xl md:text-2xl text-zinc-500 dark:text-zinc-400 leading-relaxed font-light italic"
-        })
-        summary_tag.string = article_metadata["summary"]
-        meta_wrapper.append(date_tag)
-        meta_wrapper.append(summary_tag)
-
-    article_tag.append(meta_wrapper)
-
-    # --- 3. 装饰分割线 ---
-    hr = bs1.new_tag('hr', **{"class": "border-zinc-100 dark:border-zinc-800 mb-12"})
-    article_tag.append(hr)
-
-    # --- 4. 正文注入 ---
-    # 为正文包裹一层，确保 prose 样式完美应用
-    content_container = bs1.new_tag('div', **{"class": "article-content"})
-    content_container.append(bs2)
-    article_tag.append(content_container)
-
-    bs1.find('title').string = article_name
-    return bs1.prettify()
-
-
-def gen_category_index(categories: list, category_name) -> str:
-    template = Template(load_template('category.html'))
-    html = template.render(categories=categories, category_name=category_name)
-    return html
+def gen_article_index(md_file_path: Path, article_name=None) -> str:
+    return _article_html(parse_document(Path(md_file_path)), SiteConfig())
 
 
 def sort_categories(item):
-    """
-    对 categories 排序，type = category 排在所有 type = article 前
-    category 按照 name 字典顺序 a-z 排序
-    article 按照 metadata 的 date 字段（格式：2024-02-03T14:44:42+08:00）降序排列。
-    :param item:
-    :return:
-    """
-    from datetime import datetime
-    if item['type'] == 'category':
-        # 分类优先，按 name 排序
-        return 0, item['name'].lower()
-    elif item['type'] == 'article':
-        # 文章按日期降序排序，优先级次于 category
-        # 将日期解析为 datetime 对象，若无日期则排在最后
-        date = item['metadata'].get('date')
-        parsed_date = datetime.fromisoformat(date) if date else datetime(year=1970, month=1, day=1)
-        return 1, -parsed_date.timestamp()
+    if item["type"] == "category":
+        return 0, item["name"].casefold(), item["href"]
+    rank = date_rank(item["metadata"].get("date", ""))
+    return 1, rank is None, -(rank or 0), item["name"].casefold(), item["href"]
 
 
-def gen_blog_dir(root: Node):
-    """
-    根据目录树构造博客目录
-    :param root: 树结构根节点
-    :return:
-    """
-
-    start = int(time.time() * 1000)
-
-    q = deque()
-    q.append(root)
-
-    # 清理之前生成的 root destination
-    if Path.exists(root.destination_path):
-        logger.info(f'存在目标目录: {root.destination_path}，进行删除')
-        shutil.rmtree(root.destination_path)
-
-    while q:
-        node = q.popleft()
-        [q.append(child) for child in node.children]
-
-        # 对三种不同类型的节点分别进行处理
-
-        if node.node_type == 'category' and node.source_path.name != 'images':
-            Path.mkdir(node.destination_path, parents=True, exist_ok=True)
-            category_index = node.destination_path / Path('index.html')
-            categories = []
-            for child in node.children:
-                if child:
-                    if child.node_type == 'article':
-                        child.metadata = read_metadata(child.source_path / Path('index.md'))
-                    relative_path = child.destination_path.name / Path('index.html')
-                    categories.append({
-                        'type': child.node_type,
-                        'name': child.destination_path.name,
-                        'href': relative_path,
-                        'metadata': child.metadata,
-                    })
-            categories.sort(key=sort_categories)
-            with open(category_index, mode='w', encoding='utf-8') as f:
-                f.write(gen_category_index(categories, node.source_path.name))
-
-        if node.node_type == 'category' and node.source_path.name == 'images':
-            Path.mkdir(node.destination_path, parents=True, exist_ok=True)
-
-        if node.node_type == 'article':
-            Path.mkdir(node.destination_path, parents=True, exist_ok=True)
-
-        if node.node_type == 'leaf':
-            Path.mkdir(node.destination_path.parent, parents=True, exist_ok=True)
-            if node.source_path.name == 'index.md':
-                with open(node.destination_path, mode='w', encoding='utf-8') as f:
-                    f.write(gen_article_index(node.source_path, node.source_path.parent.name))
-            else:
-                # shutil.copy(node.source_path, node.destination_path)
-                # 图片压缩
-                process_pool.submit(compress_image, node.source_path, node.destination_path)
-                logger.info(f'压缩图片: {node.source_path} -> {node.destination_path}')
-                # pass
-
-    end = int(time.time() * 1000)
-    logger.info(f'生成目标目录耗时: {end - start} ms')
+def gen_category_index(categories: list, category_name: str, site=None, breadcrumbs=()) -> str:
+    return (
+        _environment()
+        .get_template("category.html")
+        .render(
+            **_context(site or SiteConfig()),
+            categories=categories,
+            category_name=category_name,
+            breadcrumbs=breadcrumbs,
+            page_kind="category",
+        )
+    )
 
 
-def gen_blog_archive(blog_dir_str: str, blog_target_dir_str: str, root: Node, target_name: str='public'):
-    """
-    生成博客 archive 页面
-    按照年份分栏，日期排序，展示所有的博客文章
-    """
-
-    root_node_path = root.destination_path
-    blog_dir = Path(blog_dir_str)
-
-    q = deque()
-    q.append(root)
-    articles = []
-    while q:
-        node = q.popleft()
-        [q.append(child) for child in node.children]
-        if node.node_type == 'article':
-            articles.append(node)
-
-    archives = OrderedDict()
-    # 先将所有文章按日期降序排列
-    articles_sorted = sorted(articles, key=lambda a: a.metadata['date'], reverse=True)
-
-    for article in articles_sorted:
-        article_name = article.source_path.name
-        full_path = article.destination_path / Path('index.html')
-        base_path = Path(blog_target_dir_str) / Path(target_name)
-        url = full_path.relative_to(base_path)
-
-        article_datetime = article.metadata.get('date')
-        article_year = article_datetime[:4]
-        article_date = article_datetime[:10]
-        if article_year not in archives:
-            archives[article_year] = {
-                'articles': [],
-                'total': 0,
-            }
-
-        archives[article_year]['articles'].append({
-            'date': article_date,
-            'title': article_name,
-            'url': url
-        })
-        archives[article_year]['total'] += 1
+def _hash(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
-    template = Template(load_template('archive.html'))
-    html = template.render(archives=archives)
-
-    root_node_path.joinpath('archive.html').write_text(data=html, encoding='utf-8')
+def _fingerprint(data) -> str:
+    return hashlib.sha256(json.dumps(data, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
-def cp_resource(blog_target_path_str: str):
-    """将包内 static 资源复制到目标目录下的 public/"""
-    public_dir = Path(blog_target_path_str) / "public"
-
-    # 1. 复制 css/
-    css_src = str(resources.files("djhx_blogger.static").joinpath("css"))
-    css_dst = public_dir / "css"
-    shutil.copytree(css_src, css_dst, dirs_exist_ok=True)
-
-    # 2. 复制 images/
-    images_src = str(resources.files("djhx_blogger.static").joinpath("images"))
-    images_dst = public_dir / "images"
-    shutil.copytree(images_src, images_dst, dirs_exist_ok=True)
-
-
-def read_metadata(md_file_path):
-    import re
-    with open(md_file_path, 'r', encoding='utf-8') as file:
-        content = file.read()
-
-    # 正则提取元数据
-    match = re.match(r'^---\n([\s\S]*?)\n---\n', content)
-    if match:
-        metadata = match.group(1)
-        return parse_metadata(metadata)
+def _old_manifest(destination: Path) -> dict:
+    try:
+        data = json.loads((destination / MANIFEST).read_text("utf-8"))
+        if (
+            isinstance(data, dict)
+            and data.get("generator") == "djhx-blogger"
+            and data.get("schema") == SCHEMA
+            and isinstance(data.get("files"), dict)
+        ):
+            return data
+    except (OSError, ValueError):
+        pass
     return {}
 
 
-def parse_metadata(metadata):
-    """
-    将元数据解析为字典
-    title, date, summary
-    """
-    meta_dict = {}
-    for line in metadata.split('\n'):
-        if ':' in line:
-            key, value = map(str.strip, line.split(':', 1))
-            meta_dict[key] = value
-    return meta_dict
-
-
-
-def compress_image(input_path, output_path, quality=70, max_size=(960, 540)):
-    """
-    压缩图片到指定质量和最大尺寸。
-    - input_path: 源图片路径
-    - output_path: 输出路径，默认覆盖源文件
-    - quality: 压缩质量(0~100)
-    - max_size: 限制最大宽高（超过则等比缩小）
-    """
-    if not input_path or not output_path:
-        logger.warning(f'图片压缩 input/output path 不能为空')
-        return
-
-    with Image.open(input_path).convert("RGB") as img:
-        img.thumbnail(max_size)
-        img.save(output_path, optimize=True, quality=quality)
-
-
-def analyze_directory_size(directory_path):
-    """
-    分析目录下不同类型文件的数量和占用空间
-
-    参数:
-        directory_path: 要分析的目录路径
-
-    返回:
-        dict: 包含文件类型统计信息的字典
-    """
-    # 存储统计结果的字典
-    file_stats = defaultdict(lambda: {'count': 0, 'size_bytes': 0})
-
-    # 遍历目录及其所有子目录
-    for root, dirs, files in os.walk(directory_path):
-        for file in files:
-            file_path = os.path.join(root, file)
-
-            try:
-                # 获取文件大小
-                file_size = os.path.getsize(file_path)
-
-                # 获取文件扩展名（转换为小写，去掉点）
-                file_ext = Path(file).suffix.lower()
-                if not file_ext:
-                    file_ext = '无扩展名'
-                else:
-                    file_ext = file_ext[1:]  # 去掉前面的点
-
-                # 更新统计信息
-                file_stats[file_ext]['count'] += 1
-                file_stats[file_ext]['size_bytes'] += file_size
-
-            except (OSError, IOError):
-                # 跳过无法访问的文件
-                continue
-
-    return file_stats
-
-
-def format_size(size_bytes):
-    """
-    将字节数转换为易读的格式
-
-    参数:
-        size_bytes: 字节数
-
-    返回:
-        str: 格式化后的大小字符串
-    """
-    if size_bytes == 0:
-        return "0B"
-
-    size_names = ["B", "KB", "MB", "GB", "TB"]
-    i = 0
-    while size_bytes >= 1024 and i < len(size_names) - 1:
-        size_bytes /= 1024.0
-        i += 1
-
-    # 根据大小选择合适的精度
-    if i == 0:  # B
-        return f"{int(size_bytes)}{size_names[i]}"
-    elif i <= 2:  # KB, MB
-        return f"{size_bytes:.1f}{size_names[i]}"
-    else:  # GB, TB
-        return f"{size_bytes:.2f}{size_names[i]}"
-
-
-def print_directory_stats(directory_path):
-    """
-    打印目录统计信息
-
-    参数:
-        directory_path: 要分析的目录路径
-    """
-    stats = analyze_directory_size(directory_path)
-
-    if not stats:
-        print("目录为空或无法访问")
-        return
-
-    # 按文件大小排序
-    sorted_stats = sorted(stats.items(), key=lambda x: x[1]['size_bytes'], reverse=True)
-
-    # 打印表头
-    print(f"{'类型':<10} | {'数量':<6} | {'大小':<10}")
-    print("-" * 30)
-
-    # 打印每种文件类型的统计信息
-    for file_type, data in sorted_stats:
-        count = data['count']
-        size_str = format_size(data['size_bytes'])
-        print(f"{file_type:<10} | {count:<6} | {size_str:<10}")
-
-def generate_blog(blog_dir: str, blog_target: str):
-    start = time.time()
-
-    logger.info("开始生成博客文件结构...")
-    root_node = walk_dir(blog_dir, blog_target)
-    gen_blog_dir(root_node)
-    gen_blog_archive(blog_dir, blog_target, root_node)
-    cp_resource(blog_target)
-    process_pool.shutdown(wait=True)
-    end = time.time()
-    logger.info(f'生成静态博客 {blog_dir} -> {root_node.destination_path}, 任务完成, 总耗时: {int((end-start)*1000)} ms')
-    print_directory_stats(root_node.destination_path)
-
-    return root_node
-
-
-def init_new_blog(blog_dir: str):
-    blog_dir_path = Path(blog_dir) / "simple-blog" / "demo-article"
-    blog_images_dir_path = blog_dir_path / "images"
-    blog_dir_path.mkdir(parents=True, exist_ok=True)
-    blog_images_dir_path.mkdir(parents=True, exist_ok=True)
-    with open(blog_dir_path / 'index.md', 'w', encoding='utf-8') as file:
-        file.write(f"""---
-title: "Demo Post"
-date: 1970-01-01T08:00:00+08:00
-summary: "simple demo article"
----\n
-
-# Hello world!\n
-
-## title 1
-
-mountain images:
-
-![mountain](./images/mountain.jpg)
-
-### title 2
-
-This is a simple demo...
-"""
+def _breadcrumbs(path: Path, root: Node, site: SiteConfig) -> list:
+    relative = path.relative_to(root.source_path)
+    base = site.base_path.rstrip("/") + "/"
+    result = [{"title": "首页", "href": base + "index.html"}]
+    for i, part in enumerate(relative.parts):
+        result.append(
+            {"title": part, "href": base + _url(Path(*relative.parts[: i + 1]) / "index.html")}
         )
-        file.write('')
+    return result
 
-    mountain_img = load_image('mountain.jpg')
-    logger.info(mountain_img)
-    shutil.copy2(mountain_img, blog_images_dir_path / 'mountain.jpg')
+
+def _copy_resource(destination: Path):
+    for name in ("css", "js", "images"):
+        source = resources.files("djhx_blogger").joinpath("static", name)
+        for item in source.iterdir():
+            if item.is_file():
+                if name == "images" and item.name == "mountain.jpg":
+                    continue  # The demo copies this image into its own article directory.
+                target = destination / name / item.name
+                if target.exists():
+                    raise BloggerError(f"内容与内置资源重名: {target.name}")
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(item.read_bytes())
+    (destination / "css" / "highlight.css").write_text(
+        HtmlFormatter(style="friendly").get_style_defs(".highlight"), "utf-8"
+    )
+
+
+def _build(root: Node, old: Path, site: SiteConfig, options: BuildOptions) -> dict:
+    nodes = list(_nodes(root))
+    old_files = _old_manifest(old).get("files", {}) if options.cache else {}
+    template_hash = _fingerprint(
+        {
+            name: load_template(name)
+            for name in ("base.html", "article.html", "category.html", "archive.html")
+        }
+    )
+    render_key = _fingerprint(
+        [
+            SCHEMA,
+            template_hash,
+            asdict(site),
+            datetime.now().year,
+            {
+                package: version(package)
+                for package in ("djhx-blogger", "markdown", "pygments", "jinja2", "beautifulsoup4")
+            },
+        ]
+    )
+    image_key = _fingerprint(
+        [
+            SCHEMA,
+            options.compress_images,
+            options.image_quality,
+            options.max_width,
+            options.max_height,
+            version("pillow"),
+        ]
+    )
+    manifest_files, tasks, articles = {}, [], []
+    stats = {"cached": 0, "processed": 0, "articles": 0, "images": 0, "input_bytes": 0}
+    for node in nodes:
+        if node.node_type != "leaf":
+            node.destination_path.mkdir(parents=True, exist_ok=True)
+            if node.node_type == "category" and not node.asset:
+                categories = []
+                for child in node.children:
+                    if child.asset or (child.node_type == "leaf" and child.document is None):
+                        continue
+                    kind = (
+                        "article" if child.document or child.node_type == "article" else "category"
+                    )
+                    href = (
+                        child.destination_path.name
+                        if child.document
+                        else child.destination_path.name + "/index.html"
+                    )
+                    categories.append(
+                        {
+                            "type": kind,
+                            "name": (child.metadata or {}).get("title", child.source_path.name),
+                            "href": quote(href, safe="/"),
+                            "metadata": child.metadata or {"summary": "", "date": ""},
+                        }
+                    )
+                categories.sort(key=sort_categories)
+                title = site.title if node is root else node.source_path.name
+                html = gen_category_index(
+                    categories,
+                    title,
+                    site,
+                    _breadcrumbs(node.source_path.parent, root, site) if node is not root else [],
+                )
+                (node.destination_path / "index.html").write_text(html, "utf-8")
+            continue
+        relative = node.source_path.relative_to(root.source_path).as_posix()
+        output = node.destination_path.relative_to(root.destination_path).as_posix()
+        source_hash = node.document.source_hash if node.document else _hash(node.source_path)
+        key = (
+            render_key
+            if node.document
+            else image_key
+            if node.source_path.suffix.lower() in IMAGE_SUFFIXES
+            else "copy-v1"
+        )
+        record = {"source_hash": source_hash, "key": key, "output": output}
+        stats["input_bytes"] += node.source_path.stat().st_size
+        stats["images"] += node.source_path.suffix.lower() in IMAGE_SUFFIXES
+        if node.document:
+            articles.append({"metadata": node.metadata, "url": _url(Path(output))})
+        cached = old_files.get(relative, {})
+        old_path = old / output
+        node.destination_path.parent.mkdir(parents=True, exist_ok=True)
+        if (
+            isinstance(cached, dict)
+            and all(cached.get(k) == v for k, v in record.items())
+            and old_path.is_file()
+            and not _linked(old_path)
+            and _hash(old_path) == cached.get("output_hash")
+        ):
+            shutil.copy2(old_path, node.destination_path)
+            stats["cached"] += 1
+        else:
+            tasks.append(node)
+        manifest_files[relative] = record
+
+    def process(node):
+        if node.document:
+            node.destination_path.write_text(
+                _article_html(
+                    node.document, site, _breadcrumbs(node.source_path.parent, root, site)
+                ),
+                "utf-8",
+            )
+        elif options.compress_images and node.source_path.suffix.lower() in IMAGE_SUFFIXES:
+            compress_image(
+                node.source_path,
+                node.destination_path,
+                options.image_quality,
+                (options.max_width, options.max_height),
+            )
+        else:
+            shutil.copy2(node.source_path, node.destination_path)
+
+    # Bounded futures keep memory and concurrent image decoders under control.
+    with ThreadPoolExecutor(max_workers=options.workers) as executor:
+        pending = set()
+        for node in tasks:
+            pending.add(executor.submit(process, node))
+            if len(pending) >= options.workers * 2:
+                done, pending = wait(pending, return_when=FIRST_COMPLETED)
+                for future in done:
+                    future.result()
+        for future in pending:
+            future.result()
+    for node in nodes:
+        if node.node_type == "leaf":
+            relative = node.source_path.relative_to(root.source_path).as_posix()
+            # Abort if a source was edited during this build; never cache mismatched bytes.
+            if _hash(node.source_path) != manifest_files[relative]["source_hash"]:
+                raise BloggerError(f"构建期间源文件发生变化，请重试: {node.source_path}")
+            manifest_files[relative]["output_hash"] = _hash(node.destination_path)
+    stats["processed"] = len(tasks)
+    stats["articles"] = len(articles)
+    archives = {}
+    for article in sorted(
+        articles,
+        key=lambda a: (
+            date_rank(a["metadata"]["date"]) is None,
+            -(date_rank(a["metadata"]["date"]) or 0),
+            a["url"],
+        ),
+    ):
+        metadata = article["metadata"]
+        year = metadata["date"][:4] or "未注明日期"
+        group = archives.setdefault(year, {"articles": [], "total": 0})
+        group["articles"].append(
+            {
+                "title": metadata["title"],
+                "date": metadata["date"][:10],
+                "draft": metadata["draft"],
+                "url": article["url"],
+            }
+        )
+        group["total"] += 1
+    html = (
+        _environment()
+        .get_template("archive.html")
+        .render(**_context(site), archives=archives, total=len(articles), page_kind="archive")
+    )
+    (root.destination_path / "archive.html").write_text(html, "utf-8")
+    _copy_resource(root.destination_path)
+    (root.destination_path / MANIFEST).write_text(
+        json.dumps(
+            {"generator": "djhx-blogger", "schema": SCHEMA, "files": manifest_files},
+            ensure_ascii=False,
+            sort_keys=True,
+        ),
+        "utf-8",
+    )
+    return stats
+
+
+def generate_blog(
+    blog_dir: str, blog_target: str, *, site=None, options=None, target_name="public"
+) -> Node:
+    start = time.perf_counter()
+    site, options = site or SiteConfig(), options or BuildOptions()
+    source, destination = _safe_paths(Path(blog_dir), Path(blog_target), target_name)
+    if site.about_url == "/about/index.html" and not (source / "about" / "index.md").is_file():
+        site = replace(site, about_url="")
+    target = destination.parent
+    if destination.exists() and not _old_manifest(destination):
+        # Recognize an output from <=0.2.3 for migration, otherwise protect user data.
+        legacy = all(
+            (destination / name).exists()
+            for name in ("index.html", "archive.html", "css", "images")
+        )
+        if not destination.is_dir() or not legacy:
+            raise BloggerError(f"拒绝覆盖非 blogger 输出目录: {destination}")
+    target.mkdir(parents=True, exist_ok=True)
+    lock = target / f".blogger-{target_name}.lock"
+    try:
+        descriptor = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+    except FileExistsError as exc:
+        raise BloggerError(f"输出目录正被另一构建占用；确认进程已退出后再移除 {lock}") from exc
+    os.close(descriptor)
+    stage = None
+    backup = target / f".blogger-backup-{uuid.uuid4().hex}"
+    try:
+        stage = Path(tempfile.mkdtemp(prefix=".blogger-stage-", dir=target))
+        root = walk_dir(str(source), str(target), target_name)
+        for node in _nodes(root):
+            node.destination_path = stage / node.destination_path.relative_to(destination)
+        stats = _build(root, destination, site, options)
+        if destination.exists():
+            _rename(destination, backup)
+        try:
+            _rename(stage, destination)
+        except BaseException:
+            if backup.exists():
+                _rename(backup, destination)
+            raise
+        for node in _nodes(root):
+            node.destination_path = destination / node.destination_path.relative_to(stage)
+        stats["elapsed_seconds"] = round(time.perf_counter() - start, 3)
+        stats["output_bytes"] = sum(p.stat().st_size for p in destination.rglob("*") if p.is_file())
+        root.stats = stats
+        if backup.exists():
+            try:
+                shutil.rmtree(backup)
+            except OSError:
+                logger.warning("构建成功，旧输出备份未能清理: %s", backup)
+        logger.info(
+            "生成 %s 篇文章；处理 %s、复用 %s 个文件；%ss；输出 %s",
+            stats["articles"],
+            stats["processed"],
+            stats["cached"],
+            stats["elapsed_seconds"],
+            format_size(stats["output_bytes"]),
+        )
+        return root
+    finally:
+        if stage is not None and stage.exists():
+            shutil.rmtree(stage)
+        lock.unlink(missing_ok=True)
 
 
 def init_new_post(blog_dir: str, post_name: str):
-    post_path = Path(blog_dir) / Path(post_name)
-    post_path.mkdir(parents=True, exist_ok=True)
+    source = Path(blog_dir)
+    if _linked(source):
+        raise BloggerError("博客根目录不能是符号链接或 junction")
+    source = source.resolve()
+    relative = Path(post_name)
+    if (
+        not source.is_dir()
+        or relative.is_absolute()
+        or ".." in relative.parts
+        or any(c in post_name for c in "\r\n\x00")
+    ):
+        raise BloggerError("文章路径必须是博客根目录内的相对路径")
+    target = source / relative
+    if not _within(target.resolve(), source) or target.resolve() == source:
+        raise BloggerError("文章路径必须位于博客根目录内")
+    for parent in (target, *target.parents):
+        if parent == source:
+            break
+        if _linked(parent):
+            raise BloggerError("文章路径不能包含符号链接")
+    target.mkdir(parents=True, exist_ok=True)
+    metadata = {
+        "title": target.name,
+        "date": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "summary": "",
+        "draft": True,
+    }
+    try:
+        with (target / "index.md").open("x", encoding="utf-8") as stream:
+            stream.write(
+                "---\n"
+                + yaml.safe_dump(metadata, allow_unicode=True, sort_keys=False)
+                + "---\n\n正文内容。\n"
+            )
+    except FileExistsError as exc:
+        raise BloggerError(f"文章已存在: {target / 'index.md'}") from exc
+    (target / "images").mkdir(exist_ok=True)
+    return target
 
-    post_index_path = post_path / 'index.md'
-    if post_index_path.exists():
-        logger.warning(f'post_index_path: {post_index_path} 已经存在')
-        return
-    with open(post_index_path, 'w', encoding='utf-8') as file:
-        file.write(f"""---
-title: "{Path(post_name).name}"
-date: {datetime.now().strftime('%Y-%m-%dT%H:%M:%S')}
-summary: ""
----
 
-Main Content
-""")
+def init_new_blog(blog_dir: str):
+    target = Path(blog_dir) / "simple-blog"
+    if target.exists():
+        raise BloggerError(f"示例博客已存在: {target}")
+    target.mkdir(parents=True)
+    post = init_new_post(str(target), "demo-article")
+    (post / "index.md").write_text(
+        '---\ntitle: "第一篇博客"\ndate: "2026-01-01T08:00:00+08:00"\nsummary: "从一篇 Markdown 开始。"\n---\n\n## Hello, world\n\n![山景](images/mountain.jpg)\n\n```python\nprint("Hello, blogger!")\n```\n',
+        "utf-8",
+    )
+    shutil.copy2(load_image("mountain.jpg"), post / "images" / "mountain.jpg")
+    return target
+
+
+def analyze_directory_size(directory_path):
+    stats = defaultdict(lambda: {"count": 0, "size_bytes": 0})
+    for path in Path(directory_path).rglob("*"):
+        if path.is_file() and not _linked(path):
+            suffix = path.suffix.lstrip(".").lower() or "无扩展名"
+            stats[suffix]["count"] += 1
+            stats[suffix]["size_bytes"] += path.stat().st_size
+    return dict(stats)
+
+
+def format_size(size_bytes):
+    for unit in ("B", "KB", "MB", "GB", "TB"):
+        if size_bytes < 1024 or unit == "TB":
+            return f"{size_bytes:.1f}{unit}"
+        size_bytes /= 1024
+
+
+def print_directory_stats(directory_path):
+    for suffix, stats in sorted(analyze_directory_size(directory_path).items()):
+        print(f"{suffix}: {stats['count']} files, {format_size(stats['size_bytes'])}")

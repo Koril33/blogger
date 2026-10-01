@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="generator" content="djhx-blogger">
+  <meta name="blogger:page" content="{{ page_kind }}">
+  <title>{% block title %}{{ site.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+  {% block metadata %}{% endblock %}
+  <link rel="icon" href="{{ base }}images/favicon.ico">
+  <script src="{{ base }}js/theme.js"></script>
+  <link rel="stylesheet" href="{{ base }}css/site.css">
+  <link rel="stylesheet" href="{{ base }}css/highlight.css">
+  <script src="{{ base }}js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{ base }}index.html">{{ site.title }}</a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="{{ base }}index.html"{% if page_kind == 'category' %} aria-current="page"{% endif %}>文章</a>
+        <a href="{{ base }}archive.html"{% if page_kind == 'archive' %} aria-current="page"{% endif %}>归档</a>
+        {% if about_url %}<a href="{{ about_url }}">关于</a>{% endif %}
+      </nav>
+      <div class="header-actions">
+        {% if site.search_url %}<form class="search-form" action="{{ site.search_url }}" method="post" role="search">
+          <label class="sr-only" for="keyword">搜索文章</label>
+          <input id="keyword" name="keyword" type="search" placeholder="搜索文章" maxlength="80" required>
+          <input name="engine" type="hidden" value="site">
+          <button type="submit" aria-label="搜索"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+        </form>{% endif %}
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换深浅主题" aria-pressed="false" hidden>◐</button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="page page-{{ page_kind }}">
+    {% if breadcrumbs %}<nav class="breadcrumbs" aria-label="当前位置">
+      {% for item in breadcrumbs %}<a href="{{ item.href }}">{{ item.title }}</a>{% if not loop.last %}<span aria-hidden="true">/</span>{% endif %}{% endfor %}
+    </nav>{% endif %}
+    {% block main %}{% endblock %}
+  </main>
+  <footer class="site-footer"><span>© {{ year }} {{ site.title }}</span>
+    {% if site.footer %}<span>{% if site.footer_url %}<a href="{{ site.footer_url }}" target="_blank" rel="noopener noreferrer">{{ site.footer }}</a>{% else %}{{ site.footer }}{% endif %}</span>{% endif %}
+    <a class="back-top" href="#main">回到顶部 ↑</a>
+  </footer>
+</body>
+</html>

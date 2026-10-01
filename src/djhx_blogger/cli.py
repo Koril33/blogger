@@ -1,126 +1,145 @@
-import tomllib
+"""The legacy single-command blg interface, with explicit failure statuses."""
+
+from __future__ import annotations
+
+from dataclasses import replace
+from getpass import getpass
+from importlib.metadata import version
 from pathlib import Path
 
 import typer
-from platformdirs import user_config_path
 
-from .deploy import compress_dir, deploy_blog, refresh_site_search_db
+from .config import CONFIG_FILE_PATH, BloggerError, BuildOptions, SiteConfig, read_config
+from .deploy import compress_dir, deploy_blog, refresh_site_search_db, validate_remote_root
 from .gen import generate_blog, init_new_blog, init_new_post
-from .log_config import log_init, app_logger
+from .log_config import app_logger as logger
+from .log_config import log_init
 
-log_init()
-
-logger = app_logger
-
-app = typer.Typer()
-
-CONFIG_FILE_PATH = user_config_path(appname='djhx-blogger', appauthor='djhx') / 'config.toml'
-
-
-def read_config() -> dict:
-
-    CONFIG_FILE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    """
-    读取用户配置文件。如果文件不存在，则返回空字典。
-    """
-    if CONFIG_FILE_PATH.is_file():
-        try:
-            with open(CONFIG_FILE_PATH, "rb") as f:
-                return tomllib.load(f)
-        except Exception as e:
-            logger.warning(f"读取配置文件失败：{e}")
-            return {}
-    return {}
+app = typer.Typer(
+    add_completion=False,
+    pretty_exceptions_enable=False,
+    help="把 Markdown 博客构建为静态站点，并安全部署到 SSH 服务器。",
+)
 
 
 @app.command()
 def run(
-    # origin: Path = typer.Argument(..., exists=True, readable=True, help="原始博客内容目录（必填）"),
-    origin: Path = typer.Option(
-        None,
-        "--origin", '-o',
-        help='静态模块目录源地址',
+    origin: Path | None = typer.Option(None, "--origin", "-o", help="Markdown 博客根目录。"),
+    target: Path | None = typer.Option(
+        None, "--target", "-t", help="输出父目录，站点生成到 public/。"
     ),
-    target: Path = typer.Option(
-        None,
-        "--target", "-t",
-        help="生成的静态博客输出目录，默认为当前目录。",
+    server: str | None = typer.Option(None, "--server", "-s", help="SSH 主机或配置别名。"),
+    server_target: str | None = typer.Option(
+        None, "--server-target", "-T", help="远程父目录，站点入口为 blog/。"
     ),
-    server: str = typer.Option(
-        None,
-        "--server", "-s",
-        help="目标服务器（域名或 IP 地址），可选。",
+    deploy: bool = typer.Option(False, "--deploy", "-d", help="构建、打包、上传并切换远程站点。"),
+    archive: bool = typer.Option(False, "--archive", help="构建后生成 public.tar.gz。"),
+    new_blog: Path | None = typer.Option(
+        None, "--new-blog", "-n", help="在指定目录创建 simple-blog 示例。"
     ),
-    server_target: str = typer.Option(
-        None,
-        "--server-target", "-T",
-        help="目标服务器的部署路径"
-    ),
-    deploy: bool = typer.Option(
-        False,
-        "--deploy", "-d",
-        help="是否将静态博客部署到远程服务器。",
-    ),
-    new_blog: Path = typer.Option(
-        None,
-        "--new-blog", "-n",
-        help="生成一个简单的示例博客",
-    ),
-    new_post: str = typer.Option(
-        None,
-        "--new-post", "-p",
-        help="新建一篇文章",
+    new_post: str | None = typer.Option(
+        None, "--new-post", "-p", help="创建文章，可包含分类路径。"
     ),
     show_config_path: bool = typer.Option(
-        False,
-        "--config-path", "-c",
-        help="查看配置文件路径",
+        False, "--config-path", "-c", help="输出默认配置文件路径。"
     ),
+    config_path: Path | None = typer.Option(None, "--config", help="读取指定 TOML 配置。"),
+    workers: int | None = typer.Option(
+        None, "--workers", min=1, max=32, help="并行工作数，默认 4。"
+    ),
+    no_cache: bool = typer.Option(False, "--no-cache", help="重新处理全部文件。"),
+    no_compress: bool = typer.Option(False, "--no-compress", help="原样复制图片。"),
+    no_refresh: bool = typer.Option(False, "--no-refresh", help="部署后跳过搜索索引刷新。"),
+    ssh_user: str | None = typer.Option(
+        None, "--ssh-user", help="SSH 用户，默认 koril（兼容旧版）。"
+    ),
+    port: int | None = typer.Option(None, "--port", min=1, max=65535, help="SSH 端口。"),
+    identity_file: Path | None = typer.Option(None, "--identity-file", help="SSH 私钥路径。"),
+    no_sudo: bool = typer.Option(False, "--no-sudo", help="远程部署使用 SSH 用户权限。"),
+    password: bool = typer.Option(
+        False, "--password", help="交互输入 SSH 密码，默认使用密钥/agent。"
+    ),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="显示错误堆栈。"),
+    show_version: bool = typer.Option(False, "--version", help="输出版本号。"),
 ):
-    config = read_config()
-
-    # 从配置文件中获取默认值（命令行优先）
-
-    if not origin:
-        config_origin = config.get('local', {}).get('origin')
-        if config_origin:
-            origin = Path(config_origin)
-
-    target = target or Path(config.get("local", {}).get("target", Path.cwd()))
-    server = server or config.get("deploy", {}).get("server")
-    server_target = server_target or config.get("deploy", {}).get("target")
-
-    typer.echo(f"原始目录: {origin}")
-    typer.echo(f"输出目录: {target}")
-    typer.echo(f"目标服务器: {server or '(未指定)'}")
-    typer.echo(f"目标服务器部署地址: {server_target}")
-    typer.echo(f"是否部署: {'是' if deploy else '否'}")
-
+    log_init(verbose)
+    if show_version:
+        typer.echo(f"djhx-blogger {version('djhx-blogger')}")
+        return
     if show_config_path:
-        logger.info(f'配置文件路径: {CONFIG_FILE_PATH}')
+        typer.echo(config_path or CONFIG_FILE_PATH)
         return
-
-    if new_blog:
-        logger.info(f'在 {new_blog} 下生成一个新的博客目录')
-        init_new_blog(str(new_blog))
-        return
-
-    if new_post:
-        if not origin:
-            logger.warning(f'需要指定博客根目录')
+    try:
+        if sum((bool(new_blog), bool(new_post))) > 1 or (
+            (new_blog or new_post) and (deploy or archive)
+        ):
+            raise BloggerError("新建博客/文章与构建部署选项不能同时使用")
+        if config_path is not None and not config_path.is_file():
+            raise BloggerError(f"配置文件不存在: {config_path}")
+        config = read_config(config_path)
+        if new_blog:
+            typer.echo(f"示例博客: {init_new_blog(str(new_blog))}")
             return
-        logger.info(f'创建新的文章: {new_post}')
-        init_new_post(str(origin), new_post)
-        return
-
-    if not origin:
-        logger.warning(f'需要指定 origin')
-        return
-
-    root_node = generate_blog(str(origin), str(target))
-
-    if deploy and server and server_target:
-        tar_path = compress_dir(root_node.destination_path)
-        deploy_blog(server, tar_path, server_target)
-
-        refresh_site_search_db()
+        local, remote, search = (
+            config.get(section, {}) for section in ("local", "deploy", "search")
+        )
+        origin = origin or (Path(local["origin"]) if local.get("origin") else None)
+        target = target or Path(local.get("target", Path.cwd()))
+        if origin is None:
+            raise BloggerError("需要 --origin/-o 或配置 local.origin")
+        if new_post:
+            typer.echo(f"新文章: {init_new_post(str(origin), new_post)}")
+            return
+        site = SiteConfig(**config.get("site", {}))
+        options = BuildOptions(**config.get("build", {}))
+        options = replace(
+            options,
+            workers=workers if workers is not None else options.workers,
+            cache=options.cache and not no_cache,
+            compress_images=options.compress_images and not no_compress,
+        )
+        server = server or remote.get("server")
+        server_target = server_target or remote.get("target")
+        if deploy:
+            if not server or not server_target:
+                raise BloggerError(
+                    "部署需要 server 和 server-target（或 deploy.server/target 配置）"
+                )
+            validate_remote_root(server_target)
+        root = generate_blog(str(origin), str(target), site=site, options=options)
+        typer.echo(f"站点: {root.destination_path}")
+        if deploy or archive:
+            tar_path = compress_dir(
+                root.destination_path, compression_level=remote.get("compression_level", 1)
+            )
+            typer.echo(f"压缩包: {tar_path}")
+        if deploy:
+            deploy_blog(
+                server,
+                tar_path,
+                server_target,
+                user=ssh_user or remote.get("user", "koril"),
+                port=port or remote.get("port", 22),
+                identity_file=identity_file or remote.get("identity_file"),
+                known_hosts=remote.get("known_hosts"),
+                sudo=remote.get("sudo", True) and not no_sudo,
+                timeout=remote.get("timeout", 120),
+                ssh_password=getpass("[SSH password]: ") if password else None,
+            )
+            if search.get("enabled", True) and not no_refresh:
+                try:
+                    refresh_site_search_db(
+                        search.get("refresh_url", "https://search.djhx.site/refresh-db"),
+                        timeout=search.get("timeout", 30),
+                    )
+                except Exception as exc:
+                    typer.echo(f"博客部署成功，但搜索索引刷新失败: {exc}", err=True)
+                    raise typer.Exit(3) from exc
+    except typer.Exit:
+        raise
+    except Exception as exc:
+        if verbose:
+            logger.exception("操作失败")
+        else:
+            typer.echo(f"错误: {exc}", err=True)
+        raise typer.Exit(1) from exc

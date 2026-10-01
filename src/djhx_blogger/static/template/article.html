@@ -1,196 +1,24 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    <script>
-        tailwind.config = { darkMode: 'class' }
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-    </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" rel="stylesheet"/>
-    <style>
-        .prose p { line-height: 1.8; margin-bottom: 2rem; color: #4b5563; }
-        .dark .prose p { color: #a1a1aa; }
-        .prose h2 { font-weight: 800; letter-spacing: -0.025em; margin-top: 3rem; margin-bottom: 1.5rem; position: relative; }
-        .prose code::before, .prose code::after { content: "" !important; }
-        :not(pre) > code { background-color: rgba(156, 163, 175, 0.2); padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; }
-        .prose img { border-radius: 0.75rem; margin-left: auto; margin-right: auto; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); transition: transform 0.5s ease; }
-        .prose img:hover { transform: scale(1.02); }
-        .prose table { width: 100%; border-collapse: collapse; }
-        .prose th { background-color: rgba(156, 163, 175, 0.1); }
-        .prose blockquote { border-left: 4px solid #3b82f6; background: linear-gradient(to right, rgba(59, 130, 246, 0.05), transparent); padding: 1.5rem; font-style: italic; border-radius: 0 0.5rem 0.5rem 0; }
-
-
-        #post-content {
-            min-width: 0; /* 关键：允许 flex 子元素收缩 */
-            flex: 1;
-        }
-        .prose pre {
-            position: relative;
-            max-width: 100%;
-            overflow-x: auto !important;
-            white-space: pre !important;
-            word-break: normal !important;
-            word-wrap: normal !important;
-        }
-        /* 自定义滚动条 */
-        .prose pre::-webkit-scrollbar { height: 6px; }
-        .prose pre::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 10px; }
-        .prose pre::-webkit-scrollbar-track { background: transparent; }
-
-        /* --- 复制按钮样式 --- */
-        .copy-btn {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            padding: 0.4rem 0.7rem;
-            font-size: 0.75rem;
-            color: #9ca3af;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(156, 163, 175, 0.3);
-            border-radius: 0.5rem;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.2s;
-            z-index: 10;
-        }
-        .prose pre:hover .copy-btn { opacity: 1; }
-        .copy-btn:hover { background: rgba(255, 255, 255, 0.2); color: white; }
-        .copy-btn.copied { color: #10b981; border-color: #10b981; }
-
-        /* 目录样式 */
-        html { scroll-behavior: smooth; }
-        .toc-link.active {
-            color: #3b82f6;
-            border-left-color: #3b82f6;
-            background-color: rgba(59, 130, 246, 0.05);
-        }
-        .dark .toc-link.active {
-            color: #60a5fa;
-            border-left-color: #60a5fa;
-            background-color: rgba(96, 165, 250, 0.1);
-        }
-        #toc-container::-webkit-scrollbar { width: 0px; }
-    </style>
-</head>
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
-    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
-        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="/" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent shrink-0">阿辉的博客</a>
-            <div class="flex items-center gap-4 md:gap-6">
-                <form id="search-form" action="https://search.djhx.site/" method="POST" class="relative flex items-center group">
-                    <input type="text" name="keyword" placeholder="搜索文章..." class="search-input w-32 md:w-40 focus:w-48 md:focus:w-64 h-9 pl-4 pr-10 rounded-full bg-gray-100 dark:bg-gray-700/50 border border-transparent focus:border-blue-500/50 focus:bg-white dark:focus:bg-gray-800 outline-none transition-all duration-300 text-sm">
-                    <input type="hidden" name="engine" value="site">
-                    <button type="submit" class="absolute right-3 text-gray-400 hover:text-blue-500 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    </button>
-                </form>
-                <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-tight">
-                    <a href="/index.html" class="relative group py-2">
-                        <span class="text-zinc-500 group-hover:text-blue-500 transition">Blog</span>
-                    </a>
-                    <a href="/archive.html" class="relative group py-2">
-                        <span class="text-zinc-500 group-hover:text-blue-500 transition">Archive</span>
-                    </a>
-                    <a href="/about/index.html" class="relative group py-2">
-                        <span class="text-zinc-500 group-hover:text-blue-500 transition">About</span>
-                    </a>
-                </div>
-                <button id="theme-toggle" class="group relative h-9 w-9 border border-zinc-200 dark:border-zinc-700 rounded-full flex items-center justify-center transition-all">
-                    <div id="theme-dot" class="w-3 h-3 rounded-full bg-zinc-800 dark:bg-zinc-100 transition-transform duration-500"></div>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-4 py-12 flex gap-12 relative">
-        <aside class="hidden xl:block w-64 shrink-0">
-            <div class="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto" id="toc-container">
-                <div class="flex items-center gap-2 mb-4 px-3">
-                    <div class="w-1 h-4 bg-blue-500 rounded-full"></div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-400">On This Page</span>
-                </div>
-                <nav id="toc-content" class="flex flex-col border-l border-gray-100 dark:border-gray-800"></nav>
-            </div>
-        </aside>
-
-        <article id="post-content" class="prose prose-slate dark:prose-invert lg:prose-xl max-w-none"></article>
-    </main>
-
-    <footer class="max-w-4xl mx-auto px-4 py-12 border-t border-gray-100 dark:border-gray-800 text-center">
-        <p class="text-sm text-gray-400">© 2026 阿辉的博客 · <a href="https://beian.miit.gov.cn/" target="_blank" class="hover:underline">浙ICP备19051268号</a></p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script>
-        hljs.highlightAll();
-
-        // 1. 主题切换
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeDot = document.getElementById('theme-dot');
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.theme = isDark ? 'dark' : 'light';
-        });
-
-        // 2. 目录生成与滚动监听
-        const postContent = document.getElementById('post-content');
-        const tocContent = document.getElementById('toc-content');
-        const headers = postContent.querySelectorAll('h2, h3, h4');
-
-        headers.forEach((header, index) => {
-            if (!header.id) header.id = `heading-${index}`;
-            const link = document.createElement('a');
-            link.href = `#${header.id}`;
-            link.innerText = header.innerText;
-            link.className = `toc-link block py-2 px-4 text-sm transition-all border-l-2 border-transparent hover:text-blue-500 text-gray-500 dark:text-gray-400`;
-            const level = parseInt(header.tagName.replace('H', ''));
-            link.style.paddingLeft = `${(level - 1) * 12}px`;
-            tocContent.appendChild(link);
-        });
-
-        const tocLinks = document.querySelectorAll('.toc-link');
-        window.addEventListener('scroll', () => {
-            let currentId = '';
-            headers.forEach(header => {
-                if (header.getBoundingClientRect().top < 120) currentId = header.id;
-            });
-            tocLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
-            });
-        });
-
-        // 3. 一键复制功能
-        document.querySelectorAll('pre').forEach((pre) => {
-            // 创建复制按钮
-            const button = document.createElement('button');
-            button.className = 'copy-btn';
-            button.innerText = 'Copy';
-
-            pre.appendChild(button);
-
-            button.addEventListener('click', async () => {
-                const code = pre.querySelector('code').innerText;
-                try {
-                    await navigator.clipboard.writeText(code);
-                    button.innerText = 'Copied!';
-                    button.classList.add('copied');
-                    setTimeout(() => {
-                        button.innerText = 'Copy';
-                        button.classList.remove('copied');
-                    }, 2000);
-                } catch (err) {
-                    console.error('复制失败', err);
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}{{ metadata.title }} · {{ site.title }}{% endblock %}
+{% block description %}{{ metadata.summary or site.description }}{% endblock %}
+{% block metadata %}
+{% if metadata.date %}<meta property="article:published_time" content="{{ metadata.date }}">{% endif %}
+<meta name="blogger:draft" content="{{ 'true' if metadata.draft else 'false' }}">
+{% endblock %}
+{% block main %}
+<div class="article-layout{% if not toc %} without-toc{% endif %}">
+  {% if toc %}<aside class="toc-panel" aria-label="文章目录"><details open><summary>本页目录</summary>{{ toc }}</details></aside>{% endif %}
+  <article id="post-content">
+    <header class="article-header">
+      <div class="article-meta">{% if metadata.date %}<time datetime="{{ metadata.date }}">{{ metadata.date[:10] }}</time>{% else %}<span>未注明日期</span>{% endif %}
+        {% if metadata.draft %}<span class="draft-badge">未完成</span>{% endif %}
+      </div>
+      <h1>{{ metadata.title }}</h1>
+      {% if metadata.summary %}<p class="article-summary">{{ metadata.summary }}</p>{% endif %}
+      {% if metadata.draft %}<p class="draft-notice">这篇文章仍在编写中，内容会继续补充。</p>{% endif %}
+    </header>
+    <div class="article-content">{{ content }}</div>
+    <div class="article-end"><span aria-hidden="true">◆</span><a href="{{ base }}archive.html">查看全部文章 →</a></div>
+  </article>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+# Windows 路径请用 TOML 单引号，或使用正斜杠。
+[local]
+origin = 'C:\Project\blog'
+target = 'C:\Project\blog-output'
+
+[site]
+title = "DJHX BLOG"
+description = "记录技术、实践与生活。"
+base_path = "/"
+search_url = "https://search.djhx.site/"
+about_url = "/about/index.html"
+footer = "浙ICP备19051268号"
+footer_url = "https://beian.miit.gov.cn/"
+
+[build]
+workers = 4
+cache = true
+compress_images = true
+image_quality = 85
+max_width = 1920
+max_height = 1920
+
+[deploy]
+server = "djhx.site"
+target = "/var/www/djhx.site"
+user = "koril"
+port = 22
+# identity_file = 'C:\Users\ABC\.ssh\id_ed25519'
+# known_hosts = 'C:\Users\ABC\.ssh\known_hosts'
+sudo = true
+timeout = 120
+compression_level = 1
+
+[search]
+enabled = true
+refresh_url = "https://search.djhx.site/refresh-db"
+timeout = 30

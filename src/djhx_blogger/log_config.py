@@ -1,38 +1,15 @@
-import logging.config
+"""CLI logging, without changing an embedding application's root logger."""
 
-log_name = 'djhx_blogger'
+import logging
 
-log_config_dict = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'default': {
-            'format': '[%(asctime)s] - %(levelname)-8s :: %(message)s',
-        }
-    },
-    'handlers': {
-        'console_handler': {
-            'class': 'logging.StreamHandler',
-            'stream': 'ext://sys.stdout',
-            'formatter': 'default',
-            'level': 'DEBUG',
-        },
-    },
-    'loggers': {
-        log_name: {
-            'handlers': ['console_handler'],
-            'level': 'DEBUG',
-            'propagate': False,
-        }
-    },
-    'root': {
-        'handlers': ['console_handler'],
-        'level': 'WARNING',
-    }
-}
-
-def log_init():
-    logging.config.dictConfig(log_config_dict)
+app_logger = logging.getLogger("djhx_blogger")
+app_logger.addHandler(logging.NullHandler())
 
 
-app_logger = logging.getLogger(log_name)
+def log_init(verbose: bool = False) -> None:
+    app_logger.handlers.clear()
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter("%(levelname)s: %(message)s"))
+    app_logger.addHandler(handler)
+    app_logger.setLevel(logging.DEBUG if verbose else logging.INFO)
+    app_logger.propagate = False
