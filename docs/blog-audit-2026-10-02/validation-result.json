@@ -1,0 +1,15 @@
+{
+  "validated": true,
+  "markdown_files": 175,
+  "findings": 320,
+  "articles_with_findings": 138,
+  "all_original_line_anchors_match": true,
+  "all_report_line_links_match": true,
+  "all_original_sha256_match": true,
+  "all_cited_pages_have_access_records": true,
+  "source_pages_distinct_excluding_fragments": 239,
+  "original_git_worktree_clean": true,
+  "original_git_head": "882620b614f45d2873a372926993120cee6e663f",
+  "report_lines": 6011,
+  "checklist_rows": 175
+}

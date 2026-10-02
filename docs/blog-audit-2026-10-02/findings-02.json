@@ -1,0 +1,533 @@
+[
+  {
+    "article": 20,
+    "line": 83,
+    "type": "事实",
+    "quote": "A(7)=空",
+    "problem": "删除 i 后 A=complant，第7个字符是 n，并非空。",
+    "suggestion": "改为“A(7)=n，B(7)=i，在 n 前插入 i”，随后 n 和 t 匹配。",
+    "sources": []
+  },
+  {
+    "article": 22,
+    "line": 26,
+    "type": "代码",
+    "quote": "import string, random",
+    "problem": "random 的伪随机生成器不适合生成实际账号密码；shuffle 也没有密码学安全保证。",
+    "suggestion": "用 secrets.choice；满足组成要求时可对 secrets 生成的候选密码做拒绝采样，避免再用 random.shuffle。默认长度建议至少16字符，按真实服务限制调整；不能笼统认定8–12位就是高强度。",
+    "sources": [
+      "https://docs.python.org/3.10/library/secrets.html"
+    ]
+  },
+  {
+    "article": 24,
+    "line": 34,
+    "type": "适用条件",
+    "quote": "主键必须是逻辑性的而非业务性的",
+    "problem": "代理主键是设计选择，不是关系型数据库强制规则；数据库也能更新主键，JPA实体身份则有自己的限制。",
+    "suggestion": "改为“多数易变业务场景建议代理主键；稳定自然键可作主键。JPA应用中不应更改已持久化实体的标识”。",
+    "sources": [
+      "https://jakarta.ee/specifications/persistence/3.1/jakarta-persistence-spec-3.1.pdf"
+    ]
+  },
+  {
+    "article": 24,
+    "line": 69,
+    "type": "时效",
+    "quote": "JPA提供四种…javax.persistence",
+    "problem": "适用于旧版JPA；Jakarta Persistence 3.1 已新增UUID。文章2023年需标明实际版本。",
+    "suggestion": "改为“JPA2.x 的javax.persistence有四种；Jakarta Persistence3.1 的jakarta.persistence另外包含UUID”。",
+    "sources": [
+      "https://jakarta.ee/ja/specifications/persistence/3.1/"
+    ]
+  },
+  {
+    "article": 24,
+    "line": 134,
+    "type": "事实",
+    "quote": "Oracle不支持ID自增长列",
+    "problem": "Oracle12c起支持identity列。",
+    "suggestion": "表格注明Oracle版本和JPA提供者；对Oracle12c+补IDENTITY，旧版本使用sequence。",
+    "sources": [
+      "https://docs.oracle.com/en/database/oracle/sql-developer-web/21.1/sdweb/columns-pane.html"
+    ]
+  },
+  {
+    "article": 24,
+    "line": 47,
+    "type": "字词",
+    "quote": "引擎时 / 一颗B+Tree / 增加了方法磁盘IO",
+    "problem": "明显误字。",
+    "suggestion": "改“引擎是”“一棵B+Tree”“增加了访问磁盘的IO次数”。",
+    "sources": []
+  },
+  {
+    "article": 25,
+    "line": 114,
+    "type": "适用条件",
+    "quote": "添加新的类型…ordinal值的含义都将发生改变",
+    "problem": "仅当在已有值之前插入、重排或删除导致序号变化时才影响已有映射；追加到末尾不改变原序号。",
+    "suggestion": "改为“调整已有枚举值的顺序或在中间插入/删除会改变部分ordinal映射；末尾追加不改变已有序号”。",
+    "sources": [
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html#ordinal()"
+    ]
+  },
+  {
+    "article": 26,
+    "line": 38,
+    "type": "适用条件",
+    "quote": "行政区划依照省-市-区划分，是一棵完整…树",
+    "problem": "省-地市-县不是所有行政区统一存在的固定三级；直辖市、省直辖县级单位等有例外。",
+    "suggestion": "说明用的是简化教学树，实际导入按数据源父子关系处理，不硬编码三级；GB/T2260-2007不能作为最新行政区快照。",
+    "sources": [
+      "https://www.mca.gov.cn/n156/n189/c1618736/content.html"
+    ]
+  },
+  {
+    "article": 26,
+    "line": 263,
+    "type": "代码",
+    "quote": "根节点id=0 / 表中中国id=1",
+    "problem": "完整代码根节点为0，而样例中国为1，findFirst().get()会失败；方法接收id却未使用。",
+    "suggestion": "统一根节点约定或用传入id查找，并处理根节点不存在。",
+    "sources": []
+  },
+  {
+    "article": 26,
+    "line": 109,
+    "type": "字词",
+    "quote": "字节点 / 因外 / leve",
+    "problem": "误字。",
+    "suggestion": "改“子节点”“因为”“level”；第308行“一颗树”改“一棵树”。",
+    "sources": []
+  },
+  {
+    "article": 27,
+    "line": 136,
+    "type": "代码",
+    "quote": "--databases ${db_name}",
+    "problem": "此选项生成CREATE DATABASE/USE原库，不能直接保证恢复到另一个指定库；脚本也未判断转储失败就淘汰旧备份。",
+    "suggestion": "明确备份文件是否带库名；恢复到新库时使用不带--databases的转储或审核重写USE。转储到临时文件，确认退出码及可恢复性后再改名和删除旧备份。",
+    "sources": [
+      "https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html"
+    ]
+  },
+  {
+    "article": 27,
+    "line": 20,
+    "type": "字词",
+    "quote": "本片 / 然后又四张表 / my_db_bak.sql",
+    "problem": "误字及文件名不一致。",
+    "suggestion": "改“本篇”“有四张表”；第88行文件名与示例统一为my_db_back.sql。",
+    "sources": []
+  },
+  {
+    "article": 28,
+    "line": 299,
+    "type": "事实",
+    "quote": "主键重复…所以…称为幻读",
+    "problem": "主键唯一检查使用当前数据，快照SELECT与唯一检查视图不同；该现象不能作为经典幻读的定义。InnoDB RR快照读保持快照，锁定读用next-key锁抑制范围幻影。",
+    "suggestion": "改写此例为“快照读与唯一性检查的差异”；幻读定义为同一查询谓词下可见行集合因其他事务改变而变化，另分清标准RR与InnoDB实现。",
+    "sources": [
+      "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html",
+      "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+    ]
+  },
+  {
+    "article": 28,
+    "line": 70,
+    "type": "适用条件",
+    "quote": "即使断电，也不会丢失",
+    "problem": "持久性保证受存储引擎、刷盘设置和硬件影响，不能脱离配置绝对保证。",
+    "suggestion": "注明InnoDB在可靠存储及相应刷盘配置下保证已提交事务持久化，并解释innodb_flush_log_at_trx_commit=1；不是任意配置都断电无损。",
+    "sources": [
+      "https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit"
+    ]
+  },
+  {
+    "article": 28,
+    "line": 129,
+    "type": "字词",
+    "quote": "隔离界别 / 确爆出 / 它确保在",
+    "problem": "多处“界别”误写；第135行论述未完成。",
+    "suggestion": "统一“隔离级别”；第299行改“却报出”；补完第135行可重复读的定义。",
+    "sources": []
+  },
+  {
+    "article": 29,
+    "line": 28,
+    "type": "事实",
+    "quote": "每个节点…拥有左、右两个子节点",
+    "problem": "二叉树每个节点最多两个子节点，叶子没有子节点。",
+    "suggestion": "改为“最多有左、右两个子节点”。第77–78行B树性质需注明m为最大孩子数，叶子无孩子，根为叶子时可没有孩子。",
+    "sources": []
+  },
+  {
+    "article": 29,
+    "line": 76,
+    "type": "字词",
+    "quote": "有叶子节点 / 就先上面 / 再对树",
+    "problem": "误字。",
+    "suggestion": "改“所有叶子节点”“就像上面”“在对树”；B树性质先统一m阶定义再写键数与孩子数。",
+    "sources": []
+  },
+  {
+    "article": 31,
+    "line": 22,
+    "type": "适用条件",
+    "quote": "超过n…都会报错 / 小于10485760",
+    "problem": "超长部分都是空格可被截去；显式cast到char(n)/varchar(n)会截断而不报错；上限包括10485760。",
+    "suggestion": "补上述两种例外，范围改“1≤n≤10485760”。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/datatype-character.html"
+    ]
+  },
+  {
+    "article": 32,
+    "line": 134,
+    "type": "事实",
+    "quote": "不指定schema…默认归属于public",
+    "problem": "新对象创建在search_path中第一个存在可用的模式；用户同名模式存在时会优先使用，与后文current_schema描述矛盾。",
+    "suggestion": "改为“默认search_path为$user, public；创建到current_schema()返回的模式，通常在不存在同名用户模式时才是public”。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/ddl-schemas.html"
+    ]
+  },
+  {
+    "article": 32,
+    "line": 127,
+    "type": "适用条件",
+    "quote": "同一个模式…对象需要不同名字",
+    "problem": "不同对象类别不都共享名字空间；同名函数可重载，函数名也可和表名相同。",
+    "suggestion": "改为“表、索引、视图等关系对象共享名字空间；函数等按各自命名/重载规则”。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/ddl-schemas.html"
+    ]
+  },
+  {
+    "article": 32,
+    "line": 134,
+    "type": "字词",
+    "quote": "不制定schema / PG14以前",
+    "problem": "应为“指定”；public默认CREATE权限分界应含PG14。",
+    "suggestion": "改“指定”；改“PG14及以前默认CREATE和USAGE，PG15起默认仅USAGE（升级/模板继承的权限可能不同）”。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/ddl-schemas.html"
+    ]
+  },
+  {
+    "article": 33,
+    "line": 71,
+    "type": "适用条件",
+    "quote": "商品价格发生变动…修改订单表",
+    "problem": "历史订单中的成交单价/收货地址通常应保存下单快照，不应因现价或用户资料变化批量修改。这里混淆实体当前属性与交易事实。",
+    "suggestion": "区分用户/商品主数据与订单快照；用实时资料冗余说明更新异常，但保留订单成交价格和履约地址。",
+    "sources": []
+  },
+  {
+    "article": 34,
+    "line": 75,
+    "type": "事实",
+    "quote": "PUBLIC是默认角色 / 默认根角色",
+    "problem": "PUBLIC是代表所有角色的特殊权限集合，不是pg_roles里可管理、可登录的普通根角色。",
+    "suggestion": "改为“PUBLIC是表示所有角色的特殊伪角色；向PUBLIC授权意味着对所有角色授权”。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/sql-grant.html"
+    ]
+  },
+  {
+    "article": 34,
+    "line": 43,
+    "type": "适用条件",
+    "quote": "设置一个对应的nologin用户",
+    "problem": "这是安装方式相关的OS账号配置；本文sudo -iu postgres通常要求可执行的登录shell，与笼统nologin表述矛盾。",
+    "suggestion": "注明Debian包创建的OS账号和数据库角色分别管理，实际shell/peer规则以本机配置为准，删除统一为nologin的断言。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/auth-peer.html"
+    ]
+  },
+  {
+    "article": 34,
+    "line": 133,
+    "type": "字词",
+    "quote": "Memeber / 显示的 / 整个默认用户 / 一下一些",
+    "problem": "拼写及误字。",
+    "suggestion": "改“Member”“显式地”“这个默认用户”“以下一些”。",
+    "sources": []
+  },
+  {
+    "article": 35,
+    "line": 220,
+    "type": "代码",
+    "quote": "循环内只有pipe.execute()",
+    "problem": "没有调用pipe.get()排队命令；执行的是空pipeline，108ms不能与10000次GET比较。",
+    "suggestion": "循环内调用pipe.get('hello')，循环外只调用一次execute；若只批量GET可用pipeline(transaction=False)。重跑并撤回原性能和抓包结论。",
+    "sources": [
+      "https://redis.readthedocs.io/en/v6.2.0/advanced_features.html"
+    ]
+  },
+  {
+    "article": 35,
+    "line": 304,
+    "type": "代码",
+    "quote": "ThreadPoolExecutor(max_worker=10)",
+    "problem": "参数名错误，运行会TypeError。",
+    "suggestion": "改max_workers=10。",
+    "sources": [
+      "https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor"
+    ]
+  },
+  {
+    "article": 35,
+    "line": 313,
+    "type": "事实",
+    "quote": "Redis客户端…线程安全…暂不下定论",
+    "problem": "redis-py文档明确普通连接池模式的Redis客户端可以跨线程共享；Pipeline和PubSub不可共享。",
+    "suggestion": "引用所用6.2文档给出结论，并注明single_connection_client、事务pipeline和PubSub例外。",
+    "sources": [
+      "https://redis.readthedocs.io/en/v6.2.0/advanced_features.html"
+    ]
+  },
+  {
+    "article": 35,
+    "line": 323,
+    "type": "适用条件",
+    "quote": "n=1,m=10性能比n=10,m=1更好",
+    "problem": "总连接上限一样不代表吞吐更高；依赖worker类型、并发、CPU和请求工作量，串行worker也不一定用得上10条连接。",
+    "suggestion": "将此句及第329行建议改为需压测的配置假设，注明(2×CPU)+1只是Gunicorn起始经验值；普通ConnectionPool满时通常报错，需等待可用BlockingConnectionPool。",
+    "sources": [
+      "https://docs.gunicorn.org/en/stable/design.html#how-many-workers"
+    ]
+  },
+  {
+    "article": 35,
+    "line": 48,
+    "type": "字词",
+    "quote": "ConnectPool / connect_pool / 接受指令 / 还可以还种 / max_connect",
+    "problem": "类名和参数名混写。",
+    "suggestion": "统一ConnectionPool、connection_pool、max_connections；“接受结果”改“接收结果”；第197行改“还可以换种写法”。",
+    "sources": []
+  },
+  {
+    "article": 37,
+    "line": 41,
+    "type": "事实",
+    "quote": "bind0.0.0.0表示…接受所有远程连接",
+    "problem": "bind只设置监听地址；protected-mode、ACL和防火墙仍能拒绝远程连接。",
+    "suggestion": "改为“监听所有IPv4接口，远程访问还受保护模式、ACL及防火墙控制”；第47行把IPv6明确为回环::1。",
+    "sources": [
+      "https://raw.githubusercontent.com/redis/redis/7.0/redis.conf"
+    ]
+  },
+  {
+    "article": 38,
+    "line": 20,
+    "type": "字词",
+    "quote": "建立在Corn之上",
+    "problem": "组件名误拼。",
+    "suggestion": "改“建立在Core之上”。",
+    "sources": [
+      "https://docs.sqlalchemy.org/en/20/intro.html"
+    ]
+  },
+  {
+    "article": 39,
+    "line": 67,
+    "type": "事实",
+    "quote": "PRIMARY KEY唯一且非空",
+    "problem": "普通rowid表的非INTEGER主键允许NULL是SQLite历史兼容行为；INTEGER PRIMARY KEY、STRICT、WITHOUT ROWID或显式NOT NULL除外。",
+    "suggestion": "补充SQLite例外，不沿用其他数据库的笼统结论。",
+    "sources": [
+      "https://www.sqlite.org/lang_createtable.html"
+    ]
+  },
+  {
+    "article": 39,
+    "line": 76,
+    "type": "代码",
+    "quote": "薪水默认为0，年龄比0大",
+    "problem": "实际DDL是DEFAULT1000.5、CHECK(age>=0)。",
+    "suggestion": "文字与代码统一：薪水1000.5、年龄大于等于0；需要强制年龄存在还要NOT NULL。第116行DEFAUTL改DEFAULT。",
+    "sources": []
+  },
+  {
+    "article": 39,
+    "line": 112,
+    "type": "事实",
+    "quote": "每新增…表…sqlite_sequence就多一条",
+    "problem": "sqlite_sequence记录通常在首次插入数据时创建，不是CREATE TABLE就必有对应行。",
+    "suggestion": "改为“首次插入该AUTOINCREMENT表的数据时创建该表的序列记录，后续按需要更新”。",
+    "sources": [
+      "https://sqlite.org/autoinc.html"
+    ]
+  },
+  {
+    "article": 40,
+    "line": 101,
+    "type": "字词",
+    "quote": ".header",
+    "problem": "正确点命令是.headers；完整拼法更清楚。",
+    "suggestion": "改.headers。",
+    "sources": [
+      "https://sqlite.org/cli.html"
+    ]
+  },
+  {
+    "article": 41,
+    "line": 33,
+    "type": "事实",
+    "quote": "SQLite…长度没有任何限制",
+    "problem": "不执行varchar(n)长度不等于无长度上限；SQLITE_MAX_LENGTH默认10亿字节，还有运行时限制。",
+    "suggestion": "改为“varchar(n)的n不强制，但字符串/BLOB仍受SQLITE_MAX_LENGTH等限制”；第31、61行补STRICT及类型亲和性转换的条件。",
+    "sources": [
+      "https://sqlite.org/limits.html",
+      "https://sqlite.org/datatype3.html"
+    ]
+  },
+  {
+    "article": 41,
+    "line": 61,
+    "type": "事实",
+    "quote": "TEXT列…存储integer、real…",
+    "problem": "普通TEXT亲和性列会把数值转为文本，不能以该例说明原样保留各种存储类；BLOB通常不转。",
+    "suggestion": "用无类型列或BLOB亲和性列演示不同存储类；用typeof()显示TEXT列数值转换结果。第26行intergere改integer。",
+    "sources": [
+      "https://sqlite.org/datatype3.html"
+    ]
+  },
+  {
+    "article": 42,
+    "line": 320,
+    "type": "事实",
+    "quote": "结果集记录数量就是右表记录数量",
+    "problem": "左表有多个匹配行时，一条右表记录会展开为多行；只有每条右行最多匹配一个左行才相等。",
+    "suggestion": "改为“保留所有右表行；若左表连接键唯一，本例结果行数等于右表行数”。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/queries-table-expressions.html"
+    ]
+  },
+  {
+    "article": 42,
+    "line": 374,
+    "type": "事实",
+    "quote": "outer join是full outer join简写",
+    "problem": "OUTER可省略，但FULL不能省略；outer join是外连接总称，单独OUTER JOIN不是通用FULL JOIN语法。",
+    "suggestion": "节标题改FULL OUTER JOIN，写“可简写为FULL JOIN；LEFT/RIGHT JOIN也是外连接”。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/queries-table-expressions.html"
+    ]
+  },
+  {
+    "article": 42,
+    "line": 213,
+    "type": "适用条件",
+    "quote": "inner join类似集合交集 / union实现FULL",
+    "problem": "连接是满足谓词的行配对，可产生重复、可非等值，集合交集图只是有限教学类比；UNION会去重，非通用FULL JOIN模拟。",
+    "suggestion": "补一对多反例；通用模拟用LEFT JOIN UNION ALL 加只保留未匹配左行的RIGHT JOIN。第30行公示改公式，第67行r1,m2改r1,m1。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/queries-table-expressions.html"
+    ]
+  },
+  {
+    "article": 44,
+    "line": 24,
+    "type": "事实",
+    "quote": "DOS攻击…基本没有任何作用",
+    "problem": "连接管理性能好不能推出免疫DoS；应用、连接、CPU、内存或带宽仍可耗尽。",
+    "suggestion": "删去该结论；第23行删除固定5万最大并发，改为依赖资源/配置；“内核Poll模型”改“事件驱动，按平台采用epoll/kqueue等机制”。",
+    "sources": [
+      "https://nginx.org/en/docs/events.html",
+      "https://nginx.org/en/docs/http/ngx_http_limit_req_module.html"
+    ]
+  },
+  {
+    "article": 44,
+    "line": 378,
+    "type": "事实",
+    "quote": "backend-api不能写back_api…URL不能下划线",
+    "problem": "Nginx upstream组名可以带下划线；它不是要求解析的公网DNS主机名。",
+    "suggestion": "删除该限制，说明upstream名称与proxy_pass引用必须一致；DNS主机名规范与upstream符号名分开解释。",
+    "sources": [
+      "https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
+    ]
+  },
+  {
+    "article": 44,
+    "line": 328,
+    "type": "代码",
+    "quote": "proxy_pass http://192.168.10.103:8080/hello",
+    "problem": "缺少指令结尾分号，Nginx配置测试失败。",
+    "suggestion": "补分号；第125、167行容器静态目录统一为/usr/share/nginx/html；第353、355行192.169误写改192.168。",
+    "sources": [
+      "https://nginx.org/en/docs/beginners_guide.html"
+    ]
+  },
+  {
+    "article": 44,
+    "line": 417,
+    "type": "时效",
+    "quote": "url_hash / fair",
+    "problem": "url_hash不是当前原生指令；fair通常属于第三方模块，不能列成开箱即用默认策略。",
+    "suggestion": "URL哈希写为hash $request_uri [consistent]；fair注明依赖第三方模块和构建支持；ip_hash只提供亲和性，不能独自保证session一致性。",
+    "sources": [
+      "https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
+    ]
+  },
+  {
+    "article": 47,
+    "line": 69,
+    "type": "适用条件",
+    "quote": "LIKE %数据库%意味着全表扫描 / 关系型数据库…做不到分词评分",
+    "problem": "普通BTree通常无法有效支持前导通配符，但PG pg_trgm GIN/GiST可支持；PG全文搜索、MySQL FULLTEXT均有分词/评分能力。",
+    "suggestion": "限定为“只用普通BTree及LIKE的方案”，补数据库原生全文搜索和专用索引，避免把RDBMS功能描述为不可能。",
+    "sources": [
+      "https://www.postgresql.org/docs/17/pgtrgm.html",
+      "https://www.postgresql.org/docs/17/textsearch.html"
+    ]
+  },
+  {
+    "article": 47,
+    "line": 187,
+    "type": "适用条件",
+    "quote": "text类型不支持精确查询",
+    "problem": "term查询可对text的索引词项作精确匹配，只是通常不是原字符串精确匹配；原串应使用keyword多字段。",
+    "suggestion": "改为“不适合对原始整段字符串作等值匹配；term针对分析后的词项”。第63行“再插入”改“在插入”。",
+    "sources": [
+      "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-dsl-term-query.html"
+    ]
+  },
+  {
+    "article": 48,
+    "line": 114,
+    "type": "代码",
+    "quote": "关闭安全配置，后文仍用HTTPS及密码",
+    "problem": "单机无安全配置与后续带TLS/认证的Kibana和curl步骤属于两条不同流程，不能直接顺序执行。",
+    "suggestion": "拆为保留安全和本地无安全两个互斥方案，各自给完整elasticsearch.yml、kibana.yml和验证URL；-k仅跳过证书验证，不是服务端不用证书。",
+    "sources": [
+      "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/configuring-stack-security.html"
+    ]
+  },
+  {
+    "article": 49,
+    "line": 37,
+    "type": "时效",
+    "quote": "旧版本7.x之前…log类型",
+    "problem": "log输入在7.16弃用，9.0默认禁用；不能把迁移界线写为7.x之前。",
+    "suggestion": "改为“filestream为推荐输入；log自7.16弃用、9.0默认禁用”。第15行底下改低下、介绍如果改介绍如何，第37行文本改本文，第88行之需要改只需要。",
+    "sources": [
+      "https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-log"
+    ]
+  },
+  {
+    "article": 51,
+    "line": 141,
+    "type": "事实",
+    "quote": "Filter就是精确匹配",
+    "problem": "filter context决定是否计算_score，不限定只能等值匹配，range/geo/match也可放filter。",
+    "suggestion": "改为“filter只判断是否匹配，不计算相关性分数”；第251行exists是找有索引值的文档，无值应must_not exists；第260行LIKE %search改LIKE 'search%'。",
+    "sources": [
+      "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-filter-context.html",
+      "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-dsl-exists-query.html"
+    ]
+  }
+]

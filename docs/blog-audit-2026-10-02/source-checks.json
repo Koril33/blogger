@@ -1,0 +1,1874 @@
+[
+  {
+    "url": "https://amturing.acm.org/award_winners/metcalfe_3968159.cfm",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://busybox.net/downloads/BusyBox.html",
+    "title": "BusyBox - The Swiss Army Knife of Embedded Linux",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://cachetools.readthedocs.io/en/stable/",
+    "title": "cachetools — Extensible memoizing collections and decorators — cachetools 7.2.0 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+    "title": "Password Storage - OWASP Cheat Sheet Series",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api",
+    "title": "Telegram Bot API",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://dev.maxmind.com/geoip/docs/databases/",
+    "title": "GeoIP and GeoLite Database Documentation | MaxMind Developer Portal",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/",
+    "title": "MySQL :: A Quick Guide to Using the MySQL Yum Repository",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html",
+    "title": "MySQL :: MySQL 8.0 Reference Manual :: 17.7.2.3 Consistent Nonlocking Reads",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html",
+    "title": "MySQL :: MySQL 8.0 Reference Manual :: 17.7.4 Phantom Rows",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html",
+    "title": "MySQL :: MySQL 8.0 Reference Manual :: 17.14 InnoDB Startup Options and System Variables",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html",
+    "title": "MySQL :: MySQL 8.0 Reference Manual :: 6.5.4 mysqldump — A Database Backup Program",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://developer.hashicorp.com/vagrant/docs/cli/init",
+    "title": "vagrant init - Command-Line Interface | Vagrant | HashiCorp Developer",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://developer.hashicorp.com/vagrant/docs/cli/up",
+    "title": "vagrant up - Command-Line Interface | Vagrant | HashiCorp Developer",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS",
+    "title": "Cross-Origin Resource Sharing (CORS) - HTTP | MDN",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie",
+    "title": "Set-Cookie header - HTTP | MDN",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
+    "title": "encodeURIComponent() - JavaScript | MDN",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck0"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin_policy",
+    "title": "Same-origin policy - Security | MDN",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.astral.sh/uv/reference/environment/",
+    "title": "Environment variables | uv",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/index.html",
+    "title": "ESP-IDF Programming Guide - ESP32 - — ESP-IDF Programming Guide v6.1 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.gunicorn.org/en/stable/design.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.gunicorn.org/en/stable/index.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.jboss.org/hibernate/orm/6.6/userguide/html_single/Hibernate_User_Guide.html",
+    "title": "Hibernate ORM User Guide",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.kernel.org/filesystems/ext4/ifork.html",
+    "title": "4.2. The Contents of inode.i_block — The Linux Kernel documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.micropython.org/en/latest/esp8266/quickref.html",
+    "title": "Quick reference for the ESP8266 — MicroPython latest documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.micropython.org/en/latest/esp8266/tutorial/dht.html",
+    "title": "13. Temperature and Humidity — MicroPython latest documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.ntfy.sh/config/",
+    "title": "Configuration - ntfy",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html",
+    "title": "MQTT Version 3.1.1",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/cd/E19957-01/806-3568/ncg_math.html",
+    "title": "IEEE Arithmetic",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/database/oracle/sql-developer-web/21.1/sdweb/columns-pane.html",
+    "title": "Columns Pane",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/FileNotFoundException.html",
+    "title": "FileNotFoundException (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/FileWriter.html",
+    "title": "FileWriter (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/OutputStream.html",
+    "title": "OutputStream (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html",
+    "title": "Enum (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html",
+    "title": "Number (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/SuppressWarnings.html",
+    "title": "SuppressWarnings (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Files.html",
+    "title": "Files (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html",
+    "title": "Path (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html",
+    "title": "Duration (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Period.html",
+    "title": "Period (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html",
+    "title": "Comparator (Java SE 17 & JDK 17)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck16"
+  },
+  {
+    "url": "https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html",
+    "title": "Java I/O, NIO, and NIO.2",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-11.html",
+    "title": "Chapter 11. Exceptions",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-14.html",
+    "title": "Chapter 14. Blocks, Statements, and Patterns",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.oracle.com/javase/specs/jls/se17/html/jls-4.html",
+    "title": "Chapter 4. Types, Values, and Variables",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python-telegram-bot.org/en/stable/telegram.ext.jobqueue.html",
+    "title": "JobQueue - python-telegram-bot v22.8",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3.10/library/secrets.html",
+    "title": "secrets — Generate secure random numbers for managing secrets — Python 3.10.22 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3.12/library/logging.handlers.html",
+    "title": "logging.handlers — Logging handlers — Python 3.12.15 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3.13/library/threading.html",
+    "title": "threading — Thread-based parallelism — Python 3.13.16 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/concurrent.futures.html",
+    "title": "concurrent.futures — Launching parallel tasks — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/exceptions.html",
+    "title": "Built-in Exceptions — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/http.client.html",
+    "title": "http.client — HTTP protocol client — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/json.html",
+    "title": "json — JSON encoder and decoder — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/logging.config.html",
+    "title": "logging.config — Logging configuration — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/logging.html",
+    "title": "logging — Logging facility for Python — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/os.html",
+    "title": "os — Miscellaneous operating system interfaces — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/reference/compound_stmts.html",
+    "title": "8. Compound statements — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/shutil.html",
+    "title": "shutil — High-level file operations — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/stdtypes.html",
+    "title": "Built-in Types — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/sys.html",
+    "title": "sys — System-specific parameters and functions — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/sys_path_init.html",
+    "title": "The initialization of the sys.path module search path — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/threading.html",
+    "title": "threading — Thread-based parallelism — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/time.html",
+    "title": "time — Time access and conversions — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/tutorial/modules.html",
+    "title": "6. Modules — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/library/uuid.html",
+    "title": "uuid — UUID objects according to RFC 9562 — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.python.org/3/reference/simple_stmts.html",
+    "title": "7. Simple statements — Python 3.14.8 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sec-configuring_yum_and_yum_repositories",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.spring.io/spring-boot/reference/web/spring-security.html",
+    "title": "Spring Security :: Spring Boot",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/HandlerInterceptor.html",
+    "title": "HandlerInterceptor (Spring Framework 7.0.9 API)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.spring.io/spring-framework/reference/core/beans/classpath-scanning.html",
+    "title": "Classpath Scanning and Managed Components :: Spring Framework",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.spring.io/spring-framework/reference/core/beans/java/basic-concepts.html",
+    "title": "Basic Concepts: @Bean and @Configuration :: Spring Framework",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html",
+    "title": "Password Storage :: Spring Security",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html",
+    "title": "Servlet Authentication Architecture :: Spring Security",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck40"
+  },
+  {
+    "url": "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/basic.html",
+    "title": "Basic Authentication :: Spring Security",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://docs.spring.io/spring-security/reference/servlet/authentication/persistence.html",
+    "title": "Persisting Authentication :: Spring Security",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/authentication/AuthenticationManager.html",
+    "title": "AuthenticationManager (spring-security-docs 7.0.0 API)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/config/annotation/web/configurers/PortMapperConfigurer.html",
+    "title": "PortMapperConfigurer (spring-security-docs 7.0.0 API)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/UserDetails.html",
+    "title": "UserDetails (spring-security-docs 7.0.0 API)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://docs.sqlalchemy.org/en/20/intro.html",
+    "title": "Overview — SQLAlchemy 2.0 Documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://docs.unity3d.com/Manual/TimeFrameManagement.html",
+    "title": "",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://fastapi.tiangolo.com/deployment/manually/",
+    "title": "Run a Server Manually - FastAPI",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://firewalld.org/documentation/configuration/runtime-versus-permanent.html",
+    "title": "Documentation - Configuration - Runtime versus Permanent | firewalld",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://flask.palletsprojects.com/en/stable/api/",
+    "title": "API — Flask Documentation (3.1.x)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/akopytov/sysbench/blob/master/src/tests/cpu/sb_cpu.c",
+    "title": "sysbench/src/tests/cpu/sb_cpu.c at master · akopytov/sysbench · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/nodemcu/nodemcu-firmware",
+    "title": "GitHub - nodemcu/nodemcu-firmware: Lua based interactive firmware for ESP8266, ESP8285 and ESP32 · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/openjdk/jdk8u/blob/master/jdk/src/share/classes/java/util/Arrays.java",
+    "title": "jdk8u/jdk/src/share/classes/java/util/Arrays.java at master · openjdk/jdk8u · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/openocd-org/openocd/blob/master/tcl/target/stm32f1x.cfg",
+    "title": "openocd/tcl/target/stm32f1x.cfg at master · openocd-org/openocd · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/openssh/openssh-portable/blob/master/auth.c",
+    "title": "openssh-portable/auth.c at master · openssh/openssh-portable · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/python/cpython/blob/main/Lib/json/encoder.py",
+    "title": "cpython/Lib/json/encoder.py at main · python/cpython · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/seaweedfs/seaweedfs/wiki/Amazon-S3-API",
+    "title": "Amazon S3 API · seaweedfs/seaweedfs Wiki · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/seaweedfs/seaweedfs/wiki/Components",
+    "title": "Components · seaweedfs/seaweedfs Wiki · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://github.com/ubogdan/STM32F103C8T6",
+    "title": "GitHub - ubogdan/STM32F103C8T6: Ready to work example BLINK example on PC13 · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://gofrp.org/en/docs/examples/vhost-http/",
+    "title": "Access Intranet Web Services via Custom Domain Names | frp",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://gofrp.org/en/docs/overview/",
+    "title": "Overview | frp",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://grafana.com/docs/loki/latest/get-started/overview/",
+    "title": "Loki overview | Grafana Loki documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://help.aliyun.com/zh/pnvs/developer-reference/api-dypnsapi-2017-05-25-sendsmsverifycode",
+    "title": "调用SendSmsVerifyCode接口发送短信验证码-号码认证服务-阿里云-号码认证服务(PNVS)-阿里云帮助中心",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://history.aip.org/exhibits/gap/Michelson/Michelson.html",
+    "title": "Albert Abraham Michelson 1852-1931",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://how.complexsystems.fail/",
+    "title": "How Complex Systems Fail",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://httpd.apache.org/docs/2.4/howto/cgi.html",
+    "title": "Apache HTTP Server Tutorial: Dynamic Content with CGI - Apache HTTP Server Version 2.4",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://httpd.apache.org/docs/2.4/logs.html",
+    "title": "Log Files - Apache HTTP Server Version 2.4",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://jakarta.ee/ja/specifications/persistence/3.1/",
+    "title": "Jakarta Persistence 3.1 | Jakarta EE | The Eclipse Foundation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://jakarta.ee/specifications/persistence/3.1/jakarta-persistence-spec-3.1.pdf",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://jakarta.ee/specifications/servlet/6.0/",
+    "title": "Jakarta Servlet 6.0 | Jakarta EE | The Eclipse Foundation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://jakarta.ee/specifications/servlet/6.0/apidocs/jakarta.servlet/jakarta/servlet/servletconfig",
+    "title": "ServletConfig (Jakarta Servlet API documentation)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://jakarta.ee/specifications/servlet/6.0/jakarta-servlet-spec-6.0.html",
+    "title": "Jakarta Servlet Specification",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck72"
+  },
+  {
+    "url": "https://jinja.palletsprojects.com/en/stable/",
+    "title": "Jinja — Jinja Documentation (3.1.x)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/terminating-a-process",
+    "title": "Terminating a Process - Win32 apps | Microsoft Learn",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://loggingsucks.com/",
+    "title": "Logging Sucks - Your Logs Are Lying To You",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man.openbsd.org/ssh_config",
+    "title": "ssh_config(5) - OpenBSD manual pages",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man1/crontab.1.html",
+    "title": "crontab(1) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man1/lscpu.1.html",
+    "title": "lscpu(1) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man1/top.1.html",
+    "title": "top(1) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man2/link.2.html",
+    "title": "link(2) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man2/unlink.2.html",
+    "title": "unlink(2) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man2/wait.2.html",
+    "title": "wait(2) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man3/time.3type.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man7/environ.7.html",
+    "title": "environ(7) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man7/inode.7.html",
+    "title": "inode(7) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man8/umount.8.html",
+    "title": "umount(8) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man8/useradd.8.html",
+    "title": "useradd(8) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://manpages.debian.org/trixie/netselect-apt/netselect-apt.1.en.html",
+    "title": "netselect-apt(1) — netselect-apt — Debian trixie — Debian Manpages",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://mosquitto.org/",
+    "title": "Eclipse Mosquitto",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://nginx.org/en/docs/beginners_guide.html",
+    "title": "Beginner’s Guide",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://nginx.org/en/docs/control.html",
+    "title": "Controlling nginx",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://nginx.org/en/docs/events.html",
+    "title": "Connection processing methods",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://nginx.org/en/docs/http/ngx_http_core_module.html",
+    "title": "Module ngx_http_core_module",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://nginx.org/en/docs/http/ngx_http_limit_req_module.html",
+    "title": "Module ngx_http_limit_req_module",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+    "title": "Module ngx_http_proxy_module",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://nginx.org/en/docs/http/ngx_http_upstream_module.html",
+    "title": "Module ngx_http_upstream_module",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://nginx.org/en/docs/ngx_core_module.html",
+    "title": "Core functionality",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://openid.net/specs/openid-connect-core-1_0.html",
+    "title": "Final: OpenID Connect Core 1.0 incorporating errata set 2",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://openjdk.org/jeps/254",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://openjdk.org/jeps/400",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://opentelemetry.io/docs/specs/otel/logs/data-model/",
+    "title": "Logs Data Model | OpenTelemetry",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://packages.debian.org/bullseye/default-jdk",
+    "title": "Debian -- Details of package default-jdk in bullseye",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://pages.nist.gov/800-63-4/sp800-63b/authenticators/",
+    "title": "Authenticators",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://peps.python.org/pep-0282/",
+    "title": "PEP 282 – A Logging System | peps.python.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck104"
+  },
+  {
+    "url": "https://peps.python.org/pep-3333/",
+    "title": "PEP 3333 – Python Web Server Gateway Interface v1.0.1 | peps.python.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html",
+    "title": "Image file formats - Pillow (PIL Fork) 12.3.0 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://pip.pypa.io/en/stable/topics/caching/",
+    "title": "Caching - pip documentation v26.2.1",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://prometheus.io/docs/prometheus/latest/configuration/configuration/",
+    "title": "Configuration | Prometheus",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://prometheus.io/docs/prometheus/latest/management_api/",
+    "title": "Management API | Prometheus",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://pyyaml.org/wiki/PyYAMLDocumentation",
+    "title": "pyyaml.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/redis/redis/7.0/redis.conf",
+    "title": "",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://redis.io/docs/latest/commands/zrange/",
+    "title": "ZRANGE | Docs",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://redis.io/docs/latest/commands/zrangebylex/",
+    "title": "ZRANGEBYLEX | Docs",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://redis.io/docs/latest/commands/zrank/",
+    "title": "ZRANK | Docs",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://redis.readthedocs.io/en/v6.2.0/advanced_features.html",
+    "title": "Advanced Features - redis-py 6.2.0 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://requests.readthedocs.io/en/latest/_modules/requests/models/",
+    "title": "requests.models — Requests 2.34.2 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://requests.readthedocs.io/en/latest/user/advanced/",
+    "title": "Advanced Usage — Requests 2.34.2 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://root-servers.org/faq/",
+    "title": "Root Server Technical Operations Association",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter",
+    "title": "Spring Security without the WebSecurityConfigurerAdapter",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://sqlite.org/autoinc.html",
+    "title": "SQLite Autoincrement",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://sqlite.org/cli.html",
+    "title": "Command Line Shell For SQLite",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://sqlite.org/datatype3.html",
+    "title": "Datatypes In SQLite",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://sqlite.org/limits.html",
+    "title": "Implementation Limits For SQLite",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://support.maxmind.com/knowledge-base/articles/maxmind-geolocation-accuracy",
+    "title": "Geolocation accuracy",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://tomcat.apache.org/tomcat-10.1-doc/class-loader-howto.html",
+    "title": "Apache Tomcat 10 (10.1.60) - Class Loader How-To",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://tomcat.apache.org/tomcat-10.1-doc/config/context.html",
+    "title": "Apache Tomcat 10 Configuration Reference (10.1.60) - The Context Container",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi",
+    "title": "How to install Ubuntu Server on your Raspberry Pi | Ubuntu",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://uefi.org/specs/UEFI/2.10/13_Protocols_Media_Access.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://vuejs.org/guide/scaling-up/ssr.html",
+    "title": "Server-Side Rendering (SSR) | Vue.js",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://werkzeug.palletsprojects.com/en/stable/middleware/proxy_fix/",
+    "title": "X-Forwarded-For Proxy Fix — Werkzeug Documentation (3.1.x)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://werkzeug.palletsprojects.com/en/stable/serving/",
+    "title": "Serving WSGI Applications — Werkzeug Documentation (3.1.x)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://wiki.debian.org/sudo",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf",
+    "title": "ATmega328P",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://www.centos.org/centos-linux-eol/",
+    "title": "CentOS Linux EOL - The CentOS Project",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/support/docs/lan-switching/ethernet/100581-duplex.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-log",
+    "title": "Log input | Beats",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck136"
+  },
+  {
+    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/configuring-stack-security.html",
+    "title": "Start the Elastic Stack with security enabled automatically | Elasticsearch Guide [8.19] | Elastic",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-dsl-exists-query.html",
+    "title": "Exists query | Elasticsearch Guide [8.19] | Elastic",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-dsl-term-query.html",
+    "title": "Term query | Elasticsearch Guide [8.19] | Elastic",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-filter-context.html",
+    "title": "Query and filter context | Elasticsearch Guide [8.19] | Elastic",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf",
+    "title": "0a-esp8266ex_datasheet_en",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/html_node/Command-Execution-Environment.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/html_node/Command-Search-and-Execution.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/html_node/Setting-Permissions.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/html_node/du-invocation.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/html_node/sort-invocation.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/findutils/manual/html_mono/find.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/findutils/manual/html_node/find_html/Multiple-Files.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.gnu.org/software/grep/manual/grep.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.iana.org/assignments/protocol-numbers",
+    "title": "Protocol Numbers",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.iana.org/domains/root/servers",
+    "title": "Root Servers",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Documents/IERS_Leap_Seconds.pdf?__blob=publicationFile&v=1",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.internetsociety.org/wp-content/uploads/2017/09/ISOC-History-of-the-Internet_2012Oct.pdf",
+    "title": "Internet Society History of the Internet, Oct 2012",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.itu.int/itunews/issue/2001/06/broadband.html",
+    "title": "A broadband future",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.man7.org/linux/man-pages/man5/crontab.5.html",
+    "title": "crontab(5) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.mca.gov.cn/n156/n189/c1618736/content.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.mongodb.com/docs/v7.0/administration/production-notes/",
+    "title": "Production Notes for Self-Managed Deployments - Database Manual v7.0 - MongoDB Docs",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+    "title": "Metric (SI) Prefixes | NIST",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+    "title": "ISO/IEC 9899:201x",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.openssl.org/docs/man3.0/man1/openssl-speed.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.pi4j.com/1.2/pins/model-4b-rev1.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.pololu.com/product/1182",
+    "title": "Pololu - A4988 Stepper Motor Driver Carrier",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/17/auth-peer.html",
+    "title": "PostgreSQL: Documentation: 17: 20.9. Peer Authentication",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/17/datatype-character.html",
+    "title": "PostgreSQL: Documentation: 17: 8.3. Character Types",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/17/ddl-schemas.html",
+    "title": "PostgreSQL: Documentation: 17: 5.10. Schemas",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/17/pgtrgm.html",
+    "title": "PostgreSQL: Documentation: 17: F.33. pg_trgm — support for similarity of text using trigram matching",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck168"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/17/queries-table-expressions.html",
+    "title": "PostgreSQL: Documentation: 17: 7.2. Table Expressions",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/17/sql-grant.html",
+    "title": "PostgreSQL: Documentation: 17: GRANT",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/17/textsearch.html",
+    "title": "PostgreSQL: Documentation: 17: Chapter 12. Full Text Search",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html",
+    "title": "Cron Trigger Tutorial",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rabbitmq.com/docs/confirms",
+    "title": "Consumer Acknowledgements and Publisher Confirms | RabbitMQ",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rabbitmq.com/docs/consumer-prefetch",
+    "title": "Consumer Prefetch | RabbitMQ",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rabbitmq.com/docs/reliability",
+    "title": "Reliability Guide | RabbitMQ",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html",
+    "title": "Raspberry Pi computer hardware - Raspberry Pi Documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.redhat.com/en/about/open-source",
+    "title": "Creating better technology with open source - Red Hat",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc1034.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc1242.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc2113.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc2474.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc3022.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc3168.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc3629.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5227.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc6265.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc6585.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc7042.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc7515.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc7519.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc7617.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc7766.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc791.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc8200.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc826.html",
+    "title": "www.rfc-editor.org",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+    "title": "RFC 9110: HTTP Semantics",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc9457.html",
+    "title": "RFC 9457: Problem Details for HTTP APIs",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.seagate.com/files/staticfiles/docs/pdf/whitepaper/tp613_4k_transition.pdf",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.sqlite.org/lang_createtable.html",
+    "title": "CREATE TABLE",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-3/",
+    "title": "Chapter 3 – Unicode 17.0.0",
+    "result": "已取得正文或搜索摘要",
+    "batch": "urlcheck200"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html",
+    "title": "Bash Startup Files (Bash Reference Manual)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/coreutils.html",
+    "title": "GNU Coreutils 9.11",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/s/coreutils/manual/html_node/comm-invocation.html",
+    "title": "comm invocation (GNU Coreutils 9.10)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://gnu.org/software/coreutils/manual/coreutils.pdf",
+    "title": "GNU Coreutils",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/html_node/sort-invocation.html",
+    "title": "sort invocation (GNU Coreutils 9.11)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/html_node/The-sort-command.html",
+    "title": "The sort command (GNU Coreutils 9.11)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/html_node/Operating-on-sorted-files.html",
+    "title": "Operating on sorted files (GNU Coreutils 9.11)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.npc.gov.cn/c2/c30834/201905/t20190521_281393.html",
+    "title": "中华人民共和国宪法_中国人大网",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/s/coreutils/manual/coreutils.html",
+    "title": "GNU Coreutils 9.11",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/bash.pdf?from=20423",
+    "title": "Bash Reference Manual",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/html_node/Using-version-sort-in-GNU-Coreutils.html",
+    "title": "Using version sort in GNU Coreutils (GNU Coreutils 9.11)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/bash.pdf",
+    "title": "6 Bash Features",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/bash.html?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhY2Nlc3NfcmVzb3VyY2UiLCJleHAiOjE2NDg1NDI1NDYsImciOiJEdFdXVHZoVFBqQzlRS1gzIiwiaWF0IjoxNjQ4NTQyMjQ2LCJ1c2VySWQiOjI1MDAzMzMyfQ.bwV3_JL6DRrVXcv4heSkT-wGq669Ei8fffgGfgJEWec",
+    "title": "Bash Reference Manual",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://ftp.gnu.org/pub/old-gnu/Manuals/coreutils-4.5.4/html_node/coreutils_42.html",
+    "title": "GNU Core-utils: join invocation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.gnu.org/s/coreutils/manual/html_node/dir-invocation.html",
+    "title": "dir invocation (GNU Coreutils 9.11)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesA"
+  },
+  {
+    "url": "https://www.man7.org/linux/man-pages/man5/systemd.exec.5.html",
+    "title": "systemd.exec(5) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man5/systemd.exec.5.html",
+    "title": "systemd.exec(5) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://docs.kernel.org/admin-guide/abi-stable.html",
+    "title": "ABI stable symbols — The Linux Kernel documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://www.pi4j.com/1.2/apidocs/src-html/com/pi4j/io/gpio/RaspiPin.html",
+    "title": "Source code",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man5/systemd.service.5%40%40systemd.html",
+    "title": "systemd.service(5) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://docs.kernel.org/5.3/x86/boot.html",
+    "title": "1. The Linux/x86 Boot Protocol — The Linux Kernel documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://www.man7.org/linux/man-pages/man5/systemd.nspawn.5.html",
+    "title": "systemd.nspawn(5) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://docs.kernel.org/5.16/admin-guide/device-mapper/dm-crypt.html",
+    "title": "dm-crypt — The Linux Kernel documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://docs.kernel.org/5.16/admin-guide/device-mapper/dm-ebs.html",
+    "title": "dm-ebs — The Linux Kernel documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://parisc.docs.kernel.org/en/latest/_downloads/f2e77904a62f96d8728841bbf1197b5d/PC87415.pdf",
+    "title": "PC87415 PCI-IDE DMA Master Mode Interface Controller",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://docs.kernel.org/6.15/filesystems/dax.html",
+    "title": "Direct Access for files — The Linux Kernel documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://nvdimm.docs.kernel.org/2mib_fs_dax.html",
+    "title": "How to get 2 MiB filesystem DAX faults — NVDIMM docs documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man1/systemd-run.1.html",
+    "title": "systemd-run(1) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesB"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man3/time_t.3type.html",
+    "title": "time_t(3type) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesC"
+  },
+  {
+    "url": "https://www.win.tue.nl/~aeb/linux/Large-Disk-4.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "repair-sourcesC"
+  },
+  {
+    "url": "https://docs.gunicorn.org/en/latest/design.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "repair-sourcesC"
+  },
+  {
+    "url": "https://openjdk.org/jeps/400",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "repair-sourcesC"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/coreutils.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "repair-sourcesC"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/bash.html",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "repair-sourcesC"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/html_single/Large-Disk-HOWTO/",
+    "title": "Large Disk HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/pdf/Large-Disk-HOWTO.pdf",
+    "title": "Large Disk HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/Large-Disk-HOWTO-10.html",
+    "title": "Large Disk HOWTO: Details",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/Partition/fdisk_partitioning.html",
+    "title": "Partitioning with fdisk",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/pdf/Partition.pdf",
+    "title": "Linux Partition HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/Optical-Disk-HOWTO-4.html",
+    "title": "Linux - Optical Disk HOWTO : Magneto Optical Drive experiences under Linux",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/html_single/Unix-and-Internet-Fundamentals-HOWTO/",
+    "title": "The Unix and Internet Fundamentals HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/Boot%2BRoot%2BRaid%2BLILO-3.html",
+    "title": "Boot + Root + Raid + Lilo : Software Raid mini-HOWTO: Bootable Raid",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/html_single/Partition/",
+    "title": "Linux Partition HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/html_single/Partition-Mass-Storage-Definitions-Naming-HOWTO/",
+    "title": "Partitions-Mass-Storage-Definitions-Naming-HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/Linux%2BWindows-HOWTO/procedure.html",
+    "title": "Procedure",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://www.cisco.com/en/US/docs/internetworking/troubleshooting/guide/tr1904.html",
+    "title": "Troubleshooting Ethernet - Cisco Systems",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://tldp.org/LDP/sag/html/sag.html",
+    "title": "The Linux System Administrator's Guide",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://community.cisco.com/t5/switching/csma-cd/m-p/643617/highlight/true",
+    "title": "Re: CSMA/CD - Cisco Community",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesD"
+  },
+  {
+    "url": "https://github.com/benoitc/gunicorn/blob/master/docs/source/design.rst",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "repair-sourcesE"
+  },
+  {
+    "url": "https://github.com/benoitc/gunicorn/blob/master/README.rst",
+    "title": "gunicorn/README.rst at master · benoitc/gunicorn · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesE"
+  },
+  {
+    "url": "https://grafana.com/tutorials/run-grafana-behind-a-proxy/",
+    "title": "Run Grafana behind a reverse proxy | Grafana Labs",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesE"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/html_single/Large-Disk-HOWTO/",
+    "title": "Large Disk HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesE"
+  },
+  {
+    "url": "https://www.cisco.com/en/US/docs/internetworking/troubleshooting/guide/tr1904.html",
+    "title": "Troubleshooting Ethernet - Cisco Systems",
+    "result": "已取得正文或搜索摘要",
+    "batch": "repair-sourcesE"
+  },
+  {
+    "url": "https://github.com/benoitc/gunicorn/blob/23.0.0/docs/source/design.rst",
+    "title": "gunicorn/docs/source/design.rst at 23.0.0 · benoitc/gunicorn · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalA"
+  },
+  {
+    "url": "https://github.com/redis/redis/blob/5.0/src/server.c",
+    "title": "redis/src/server.c at 5.0 · redis/redis · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalA"
+  },
+  {
+    "url": "https://flask.palletsprojects.com/en/stable/api/",
+    "title": "API — Flask Documentation (3.1.x)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalA"
+  },
+  {
+    "url": "https://docs.python.org/3.12/library/logging.handlers.html",
+    "title": "logging.handlers — Logging handlers — Python 3.12.15 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalA"
+  },
+  {
+    "url": "https://grafana.com/tutorials/run-grafana-behind-a-proxy/",
+    "title": "Run Grafana behind a reverse proxy | Grafana Labs",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalA"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/html_single/Large-Disk-HOWTO/",
+    "title": "Large Disk HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalA"
+  },
+  {
+    "url": "https://www.cisco.com/en/US/docs/internetworking/troubleshooting/guide/tr1904.html",
+    "title": "Troubleshooting Ethernet - Cisco Systems",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalA"
+  },
+  {
+    "url": "https://github.com/redis/redis/blob/5.0/src/server.c",
+    "title": "redis/src/server.c at 5.0 · redis/redis · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalB"
+  },
+  {
+    "url": "https://github.com/benoitc/gunicorn/blob/23.0.0/docs/source/design.rst",
+    "title": "gunicorn/docs/source/design.rst at 23.0.0 · benoitc/gunicorn · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalB"
+  },
+  {
+    "url": "https://tldp.org/HOWTO/html_single/Large-Disk-HOWTO/",
+    "title": "Large Disk HOWTO",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalB"
+  },
+  {
+    "url": "https://requests.readthedocs.io/en/latest/_modules/requests/exceptions/",
+    "title": "requests.exceptions — Requests 2.34.2 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalC"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/redis/redis/5.0/src/server.c",
+    "title": "",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalC"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man5/systemd.service.5.html",
+    "title": "systemd.service(5) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalC"
+  },
+  {
+    "url": "https://openjdk.org/jeps/254",
+    "title": "Internal Error ()",
+    "result": "抓取失败或受限",
+    "batch": "detail-finalC"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/redis/redis/5.0/src/server.c",
+    "title": "",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalD"
+  },
+  {
+    "url": "https://requests.readthedocs.io/en/latest/_modules/requests/exceptions/",
+    "title": "requests.exceptions — Requests 2.34.2 documentation",
+    "result": "已取得正文或搜索摘要",
+    "batch": "detail-finalD"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man1/newgrp.1.html",
+    "title": "newgrp(1) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "source-lastadded"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man5/group.5.html",
+    "title": "group(5) - Linux manual page",
+    "result": "已取得正文或搜索摘要",
+    "batch": "source-lastadded"
+  },
+  {
+    "url": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/charset/Charset.html",
+    "title": "Charset (Java SE 21 & JDK 21)",
+    "result": "已取得正文或搜索摘要",
+    "batch": "source-lastadded"
+  },
+  {
+    "url": "https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/lang/String.java",
+    "title": "jdk/src/java.base/share/classes/java/lang/String.java at master · openjdk/jdk · GitHub",
+    "result": "已取得正文或搜索摘要",
+    "batch": "source-lastadded"
+  },
+  {
+    "url": "https://redis.io/docs/latest/commands/config-set/",
+    "title": "CONFIG SET | Docs",
+    "result": "已取得正文或搜索摘要",
+    "batch": "source-lastadded"
+  },
+  {
+    "url": "https://jakarta.ee/specifications/persistence/3.1/",
+    "title": "Jakarta Persistence 3.1 | Jakarta EE | The Eclipse Foundation",
+    "result": "已取得正文",
+    "batch": "report-final-proof"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/net-user",
+    "title": "net user | Microsoft Learn",
+    "result": "已取得正文",
+    "batch": "report-final-proof"
+  },
+  {
+    "url": "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders",
+    "title": "Autism | WHO",
+    "result": "已取得正文",
+    "batch": "report-final-proof"
+  },
+  {
+    "url": "https://xlinux.nist.gov/dads/HTML/binarytree.html",
+    "title": "binary tree | NIST Dictionary of Algorithms and Data Structures",
+    "result": "已取得正文",
+    "batch": "report-final-proof"
+  },
+  {
+    "url": "https://xlinux.nist.gov/dads/HTML/btree.html",
+    "title": "B-tree | NIST Dictionary of Algorithms and Data Structures",
+    "result": "已取得正文",
+    "batch": "report-final-proof"
+  }
+]

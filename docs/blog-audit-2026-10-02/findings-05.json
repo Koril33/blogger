@@ -1,0 +1,1028 @@
+[
+  {
+    "article": 130,
+    "line": 23,
+    "type": "适用条件",
+    "quote": "SyntaxError…不发生在程序运行时",
+    "problem": "运行中的程序调用compile/exec/eval或导入另一个模块时，也可能得到SyntaxError。",
+    "suggestion": "改为：被解析的代码单元存在语法错误；直接运行一个语法错误的主脚本通常在执行脚本语句前失败。",
+    "sources": [
+      "https://docs.python.org/3/library/exceptions.html#SyntaxError"
+    ]
+  },
+  {
+    "article": 130,
+    "line": 149,
+    "type": "事实错误",
+    "quote": "自动调用sys.exit()",
+    "problem": "普通未处理异常不等于解释器自动调用sys.exit；主线程未处理异常调用sys.excepthook，sys.exit本身是抛出SystemExit。",
+    "suggestion": "说明未处理异常终止相应执行路径；主线程通常打印回溯并退出，工作线程异常通常由threading.excepthook处理。",
+    "sources": [
+      "https://docs.python.org/3/library/sys.html#sys.excepthook",
+      "https://docs.python.org/3/library/threading.html#threading.excepthook"
+    ]
+  },
+  {
+    "article": 130,
+    "line": 206,
+    "type": "代码/解释错误",
+    "quote": "服务器请求错误（404，500）",
+    "problem": "本段requests.get没有raise_for_status，404/500会作为正常Response返回；裸except仍能用sys.exc_info获得异常详情。",
+    "suggestion": "在199行后加response.raise_for_status()；208行改为示例没有输出异常细节，而非裸except无法获得细节。",
+    "sources": [
+      "https://requests.readthedocs.io/en/latest/_modules/requests/models/",
+      "https://docs.python.org/3/library/sys.html#sys.exc_info"
+    ]
+  },
+  {
+    "article": 130,
+    "line": 55,
+    "type": "字词错误",
+    "quote": "语法违法",
+    "problem": "应为“语法违反了…”或“违反语法规则”。",
+    "suggestion": "按原句改为“违反语法规则”。",
+    "sources": []
+  },
+  {
+    "article": 131,
+    "line": 277,
+    "type": "事实错误",
+    "quote": "basicConfig…无法接收encoding",
+    "problem": "Python3.9起basicConfig支持encoding/errors，用于filename创建的FileHandler；本文引用3.12文档。",
+    "suggestion": "改为：basicConfig(filename=..., encoding=\"utf-8\")可指定文件编码；传入已有handlers时由各handler管理编码。",
+    "sources": [
+      "https://docs.python.org/3/library/logging.html#logging.basicConfig"
+    ]
+  },
+  {
+    "article": 131,
+    "line": 530,
+    "type": "事实错误",
+    "quote": "Handler未设置level…继承Logger",
+    "problem": "Handler默认级别是NOTSET，不继承Logger的有效级别；祖先Logger的level也不再次过滤传播记录。",
+    "suggestion": "分别说明Logger有效级别沿父链查找、Handler级别独立判断，以及propagate的处理流程。",
+    "sources": [
+      "https://docs.python.org/3/library/logging.html#logging.Handler",
+      "https://docs.python.org/3/library/logging.html#logging.Logger.propagate"
+    ]
+  },
+  {
+    "article": 131,
+    "line": 234,
+    "type": "适用条件",
+    "quote": "必须先basicConfig…否则无效",
+    "problem": "无效的条件是root已有handler；Python3.8起force=True可重新配置。stderr是否红色由显示环境决定。",
+    "suggestion": "改写为root已有handler时普通basicConfig不生效，可以force=True；162行删去“一定”红色的断言。",
+    "sources": [
+      "https://docs.python.org/3/library/logging.html#logging.basicConfig"
+    ]
+  },
+  {
+    "article": 131,
+    "line": 24,
+    "type": "字词错误",
+    "quote": "剩下；主要主要；显示；知道",
+    "problem": "按上下文应为省下、主要、显式、直到。",
+    "suggestion": "24行剩下→省下；36行删重复主要；139行输出是→输出时；401行显示→显式；484行向→像；528行知道→直到；582行一下→以下。",
+    "sources": []
+  },
+  {
+    "article": 132,
+    "line": 493,
+    "type": "事实错误",
+    "quote": "没有__all__…没有任何效果",
+    "problem": "from package import *会导入包命名空间中已有的公开名称（包括__init__.py定义或导入的名称）；不会自动扫描并加载全部子模块。",
+    "suggestion": "限定本例空包的结果；补上普通包公开名称及__all__的实际规则。",
+    "sources": [
+      "https://docs.python.org/3/library/tutorial/modules.html#importing-from-a-package"
+    ]
+  },
+  {
+    "article": 132,
+    "line": 146,
+    "type": "适用条件",
+    "quote": "PYTHONPATH…sys.path开头",
+    "problem": "通常脚本所在目录或-m时的当前工作目录在PYTHONPATH目录之前。",
+    "suggestion": "改为：PYTHONPATH所列目录加入模块搜索路径；首项行为由启动方式、-P/-I等选项决定。",
+    "sources": [
+      "https://docs.python.org/3/library/sys_path_init.html"
+    ]
+  },
+  {
+    "article": 132,
+    "line": 336,
+    "type": "字词错误",
+    "quote": "一场；制定；文件了",
+    "problem": "按上下文应为异常、指定、文件里。",
+    "suggestion": "336行一场→异常；114行制定→指定；总结中的文件了→文件里。",
+    "sources": []
+  },
+  {
+    "article": 133,
+    "line": 67,
+    "type": "代码错误",
+    "quote": "if task_res",
+    "problem": "task正常返回0时也被当成异常返回None。128篇的对应示例也应同步修改。",
+    "suggestion": "改为if task_res is not None；或让异常与成功返回值分离，用明确的结果对象。",
+    "sources": [
+      "https://docs.python.org/3/library/stdtypes.html#truth-value-testing"
+    ]
+  },
+  {
+    "article": 134,
+    "line": 105,
+    "type": "概念/字词错误",
+    "quote": "内置模块uuid；变成",
+    "problem": "uuid是标准库模块，而非通常所称的解释器内置模块；变成应为编程。",
+    "suggestion": "改为“标准库uuid模块”“编程”。",
+    "sources": [
+      "https://docs.python.org/3/library/uuid.html",
+      "https://docs.python.org/3/library/sys.html#sys.builtin_module_names"
+    ]
+  },
+  {
+    "article": 135,
+    "line": 37,
+    "type": "字词错误",
+    "quote": "UV_DEFUALT_INDEX",
+    "problem": "环境变量单词拼错，代码块UV_DEFAULT_INDEX是正确的。",
+    "suggestion": "正文统一改为UV_DEFAULT_INDEX。",
+    "sources": [
+      "https://docs.astral.sh/uv/reference/environment/#uv_default_index"
+    ]
+  },
+  {
+    "article": 136,
+    "line": 173,
+    "type": "概念错误",
+    "quote": "__enter__返回值代表上下文管理器",
+    "problem": "上下文管理器是with表达式求值得到的manager，__enter__的返回值赋给as目标，可以是其他对象甚至None。",
+    "suggestion": "用manager和as target两个名称区分；149行__enter补齐为__enter__。",
+    "sources": [
+      "https://docs.python.org/3/library/reference/compound_stmts.html#the-with-statement"
+    ]
+  },
+  {
+    "article": 136,
+    "line": 21,
+    "type": "字词错误",
+    "quote": "及其重要",
+    "problem": "应为极其重要。",
+    "suggestion": "改为极其重要。",
+    "sources": []
+  },
+  {
+    "article": 137,
+    "line": 19,
+    "type": "事实错误",
+    "quote": "pip…没有…完善的缓存",
+    "problem": "pip默认具有HTTP响应和wheel缓存；devpi的优势是共享代理缓存及索引管理，不能用pip没有缓存来解释。",
+    "suggestion": "改为：pip有每客户端缓存；devpi可为多机器集中提供代理索引缓存。",
+    "sources": [
+      "https://pip.pypa.io/en/stable/topics/caching/"
+    ]
+  },
+  {
+    "article": 137,
+    "line": 131,
+    "type": "代码/字词错误",
+    "quote": "mirror.yourdomian.com…--trusted-host mirror.yourdomain.com",
+    "problem": "安装URL和trusted-host域名拼写不一致。",
+    "suggestion": "统一为同一个实际域名；示例yourdomian改yourdomain。",
+    "sources": []
+  },
+  {
+    "article": 139,
+    "line": 69,
+    "type": "适用条件",
+    "quote": "systemctl reload prometheus",
+    "problem": "是否支持reload取决于unit是否定义ExecReload。Prometheus配置重载支持SIGHUP，或启用--web.enable-lifecycle后的/-/reload。",
+    "suggestion": "与前文实际unit保持一致：有ExecReload时用systemctl reload；否则发送SIGHUP。",
+    "sources": [
+      "https://prometheus.io/docs/prometheus/latest/configuration/configuration/",
+      "https://prometheus.io/docs/prometheus/latest/management_api/"
+    ]
+  },
+  {
+    "article": 140,
+    "line": 144,
+    "type": "适用条件",
+    "quote": "消息…只会…一个消费者",
+    "problem": "同一次投递通常交给一个消费者；连接故障、未确认或重新入队会使同一消息被再次投递。",
+    "suggestion": "补充至少一次投递/重复处理的可能性，业务处理需考虑幂等；不能等同恰好一次。",
+    "sources": [
+      "https://www.rabbitmq.com/docs/reliability"
+    ]
+  },
+  {
+    "article": 140,
+    "line": 269,
+    "type": "事实错误",
+    "quote": "prefetch…channel",
+    "problem": "RabbitMQ在global=False时将prefetch_count分别应用于各consumer，并非整个channel共享的总额度。",
+    "suggestion": "限定示例只有一个consumer；解释global=False与global=True的不同范围。",
+    "sources": [
+      "https://www.rabbitmq.com/docs/consumer-prefetch"
+    ]
+  },
+  {
+    "article": 140,
+    "line": 316,
+    "type": "代码错误",
+    "quote": "future完成后直接ACK",
+    "problem": "Future完成也可能是任务抛出异常；不检查结果就ACK，会确认尚未成功处理的消息。",
+    "suggestion": "在on_done中调用fut.result()判断是否成功；成功才通过add_callback_threadsafe回到连接线程ACK，失败按重试/死信策略NACK。",
+    "sources": [
+      "https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Future.result",
+      "https://www.rabbitmq.com/docs/confirms"
+    ]
+  },
+  {
+    "article": 140,
+    "line": 335,
+    "type": "字词错误",
+    "quote": "点点对；计算计分",
+    "problem": "应为点对点、计算积分。",
+    "suggestion": "335行改点对点；100行改计算积分。",
+    "sources": []
+  },
+  {
+    "article": 141,
+    "line": 53,
+    "type": "事实错误",
+    "quote": "vagrant init…下载Box",
+    "problem": "init创建Vagrantfile，下载通常发生在vagrant up或vagrant box add；也不要求目录必须为空。",
+    "suggestion": "按实际命令区分初始化配置、获取Box和启动虚拟机；38行删去空目录硬性要求。",
+    "sources": [
+      "https://developer.hashicorp.com/vagrant/docs/cli/init",
+      "https://developer.hashicorp.com/vagrant/docs/cli/up"
+    ]
+  },
+  {
+    "article": 142,
+    "line": 64,
+    "type": "字词/对象错误",
+    "quote": "SessionId交给服务器；随即",
+    "problem": "这里应由服务器把SessionId交给浏览器；随即应为随机。",
+    "suggestion": "改为“服务器生成随机SessionId并交给浏览器”。",
+    "sources": []
+  },
+  {
+    "article": 142,
+    "line": 109,
+    "type": "概念错误",
+    "quote": "JWT…解密",
+    "problem": "常见签名JWT（JWS）进行解码和验签；只有使用JWE的加密JWT才涉及解密。",
+    "suggestion": "区分签名、防篡改与加密、保密；Base64URL本身不提供保密性。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc7519.html",
+      "https://www.rfc-editor.org/rfc/rfc7515.html"
+    ]
+  },
+  {
+    "article": 142,
+    "line": 124,
+    "type": "适用条件",
+    "quote": "关闭浏览器…自动删除Cookie",
+    "problem": "会话Cookie的会话结束由用户代理定义；浏览器会话恢复可能恢复它。Cookie Path也不是安全隔离边界（139行）。",
+    "suggestion": "限定通常行为，并明确服务器侧会话过期；说明Path只控制发送路径，不能承担权限隔离。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc6265.html",
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie"
+    ]
+  },
+  {
+    "article": 143,
+    "line": 40,
+    "type": "事实错误",
+    "quote": "https…默认80",
+    "problem": "HTTPS默认端口是443，后文表格已写正确。",
+    "suggestion": "40、41行统一为443；79行主机名(port)改主机名(host)。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc9110.html#section-4.2.2"
+    ]
+  },
+  {
+    "article": 143,
+    "line": 77,
+    "type": "事实错误",
+    "quote": "同源策略防御CSRF…不允许跨域请求",
+    "problem": "同源策略主要约束跨源读取等行为；表单、链接、部分资源请求可以跨源发出，不能据此防御CSRF。",
+    "suggestion": "重写为限制跨源读取响应；CSRF需独立的令牌、SameSite及来源校验等机制。",
+    "sources": [
+      "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin_policy"
+    ]
+  },
+  {
+    "article": 143,
+    "line": 95,
+    "type": "条件遗漏",
+    "quote": "简单请求只看Method和Content-Type",
+    "problem": "还涉及CORS safelisted请求头及其值等条件；GET携带Authorization或自定义header也会触发预检。",
+    "suggestion": "补齐简单请求的请求头限制；214行补充带凭据请求不能使用Access-Control-Allow-Origin: *。",
+    "sources": [
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS"
+    ]
+  },
+  {
+    "article": 144,
+    "line": 177,
+    "type": "事实错误",
+    "quote": "非permanent…不设置Cookie",
+    "problem": "Flask会在session被修改时保存Cookie，与permanent无必然等价关系；清空session也会删除Cookie。",
+    "suggestion": "改为：modified触发保存；permanent且SESSION_REFRESH_EACH_REQUEST=True也可刷新未修改但非空的会话。",
+    "sources": [
+      "https://flask.palletsprojects.com/en/stable/api/#flask.sessions.SecureCookieSessionInterface.should_set_cookie"
+    ]
+  },
+  {
+    "article": 144,
+    "line": 23,
+    "type": "字词/条件遗漏",
+    "quote": "受到；关闭浏览器自动删除",
+    "problem": "受到应为收到；153行浏览器关闭删除Cookie需说明会话恢复例外。",
+    "suggestion": "23行改收到；153行按会话Cookie定义补充条件。",
+    "sources": [
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie"
+    ]
+  },
+  {
+    "article": 145,
+    "line": 55,
+    "type": "事实错误",
+    "quote": "FastAPI…WSGI",
+    "problem": "FastAPI基于ASGI；WSGI、ASGI是应用与服务器的接口规范。",
+    "suggestion": "将FastAPI放在ASGI类别；区分应用接口、HTTP和uWSGI可选的uwsgi线协议。",
+    "sources": [
+      "https://fastapi.tiangolo.com/deployment/manually/",
+      "https://peps.python.org/pep-3333/"
+    ]
+  },
+  {
+    "article": 145,
+    "line": 88,
+    "type": "事实错误",
+    "quote": "Werkzeug不支持多线程、多进程",
+    "problem": "Werkzeug run_simple提供threaded和processes选项，只是二者不能同时启用。",
+    "suggestion": "改为开发服务器支持线程或进程模式，但官方不建议用于生产部署。",
+    "sources": [
+      "https://werkzeug.palletsprojects.com/en/stable/serving/"
+    ]
+  },
+  {
+    "article": 145,
+    "line": 147,
+    "type": "实验归因错误",
+    "quote": "Windows…单线程伪并发",
+    "problem": "Flask.run默认threaded=True，等待请求可由多个线程处理，两套系统都能出现这种现象。",
+    "suggestion": "在147、219、260、264行统一说明worker/线程配置、time.sleep释放执行机会等条件；不能把Windows表现解释为单线程。",
+    "sources": [
+      "https://flask.palletsprojects.com/en/stable/api/#flask.Flask.run"
+    ]
+  },
+  {
+    "article": 145,
+    "line": 254,
+    "type": "适用条件",
+    "quote": "大于2*cores+1…性能降低；跨平台一致",
+    "problem": "Gunicorn给出的worker数是起点经验值，实际需测量；Gunicorn是UNIX/POSIX服务器，不能推出原生Windows也相同。",
+    "suggestion": "把经验式写成调优起点；注明实验系统及worker类型；266行补POSIX适用范围，223行work改worker。",
+    "sources": [
+      "https://docs.gunicorn.org/en/stable/design.html",
+      "https://docs.gunicorn.org/en/stable/index.html"
+    ]
+  },
+  {
+    "article": 147,
+    "line": 89,
+    "type": "事实错误",
+    "quote": "Apache/Nginx不能生成动态内容",
+    "problem": "Apache可通过CGI/模块处理动态内容，NGINX也有扩展能力；通常承担静态服务和代理不等于不能处理动态内容。",
+    "suggestion": "限定本教程部署方式：由Nginx代理到Tomcat，由Servlet生成响应。",
+    "sources": [
+      "https://httpd.apache.org/docs/2.4/howto/cgi.html"
+    ]
+  },
+  {
+    "article": 147,
+    "line": 99,
+    "type": "生命周期错误",
+    "quote": "每个请求创建Servlet…destroy…垃圾回收",
+    "problem": "Servlet实例通常由容器初始化并复用于多个请求，service可并发调用；destroy不等于对象立刻被GC。",
+    "suggestion": "按实例化→init→多次service→destroy说明生命周期和共享实例状态。",
+    "sources": [
+      "https://jakarta.ee/specifications/servlet/6.0/jakarta-servlet-spec-6.0.html"
+    ]
+  },
+  {
+    "article": 147,
+    "line": 359,
+    "type": "概念/字词错误",
+    "quote": "ServletConfig类；的的；给给",
+    "problem": "ServletConfig是接口；有重复字和误字。",
+    "suggestion": "359行改接口；26行删重复的；38行考虑以下→考虑一下；361行删重复给。",
+    "sources": [
+      "https://jakarta.ee/specifications/servlet/6.0/apidocs/jakarta.servlet/jakarta/servlet/servletconfig"
+    ]
+  },
+  {
+    "article": 149,
+    "line": 55,
+    "type": "事实错误",
+    "quote": "Windows不能关闭当前运行程序",
+    "problem": "问题通常是不能按一般方式覆写正在运行的EXE，Windows当然支持结束运行中的进程。",
+    "suggestion": "改为：更新器等待主程序退出，再替换其EXE和依赖文件。",
+    "sources": [
+      "https://learn.microsoft.com/en-us/windows/win32/procthread/terminating-a-process"
+    ]
+  },
+  {
+    "article": 149,
+    "line": 383,
+    "type": "代码错误",
+    "quote": "先删除旧EXE，再移动新文件",
+    "problem": "移动失败时旧版本已被删除，更新失败会失去可运行版本。",
+    "suggestion": "先把下载并验证的新文件放到同一文件系统的临时路径，保留备份，再替换并设计失败恢复；不要提前删除唯一旧版本。",
+    "sources": [
+      "https://docs.python.org/3/library/os.html#os.replace",
+      "https://docs.python.org/3/library/shutil.html#shutil.move"
+    ]
+  },
+  {
+    "article": 149,
+    "line": 301,
+    "type": "代码错误",
+    "quote": "Content-Length默认0…EOF算完成",
+    "problem": "循环仅凭read返回空字节判完成，没有核对已下载大小/摘要；不完整文件可能进入替换流程。",
+    "suggestion": "存在Content-Length时核对计数，另用受信任的摘要或签名确认内容完整性，验证失败不替换。",
+    "sources": [
+      "https://docs.python.org/3/library/http.client.html#http.client.HTTPResponse.read"
+    ]
+  },
+  {
+    "article": 150,
+    "line": 136,
+    "type": "事实错误",
+    "quote": "集合查找全是O(1)",
+    "problem": "Redis有序集合的ZRANK通常为O(log N)，ZRANGE通常O(log N+M)；不能将哈希集合查询套用于zset所有操作。",
+    "suggestion": "给出本文实际使用命令的复杂度，说明编码和命令会影响代价。",
+    "sources": [
+      "https://redis.io/docs/latest/commands/zrank/",
+      "https://redis.io/docs/latest/commands/zrange/"
+    ]
+  },
+  {
+    "article": 150,
+    "line": 156,
+    "type": "概念/条件遗漏",
+    "quote": "基于Unicode码值排序",
+    "problem": "Redis有序集合同分值成员按二进制字节字典序比较，不理解Unicode；良构UTF-8通常保持码点顺序，但不是语言学排序。",
+    "suggestion": "注明成员编码与全体score相同的前提；Java char是UTF-16码元，不能把末位+1直接当任意Unicode字符的后继。",
+    "sources": [
+      "https://redis.io/docs/latest/commands/zrangebylex/"
+    ]
+  },
+  {
+    "article": 150,
+    "line": 291,
+    "type": "代码错误",
+    "quote": "query[-1]；zrank后直接zrange",
+    "problem": "空query会越界；不存在的前缀rank为None，Python版本随后调用zrange失败。Java版本虽检查rank为空，但仍会在空字符串时越界。",
+    "suggestion": "入口处理空值/空前缀；不存在的rank返回空列表；明确支持的字符范围，或采用字节前缀边界的BYLEX方案。",
+    "sources": [
+      "https://redis.io/docs/latest/commands/zrank/",
+      "https://redis.io/docs/latest/commands/zrangebylex/"
+    ]
+  },
+  {
+    "article": 151,
+    "line": 37,
+    "type": "概念错误",
+    "quote": "GPS定位",
+    "problem": "本文案例是IP地理数据库的估计或默认坐标，并非终端GPS测量。",
+    "suggestion": "统一为IP地理定位；避免把数据库坐标直接解释为用户精确住址。",
+    "sources": [
+      "https://support.maxmind.com/knowledge-base/articles/maxmind-geolocation-accuracy"
+    ]
+  },
+  {
+    "article": 151,
+    "line": 68,
+    "type": "名称错误",
+    "quote": "GeoIP2-ASN",
+    "problem": "免费产品叫GeoLite2 ASN；收费产品组合中对应的ISP信息不是名为GeoIP2-ASN的数据库。",
+    "suggestion": "改为GeoLite2 ASN；收费/免费数据库更新频率按具体产品和日期描述，勿笼统全体比较。",
+    "sources": [
+      "https://dev.maxmind.com/geoip/docs/databases/"
+    ]
+  },
+  {
+    "article": 151,
+    "line": 252,
+    "type": "代码错误",
+    "quote": "直接读取X-Forwarded-For",
+    "problem": "该header可包含逗号分隔的代理链，不能直接作为一个IP查询MMDB；也不能无条件信任客户端传入的内容。",
+    "suggestion": "按已知可信代理层数配置ProxyFix或可信代理解析；查询前校验单个IP；260行remote_addr应为直接连接的代理地址，不一定127.0.0.1。",
+    "sources": [
+      "https://werkzeug.palletsprojects.com/en/stable/middleware/proxy_fix/",
+      "https://nginx.org/en/docs/http/ngx_http_proxy_module.html#var_proxy_add_x_forwarded_for"
+    ]
+  },
+  {
+    "article": 152,
+    "line": 110,
+    "type": "事实错误",
+    "quote": "类似Python切片",
+    "problem": "ZRANGE的end索引包含在结果中，Python切片的stop不包含。",
+    "suggestion": "明确是闭区间start..end；分页end应为offset+page_size-1。",
+    "sources": [
+      "https://redis.io/docs/latest/commands/zrange/"
+    ]
+  },
+  {
+    "article": 152,
+    "line": 316,
+    "type": "字词错误",
+    "quote": "当前page的的",
+    "problem": "重复字。",
+    "suggestion": "删一个的。",
+    "sources": []
+  },
+  {
+    "article": 153,
+    "line": 114,
+    "type": "术语错误",
+    "quote": "hello-servlet…根上下文",
+    "problem": "hello-servlet目录对应/hello-servlet上下文；真正根上下文通常用ROOT目录或空context path。",
+    "suggestion": "改为应用上下文/hello-servlet；80行webapps限定默认appBase布局。",
+    "sources": [
+      "https://tomcat.apache.org/tomcat-10.1-doc/config/context.html"
+    ]
+  },
+  {
+    "article": 153,
+    "line": 116,
+    "type": "事实/部署条件",
+    "quote": "WEB-INF/src…Servlet API放lib",
+    "problem": "WEB-INF/src是教学自定目录；Servlet API由容器提供，不应作为应用依赖重复打进WEB-INF/lib。",
+    "suggestion": "将src标为可选构建目录；用Tomcat lib下servlet-api.jar作编译类路径，构建工具依赖设为provided。",
+    "sources": [
+      "https://tomcat.apache.org/tomcat-10.1-doc/class-loader-howto.html",
+      "https://jakarta.ee/specifications/servlet/6.0/jakarta-servlet-spec-6.0.html"
+    ]
+  },
+  {
+    "article": 154,
+    "line": 28,
+    "type": "执行顺序错误",
+    "quote": "Response按照过滤器链顺序返回",
+    "problem": "chain.doFilter调用构成嵌套，正常返回时后置代码与请求进入顺序相反。",
+    "suggestion": "例如请求F1→F2→Servlet，返回Servlet→F2→F1；说明异常/异步等情况另有生命周期规则。",
+    "sources": [
+      "https://jakarta.ee/specifications/servlet/6.0/jakarta-servlet-spec-6.0.html"
+    ]
+  },
+  {
+    "article": 154,
+    "line": 596,
+    "type": "字词错误",
+    "quote": "preHandler/postHandler/DespatcherServlet",
+    "problem": "接口方法名是preHandle、postHandle；DispatcherServlet拼错。",
+    "suggestion": "596行改preHandle/postHandle；730行改DispatcherServlet、与请求路径匹配；24行分别不执行→分别执行；243行删重复的。",
+    "sources": [
+      "https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/HandlerInterceptor.html"
+    ]
+  },
+  {
+    "article": 155,
+    "line": 42,
+    "type": "概念错误",
+    "quote": "OAuth2作为Authentication方式",
+    "problem": "OAuth 2.0是授权框架，不能单独保证用户身份认证语义；基于它的OpenID Connect定义身份认证层。",
+    "suggestion": "改为OpenID Connect/OAuth2配套身份认证协议；56行Hash加密改密码哈希存储。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc6749.html",
+      "https://openid.net/specs/openid-connect-core-1_0.html"
+    ]
+  },
+  {
+    "article": 155,
+    "line": 94,
+    "type": "字词错误",
+    "quote": "不同级别的人可以不同级别的文档",
+    "problem": "句子缺谓语。",
+    "suggestion": "改为不同级别的人可以按安全策略访问相应级别的文档。",
+    "sources": []
+  },
+  {
+    "article": 156,
+    "line": 34,
+    "type": "概念错误",
+    "quote": "加密存储…哈希…日志记录密码",
+    "problem": "密码哈希不是可逆加密；正常认证过程中服务端可能暂时处理明文，但不应记录密码或密码哈希到日志。",
+    "suggestion": "区分TLS传输加密和服务端加盐密码哈希；日志中省略/脱敏密码字段，使用Argon2id等密码哈希实现。",
+    "sources": [
+      "https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    ]
+  },
+  {
+    "article": 156,
+    "line": 27,
+    "type": "标准更新",
+    "quote": "必须包含大小写字母数字特殊字符",
+    "problem": "这种组合规则不是通用安全要求，现行NIST指南不推荐强制字符类别组合，单因素密码最低15字符，多因素可最低8字符。",
+    "suggestion": "改为明确的项目策略或按所采用标准说明长度、泄露密码阻止清单、速率限制；不能把复杂度组合当必需条件。",
+    "sources": [
+      "https://pages.nist.gov/800-63-4/sp800-63b/authenticators/"
+    ]
+  },
+  {
+    "article": 156,
+    "line": 32,
+    "type": "字词错误",
+    "quote": "收到撞库攻击；登陆",
+    "problem": "按语义应为受到撞库攻击；登录作为计算机认证操作建议全文统一。",
+    "suggestion": "32行收到→受到；统一计算机场景的登录用字。",
+    "sources": []
+  },
+  {
+    "article": 157,
+    "line": 134,
+    "type": "代码错误",
+    "quote": "window.open(dict[select] + content)",
+    "problem": "输入含&、#、+等字符时会改变查询参数或URL片段，结果不再是原搜索词。",
+    "suggestion": "查询参数用URLSearchParams或encodeURIComponent；词典路径参数另作路径编码。",
+    "sources": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"
+    ]
+  },
+  {
+    "article": 157,
+    "line": 23,
+    "type": "字词错误",
+    "quote": "自制能力",
+    "problem": "应为自制力。",
+    "suggestion": "改为自制力。",
+    "sources": []
+  },
+  {
+    "article": 158,
+    "line": 127,
+    "type": "条件遗漏",
+    "quote": "我们并不知道验证码",
+    "problem": "默认不返回验证码，但API支持ReturnVerifyCode，不能无条件说调用方无法获取。",
+    "suggestion": "改为本例未启用ReturnVerifyCode，采用平台核验；186行该该删重复字。",
+    "sources": [
+      "https://help.aliyun.com/zh/pnvs/developer-reference/api-dypnsapi-2017-05-25-sendsmsverifycode"
+    ]
+  },
+  {
+    "article": 159,
+    "line": 15,
+    "type": "概念错误",
+    "quote": "SPA和SSR两种方案；SPA等同CSR",
+    "problem": "SPA/MPA讨论导航与应用结构，CSR/SSR讨论渲染位置；SSR与SPA可以组合，传统模板引擎也属于服务端渲染。",
+    "suggestion": "分两组概念说明；SSR不限定服务器执行JS；首次速度、SEO等属于实现条件相关的趋势。",
+    "sources": [
+      "https://vuejs.org/guide/scaling-up/ssr.html"
+    ]
+  },
+  {
+    "article": 160,
+    "line": 139,
+    "type": "字词/实现不符",
+    "quote": "jinjia2；YAML手工按冒号解析",
+    "problem": "依赖名是Jinja2；手工split无法完整解析YAML的引号、多行文本、转义等，甚至会保留title两边引号。",
+    "suggestion": "139行改jinja2；用规范YAML解析器处理front matter，或明确仅支持受限的key:value语法。",
+    "sources": [
+      "https://jinja.palletsprojects.com/en/stable/",
+      "https://pyyaml.org/wiki/PyYAMLDocumentation"
+    ]
+  },
+  {
+    "article": 162,
+    "line": 192,
+    "type": "接口识别错误",
+    "quote": "默认认证用AuthenticationFilter",
+    "problem": "示例默认Basic与表单认证分别使用BasicAuthenticationFilter和UsernamePasswordAuthenticationFilter，不由AuthenticationFilter统一接管。",
+    "suggestion": "说明这几个具体filter及共同委托AuthenticationManager的关系。",
+    "sources": [
+      "https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html",
+      "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/basic.html"
+    ]
+  },
+  {
+    "article": 162,
+    "line": 200,
+    "type": "接口契约错误",
+    "quote": "AuthenticationManager无法决定返回null",
+    "problem": "允许返回null交由其他provider尝试的是AuthenticationProvider；AuthenticationManager成功返回认证对象，否则抛AuthenticationException。",
+    "suggestion": "把两者的返回值契约分开，ProviderManager最终不能认证时抛相应异常。",
+    "sources": [
+      "https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/authentication/AuthenticationManager.html",
+      "https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html"
+    ]
+  },
+  {
+    "article": 162,
+    "line": 219,
+    "type": "接口识别错误",
+    "quote": "委托给UserDetailsManager",
+    "problem": "DaoAuthenticationProvider查询用户依赖UserDetailsService；UserDetailsManager是含增删改功能的扩展，并非认证必需。",
+    "suggestion": "219行改UserDetailsService；660行账号锁定/凭据过期等也是认证状态检查，并非仅授权判定。",
+    "sources": [
+      "https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html"
+    ]
+  },
+  {
+    "article": 162,
+    "line": 395,
+    "type": "适用条件",
+    "quote": "自定义UserDetailsService必须提供PasswordEncoder",
+    "problem": "默认存在DelegatingPasswordEncoder；使用正确的{id}前缀编码可以无需自定义PasswordEncoder Bean。示例无前缀密码失败不等于框架要求二者成对自定义。",
+    "suggestion": "说明无前缀密码与所用encoder不匹配；教学可显式配置，实际密码按相应算法编码。",
+    "sources": [
+      "https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html"
+    ]
+  },
+  {
+    "article": 162,
+    "line": 425,
+    "type": "适用条件",
+    "quote": "HTTP Basic安全性低",
+    "problem": "Basic的Base64不加密，需TLS；是否适用与凭据管理、客户端场景和传输保护有关，不能单凭这种认证方式作笼统结论。",
+    "suggestion": "说明Basic传输的是可恢复的凭据，必须在TLS下使用，并交代项目为何选表单/令牌方案。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc7617.html"
+    ]
+  },
+  {
+    "article": 163,
+    "line": 126,
+    "type": "适用条件",
+    "quote": "认证后确保擦除凭证",
+    "problem": "ProviderManager默认eraseCredentialsAfterAuthentication=True，但可以配置关闭；是否擦除还取决于结果是否实现CredentialsContainer。",
+    "suggestion": "补默认开关和对象接口条件；eraseCredentials不是清除数据库保存的密码哈希。",
+    "sources": [
+      "https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html"
+    ]
+  },
+  {
+    "article": 163,
+    "line": 461,
+    "type": "字词错误",
+    "quote": "到目前位置",
+    "problem": "应为到目前为止。",
+    "suggestion": "改为到目前为止。",
+    "sources": []
+  },
+  {
+    "article": 164,
+    "line": 50,
+    "type": "类型概念错误",
+    "quote": "Principal可以是UserDetails",
+    "problem": "Authentication继承java.security.Principal，但其getPrincipal返回Object；通常的UserDetails并不继承Principal。",
+    "suggestion": "区分Java Principal接口、Authentication对象和getPrincipal中的业务身份载荷。",
+    "sources": [
+      "https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html",
+      "https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/UserDetails.html"
+    ]
+  },
+  {
+    "article": 164,
+    "line": 773,
+    "type": "概念/未完句",
+    "quote": "Stateless不需要SecurityContextRepository；这又",
+    "problem": "无状态通常仍配置NullSecurityContextRepository或请求级Repository，不依赖HttpSession不等于不存在该抽象。673行句子未完成。",
+    "suggestion": "改为不需要跨请求的会话持久化，但仍可通过Repository抽象装载/保存请求级上下文；补完673行。",
+    "sources": [
+      "https://docs.spring.io/spring-security/reference/servlet/authentication/persistence.html"
+    ]
+  },
+  {
+    "article": 165,
+    "line": 23,
+    "type": "版本错误",
+    "quote": "5.x之前…WebSecurityConfigurerAdapter",
+    "problem": "该类在5.x中仍被使用，5.7弃用，6.0移除；并非只有5.x之前才用。",
+    "suggestion": "明确版本边界；本文新版本代码保留SecurityFilterChain Bean方式。",
+    "sources": [
+      "https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter"
+    ]
+  },
+  {
+    "article": 165,
+    "line": 187,
+    "type": "字词错误",
+    "quote": "显示；不用；最佳时间；本是",
+    "problem": "分别应为显式、不同、最佳实践、本质。",
+    "suggestion": "187行显示→显式；199行不用→不同；243行最佳时间→最佳实践；322行本是→本质。",
+    "sources": []
+  },
+  {
+    "article": 166,
+    "line": 53,
+    "type": "条件遗漏",
+    "quote": "不传凭据访问所有接口都会401",
+    "problem": "默认同时启用formLogin和httpBasic，根据请求内容协商/入口点可能重定向登录页，也可能401；129行已展示跳转。",
+    "suggestion": "说明浏览器和curl的典型差异；397行所有端口改所有匹配请求/接口。",
+    "sources": [
+      "https://docs.spring.io/spring-boot/reference/web/spring-security.html"
+    ]
+  },
+  {
+    "article": 166,
+    "line": 342,
+    "type": "事实错误",
+    "quote": "所有configurer最后都会addFilter",
+    "problem": "部分configurer配置共享对象或其他属性，不各自添加filter；HttpSecurityConfiguration配置的是configurer，不能说注入前已创建了全部filter。",
+    "suggestion": "按配置器登记→build/init/configure→实际filter添加→排序的流程表述；195、396行也改为默认启用的配置项。",
+    "sources": [
+      "https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/config/annotation/web/configurers/PortMapperConfigurer.html"
+    ]
+  },
+  {
+    "article": 167,
+    "line": 15,
+    "type": "适用条件",
+    "quote": "@Bean用在第三方类",
+    "problem": "@Bean也可以用于自定义类；第三方类只是常见应用场景。",
+    "suggestion": "改为@Bean显式定义对象构造/工厂方法，特别适合不能修改源码的第三方对象。",
+    "sources": [
+      "https://docs.spring.io/spring-framework/reference/core/beans/java/basic-concepts.html"
+    ]
+  },
+  {
+    "article": 167,
+    "line": 72,
+    "type": "概念/条件遗漏",
+    "quote": "Controller/Service/Repository完全没区别；Configuration总代理",
+    "problem": "Controller供MVC识别，Repository可配合异常转换；@Configuration(proxyBeanMethods=false)不代理，prototype Bean调用也不能笼统说总返回已有单例。",
+    "suggestion": "说明共同具有组件扫描语义，各有扩展语义；代理示例限定proxyBeanMethods=true和singleton作用域。",
+    "sources": [
+      "https://docs.spring.io/spring-framework/reference/core/beans/classpath-scanning.html",
+      "https://docs.spring.io/spring-framework/reference/core/beans/java/basic-concepts.html"
+    ]
+  },
+  {
+    "article": 167,
+    "line": 151,
+    "type": "字词错误",
+    "quote": "MySerivce；考虑一下的",
+    "problem": "类名拼错，句子误字。",
+    "suggestion": "151行MySerivce改MyService；76行改考虑以下三个类。",
+    "sources": []
+  },
+  {
+    "article": 169,
+    "line": 62,
+    "type": "概念错误",
+    "quote": "format_sql结构化打印",
+    "problem": "Hibernate format_sql只是格式化SQL缩进和换行，不等于JSON/字段化结构化日志。",
+    "suggestion": "改为格式化/美化SQL；区分show_sql控制台输出、logger和参数绑定日志类别（Hibernate5/6不同）。",
+    "sources": [
+      "https://docs.jboss.org/hibernate/orm/6.6/userguide/html_single/Hibernate_User_Guide.html#settings-logging"
+    ]
+  },
+  {
+    "article": 171,
+    "line": 127,
+    "type": "事实错误",
+    "quote": "每个用户发消息update_id+1",
+    "problem": "update_id属于bot的Update序列，包含多用户和多种事件；长时间无新Update后下一个ID可随机选择。",
+    "suggestion": "按bot更新流维护max(update_id)+1游标；不是每用户独立消息计数。",
+    "sources": [
+      "https://core.telegram.org/bots/api#update"
+    ]
+  },
+  {
+    "article": 171,
+    "line": 354,
+    "type": "事实错误",
+    "quote": "reply keyboard不允许随意输入",
+    "problem": "ReplyKeyboardMarkup只是提供输入按钮，用户仍可手工输入其他文本，不能替代服务端校验。",
+    "suggestion": "说明仍需检查消息值；若需要明确的回调动作可用inline callback_data，但同样校验输入。",
+    "sources": [
+      "https://core.telegram.org/bots/api#replykeyboardmarkup"
+    ]
+  },
+  {
+    "article": 171,
+    "line": 110,
+    "type": "协议表述错误",
+    "quote": "每次请求重新创建HTTP连接",
+    "problem": "独立HTTP请求不必每次建立新TCP/TLS连接，连接可复用；长轮询是在一个请求上等待。",
+    "suggestion": "将110行等新建HTTP连接改为发起下一次HTTP请求，区分请求生命周期和底层连接复用。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc9110.html#section-3.3"
+    ]
+  },
+  {
+    "article": 171,
+    "line": 89,
+    "type": "字词错误",
+    "quote": "没有用户消息是",
+    "problem": "应为没有用户消息时。",
+    "suggestion": "89行是→时；50行删除重复的要么。",
+    "sources": []
+  },
+  {
+    "article": 172,
+    "line": 112,
+    "type": "依赖遗漏",
+    "quote": "application.job_queue.run_repeating",
+    "problem": "JobQueue是可选依赖，普通安装python-telegram-bot可能使job_queue为None，示例会失败。",
+    "suggestion": "补安装python-telegram-bot[job-queue]的命令；说明告警定时任务与接收Update的polling互不等价。",
+    "sources": [
+      "https://docs.python-telegram-bot.org/en/stable/telegram.ext.jobqueue.html"
+    ]
+  },
+  {
+    "article": 172,
+    "line": 128,
+    "type": "适用条件",
+    "quote": "webhook性能一定比轮询更好",
+    "problem": "长轮询不会不断制造无意义的短轮询请求；两种方案的资源/延迟受连接、流量与托管方式影响，不能无条件排名。",
+    "suggestion": "比较长轮询与webhook适用部署条件；66行明确库默认通常使用长轮询。",
+    "sources": [
+      "https://core.telegram.org/bots/api#getupdates"
+    ]
+  },
+  {
+    "article": 172,
+    "line": 23,
+    "type": "字词错误",
+    "quote": "按一下顺序",
+    "problem": "应为按以下顺序。",
+    "suggestion": "改为按以下顺序。",
+    "sources": []
+  },
+  {
+    "article": 173,
+    "line": 19,
+    "type": "事实错误",
+    "quote": "HTTP Code怎么用从来没有统一标准",
+    "problem": "HTTP状态码语义由RFC定义，具体业务错误映射可由团队约定。引用中的所有4xx都无重试意义也有429等反例。",
+    "suggestion": "区分协议标准与业务映射规范；给引文加注：429可按Retry-After重试，5xx也不是全部可无条件重试。RFC7807已有RFC9457替代。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "https://www.rfc-editor.org/rfc/rfc6585.html#section-4",
+      "https://www.rfc-editor.org/rfc/rfc9457.html"
+    ]
+  },
+  {
+    "article": 174,
+    "line": 408,
+    "type": "事实错误",
+    "quote": "raise_for_status针对所有非2xx",
+    "problem": "Requests仅对400～599范围状态码抛HTTPError，3xx等不因这个方法失败。",
+    "suggestion": "改为4xx/5xx；若业务要求严格2xx，应另做200<=status_code<300判断。",
+    "sources": [
+      "https://requests.readthedocs.io/en/latest/_modules/requests/models/"
+    ]
+  },
+  {
+    "article": 174,
+    "line": 402,
+    "type": "适用条件",
+    "quote": "time.monotonic加流读取可硬限制总时长",
+    "problem": "仅在读取间隙检查计时无法中断当前阻塞读取，还受DNS和单次socket等待等影响。",
+    "suggestion": "区分协作式截止时间和可取消的硬期限；将剩余预算传递到每一步，或使用有总deadline/取消能力的客户端和执行机制。",
+    "sources": [
+      "https://requests.readthedocs.io/en/latest/user/advanced/#timeouts",
+      "https://docs.python.org/3/library/time.html#time.monotonic"
+    ]
+  },
+  {
+    "article": 174,
+    "line": 22,
+    "type": "字词错误",
+    "quote": "Server Internal Error；受到；ConnctionError；不可以",
+    "problem": "HTTP常用名称为Internal Server Error；其余按上下文为收到、ConnectionError、不可用。",
+    "suggestion": "22行改Internal Server Error；35/408行受到→收到；236行ConnctionError→ConnectionError；503行不可以→不可用。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc9110.html#section-15.6.1"
+    ]
+  },
+  {
+    "article": 175,
+    "line": 89,
+    "type": "技术断言错误",
+    "quote": "不可以在CPU密集型任务使用CPython",
+    "problem": "CPython可执行CPU密集任务；NumPy等释放GIL的原生扩展、多进程或适当工作量都可使用。",
+    "suggestion": "改为纯Python字节码CPU密集任务的多线程受GIL约束，需按库实现和性能预算选方案。",
+    "sources": [
+      "https://docs.python.org/3/library/threading.html#gil-and-performance-considerations"
+    ]
+  },
+  {
+    "article": 175,
+    "line": 29,
+    "type": "字词错误",
+    "quote": "旳；21世界；人力成文",
+    "problem": "分别应为的、21世纪、人力成本。",
+    "suggestion": "29行旳→的；31行世界→世纪；91行成文→成本。",
+    "sources": []
+  }
+]

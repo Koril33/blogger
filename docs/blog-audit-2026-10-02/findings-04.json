@@ -1,0 +1,646 @@
+[
+  {
+    "article": 100,
+    "line": 18,
+    "type": "事实错误",
+    "quote": "每台主机…IPv4",
+    "problem": "互联网还使用 IPv6，主机不必都具有 IPv4 地址。",
+    "suggestion": "限定本节讨论 IPv4，并介绍 IPv6 为128位；通过NAT访问互联网的终端不必各自拥有公网IPv4（L54）。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc8200.html",
+      "https://www.rfc-editor.org/rfc/rfc3022.html"
+    ]
+  },
+  {
+    "article": 100,
+    "line": 26,
+    "type": "事实错误",
+    "quote": "应对苏联核打击…分布式指挥系统",
+    "problem": "把 RAND 的抗毁通信研究与 ARPANET 的建设目标混为一谈。",
+    "suggestion": "改为：ARPANET 以计算机资源共享等研究需求为目标；抗核战争起源说是流传的误解。",
+    "sources": [
+      "https://www.internetsociety.org/wp-content/uploads/2017/09/ISOC-History-of-the-Internet_2012Oct.pdf"
+    ]
+  },
+  {
+    "article": 100,
+    "line": 80,
+    "type": "事实错误",
+    "quote": "google.com…www.google.com.",
+    "problem": "www.google.com. 和 google.com. 是两个不同的 DNS 名称。",
+    "suggestion": "google.com 的绝对名称写 google.com.；www.google.com 的绝对名称写 www.google.com.。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc1034.html"
+    ]
+  },
+  {
+    "article": 100,
+    "line": 94,
+    "type": "事实错误",
+    "quote": "13 个独立的 IP 地址…UDP",
+    "problem": "13 指 A～M 的根服务器标识；每个标识有 IPv4 和 IPv6，DNS 也支持 TCP。512字节历史限制不等同一般MTU。",
+    "suggestion": "改为13个命名权威服务器标识及任播实例；区分传统UDP512字节、EDNS扩展和TCP。",
+    "sources": [
+      "https://www.iana.org/domains/root/servers",
+      "https://root-servers.org/faq/",
+      "https://www.rfc-editor.org/rfc/rfc7766.html"
+    ]
+  },
+  {
+    "article": 100,
+    "line": 175,
+    "type": "事实错误",
+    "quote": "所有域名解析…先从根域…VeriSign…对应IP",
+    "problem": "缓存命中无需每次查询根；com 通常返回 google.com 的权威服务器委派，具体主机地址由该域权威服务器返回。",
+    "suggestion": "重写为：递归解析器查缓存，必要时按根→TLD→域权威服务器迭代，再缓存结果。NS记录指向名称，不等于A记录（L191）。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc1034.html"
+    ]
+  },
+  {
+    "article": 100,
+    "line": 44,
+    "type": "字词/链接错误",
+    "quote": "全程；APRANET；goog.com.；注册管理结构",
+    "problem": "术语拼写错误；L101 链接目标含中文。",
+    "suggestion": "改为全称、ARPANET、google.com.、注册管理机构；根服务器链接目标仅留 https://root-servers.org/。",
+    "sources": []
+  },
+  {
+    "article": 101,
+    "line": 39,
+    "type": "字词错误",
+    "quote": "Differential Services；显示拥塞通告；已下",
+    "problem": "DSCP 的展开应为 Differentiated Services Code Point；Explicit 应译“显式”。",
+    "suggestion": "改为“Differentiated Services Code Point”“显式拥塞通知”；L109改“以下”。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc2474.html",
+      "https://www.rfc-editor.org/rfc/rfc3168.html"
+    ]
+  },
+  {
+    "article": 101,
+    "line": 75,
+    "type": "事实错误",
+    "quote": "上层的协议（这里是运输层）…仅…目的地",
+    "problem": "Protocol 可指 ICMP、IP封装等，并非全是传输层；中间防火墙和路由设备也可能读取该字段。",
+    "suggestion": "改为：标识封装的上层协议，例如 TCP=6、UDP=17、ICMP=1；删除“仅在目的地使用”。",
+    "sources": [
+      "https://www.iana.org/assignments/protocol-numbers"
+    ]
+  },
+  {
+    "article": 101,
+    "line": 93,
+    "type": "事实错误",
+    "quote": "Options…仅在实验中使用",
+    "problem": "IPv4 选项并不只用于实验，标准有 Record Route、Timestamp、Router Alert 等。",
+    "suggestion": "改为：可选字段，普通数据流中较少使用，处理/过滤受设备实现与策略影响。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc791.html",
+      "https://www.rfc-editor.org/rfc/rfc2113.html"
+    ]
+  },
+  {
+    "article": 102,
+    "line": 27,
+    "type": "事实错误",
+    "quote": "永远不变…EPROM（一种闪存）",
+    "problem": "MAC 可本地管理/随机化，不天然唯一不变；EPROM 不是 flash 的同义词。",
+    "suggestion": "区分厂商分配的永久地址与实际使用的本地管理地址；删除烧录介质的绝对断言，EPROM 与 EEPROM/flash 区分。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc7042.html"
+    ]
+  },
+  {
+    "article": 102,
+    "line": 78,
+    "type": "示例错误",
+    "quote": "33-33-33-33-33-33",
+    "problem": "首字节0x33最低位为1，表示组播地址，不适合作为普通主机单播MAC示例。",
+    "suggestion": "用02开头的本地管理单播地址，例如02-00-00-00-00-03；示意值明确不是真实厂商分配。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc7042.html"
+    ]
+  },
+  {
+    "article": 102,
+    "line": 122,
+    "type": "适用条件",
+    "quote": "目标MAC…00-00-00-00-00-00",
+    "problem": "ARP 请求的目标硬件地址在请求中未知，RFC并未强制必须全部为0。",
+    "suggestion": "改为：通常填零；接收方不应依赖该字段的某一固定值。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc826.html"
+    ]
+  },
+  {
+    "article": 102,
+    "line": 17,
+    "type": "字词错误",
+    "quote": "文本意欲；在在",
+    "problem": "改“本文意欲”；L100删除重复“在”。",
+    "suggestion": "按以上两处修改。",
+    "sources": []
+  },
+  {
+    "article": 103,
+    "line": 29,
+    "type": "事实错误",
+    "quote": "1048576 个比特位",
+    "problem": "网络 Mbps 使用十进制兆。",
+    "suggestion": "改为1 Mbps=1,000,000 bit/s；L107若单位KB按十进制，则455KB/s=3.64Mbps；若实为KiB/s，则约3.72736Mbps，明确截图软件计量方式。",
+    "sources": [
+      "https://www.nist.gov/pml/owm/metric-si-prefixes"
+    ]
+  },
+  {
+    "article": 103,
+    "line": 39,
+    "type": "事实错误",
+    "quote": "2010…不到4M一概窄带",
+    "problem": "不存在跨国家、机构和时代通用的4Mbps宽带分界。",
+    "suggestion": "删去“一概”的全球断言；需要阈值时注明具体机构、文件和年份。",
+    "sources": [
+      "https://www.itu.int/itunews/issue/2001/06/broadband.html"
+    ]
+  },
+  {
+    "article": 103,
+    "line": 67,
+    "type": "概念混淆",
+    "quote": "吞吐量…req/s…不会超过带宽",
+    "problem": "req/s是应用吞吐量；网络吞吐率按bit/s计。不同量纲不能直接比较。",
+    "suggestion": "分开定义应用请求吞吐量与网络吞吐率；给定每请求数据量后才可估算带宽上限。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc1242.html"
+    ]
+  },
+  {
+    "article": 104,
+    "line": 91,
+    "type": "事实错误",
+    "quote": "没有必要再使用MAC协议（Multiple Access Control）",
+    "problem": "MAC 通常展开为 Media Access Control；全双工交换以太网不需要CSMA/CD争用，但仍有MAC子层、地址和帧格式。",
+    "suggestion": "改为：全双工点对点链路不发生碰撞，无需CSMA/CD；MAC机制仍存在。",
+    "sources": [
+      "https://www.cisco.com/c/en/us/support/docs/lan-switching/ethernet/100581-duplex.html"
+    ]
+  },
+  {
+    "article": 104,
+    "line": 63,
+    "type": "事实/字词错误",
+    "quote": "1887…证明以太并不存在",
+    "problem": "实验没有检测到预期的以太风，单次实验不能概括成直接证明所有以太理论不存在。人名拼写也有误。",
+    "suggestion": "改为“迈克耳孙—莫雷实验未检测到预期的以太风”；L49人名改 Robert Melancton Metcalfe；L57短矩离→短距离，L83同轴电联→同轴电缆。",
+    "sources": [
+      "https://history.aip.org/exhibits/gap/Michelson/Michelson.html",
+      "https://amturing.acm.org/award_winners/metcalfe_3968159.cfm"
+    ]
+  },
+  {
+    "article": 106,
+    "line": 58,
+    "type": "事实错误",
+    "quote": "必须加单位…否则单位是字节",
+    "problem": "两句话互相矛盾；Nginx 允许不带单位的字节数。",
+    "suggestion": "改为：可用字节数，或k/m后缀；0表示关闭该检查；配置修改一般reload即可，无需必须重启。",
+    "sources": [
+      "https://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size"
+    ]
+  },
+  {
+    "article": 108,
+    "line": 46,
+    "type": "配置错误",
+    "quote": "include /etc/nginx/conf.d/*.conf",
+    "problem": "缺少指令末尾的分号。",
+    "suggestion": "改为 include /etc/nginx/conf.d/*.conf;；L79“所有”改“所以”。",
+    "sources": [
+      "https://nginx.org/en/docs/ngx_core_module.html#include"
+    ]
+  },
+  {
+    "article": 109,
+    "line": 222,
+    "type": "概念错误",
+    "quote": "浏览器就是…正向代理",
+    "problem": "浏览器通常是HTTP客户端，正向代理是替客户端转发请求的中间服务。",
+    "suggestion": "用浏览器→正向代理→目标站点举例；反向代理隐藏上游只是拓扑效果，不能直接保证安全。",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc9110.html#name-intermediaries"
+    ]
+  },
+  {
+    "article": 109,
+    "line": 43,
+    "type": "概念混淆",
+    "quote": "Servlet…交互协议",
+    "problem": "Servlet与WSGI是程序接口规范，不能与FastCGI一概当成网络通信协议。",
+    "suggestion": "分别说明API/调用接口与进程间或网络协议；Web服务器也能通过模块/CGI处理动态内容，避免“力不从心”被理解为不支持动态内容。",
+    "sources": [
+      "https://jakarta.ee/specifications/servlet/6.0/",
+      "https://peps.python.org/pep-3333/"
+    ]
+  },
+  {
+    "article": 109,
+    "line": 81,
+    "type": "事实错误",
+    "quote": "默认日志存在…没有起作用",
+    "problem": "reopen 会重新打开配置的日志文件，且可调整日志文件所有者；并非存在时无操作。",
+    "suggestion": "写为：常用于日志轮转后让worker切换到新日志文件；reload为重载配置。",
+    "sources": [
+      "https://nginx.org/en/docs/control.html"
+    ]
+  },
+  {
+    "article": 109,
+    "line": 121,
+    "type": "字词/链接错误",
+    "quote": "192.168.41.180.80；imags；做用",
+    "problem": "端口前应是冒号，images和作用拼错；L147URL含中文。",
+    "suggestion": "改为192.168.41.180:80、images、作用；删链接目标中的“，但是默认”。",
+    "sources": []
+  },
+  {
+    "article": 111,
+    "line": 81,
+    "type": "字词错误",
+    "quote": "所有，建立；顺势状态",
+    "problem": "分别应为“所以，建立”“瞬时状态”（L101）。",
+    "suggestion": "按这两处修改。",
+    "sources": []
+  },
+  {
+    "article": 112,
+    "line": 140,
+    "type": "事实错误",
+    "quote": "所有日志记录必填字段",
+    "problem": "OTel data model 明确顶层字段均为可选；语义统一不意味着每条记录都有值。",
+    "suggestion": "改为：顶层字段有固定语义，缺失或无效时按规范处理；应用可以另外制定自己的必填字段规范。",
+    "sources": [
+      "https://opentelemetry.io/docs/specs/otel/logs/data-model/"
+    ]
+  },
+  {
+    "article": 112,
+    "line": 76,
+    "type": "术语错误",
+    "quote": "传统日志（Common Log Format, CLF）",
+    "problem": "CLF 是特定的HTTP访问日志格式，并非任意纯文本应用日志的总称。",
+    "suggestion": "改为自由格式文本日志；若介绍CLF，使用它的标准字段和示例。",
+    "sources": [
+      "https://httpd.apache.org/docs/2.4/logs.html#common"
+    ]
+  },
+  {
+    "article": 112,
+    "line": 82,
+    "type": "字词/格式错误",
+    "quote": "protobub；(python-json-logger)[…]",
+    "problem": "应为protobuf；Markdown链接括号方向错误；L11“触发”应为“出发”。",
+    "suggestion": "改为Protobuf；链接改为 [python-json-logger](https://pypi.org/project/python-json-logger/)；“身体”译为日志正文（L155）。",
+    "sources": []
+  },
+  {
+    "article": 113,
+    "line": 40,
+    "type": "适用条件",
+    "quote": "一个服务挂了不影响另外一个",
+    "problem": "进程独立不等于业务独立；filer/s3/volume/master之间存在依赖。",
+    "suggestion": "改为：独立进程可单独管理和扩容，但某组件故障仍可能影响存储读写；需按组件和副本策略讨论可用性。",
+    "sources": [
+      "https://github.com/seaweedfs/seaweedfs/wiki/Components"
+    ]
+  },
+  {
+    "article": 113,
+    "line": 178,
+    "type": "术语错误",
+    "quote": "aws 配置用户名和密码",
+    "problem": "aws configure 的对应项是 Access Key ID / Secret Access Key，不是identities的name与密码。",
+    "suggestion": "明确填s3.json.credentials中的accessKey/secretKey，不把用户名称当成Access Key。",
+    "sources": [
+      "https://github.com/seaweedfs/seaweedfs/wiki/Amazon-S3-API"
+    ]
+  },
+  {
+    "article": 114,
+    "line": 36,
+    "type": "事实错误",
+    "quote": "Java…所有整型都是有符号",
+    "problem": "Java 的 char 也是整数类型，是无符号16位UTF-16码元。",
+    "suggestion": "限定byte/short/int/long为有符号；char范围0～65535。",
+    "sources": [
+      "https://docs.oracle.com/javase/specs/jls/se17/html/jls-4.html"
+    ]
+  },
+  {
+    "article": 114,
+    "line": 81,
+    "type": "适用条件",
+    "quote": "unsigned 0-255；signed -128-127",
+    "problem": "C char 为1个C字节，CHAR_BIT不一定8；旧标准signed char表示法也不能无条件断言-128。",
+    "suggestion": "在STC/MinGW示例中写明CHAR_BIT=8、二补码；可移植代码以limits.h为准；plain char、signed char、unsigned char是不同类型。",
+    "sources": [
+      "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+    ]
+  },
+  {
+    "article": 114,
+    "line": 94,
+    "type": "适用条件",
+    "quote": "高位会被截掉",
+    "problem": "数值转换不是普遍意义的“按位截断”；超出有符号类型范围时旧C标准结果依实现。",
+    "suggestion": "区分代表ASCII A的值转换与超范围转换；写明目标编译器/标准版本；L75“却决”改“取决”。",
+    "sources": [
+      "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+    ]
+  },
+  {
+    "article": 116,
+    "line": 27,
+    "type": "事实错误",
+    "quote": "未实现Comparable…TimSort",
+    "problem": "选择TimSort还是ComparableTimSort取决于是否传入Comparator，不由类是否实现Comparable单独决定。",
+    "suggestion": "将分类改为：按自然顺序/未传比较器与显式传比较器；同一类可走两种排序；算法描述注明所查OpenJDK版本。",
+    "sources": [
+      "https://github.com/openjdk/jdk8u/blob/master/jdk/src/share/classes/java/util/Arrays.java"
+    ]
+  },
+  {
+    "article": 116,
+    "line": 327,
+    "type": "事实错误",
+    "quote": "Number 类型的 compareTo",
+    "problem": "Number 基类没有compareTo，也不实现Comparable；Integer、Double等具体类实现。",
+    "suggestion": "改为Integer/Double等数值包装类；自然顺序不是必然按某个数值升序，是类型定义的排序规则。",
+    "sources": [
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html"
+    ]
+  },
+  {
+    "article": 116,
+    "line": 398,
+    "type": "字词错误",
+    "quote": "简答；Array.sort；先，；不在赘述",
+    "problem": "应为简单、Arrays.sort；L445末尾“先，”是残留；L763为不再。",
+    "suggestion": "按以上位置修正。",
+    "sources": []
+  },
+  {
+    "article": 117,
+    "line": 27,
+    "type": "术语错误",
+    "quote": "NIO…Non-Blocking Input/Output",
+    "problem": "NIO原意为New I/O，包含buffer/channel/selector等；部分channel支持非阻塞，不代表全部非阻塞。",
+    "suggestion": "改为New I/O；明确FileChannel不提供这种非阻塞模式。",
+    "sources": [
+      "https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html"
+    ]
+  },
+  {
+    "article": 117,
+    "line": 660,
+    "type": "适用条件",
+    "quote": "Java…使用UTF-16…本地字符集",
+    "problem": "char/Reader的逻辑单位为UTF-16码元；String物理存储和文件默认字符集并非一律UTF-16或本地字符集。",
+    "suggestion": "按Java版本说明：Java9后compact strings可用字节数组，Java18后默认字符集通常UTF-8；文件读写建议显式指定编码。",
+    "sources": [
+      "https://openjdk.org/jeps/254",
+      "https://openjdk.org/jeps/400"
+    ]
+  },
+  {
+    "article": 118,
+    "line": 134,
+    "type": "事实错误",
+    "quote": "Path为空…返回当前Path",
+    "problem": "这里是empty path，不是null；null会抛NullPointerException。",
+    "suggestion": "改为：参数表示空路径时返回原路径；参数为null会抛异常。",
+    "sources": [
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html#resolve(java.nio.file.Path)"
+    ]
+  },
+  {
+    "article": 118,
+    "line": 393,
+    "type": "事实错误",
+    "quote": "成功返回true，否则false",
+    "problem": "false只表示文件不存在，权限/非空目录/其他I/O错误仍会抛异常。",
+    "suggestion": "改为：删除成功true，不存在false；其余失败按异常处理。",
+    "sources": [
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Files.html#deleteIfExists(java.nio.file.Path)"
+    ]
+  },
+  {
+    "article": 118,
+    "line": 403,
+    "type": "字词/代码错误",
+    "quote": "readAllByte；SKIP_SIBLING；BasicFileAttribute",
+    "problem": "正确名称分别为readAllBytes、SKIP_SIBLINGS、BasicFileAttributes（L610/L538）。",
+    "suggestion": "修正名称；L603加入→假如，L409c:\\User→与前文一致的C:\\Users；文件系统不要译成文档系统。",
+    "sources": []
+  },
+  {
+    "article": 119,
+    "line": 112,
+    "type": "字词错误",
+    "quote": "SuppressWarning",
+    "problem": "官方注解为SuppressWarnings。",
+    "suggestion": "补末尾s；示例注解也同步检查。",
+    "sources": [
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/SuppressWarnings.html"
+    ]
+  },
+  {
+    "article": 120,
+    "line": 112,
+    "type": "事实错误",
+    "quote": "运行时系统将终止",
+    "problem": "未捕获异常通常终止当前线程；不一定终止整个JVM/进程。",
+    "suggestion": "改为：交给线程的未捕获异常处理器后，该线程终止；是否导致JVM退出取决于其他非守护线程等。",
+    "sources": [
+      "https://docs.oracle.com/javase/specs/jls/se17/html/jls-11.html"
+    ]
+  },
+  {
+    "article": 120,
+    "line": 274,
+    "type": "事实错误",
+    "quote": "每个try…至少一个catch",
+    "problem": "try-finally可以没有catch；try-with-resources也可以没有catch。受检异常还可以由throws传播。",
+    "suggestion": "限定当前需要在本方法处理IOException的示例，不当作Java语法通则。",
+    "sources": [
+      "https://docs.oracle.com/javase/specs/jls/se17/html/jls-14.html#jls-14.20"
+    ]
+  },
+  {
+    "article": 120,
+    "line": 222,
+    "type": "事实错误",
+    "quote": "FileWrite…不存在的文件名…IOException",
+    "problem": "FileWriter通常会创建不存在的目标文件；父目录不存在、无权限等才会失败。",
+    "suggestion": "改为：目标是目录、父路径不存在或无写权限等会抛IOException；名称FileWrite改FileWriter。",
+    "sources": [
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/FileWriter.html"
+    ]
+  },
+  {
+    "article": 120,
+    "line": 496,
+    "type": "事实错误",
+    "quote": "总是与throw语句一起引发",
+    "problem": "空指针、数组越界等可由JVM隐式抛出，不需要源码出现throw。",
+    "suggestion": "改为：异常可显式throw或由表达式求值/JVM检测隐式产生。",
+    "sources": [
+      "https://docs.oracle.com/javase/specs/jls/se17/html/jls-11.html"
+    ]
+  },
+  {
+    "article": 120,
+    "line": 771,
+    "type": "事实错误",
+    "quote": "没法…任何恢复…无法继续",
+    "problem": "RuntimeException可捕获并让外层请求、任务或线程继续；“不应该恢复”是设计判断而非语言限制。",
+    "suggestion": "改为：通常应修正调用/逻辑错误；有明确边界时可以隔离失败任务，不能称无法恢复。",
+    "sources": [
+      "https://docs.oracle.com/javase/specs/jls/se17/html/jls-11.html"
+    ]
+  },
+  {
+    "article": 120,
+    "line": 963,
+    "type": "事实错误",
+    "quote": "FileNotFoundException没有后代",
+    "problem": "它不是final，用户可以继承，catch也会匹配其子类。Exception不是Throwable层级的顶端（L999）。",
+    "suggestion": "改为：捕获FileNotFoundException及其子类；Throwable为顶层，Exception和Error是不同分支。",
+    "sources": [
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/FileNotFoundException.html"
+    ]
+  },
+  {
+    "article": 120,
+    "line": 74,
+    "type": "字词错误",
+    "quote": "早上的；推出；抱错；列子；一推；再合适",
+    "problem": "分别应为造成的、退出、报错、例子、一堆、在合适（L396/L549/L765/L862/L937）。",
+    "suggestion": "并统一try-with-resources（复数），修正FileReader/FileWriter示例描述不一致（L347）。",
+    "sources": []
+  },
+  {
+    "article": 121,
+    "line": 97,
+    "type": "适用条件",
+    "quote": "时间戳相减除86400…正确",
+    "problem": "当地日期间隔遇到夏令时可含23/25小时；日期差与完整24小时段数不相同。",
+    "suggestion": "日历日期差用ChronoUnit.DAYS.between(LocalDate,LocalDate)或toEpochDay；实际时长用Instant/Duration并说明24小时的含义。",
+    "sources": [
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Period.html",
+      "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html"
+    ]
+  },
+  {
+    "article": 122,
+    "line": 15,
+    "type": "字词错误",
+    "quote": "指的是是；加入；平台放上",
+    "problem": "删重复是；L41加入→假如；L25→各个平台上运行。",
+    "suggestion": "按这几处修改。",
+    "sources": []
+  },
+  {
+    "article": 123,
+    "line": 341,
+    "type": "事实错误",
+    "quote": "一旦TTL到期…被删除",
+    "problem": "TTLCache过期后不可访问，但底层内存可以直到修改操作或expire才被释放。",
+    "suggestion": "改为逻辑过期与实际清除分离；并说明TTLCache和TLRUCache也含LRU容量淘汰策略。",
+    "sources": [
+      "https://cachetools.readthedocs.io/en/stable/"
+    ]
+  },
+  {
+    "article": 123,
+    "line": 276,
+    "type": "字词错误",
+    "quote": "冷问",
+    "problem": "错字。",
+    "suggestion": "改为冷门。",
+    "sources": []
+  },
+  {
+    "article": 124,
+    "line": 383,
+    "type": "版本/事实说明",
+    "quote": "附加到根Logger的Filter",
+    "problem": "原PEP保留该表述，但现代logging不会对从子logger传播的record执行祖先logger的filter。",
+    "suggestion": "译文保留历史原文，加译者注：全局过滤应把Filter放到root的Handler；setRollover同样注明是历史提案API。",
+    "sources": [
+      "https://docs.python.org/3/library/logging.html",
+      "https://peps.python.org/pep-0282/"
+    ]
+  },
+  {
+    "article": 124,
+    "line": 268,
+    "type": "字词错误",
+    "quote": "setlevel；对象门；配制；版本呢；(asctime)s",
+    "problem": "应为setLevel、对象们、配置、版本；格式占位符缺%。",
+    "suggestion": "L134/L190对象门→对象们；L136配制→配置；L27删除呢；L363补为%(asctime)s。",
+    "sources": []
+  },
+  {
+    "article": 127,
+    "line": 48,
+    "type": "事实错误",
+    "quote": "Defaults to80…For lossless…effort",
+    "problem": "引用的是WebP参数而不是JPEG；JPEG默认quality=75。",
+    "suggestion": "替换为Pillow JPEG小节说明：默认75，通常避免>95；不要把lossless压缩努力程度套到JPEG。",
+    "sources": [
+      "https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html#jpeg"
+    ]
+  },
+  {
+    "article": 128,
+    "line": 78,
+    "type": "代码错误",
+    "quote": "app_logger.exception…smtp task failed",
+    "problem": "告警发送失败又调用同一个配置了告警handler的logger，会递归提交告警；ntfy L103同样存在。",
+    "suggestion": "使用仅文件/控制台handler的独立内部logger（propagate=False），或在handler失败时用安全fallback；增加有界队列/限流，防止失败风暴。",
+    "sources": [
+      "https://docs.python.org/3/library/logging.html"
+    ]
+  },
+  {
+    "article": 128,
+    "line": 15,
+    "type": "字词错误",
+    "quote": "可能就够用了",
+    "problem": "与下文转向dictConfig的理由相反，缺“不”字。",
+    "suggestion": "改为“可能就不够用了”。",
+    "sources": []
+  },
+  {
+    "article": 129,
+    "line": 167,
+    "type": "事实错误",
+    "quote": "多线程并不是运行在多核…单核CPU",
+    "problem": "GIL限制的是同一解释器同时执行Python字节码的线程数，不会把机器变成单核；释放GIL的扩展可以并行。",
+    "suggestion": "限定到启用GIL的CPython纯Python计算；线程由OS调度且可用多个核心；补充3.13起可选free-threaded构建。",
+    "sources": [
+      "https://docs.python.org/3.13/library/threading.html"
+    ]
+  },
+  {
+    "article": 129,
+    "line": 19,
+    "type": "字词错误",
+    "quote": "收到CPU限制；pyhton",
+    "problem": "应为受到、Python（L169）。",
+    "suggestion": "按这两处修改。",
+    "sources": []
+  }
+]

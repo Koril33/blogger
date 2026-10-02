@@ -1,0 +1,362 @@
+[
+  {
+    "article": 3,
+    "line": 32,
+    "type": "字词",
+    "quote": "ESP32 IDF 框架 / ESP IDF",
+    "problem": "官方框架名为 ESP-IDF。",
+    "suggestion": "统一写为“ESP-IDF（Espressif IoT Development Framework）”。",
+    "sources": [
+      "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/index.html"
+    ]
+  },
+  {
+    "article": 4,
+    "line": 52,
+    "type": "事实",
+    "quote": "实现了…MQTT v3.1",
+    "problem": "描述不完整；Mosquitto 还实现 MQTT 3.1.1 和 5.0。",
+    "suggestion": "改为“支持 MQTT 5.0、3.1.1 和 3.1 的开源消息代理”。",
+    "sources": [
+      "https://mosquitto.org/"
+    ]
+  },
+  {
+    "article": 4,
+    "line": 659,
+    "type": "代码",
+    "quote": "messageHandler.setDefaultTopic(\"#\");",
+    "problem": "# 是订阅过滤器通配符，不能作为发布主题。当前 Gateway 显式传 topic 会覆盖它，但默认值仍无效。",
+    "suggestion": "删除该默认值或换成有效发布主题，例如 /device/led。",
+    "sources": [
+      "https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html"
+    ]
+  },
+  {
+    "article": 4,
+    "line": 6,
+    "type": "字词",
+    "quote": "后端接受 DHT11 数据 / 其在，通过 / 可订阅的的 / 匿名链接",
+    "problem": "数据到达应为“接收”；存在重复字及误字。",
+    "suggestion": "第6、70、72、396行等“接受”按语义改为“接收”；第18行改“其在通过…”；第52行删一个“的”；第80行改“匿名连接”。",
+    "sources": []
+  },
+  {
+    "article": 5,
+    "line": 17,
+    "type": "事实",
+    "quote": "用 C 实现了 Lua、Python 的编程环境",
+    "problem": "NodeMCU 的 Lua 固件与本文烧录的 MicroPython 是不同固件，不能把 Python 环境归于 NodeMCU 固件。SDK 0.9.5 也只是早期历史。",
+    "suggestion": "改为“本文使用基于 ESP8266 的 NodeMCU 开发板，烧录 MicroPython 固件；NodeMCU 原生固件主要提供 Lua 环境”。",
+    "sources": [
+      "https://github.com/nodemcu/nodemcu-firmware",
+      "https://docs.micropython.org/en/latest/esp8266/quickref.html"
+    ]
+  },
+  {
+    "article": 5,
+    "line": 102,
+    "type": "代码",
+    "quote": "wlan.connect(...)",
+    "problem": "本节只 import network，未创建 wlan，独立执行会产生 NameError。",
+    "suggestion": "在 connect 前补 wlan = network.WLAN(network.STA_IF) 和 wlan.active(True)。",
+    "sources": [
+      "https://docs.micropython.org/en/latest/esp8266/quickref.html"
+    ]
+  },
+  {
+    "article": 5,
+    "line": 83,
+    "type": "适用条件",
+    "quote": "把 LED 正极连接上 D3，负极接地",
+    "problem": "直接接裸 LED 缺少限流；GPIO0 还是启动配置引脚，外接负载需要保证复位时电平。",
+    "suggestion": "示例明确串联按电压和 LED 额定电流计算的限流电阻，并优先选非启动配置 GPIO；注明 on/off 对外接正向 LED 的条件。",
+    "sources": [
+      "https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf"
+    ]
+  },
+  {
+    "article": 7,
+    "line": 119,
+    "type": "适用条件",
+    "quote": "那就是因为芯片是 CS32F103C8T6",
+    "problem": "仅凭调试端口 ID 不匹配不能唯一识别芯片厂家/型号。",
+    "suggestion": "改为“可能是兼容芯片或目标配置与实际调试端口 ID 不匹配；先核对芯片丝印、探针和配置，再按实际 ID 设置 CPUTAPID”。",
+    "sources": [
+      "https://github.com/openocd-org/openocd/blob/master/tcl/target/stm32f1x.cfg"
+    ]
+  },
+  {
+    "article": 7,
+    "line": 124,
+    "type": "字词",
+    "quote": "改称 0x2ba01477",
+    "problem": "误字。",
+    "suggestion": "改为“改成 0x2ba01477”。",
+    "sources": []
+  },
+  {
+    "article": 8,
+    "line": 15,
+    "type": "字词",
+    "quote": "我实现学习 / Andrej Karpath / 线程的 HTTP 框架 / Keli",
+    "problem": "明显误字或拼写错误。",
+    "suggestion": "依次改“我是先学习”“Andrej Karpathy”“现成的 HTTP 框架”“Keil”；第23行“组装搬和运”改“组装和搬运”，第76行删“代码，。”中的逗号。",
+    "sources": []
+  },
+  {
+    "article": 9,
+    "line": 17,
+    "type": "事实",
+    "quote": "PB13（板载 LED）",
+    "problem": "本文所用 Blue Pill 的板载 LED 在 PC13；也与上一篇 PC13 的描述矛盾。",
+    "suggestion": "改为“PC13（此 Blue Pill 板子的板载 LED）”；其他板型以原理图为准。",
+    "sources": [
+      "https://github.com/ubogdan/STM32F103C8T6"
+    ]
+  },
+  {
+    "article": 11,
+    "line": 211,
+    "type": "代码",
+    "quote": "delay(100);",
+    "problem": "完整示例约每100ms读取一次 DHT11，超过其允许/推荐更新频率；读到缓存值或失败仍直接显示。",
+    "suggestion": "DHT11 采集间隔至少1秒（以所用传感器版本数据手册为准），检查 chk 后再更新显示；屏幕刷新与采集分开。",
+    "sources": [
+      "https://docs.micropython.org/en/latest/esp8266/tutorial/dht.html"
+    ]
+  },
+  {
+    "article": 11,
+    "line": 66,
+    "type": "字词",
+    "quote": "·![](images/DHT11接线图2.jpg) / N/C：not connect",
+    "problem": "图片行多了中点；英文通常是 not connected。",
+    "suggestion": "删去图片前“·”，将 N/C 写为“not connected（未连接）”。",
+    "sources": []
+  },
+  {
+    "article": 12,
+    "line": 34,
+    "type": "时效",
+    "quote": "安装最新的 JDK 版本，目前是 OpenJDK 11 JDK",
+    "problem": "default-jdk 安装发行版默认 JDK，不保证是上游最新版；2021年 Java 11 也已不是上游最新版本。",
+    "suggestion": "改为“本示例使用 Java 11；default-jdk 安装当前发行版默认 JDK，先用 java -version 核实”。",
+    "sources": [
+      "https://packages.debian.org/bullseye/default-jdk"
+    ]
+  },
+  {
+    "article": 12,
+    "line": 116,
+    "type": "事实",
+    "quote": "custom_domains 必须和服务端的一致",
+    "problem": "frps 无需配置同名 [web] 和 custom_domains；HTTP 代理及域名在 frpc 配置，服务端配置 vhost 端口即可。",
+    "suggestion": "删去 frps 示例的 [web] 段以及该句，说明域名需解析到 frps 公网地址，frpc custom_domains 决定路由。注明示例使用历史 INI 格式。",
+    "sources": [
+      "https://gofrp.org/en/docs/examples/vhost-http/"
+    ]
+  },
+  {
+    "article": 12,
+    "line": 175,
+    "type": "适用条件",
+    "quote": "最好接个电阻 / GPIO_01",
+    "problem": "裸 LED 的限流电阻不应作为可选项；Pi4J v1 的 RaspiPin.GPIO_01 是 WiringPi 编号，易与 BCM1/物理1脚混淆。",
+    "suggestion": "改为“串联限流电阻；本例 GPIO_01 对应 BCM18、40针排针的物理12脚”。",
+    "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio",
+      "https://www.pi4j.com/1.2/pins/model-4b-rev1.html"
+    ]
+  },
+  {
+    "article": 12,
+    "line": 51,
+    "type": "字词",
+    "quote": "Raspbin",
+    "problem": "操作系统名称拼错。",
+    "suggestion": "改为“Raspbian（现称 Raspberry Pi OS）”，并为 WiringPi 安装注明当年的发行版。",
+    "sources": []
+  },
+  {
+    "article": 13,
+    "line": 23,
+    "type": "适用条件",
+    "quote": "不太需要担心…LED 电流和功率",
+    "problem": "即使只有27颗 LED，GPIO 的单脚、端口总电流以及限流方式仍须核算。每层共用一个200Ω电阻不适用于任意多灯同时点亮。",
+    "suggestion": "改为“规模较小，但仍需核算电流；本文逐灯点亮示例使用共用层电阻，若扩展为同层多灯点亮，应每列限流并核算公共层驱动电流，必要时加三极管”。",
+    "sources": [
+      "https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf"
+    ]
+  },
+  {
+    "article": 15,
+    "line": 139,
+    "type": "适用条件",
+    "quote": "高电平…顺时针…低电平…逆时针",
+    "problem": "绝对方向依赖相线连接及观察轴端方向，不由 DIR 电平单独确定。",
+    "suggestion": "改为“改变 DIR 电平会反转方向；本接线和观察方向下，高为顺时针、低为逆时针”。",
+    "sources": [
+      "https://www.pololu.com/product/1182"
+    ]
+  },
+  {
+    "article": 15,
+    "line": 238,
+    "type": "代码",
+    "quote": "STEPS_PER_REVOLUTION 是…200",
+    "problem": "200只适用于1.8°电机全步。文章提供细分切换函数后，rotateNLoop仍固定200，细分模式的圈数会不正确。",
+    "suggestion": "每圈脉冲数按 360/步距角 × 细分倍率计算，并在切换细分时更新，或限定该函数只用于全步。",
+    "sources": [
+      "https://www.pololu.com/product/1182"
+    ]
+  },
+  {
+    "article": 15,
+    "line": 93,
+    "type": "适用条件",
+    "quote": "Continuous current per phase 1A / Maximum…2A",
+    "problem": "这是载板散热条件下的参考能力，不能当作所有A4988模块无条件连续额定值。",
+    "suggestion": "表格注明载板型号、散热条件；补充上电前按采样电阻设置电流限值 Imax=Vref/(8Rs)，不直接用供电电流代替相电流。",
+    "sources": [
+      "https://www.pololu.com/product/1182"
+    ]
+  },
+  {
+    "article": 15,
+    "line": 61,
+    "type": "字词",
+    "quote": "转自 / 驱动进程 / 输出引脚…链接 / 链接包含中文句子",
+    "problem": "“转自”应为“转子”，driver误译为“驱动进程”；第20行把中文说明拼进URL导致链接错误。",
+    "suggestion": "第61行改“转子”；第121、147、151行“驱动进程”改“驱动器”；第157行改“连接”；第20行将链接目标仅保留 https://lastminuteengineers.com/。",
+    "sources": []
+  },
+  {
+    "article": 16,
+    "line": 31,
+    "type": "翻译",
+    "quote": "当从 exc 中调用 raise NewError / 当从 None 中调用 __suppress_context__",
+    "problem": "把 Python 的 from 子句误译成“从…中调用”。",
+    "suggestion": "改为“raise NewError from exc 设置显式原因 __cause__；raise NewError from None 设置 __suppress_context__=True，抑制隐式上下文的显示”。",
+    "sources": [
+      "https://docs.python.org/3/reference/simple_stmts.html#the-raise-statement"
+    ]
+  },
+  {
+    "article": 16,
+    "line": 17,
+    "type": "事实",
+    "quote": "任何复制或序列化…都会丢弃这个三元组",
+    "problem": "浅复制不会自动丢失 exc_info；标准 pickle 不能直接序列化 traceback，直接深复制可能失败而非自动剥离。原英文也有相同泛化。",
+    "suggestion": "改为“默认 QueueHandler.prepare 会清除 exc_info；进程间传输需先转换 traceback；普通浅复制可保留 exc_info”。",
+    "sources": [
+      "https://docs.python.org/3.12/library/logging.handlers.html#logging.handlers.QueueHandler.prepare"
+    ]
+  },
+  {
+    "article": 16,
+    "line": 127,
+    "type": "代码",
+    "quote": "return json.dumps(payload, default=str)[:limit]",
+    "problem": "硬切 JSON 字符串会破坏 JSON；len(str) 限制字符数，不能保证UTF-8字节上限。原来源也存在此问题。",
+    "suggestion": "截断字段或删除帧后重新 json.dumps，并检查 len(body.encode('utf-8'))；过大时返回带 truncated=true 的合法最小 JSON。",
+    "sources": [
+      "https://docs.python.org/3/library/json.html"
+    ]
+  },
+  {
+    "article": 16,
+    "line": 132,
+    "type": "翻译",
+    "quote": "数据编辑 / 编辑敏感数据",
+    "problem": "redaction 在日志安全语境指脱敏，不是一般编辑。",
+    "suggestion": "统一改为“数据脱敏”“对日志中的敏感数据进行脱敏”。",
+    "sources": []
+  },
+  {
+    "article": 17,
+    "line": 20,
+    "type": "字词",
+    "quote": "Cognitive Technologies Labratory",
+    "problem": "实验室英文拼写错误（源网页本身也保留了该误字）。",
+    "suggestion": "改为“Cognitive Technologies Laboratory”，或在忠实转录时加译注说明原文误拼。",
+    "sources": [
+      "https://how.complexsystems.fail/"
+    ]
+  },
+  {
+    "article": 18,
+    "line": 113,
+    "type": "事实",
+    "quote": "17行 ×10,000…130,000行",
+    "problem": "按给定数字应为170,000；并发人数也不能直接等同于每秒请求数。原来源也存在数字不一致。",
+    "suggestion": "改为“若每秒10,000个请求、每个17行，则每秒170,000行”；或将前文每请求行数统一为13后再给130,000。",
+    "sources": [
+      "https://loggingsucks.com/"
+    ]
+  },
+  {
+    "article": 19,
+    "line": 168,
+    "type": "事实",
+    "quote": "模块级锁会序列化处理程序的发出",
+    "problem": "logging 的模块级锁保护共享配置；输出通常由各个 Handler 自己的锁串行化，不是所有 Handler 共用一个全局I/O锁。第505行重复同误。",
+    "suggestion": "两处改为“同一Handler的输出受其锁保护，多个线程竞争同一慢Handler时可能阻塞”。",
+    "sources": [
+      "https://docs.python.org/3/library/logging.html#thread-safety"
+    ]
+  },
+  {
+    "article": 19,
+    "line": 170,
+    "type": "事实",
+    "quote": "QueueHandler只负责…避免…格式化",
+    "problem": "默认prepare()会在生产线程调用format()、合并消息与异常文本并清除args/exc_info；只把最终I/O移到监听线程。第493、505行也重复此误。",
+    "suggestion": "明确默认仍在调用线程准备记录；若要把JSON格式化也移到监听端，不给QueueHandler配置JSON Formatter，必要时按进程内/跨进程需求覆盖prepare。",
+    "sources": [
+      "https://docs.python.org/3.12/library/logging.handlers.html#logging.handlers.QueueHandler.prepare"
+    ]
+  },
+  {
+    "article": 19,
+    "line": 133,
+    "type": "事实",
+    "quote": "把…Filter挂载到Logger…每个输出目标…一致",
+    "problem": "祖先 Logger 的 Filter 不作用于传播来的子 Logger 记录。第95、117、340行同类表述可能漏掉子模块日志。",
+    "suggestion": "若需全应用统一脱敏/补字段，把Filter挂在共同的QueueHandler（入队前）或每个产生记录的Logger上；说明祖先Logger过滤器不覆盖后代。",
+    "sources": [
+      "https://docs.python.org/3/library/logging.html#filter-objects"
+    ]
+  },
+  {
+    "article": 19,
+    "line": 121,
+    "type": "事实",
+    "quote": "json.dumps几乎完全是纯Python实现",
+    "problem": "CPython标准json模块通常使用 _json C加速器，该断言错误。",
+    "suggestion": "改为“JSON序列化仍有成本；CPython有C加速实现，实际耗时需按字段和吞吐量测量”。",
+    "sources": [
+      "https://github.com/python/cpython/blob/main/Lib/json/encoder.py"
+    ]
+  },
+  {
+    "article": 19,
+    "line": 129,
+    "type": "事实",
+    "quote": "禁用…之前创建的所有日志记录器",
+    "problem": "disable_existing_loggers=True 存在例外：配置中显式列出的记录器及其后代不会按该规则禁用，root也不是这里的全部集合。",
+    "suggestion": "改为“默认禁用已有的非root记录器，但配置中显式指定的记录器及其后代除外”。",
+    "sources": [
+      "https://docs.python.org/3/library/logging.config.html#configuration-dictionary-schema"
+    ]
+  },
+  {
+    "article": 19,
+    "line": 262,
+    "type": "字词",
+    "quote": "secerity_number / 上下文传播和行李 / 重写检测代码",
+    "problem": "severity_number拼错；baggage、instrumentation翻译不合技术语境。",
+    "suggestion": "改为“severity_number”“上下文传播与 Baggage（跨服务传播的键值上下文）”“重写插桩代码”。",
+    "sources": []
+  }
+]

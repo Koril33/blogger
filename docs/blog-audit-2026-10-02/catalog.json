@@ -1,0 +1,1052 @@
+[
+  {
+    "id": 1,
+    "path": "about/index.md",
+    "lines": 25,
+    "chars": 233
+  },
+  {
+    "id": 2,
+    "path": "hardware/Arduino/Ubuntu下的环境配置和点灯/index.md",
+    "lines": 90,
+    "chars": 1768
+  },
+  {
+    "id": 3,
+    "path": "hardware/ESP32/Ubuntu下的环境配置和点灯/index.md",
+    "lines": 83,
+    "chars": 1298
+  },
+  {
+    "id": 4,
+    "path": "hardware/NodeMCU+MQTT与后台交互信息/index.md",
+    "lines": 724,
+    "chars": 19097
+  },
+  {
+    "id": 5,
+    "path": "hardware/NodeMCU发送数据给树莓派/index.md",
+    "lines": 347,
+    "chars": 7223
+  },
+  {
+    "id": 6,
+    "path": "hardware/STC89C52/Ubuntu下的环境配置和点灯/index.md",
+    "lines": 141,
+    "chars": 2214
+  },
+  {
+    "id": 7,
+    "path": "hardware/STM32F103C8T6/Ubuntu下的环境配置和点灯/index.md",
+    "lines": 149,
+    "chars": 2864
+  },
+  {
+    "id": 8,
+    "path": "hardware/STM32F103C8T6/两种方式的点灯/index.md",
+    "lines": 91,
+    "chars": 2635
+  },
+  {
+    "id": 9,
+    "path": "hardware/STM32F103C8T6/无法再次烧录的问题/index.md",
+    "lines": 59,
+    "chars": 870
+  },
+  {
+    "id": 10,
+    "path": "hardware/使用OLED做一个简易手表/index.md",
+    "lines": 168,
+    "chars": 2749
+  },
+  {
+    "id": 11,
+    "path": "hardware/使用OLED展示DHT11的温湿度数据/index.md",
+    "lines": 268,
+    "chars": 4926
+  },
+  {
+    "id": 12,
+    "path": "hardware/使用树莓派和内网穿透远程点灯/index.md",
+    "lines": 316,
+    "chars": 6012
+  },
+  {
+    "id": 13,
+    "path": "hardware/动手制作一个3×3×3的LED光立方/index.md",
+    "lines": 278,
+    "chars": 4758
+  },
+  {
+    "id": 14,
+    "path": "hardware/木制的小台钻/index.md",
+    "lines": 52,
+    "chars": 628
+  },
+  {
+    "id": 15,
+    "path": "hardware/步进电机和A4988的控制实践/index.md",
+    "lines": 392,
+    "chars": 8222
+  },
+  {
+    "id": 16,
+    "path": "other/Exception and Traceback Logging in Python/index.md",
+    "lines": 133,
+    "chars": 5684
+  },
+  {
+    "id": 17,
+    "path": "other/How Complex Systems Fail/index.md",
+    "lines": 236,
+    "chars": 5697
+  },
+  {
+    "id": 18,
+    "path": "other/logging sucks/index.md",
+    "lines": 804,
+    "chars": 21131
+  },
+  {
+    "id": 19,
+    "path": "other/Python Logging and Structured Data Architecture Guide for SREs/index.md",
+    "lines": 505,
+    "chars": 24933
+  },
+  {
+    "id": 20,
+    "path": "software/algorithm/Myers差分算法/index.md",
+    "lines": 136,
+    "chars": 2414
+  },
+  {
+    "id": 21,
+    "path": "software/algorithm/从定时器到时间轮：速率可控任务调度算法的演进/index.md",
+    "lines": 220,
+    "chars": 4691
+  },
+  {
+    "id": 22,
+    "path": "software/algorithm/随机密码的生成/index.md",
+    "lines": 69,
+    "chars": 1415
+  },
+  {
+    "id": 23,
+    "path": "software/concurrency/Python的Thread基础/index.md",
+    "lines": 55,
+    "chars": 1356
+  },
+  {
+    "id": 24,
+    "path": "software/database/jpa/JPA+MySQL的主键选择/index.md",
+    "lines": 141,
+    "chars": 3457
+  },
+  {
+    "id": 25,
+    "path": "software/database/jpa/JPA中的枚举类型字段存储/index.md",
+    "lines": 427,
+    "chars": 8877
+  },
+  {
+    "id": 26,
+    "path": "software/database/mysql/MySQL存储树状结构的数据/index.md",
+    "lines": 357,
+    "chars": 9276
+  },
+  {
+    "id": 27,
+    "path": "software/database/mysql/MySQL数据的备份/index.md",
+    "lines": 166,
+    "chars": 3110
+  },
+  {
+    "id": 28,
+    "path": "software/database/mysql/MySQL的事务/index.md",
+    "lines": 299,
+    "chars": 6672
+  },
+  {
+    "id": 29,
+    "path": "software/database/mysql/MySQL的索引/index.md",
+    "lines": 82,
+    "chars": 1835
+  },
+  {
+    "id": 30,
+    "path": "software/database/ORM是什么/index.md",
+    "lines": 203,
+    "chars": 5343
+  },
+  {
+    "id": 31,
+    "path": "software/database/postgresql/PG的字符类型/index.md",
+    "lines": 58,
+    "chars": 1385
+  },
+  {
+    "id": 32,
+    "path": "software/database/postgresql/创建数据库、模式和表/index.md",
+    "lines": 233,
+    "chars": 3153
+  },
+  {
+    "id": 33,
+    "path": "software/database/postgresql/表连接/index.md",
+    "lines": 73,
+    "chars": 1745
+  },
+  {
+    "id": 34,
+    "path": "software/database/postgresql/角色、用户和权限/index.md",
+    "lines": 177,
+    "chars": 3632
+  },
+  {
+    "id": 35,
+    "path": "software/database/redis/redis-py中连接池的使用/index.md",
+    "lines": 337,
+    "chars": 6504
+  },
+  {
+    "id": 36,
+    "path": "software/database/redis/redis的string类型/index.md",
+    "lines": 63,
+    "chars": 1015
+  },
+  {
+    "id": 37,
+    "path": "software/database/redis/redis的配置文件/index.md",
+    "lines": 138,
+    "chars": 3189
+  },
+  {
+    "id": 38,
+    "path": "software/database/SQLAlchemy入门/index.md",
+    "lines": 32,
+    "chars": 666
+  },
+  {
+    "id": 39,
+    "path": "software/database/sqlite/sqlite创建表/index.md",
+    "lines": 125,
+    "chars": 2673
+  },
+  {
+    "id": 40,
+    "path": "software/database/sqlite/sqlite命令行下的命令解释/index.md",
+    "lines": 153,
+    "chars": 5735
+  },
+  {
+    "id": 41,
+    "path": "software/database/sqlite/sqlite的数据类型/index.md",
+    "lines": 71,
+    "chars": 1805
+  },
+  {
+    "id": 42,
+    "path": "software/database/SQL中的各种连接/index.md",
+    "lines": 501,
+    "chars": 8837
+  },
+  {
+    "id": 43,
+    "path": "software/docker/Docker挂代理/index.md",
+    "lines": 31,
+    "chars": 428
+  },
+  {
+    "id": 44,
+    "path": "software/docker/Docker部署Nginx/index.md",
+    "lines": 461,
+    "chars": 11013
+  },
+  {
+    "id": 45,
+    "path": "software/docker/Docker部署SpringBoot应用/index.md",
+    "lines": 219,
+    "chars": 4990
+  },
+  {
+    "id": 46,
+    "path": "software/docker/Docker部署一个Gunicorn+Flask应用/index.md",
+    "lines": 133,
+    "chars": 2456
+  },
+  {
+    "id": 47,
+    "path": "software/elk/Elasticsearch的基本概念/index.md",
+    "lines": 217,
+    "chars": 7255
+  },
+  {
+    "id": 48,
+    "path": "software/elk/elk的搭建/index.md",
+    "lines": 199,
+    "chars": 4893
+  },
+  {
+    "id": 49,
+    "path": "software/elk/filebeat收集python日志/index.md",
+    "lines": 123,
+    "chars": 3399
+  },
+  {
+    "id": 50,
+    "path": "software/elk/filebeat的使用/index.md",
+    "lines": 180,
+    "chars": 3256
+  },
+  {
+    "id": 51,
+    "path": "software/elk/QueryDSL基础/index.md",
+    "lines": 314,
+    "chars": 5700
+  },
+  {
+    "id": 52,
+    "path": "software/fundamentals/IEEE 754标准以及0.1加0.2不等于0.3的问题/index.md",
+    "lines": 178,
+    "chars": 3925
+  },
+  {
+    "id": 53,
+    "path": "software/fundamentals/数据存储度量单位差异/index.md",
+    "lines": 29,
+    "chars": 587
+  },
+  {
+    "id": 54,
+    "path": "software/fundamentals/时间与计算机/index.md",
+    "lines": 292,
+    "chars": 9931
+  },
+  {
+    "id": 55,
+    "path": "software/fundamentals/聊聊Unicode、UTF-8、UTF-16以及UTF-32的那些事儿/index.md",
+    "lines": 492,
+    "chars": 14860
+  },
+  {
+    "id": 56,
+    "path": "software/game/逻辑帧和渲染帧/index.md",
+    "lines": 69,
+    "chars": 1457
+  },
+  {
+    "id": 57,
+    "path": "software/gtk/GTK4在Linux和Windows下的HelloWorld/index.md",
+    "lines": 130,
+    "chars": 2423
+  },
+  {
+    "id": 58,
+    "path": "software/linux/Beszel的搭建和告警配置/index.md",
+    "lines": 113,
+    "chars": 2481
+  },
+  {
+    "id": 59,
+    "path": "software/linux/CentOS+Hugo建站不完全指北/index.md",
+    "lines": 278,
+    "chars": 5802
+  },
+  {
+    "id": 60,
+    "path": "software/linux/CentOS防火墙的一些操作/index.md",
+    "lines": 93,
+    "chars": 1078
+  },
+  {
+    "id": 61,
+    "path": "software/linux/Cron在Linux中的用法/index.md",
+    "lines": 113,
+    "chars": 2864
+  },
+  {
+    "id": 62,
+    "path": "software/linux/Debian/Debian12安装jdk21/index.md",
+    "lines": 79,
+    "chars": 1098
+  },
+  {
+    "id": 63,
+    "path": "software/linux/Debian/Debian12安装MongoDB/index.md",
+    "lines": 161,
+    "chars": 3230
+  },
+  {
+    "id": 64,
+    "path": "software/linux/Debian/Debian12安装PostgreSQL/index.md",
+    "lines": 159,
+    "chars": 2999
+  },
+  {
+    "id": 65,
+    "path": "software/linux/Debian/Debian12安装Prometheus和Grafana/index.md",
+    "lines": 359,
+    "chars": 7432
+  },
+  {
+    "id": 66,
+    "path": "software/linux/Debian/Debian12安装Redis/index.md",
+    "lines": 119,
+    "chars": 1355
+  },
+  {
+    "id": 67,
+    "path": "software/linux/Debian/VirtualBox创建Debian12虚拟机/index.md",
+    "lines": 551,
+    "chars": 11843
+  },
+  {
+    "id": 68,
+    "path": "software/linux/df和du详解/index.md",
+    "lines": 111,
+    "chars": 1940
+  },
+  {
+    "id": 69,
+    "path": "software/linux/DroidCam下载和使用/index.md",
+    "lines": 127,
+    "chars": 2421
+  },
+  {
+    "id": 70,
+    "path": "software/linux/FHS文件系统规范/index.md",
+    "lines": 26,
+    "chars": 907
+  },
+  {
+    "id": 71,
+    "path": "software/linux/frp服务的使用/index.md",
+    "lines": 182,
+    "chars": 3642
+  },
+  {
+    "id": 72,
+    "path": "software/linux/Linux中与查找相关的命令/index.md",
+    "lines": 244,
+    "chars": 4390
+  },
+  {
+    "id": 73,
+    "path": "software/linux/Linux之间使用scp命令传输文件/index.md",
+    "lines": 114,
+    "chars": 2407
+  },
+  {
+    "id": 74,
+    "path": "software/linux/Linux命令行设置代理/index.md",
+    "lines": 30,
+    "chars": 516
+  },
+  {
+    "id": 75,
+    "path": "software/linux/Linux的grep命令展示匹配项的前后n行信息/index.md",
+    "lines": 36,
+    "chars": 479
+  },
+  {
+    "id": 76,
+    "path": "software/linux/Linux的排序命令sort/index.md",
+    "lines": 234,
+    "chars": 3873
+  },
+  {
+    "id": 77,
+    "path": "software/linux/Linux的权限系统/index.md",
+    "lines": 533,
+    "chars": 10279
+  },
+  {
+    "id": 78,
+    "path": "software/linux/Linux的链接/index.md",
+    "lines": 256,
+    "chars": 5990
+  },
+  {
+    "id": 79,
+    "path": "software/linux/ntfy服务的使用/index.md",
+    "lines": 148,
+    "chars": 2900
+  },
+  {
+    "id": 80,
+    "path": "software/linux/Shell的快捷键/index.md",
+    "lines": 83,
+    "chars": 1116
+  },
+  {
+    "id": 81,
+    "path": "software/linux/ssh心跳保活/index.md",
+    "lines": 53,
+    "chars": 824
+  },
+  {
+    "id": 82,
+    "path": "software/linux/SSH日志/index.md",
+    "lines": 92,
+    "chars": 1825
+  },
+  {
+    "id": 83,
+    "path": "software/linux/Top命令的一些进阶用法/index.md",
+    "lines": 302,
+    "chars": 5346
+  },
+  {
+    "id": 84,
+    "path": "software/linux/Ubuntu/TextEditor中文输入重复显示的BUG/index.md",
+    "lines": 37,
+    "chars": 444
+  },
+  {
+    "id": 85,
+    "path": "software/linux/Ubuntu/Ubuntu24.04时间错误的问题/index.md",
+    "lines": 100,
+    "chars": 2748
+  },
+  {
+    "id": 86,
+    "path": "software/linux/Ubuntu/Ubuntu24.04设置桌面软件自启动/index.md",
+    "lines": 65,
+    "chars": 1080
+  },
+  {
+    "id": 87,
+    "path": "software/linux/Ubuntu/Virtualbox无法打开虚拟机的问题/index.md",
+    "lines": 40,
+    "chars": 566
+  },
+  {
+    "id": 88,
+    "path": "software/linux/Ubuntu/使用mitmproxy进行抓包/index.md",
+    "lines": 99,
+    "chars": 1956
+  },
+  {
+    "id": 89,
+    "path": "software/linux/Ubuntu/公网VPS下的Ubuntu系统保护措施/index.md",
+    "lines": 205,
+    "chars": 3361
+  },
+  {
+    "id": 90,
+    "path": "software/linux/Ubuntu/卸载和弹出移动硬盘/index.md",
+    "lines": 81,
+    "chars": 1394
+  },
+  {
+    "id": 91,
+    "path": "software/linux/Ubuntu/树莓派4B安装Ubuntu Server 22.04/index.md",
+    "lines": 270,
+    "chars": 5393
+  },
+  {
+    "id": 92,
+    "path": "software/linux/usr目录的历史背景/index.md",
+    "lines": 25,
+    "chars": 745
+  },
+  {
+    "id": 93,
+    "path": "software/linux/VirtualBox中虚拟机运行缓慢的解决方案/index.md",
+    "lines": 40,
+    "chars": 815
+  },
+  {
+    "id": 94,
+    "path": "software/linux/VirtualBox创建CentOS7虚拟机/index.md",
+    "lines": 1081,
+    "chars": 24498
+  },
+  {
+    "id": 95,
+    "path": "software/linux/使用systemd管理简单的服务/index.md",
+    "lines": 353,
+    "chars": 9738
+  },
+  {
+    "id": 96,
+    "path": "software/linux/命令行设计的艺术/index.md",
+    "lines": 348,
+    "chars": 10609
+  },
+  {
+    "id": 97,
+    "path": "software/linux/如何在Linux中查看机器的参数和性能/index.md",
+    "lines": 324,
+    "chars": 5781
+  },
+  {
+    "id": 98,
+    "path": "software/linux/环境变量/index.md",
+    "lines": 155,
+    "chars": 3726
+  },
+  {
+    "id": 99,
+    "path": "software/linux/误删除glibc后的教训/index.md",
+    "lines": 93,
+    "chars": 2303
+  },
+  {
+    "id": 100,
+    "path": "software/network/DNS和域名的一些记录/index.md",
+    "lines": 259,
+    "chars": 8673
+  },
+  {
+    "id": 101,
+    "path": "software/network/IPv4首部和IP报文的分片重组/index.md",
+    "lines": 172,
+    "chars": 3709
+  },
+  {
+    "id": 102,
+    "path": "software/network/MAC地址和ARP协议/index.md",
+    "lines": 132,
+    "chars": 3225
+  },
+  {
+    "id": 103,
+    "path": "software/network/宽带和带宽以及服务器上下行带宽/index.md",
+    "lines": 126,
+    "chars": 2958
+  },
+  {
+    "id": 104,
+    "path": "software/network/局域网和以太网/index.md",
+    "lines": 101,
+    "chars": 3055
+  },
+  {
+    "id": 105,
+    "path": "software/nginx/GoAccess可视化Nginx日志/index.md",
+    "lines": 255,
+    "chars": 6392
+  },
+  {
+    "id": 106,
+    "path": "software/nginx/Nginx上传文件大小的限制/index.md",
+    "lines": 75,
+    "chars": 1176
+  },
+  {
+    "id": 107,
+    "path": "software/nginx/Nginx中proxy_pass的斜杠问题/index.md",
+    "lines": 238,
+    "chars": 6511
+  },
+  {
+    "id": 108,
+    "path": "software/nginx/Nginx中的sites Enabled和sites Available/index.md",
+    "lines": 125,
+    "chars": 3272
+  },
+  {
+    "id": 109,
+    "path": "software/nginx/Nginx的基础用法/index.md",
+    "lines": 436,
+    "chars": 9454
+  },
+  {
+    "id": 110,
+    "path": "software/observability/SpringBoot埋点/index.md",
+    "lines": 173,
+    "chars": 2514
+  },
+  {
+    "id": 111,
+    "path": "software/observability/可观测性的概念/index.md",
+    "lines": 127,
+    "chars": 3968
+  },
+  {
+    "id": 112,
+    "path": "software/observability/日志的结构化和分析/index.md",
+    "lines": 189,
+    "chars": 5366
+  },
+  {
+    "id": 113,
+    "path": "software/oss/SeaweedFS的搭建和示例/index.md",
+    "lines": 231,
+    "chars": 4505
+  },
+  {
+    "id": 114,
+    "path": "software/program/c/C的整型类型和占用大小/index.md",
+    "lines": 116,
+    "chars": 2366
+  },
+  {
+    "id": 115,
+    "path": "software/program/java/IDEA断点调试技巧/index.md",
+    "lines": 148,
+    "chars": 3181
+  },
+  {
+    "id": 116,
+    "path": "software/program/java/Java中的比较和排序/index.md",
+    "lines": 952,
+    "chars": 24962
+  },
+  {
+    "id": 117,
+    "path": "software/program/java/Java基础之I／O流/index.md",
+    "lines": 896,
+    "chars": 24560
+  },
+  {
+    "id": 118,
+    "path": "software/program/java/Java基础之文件操作/index.md",
+    "lines": 640,
+    "chars": 17662
+  },
+  {
+    "id": 119,
+    "path": "software/program/java/Java基础之注解/index.md",
+    "lines": 168,
+    "chars": 2633
+  },
+  {
+    "id": 120,
+    "path": "software/program/java/Java的异常和异常处理/index.md",
+    "lines": 1021,
+    "chars": 25678
+  },
+  {
+    "id": 121,
+    "path": "software/program/java/Java获取两个时间的间隔天数/index.md",
+    "lines": 155,
+    "chars": 3927
+  },
+  {
+    "id": 122,
+    "path": "software/program/java/跨平台的概念/index.md",
+    "lines": 50,
+    "chars": 1328
+  },
+  {
+    "id": 123,
+    "path": "software/program/python/cachetools的使用/index.md",
+    "lines": 359,
+    "chars": 6207
+  },
+  {
+    "id": 124,
+    "path": "software/program/python/PEP282-日志系统-译文/index.md",
+    "lines": 467,
+    "chars": 12903
+  },
+  {
+    "id": 125,
+    "path": "software/program/python/Python中的多线程编程/index.md",
+    "lines": 23,
+    "chars": 1096
+  },
+  {
+    "id": 126,
+    "path": "software/program/python/Python使用SMTP发送邮件/index.md",
+    "lines": 95,
+    "chars": 2164
+  },
+  {
+    "id": 127,
+    "path": "software/program/python/Python压缩JPEG图片/index.md",
+    "lines": 87,
+    "chars": 2235
+  },
+  {
+    "id": 128,
+    "path": "software/program/python/Python复杂脚本的日志记录实践/index.md",
+    "lines": 226,
+    "chars": 5993
+  },
+  {
+    "id": 129,
+    "path": "software/program/python/Python多线程下载网络图片/index.md",
+    "lines": 171,
+    "chars": 5184
+  },
+  {
+    "id": 130,
+    "path": "software/program/python/Python的异常机制/index.md",
+    "lines": 475,
+    "chars": 10622
+  },
+  {
+    "id": 131,
+    "path": "software/program/python/Python的日志记录/index.md",
+    "lines": 803,
+    "chars": 19351
+  },
+  {
+    "id": 132,
+    "path": "software/program/python/Python的模块和包/index.md",
+    "lines": 597,
+    "chars": 11416
+  },
+  {
+    "id": 133,
+    "path": "software/program/python/Python简单脚本的日志记录实践/index.md",
+    "lines": 190,
+    "chars": 3815
+  },
+  {
+    "id": 134,
+    "path": "software/program/python/Python解释器的-m参数/index.md",
+    "lines": 213,
+    "chars": 4685
+  },
+  {
+    "id": 135,
+    "path": "software/program/python/uv设置镜像源/index.md",
+    "lines": 56,
+    "chars": 724
+  },
+  {
+    "id": 136,
+    "path": "software/program/python/上下文管理器/index.md",
+    "lines": 279,
+    "chars": 6043
+  },
+  {
+    "id": 137,
+    "path": "software/program/python/使用devpi搭建pypi缓存服务器/index.md",
+    "lines": 145,
+    "chars": 2755
+  },
+  {
+    "id": 138,
+    "path": "software/program/python/使用uv和typer编写CLI工具的流程/index.md",
+    "lines": 12,
+    "chars": 186
+  },
+  {
+    "id": 139,
+    "path": "software/prometheus/springboot接入prometheus/index.md",
+    "lines": 80,
+    "chars": 2218
+  },
+  {
+    "id": 140,
+    "path": "software/rabbitmq/RabbitMQ的基本概念和使用/index.md",
+    "lines": 550,
+    "chars": 13231
+  },
+  {
+    "id": 141,
+    "path": "software/vagrant/批量创建虚拟机/index.md",
+    "lines": 247,
+    "chars": 5355
+  },
+  {
+    "id": 142,
+    "path": "software/web/backend/cookie和session/index.md",
+    "lines": 154,
+    "chars": 3856
+  },
+  {
+    "id": 143,
+    "path": "software/web/backend/CORS的基础知识/index.md",
+    "lines": 277,
+    "chars": 7770
+  },
+  {
+    "id": 144,
+    "path": "software/web/backend/Flask实现简单的登陆功能/index.md",
+    "lines": 198,
+    "chars": 4653
+  },
+  {
+    "id": 145,
+    "path": "software/web/backend/Gunicorn+Flask的基本应用/index.md",
+    "lines": 376,
+    "chars": 9715
+  },
+  {
+    "id": 146,
+    "path": "software/web/backend/RBAC权限模型概述/index.md",
+    "lines": 14,
+    "chars": 127
+  },
+  {
+    "id": 147,
+    "path": "software/web/backend/Servlet初探/index.md",
+    "lines": 447,
+    "chars": 13800
+  },
+  {
+    "id": 148,
+    "path": "software/web/backend/Windows安装OpenSSH服务端/index.md",
+    "lines": 58,
+    "chars": 775
+  },
+  {
+    "id": 149,
+    "path": "software/web/backend/一个软件全量更新的简单方式/index.md",
+    "lines": 860,
+    "chars": 25626
+  },
+  {
+    "id": 150,
+    "path": "software/web/backend/一种直白有效的前缀匹配方案/index.md",
+    "lines": 459,
+    "chars": 9648
+  },
+  {
+    "id": 151,
+    "path": "software/web/backend/使用MMDB来获取客户端的IP信息/index.md",
+    "lines": 281,
+    "chars": 8614
+  },
+  {
+    "id": 152,
+    "path": "software/web/backend/使用Redis实现分页和搜索的功能/index.md",
+    "lines": 355,
+    "chars": 6643
+  },
+  {
+    "id": 153,
+    "path": "software/web/backend/在Tomcat中部署一个简单的Servlet/index.md",
+    "lines": 198,
+    "chars": 6393
+  },
+  {
+    "id": 154,
+    "path": "software/web/backend/拦截器和过滤器/index.md",
+    "lines": 750,
+    "chars": 26586
+  },
+  {
+    "id": 155,
+    "path": "software/web/backend/用户系统设计下的通用概念/index.md",
+    "lines": 159,
+    "chars": 3637
+  },
+  {
+    "id": 156,
+    "path": "software/web/backend/登录注册体系的安全手段/index.md",
+    "lines": 116,
+    "chars": 2331
+  },
+  {
+    "id": 157,
+    "path": "software/web/backend/自制一个聚合搜索引擎的页面/index.md",
+    "lines": 166,
+    "chars": 3954
+  },
+  {
+    "id": 158,
+    "path": "software/web/backend/阿里云短信认证服务的使用/index.md",
+    "lines": 198,
+    "chars": 6436
+  },
+  {
+    "id": 159,
+    "path": "software/web/frontend/SPA和SSR/index.md",
+    "lines": 86,
+    "chars": 1163
+  },
+  {
+    "id": 160,
+    "path": "software/web/frontend/自己动手写一个博客静态页面生成器/index.md",
+    "lines": 733,
+    "chars": 16925
+  },
+  {
+    "id": 161,
+    "path": "software/web/spring-security/Spring Boot 3+Spring Security+Thymeleaf的示例/index.md",
+    "lines": 424,
+    "chars": 11382
+  },
+  {
+    "id": 162,
+    "path": "software/web/spring-security/Spring Security 初探/index.md",
+    "lines": 693,
+    "chars": 18360
+  },
+  {
+    "id": 163,
+    "path": "software/web/spring-security/Spring Security用户管理/index.md",
+    "lines": 678,
+    "chars": 16914
+  },
+  {
+    "id": 164,
+    "path": "software/web/spring-security/Spring Security认证过程/index.md",
+    "lines": 832,
+    "chars": 27420
+  },
+  {
+    "id": 165,
+    "path": "software/web/spring-security/Spring Security配置SecurityFilterChain/index.md",
+    "lines": 482,
+    "chars": 13252
+  },
+  {
+    "id": 166,
+    "path": "software/web/spring-security/Spring Security默认配置/index.md",
+    "lines": 399,
+    "chars": 13072
+  },
+  {
+    "id": 167,
+    "path": "software/web/spring/Spring Boot 中 @Component 和 @Bean 的区别/index.md",
+    "lines": 408,
+    "chars": 8603
+  },
+  {
+    "id": 168,
+    "path": "software/web/spring/Spring Boot 中 Session 的使用/index.md",
+    "lines": 420,
+    "chars": 12168
+  },
+  {
+    "id": 169,
+    "path": "software/web/spring/Spring Boot+JPA的日志打印问题/index.md",
+    "lines": 118,
+    "chars": 2347
+  },
+  {
+    "id": 170,
+    "path": "software/web/spring/Spring MVC 接收前端参数的 N 种方式/index.md",
+    "lines": 555,
+    "chars": 11920
+  },
+  {
+    "id": 171,
+    "path": "software/web/telegram/telegram-bot入门/index.md",
+    "lines": 615,
+    "chars": 13987
+  },
+  {
+    "id": 172,
+    "path": "software/web/telegram/使用Telegram机器人实现告警功能/index.md",
+    "lines": 234,
+    "chars": 4911
+  },
+  {
+    "id": 173,
+    "path": "software/web/关于前后端接口规范的讨论/index.md",
+    "lines": 163,
+    "chars": 3910
+  },
+  {
+    "id": 174,
+    "path": "software/web/请求外部接口需要做的准备/index.md",
+    "lines": 594,
+    "chars": 21761
+  },
+  {
+    "id": 175,
+    "path": "software/我的技术小结-2025/index.md",
+    "lines": 107,
+    "chars": 4533
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "article": 5,
+    "line": 86,
+    "problem": "invalid syntax",
+    "code": ">>> from machine import Pin\n>>> led = Pin(0, Pin.OUT)\n>>> led.on()\n>>> led.off()"
+  },
+  {
+    "article": 5,
+    "line": 101,
+    "problem": "invalid syntax",
+    "code": ">>> import network\n>>> wlan.connect(\"djhxiaomi\", \"0987654321\")\n>>> wlan.isconnected()\nTrue"
+  },
+  {
+    "article": 5,
+    "line": 114,
+    "problem": "invalid syntax",
+    "code": ">>> import dht\n>>> dh = dht.DHT11(machine.Pin(4))\n>>> dh.measure()\n>>> dh.temperature()\n30\n>>> dh.humidity()\n56"
+  },
+  {
+    "article": 5,
+    "line": 132,
+    "problem": "invalid syntax",
+    "code": ">>> import urequests\n>>> response = urequests.get(\"http://api.com/test\")\n>>> print(response.text)"
+  },
+  {
+    "article": 5,
+    "line": 140,
+    "problem": "invalid syntax",
+    "code": ">>> import urequests\n>>> import json\n>>> api_url = \"http://api.com/test\"\n>>> sensor_data = {\"name\" : \"koril\", \"status\" : 100}\n>>> headers = {\"Content-type\" : \"application/json\"}\n>>> response = urequests.post(api_url, data = json.dumps(sensor_data), headers = headers)\n>>> print(response.text)"
+  },
+  {
+    "article": 35,
+    "line": 284,
+    "problem": "expected an indented block after function definition on line 12",
+    "code": "redis_pool = redis.ConnectionPool(\n    host='192.168.0.201',\n    port=6379,\n    password='123456',\n    db=0,\n    max_connections=10\n)\nredis_client = redis.Redis(\n    connection_pool=redis_pool,\n)\n\ndef task():\n    # 使用上面的全局的 redis_client"
+  },
+  {
+    "article": 49,
+    "line": 91,
+    "problem": "illegal target for annotation",
+    "code": "'formatters': {\n    'json_formatter': {\n        '()': 'pythonjsonlogger.jsonlogger.JsonFormatter',\n        # 定义你想要包含在 JSON 中的字段\n        'format': '%(asctime)s %(name)s %(filename)s %(funcName)s %(levelname)s %(message)s',\n        'rename_fields': {\n            'levelname': 'level',\n            'asctime': 'timestamp'\n        }\n    }\n}"
+  },
+  {
+    "article": 124,
+    "line": 69,
+    "problem": "invalid syntax",
+    "code": "--------- mymodule.py -------------------------------\nimport logging\nlog = logging.getLogger(\"MyModule\")\n\ndef doIt():\n        log.debug(\"Doin' stuff...\")\n        #do stuff...\n        raise TypeError, \"Bogus type error for testing\"\n-----------------------------------------------------"
+  },
+  {
+    "article": 124,
+    "line": 81,
+    "problem": "invalid syntax",
+    "code": "--------- myapp.py ----------------------------------\nimport mymodule, logging\n\nlogging.basicConfig()\n\nlog = logging.getLogger(\"MyApp\")\n\nlog.info(\"Starting my app\")\ntry:\n        mymodule.doIt()\nexcept Exception, e:\n        log.exception(\"There was a problem.\")\nlog.info(\"Ending my app\")"
+  },
+  {
+    "article": 131,
+    "line": 315,
+    "problem": "expected an indented block after 'try' statement on line 1",
+    "code": "try:\n    # some code\nexcept Exception:\n    # 不一定是 error，这里也可以写 debug，info 之类的，它们都有 exc_info 可以指定\n    logging.error(f'something wrong', exc_info=True)"
+  },
+  {
+    "article": 131,
+    "line": 327,
+    "problem": "expected an indented block after 'try' statement on line 1",
+    "code": "try:\n    # some code\nexcept Exception:\n    logging.exception(f'something wrong')"
+  },
+  {
+    "article": 132,
+    "line": 79,
+    "problem": "invalid syntax",
+    "code": ">>> import sys\n>>> sys.path\n['', 'C:\\\\Users\\\\ABC\\\\ProgramLanguage\\\\Python\\\\Python311\\\\python311.zip', 'C:\\\\Users\\\\ABC\\\\ProgramLanguage\\\\Python\\\\Python311\\\\DLLs', 'C:\\\\Users\\\\ABC\\\\ProgramLanguage\\\\Python\\\\Python311\\\\Lib', 'C:\\\\Users\\\\ABC\\\\ProgramLanguage\\\\Python\\\\Python311', 'C:\\\\Users\\\\ABC\\\\ProgramLanguage\\\\Python\\\\Python311\\\\Lib\\\\site-packages']"
+  },
+  {
+    "article": 132,
+    "line": 86,
+    "problem": "invalid syntax",
+    "code": ">>> import sys\n>>> sys.path\n['', '/usr/lib/python311.zip', '/usr/lib/python3.11', '/usr/lib/python3.11/lib-dynload', '/usr/local/lib/python3.11/dist-packages', '/usr/lib/python3/dist-packages']"
+  },
+  {
+    "article": 134,
+    "line": 37,
+    "problem": "Did you mean to use 'from ... import ...' instead?",
+    "code": "import sys from pprint import pprint\npprint(sys.path)"
+  },
+  {
+    "article": 149,
+    "line": 124,
+    "problem": "unexpected indent",
+    "code": "    def check_update(self):\n        try:\n            version_info = update.check_version(__version__)\n            if version_info:\n                reply = QMessageBox.question(\n                    self,\n                    \"发现新版本\",\n                    f\"检测到新版本 {version_info['version']}，是否更新？\",\n                    QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No\n                )\n    "
+  },
+  {
+    "article": 149,
+    "line": 147,
+    "problem": "unexpected indent",
+    "code": "    def run_update(self, version_info):\n        try:\n\n            app_path = Path(sys.argv[0])\n            app_dir = app_path.parent\n\n            # 构建 update.exe 路径并检查存在性\n            update_path = app_dir / \"update.exe\"\n            if not update_path.exists():\n                raise FileNotFoundError(f\"找不到更新程序: {update_path}\")\n\n            # 启动更新程序\n            subprocess.Popen([\n                upd"
+  },
+  {
+    "article": 151,
+    "line": 174,
+    "problem": "invalid syntax",
+    "code": "{'continent': {'code': 'NA',\n               'geoname_id': 6255149,\n               'names': {'de': 'Nordamerika',\n                         'en': 'North America',\n                         'es': 'Norteamérica',\n                         'fr': 'Amérique du Nord',\n                         'ja': '北アメリカ',\n                         'pt-BR': 'América do Norte',\n                         'ru': 'Северная Америк"
+  },
+  {
+    "article": 174,
+    "line": 120,
+    "problem": "invalid syntax",
+    "code": "\n>>> requests.get(\"http://fjdslafjklsda.dummy\", proxies={\"http\": \"\"})\nTraceback (most recent call last):\n  File \"/home/koril/project/study/study-requests/.venv/lib/python3.14/site-packages/urllib3/connection.py\", line 204, in _new_conn\n    sock = connection.create_connection(\n        (self._dns_host, self.port),\n    ...<2 lines>...\n        socket_options=self.socket_options,\n    )\n  File \"/home/ko"
+  },
+  {
+    "article": 174,
+    "line": 240,
+    "problem": "invalid syntax",
+    "code": "\n>>> requests.get(\"http://127.0.0.1:8765\", proxies={\"http\": \"\"})\nTraceback (most recent call last):\n  File \"/home/koril/project/study/study-requests/.venv/lib/python3.14/site-packages/urllib3/connection.py\", line 204, in _new_conn\n    sock = connection.create_connection(\n        (self._dns_host, self.port),\n    ...<2 lines>...\n        socket_options=self.socket_options,\n    )\n  File \"/home/koril/p"
+  },
+  {
+    "article": 174,
+    "line": 414,
+    "problem": "invalid syntax",
+    "code": "\n>>> requests.get(\"https://example.com/api/data\")\n<Response [401]>\n>>> response = requests.get(\"https://example.com/api/data\")\n>>> response.json()\n{'message': 'Unauthorized'}\n>>> response.raise_for_status()\nTraceback (most recent call last):\n  File \"<python-input-63>\", line 1, in <module>\n    response.raise_for_status()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/home/koril/project/study/study-reques"
+  },
+  {
+    "article": 174,
+    "line": 461,
+    "problem": "invalid syntax",
+    "code": ">>> response = requests.get(\"http://localhost:5000/plain\", timeout=(3, 5))\n>>> response.text\n'ok'\n>>> response.json()\nTraceback (most recent call last):\n  File \"/home/koril/project/study/study-requests/.venv/lib/python3.14/site-packages/requests/models.py\", line 1116, in json\n    return complexjson.loads(self.text, **kwargs)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/koril/.lo"
+  }
+]

@@ -1,0 +1,154 @@
+{
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "sqlite": "3.49.1",
+  "results": [
+    {
+      "name": "SQLite普通TEXT主键允许多个NULL",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "name": "sqlite_sequence建表时无对应行",
+      "expected": [],
+      "actual": [],
+      "passed": true
+    },
+    {
+      "name": "首次插入后产生sequence行",
+      "expected": [
+        [
+          "ai",
+          1
+        ]
+      ],
+      "actual": [
+        [
+          "ai",
+          1
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "TEXT亲和性把整数转为文本",
+      "expected": [
+        "123",
+        "text"
+      ],
+      "actual": [
+        "123",
+        "text"
+      ],
+      "passed": true
+    },
+    {
+      "name": "祖先Logger过滤器不处理子Logger传播记录",
+      "expected": "child record\n",
+      "actual": "child record\n",
+      "passed": true
+    },
+    {
+      "name": "Handler默认级别NOTSET",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "name": "浅复制保留exc_info",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "QueueHandler.prepare清除exc_info",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "name": "QueueHandler.prepare已格式化消息和回溯",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "硬切序列化JSON会产生非法JSON",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "basicConfig支持encoding",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "没有__all__的包仍可star导入公开名称",
+      "expected": 42,
+      "actual": 42,
+      "passed": true
+    },
+    {
+      "name": "任务失败的Future也标记done",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "必须检查Future结果才能区分处理成功",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "134篇import语句无法解析",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "更新器错误的参数个数检查放过5元素然后解包失败",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "未编码搜索词中的&改变参数",
+      "expected": {
+        "q": [
+          "a"
+        ],
+        "b": [
+          "c"
+        ]
+      },
+      "actual": {
+        "q": [
+          "a"
+        ],
+        "b": [
+          "c"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "指定分块大小的HTTPResponse.read可能在声明长度前返回EOF",
+      "expected": [
+        "b'abc'",
+        "b''"
+      ],
+      "actual": [
+        "b'abc'",
+        "b''"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Requests行为检查",
+      "skipped": "环境未安装requests"
+    }
+  ]
+}

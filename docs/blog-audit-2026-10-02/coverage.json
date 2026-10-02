@@ -1,0 +1,3169 @@
+{
+  "review_date": "2026-10-02",
+  "root": "C:/Project/blog",
+  "git_head": "882620b614f45d2873a372926993120cee6e663f",
+  "scope": "全部Markdown文本及代码静态核阅；争议行为针对性验证；未完整复现全部环境，未逐图OCR",
+  "total_files": 175,
+  "total_chars_including_code_and_frontmatter": 1082944,
+  "total_lines": 44423,
+  "total_findings": 320,
+  "categories": {
+    "字词/链接": 72,
+    "条件/版本澄清": 65,
+    "事实/技术错误": 183
+  },
+  "priorities": {
+    "P3": 72,
+    "P2": 227,
+    "P1": 21
+  },
+  "local_probes": {
+    "passed": 18,
+    "skipped": 1
+  },
+  "articles": [
+    {
+      "id": 1,
+      "path": "about/index.md",
+      "lines": 25,
+      "chars": 233,
+      "title": "about",
+      "date": "2025-01-01T20:00:00+08:00",
+      "draft": false,
+      "review_status": "个人简介已阅；未发现可确认的明显字词错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "6dae806e0da075112460d8de37ec0851e0a5735d9a8735638b71d4ec7aefa214",
+      "report_line": 44
+    },
+    {
+      "id": 2,
+      "path": "hardware/Arduino/Ubuntu下的环境配置和点灯/index.md",
+      "lines": 90,
+      "chars": 1768,
+      "title": "Ubuntu下的环境配置和点灯",
+      "date": "2025-03-22T09:37:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "6f7f15dcf7c481ca29fec22c41a5c05f553416f58ad246f3b56937278008d71b",
+      "report_line": 54
+    },
+    {
+      "id": 3,
+      "path": "hardware/ESP32/Ubuntu下的环境配置和点灯/index.md",
+      "lines": 83,
+      "chars": 1298,
+      "title": "Ubuntu下的环境配置和点灯",
+      "date": "2025-03-22T12:46:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "722afa87fafe253173c08811c53376eb94d3d262a9ff698c07cf2a3f8d012fef",
+      "report_line": 64
+    },
+    {
+      "id": 4,
+      "path": "hardware/NodeMCU+MQTT与后台交互信息/index.md",
+      "lines": 724,
+      "chars": 19097,
+      "title": "NodeMCU+MQTT与后台交互信息",
+      "date": "2023-01-17T13:30:52+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "字词/链接": 1,
+        "条件/版本澄清": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "d745ecd44217383d66413458201f0d70c80ec0754382bf4fe0a67c5474dd03c6",
+      "report_line": 86
+    },
+    {
+      "id": 5,
+      "path": "hardware/NodeMCU发送数据给树莓派/index.md",
+      "lines": 347,
+      "chars": 7223,
+      "title": "NodeMCU发送数据给树莓派",
+      "date": "2021-06-18T11:20:10+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 2,
+        "条件/版本澄清": 1
+      },
+      "sha256": "f2f4af3595828ff471d8f800924ea6efdf8d18efd177bb574756e63853d0dfc5",
+      "report_line": 136
+    },
+    {
+      "id": 6,
+      "path": "hardware/STC89C52/Ubuntu下的环境配置和点灯/index.md",
+      "lines": 141,
+      "chars": 2214,
+      "title": "Ubuntu下的环境配置和点灯",
+      "date": "2025-03-22T10:28:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "c05ea4c7cd9663f0a00dc731dc710574b7da1cb216b38b3e736b54a9f1c5ef34",
+      "report_line": 184
+    },
+    {
+      "id": 7,
+      "path": "hardware/STM32F103C8T6/Ubuntu下的环境配置和点灯/index.md",
+      "lines": 149,
+      "chars": 2864,
+      "title": "Ubuntu下的环境配置和点灯",
+      "date": "2025-03-22T13:04:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1
+      },
+      "sha256": "b636b236048b8ef40a20be50d778e67747b339c4a610b579b00bf0abecd59b97",
+      "report_line": 194
+    },
+    {
+      "id": 8,
+      "path": "hardware/STM32F103C8T6/两种方式的点灯/index.md",
+      "lines": 91,
+      "chars": 2635,
+      "title": "两种方式的点灯",
+      "date": "2025-03-29T09:16:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "c9bf4939e3213d7dea177962972cdd8ea838539238e259d6001c0fb71f0be4eb",
+      "report_line": 230
+    },
+    {
+      "id": 9,
+      "path": "hardware/STM32F103C8T6/无法再次烧录的问题/index.md",
+      "lines": 59,
+      "chars": 870,
+      "title": "无法再次烧录的问题",
+      "date": "2025-04-04T10:43:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "1b3fa7c6698c3f803099a4050e9de9e92954dfc86b761a616e7b3f5014164d16",
+      "report_line": 252
+    },
+    {
+      "id": 10,
+      "path": "hardware/使用OLED做一个简易手表/index.md",
+      "lines": 168,
+      "chars": 2749,
+      "title": "使用OLED做一个简易手表",
+      "date": "2023-01-07T16:16:35+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "6bcd3404c4b702c6c046f12337303ef4e739aeb2e198a97c875322b6e17af872",
+      "report_line": 274
+    },
+    {
+      "id": 11,
+      "path": "hardware/使用OLED展示DHT11的温湿度数据/index.md",
+      "lines": 268,
+      "chars": 4926,
+      "title": "使用OLED展示DHT11的温湿度数据",
+      "date": "2023-01-05T19:13:59+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "1103d7c3db8c6707a040363866c60927a28b6a986997f0b45460272694ff787f",
+      "report_line": 284
+    },
+    {
+      "id": 12,
+      "path": "hardware/使用树莓派和内网穿透远程点灯/index.md",
+      "lines": 316,
+      "chars": 6012,
+      "title": "使用树莓派和内网穿透远程点灯",
+      "date": "2021-06-15T17:44:58+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "事实/技术错误": 2,
+        "字词/链接": 1,
+        "条件/版本澄清": 1
+      },
+      "sha256": "818090e6532f2f47e89719d828ba122f108b23b4df6ccd98f190c577598a3e87",
+      "report_line": 320
+    },
+    {
+      "id": 13,
+      "path": "hardware/动手制作一个3×3×3的LED光立方/index.md",
+      "lines": 278,
+      "chars": 4758,
+      "title": "动手制作一个3×3×3的LED光立方",
+      "date": "2023-01-03T09:34:20+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "条件/版本澄清": 1
+      },
+      "sha256": "32fb0678e4094c76cf3593f79033c303f4a4d3d4b30f4570d775f4e945a8f9f3",
+      "report_line": 384
+    },
+    {
+      "id": 14,
+      "path": "hardware/木制的小台钻/index.md",
+      "lines": 52,
+      "chars": 628,
+      "title": "木制的小台钻",
+      "date": "2023-01-11T14:29:54+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "8141ff54e26a5c0406eb7891fb92229c05b789ba7b15b811d1d8d683f5f076af",
+      "report_line": 406
+    },
+    {
+      "id": 15,
+      "path": "hardware/步进电机和A4988的控制实践/index.md",
+      "lines": 392,
+      "chars": 8222,
+      "title": "步进电机和A4988的控制实践",
+      "date": "2023-01-10T09:36:59+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "条件/版本澄清": 2,
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "83bb7a407375d47ae9f823fe32d25fbe9e0ac372e2585672529ef9aa8c22dd0e",
+      "report_line": 416
+    },
+    {
+      "id": 16,
+      "path": "other/Exception and Traceback Logging in Python/index.md",
+      "lines": 133,
+      "chars": 5684,
+      "title": "Exception and Traceback Logging in Python",
+      "date": "2026-09-07T10:39:33",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "事实/技术错误": 4
+      },
+      "sha256": "28cdffcfaf301b8537d5efed36ef20385771505f707870f72e8da89850fa0b2e",
+      "report_line": 480
+    },
+    {
+      "id": 17,
+      "path": "other/How Complex Systems Fail/index.md",
+      "lines": 236,
+      "chars": 5697,
+      "title": "How Complex Systems Fail",
+      "date": "2026-09-15T17:21:54",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "7d856baa8ba543833880ea9fd0c38b1d6d1cbe69c5366a85b640d7492cfa64c1",
+      "report_line": 544
+    },
+    {
+      "id": 18,
+      "path": "other/logging sucks/index.md",
+      "lines": 804,
+      "chars": 21131,
+      "title": "logging sucks",
+      "date": "2026-08-12T11:51:36",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "89fe80e8c427d4b915ba3b5560bf93487d85617c212a5fe9725c5119995a1a37",
+      "report_line": 566
+    },
+    {
+      "id": 19,
+      "path": "other/Python Logging and Structured Data Architecture Guide for SREs/index.md",
+      "lines": 505,
+      "chars": 24933,
+      "title": "Python Logging and Structured Data Architecture Guide for SREs",
+      "date": "2026-08-31T10:01:51",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 6,
+      "categories": {
+        "事实/技术错误": 5,
+        "字词/链接": 1
+      },
+      "sha256": "e1b7dca705ca15e9dad35e79225d9f73110d2ea75141e453bc282b44bd674ced",
+      "report_line": 588
+    },
+    {
+      "id": 20,
+      "path": "software/algorithm/Myers差分算法/index.md",
+      "lines": 136,
+      "chars": 2414,
+      "title": "Myers差分算法",
+      "date": "2025-06-01T10:44:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "2add95fcdb36c1739df002af5994efc4a1f0fb0de34dcc81c53a19394f0e2cd9",
+      "report_line": 680
+    },
+    {
+      "id": 21,
+      "path": "software/algorithm/从定时器到时间轮：速率可控任务调度算法的演进/index.md",
+      "lines": 220,
+      "chars": 4691,
+      "title": "从定时器到时间轮：速率可控任务调度算法的演进",
+      "date": "2026-01-18T10:44:43",
+      "draft": true,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "a7d0bbccf90f263d3c919c250fae80e2ea88c02530d273904fc4fca7e38be343",
+      "report_line": 702
+    },
+    {
+      "id": 22,
+      "path": "software/algorithm/随机密码的生成/index.md",
+      "lines": 69,
+      "chars": 1415,
+      "title": "随机密码的生成",
+      "date": "2025-11-14T11:11:08",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "927ba625ed6ae2a4957868c1d4466b4f70c52b91ed4785618e04505fc2975c73",
+      "report_line": 712
+    },
+    {
+      "id": 23,
+      "path": "software/concurrency/Python的Thread基础/index.md",
+      "lines": 55,
+      "chars": 1356,
+      "title": "Python的Thread基础",
+      "date": "2026-01-01T09:35:51",
+      "draft": true,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "d6bb6e9ba1a1c3a9ff3a69c52bbf3ddeaea26668b9aa2972e83214fafbd71b48",
+      "report_line": 734
+    },
+    {
+      "id": 24,
+      "path": "software/database/jpa/JPA+MySQL的主键选择/index.md",
+      "lines": 141,
+      "chars": 3457,
+      "title": "JPA+MySQL的主键选择",
+      "date": "2023-06-13T17:19:42+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "条件/版本澄清": 2,
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "3b428d1e9f44088f3eba1f0eab73b365d3aae5b04986e422d4c7b8443f260793",
+      "report_line": 744
+    },
+    {
+      "id": 25,
+      "path": "software/database/jpa/JPA中的枚举类型字段存储/index.md",
+      "lines": 427,
+      "chars": 8877,
+      "title": "JPA中的枚举类型字段存储",
+      "date": "2023-08-20T14:49:30+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "条件/版本澄清": 1
+      },
+      "sha256": "ff4ac85246eb2803921e72fb86455eeab0646a7c33e19b88e62baf37c4bef5ac",
+      "report_line": 808
+    },
+    {
+      "id": 26,
+      "path": "software/database/mysql/MySQL存储树状结构的数据/index.md",
+      "lines": 357,
+      "chars": 9276,
+      "title": "MySQL存储树状结构的数据",
+      "date": "2023-04-04T19:51:05+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "a1cbd1794bd0c0bf53a569a5b6bcb32c646516aadf03c1fc39f59d5f92976960",
+      "report_line": 830
+    },
+    {
+      "id": 27,
+      "path": "software/database/mysql/MySQL数据的备份/index.md",
+      "lines": 166,
+      "chars": 3110,
+      "title": "MySQL数据的备份",
+      "date": "2023-09-15T14:30:04+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "77d812e487acf1eb18a24af7f75a86a99644a1f545dc5d26d19d45371d87e6f5",
+      "report_line": 880
+    },
+    {
+      "id": 28,
+      "path": "software/database/mysql/MySQL的事务/index.md",
+      "lines": 299,
+      "chars": 6672,
+      "title": "MySQL的事务",
+      "date": "2024-03-30T13:34:56+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "acf16faa7f9d25109d106014bb8a3f0dac67082a521f2fd01620fe49ba7be8d3",
+      "report_line": 914
+    },
+    {
+      "id": 29,
+      "path": "software/database/mysql/MySQL的索引/index.md",
+      "lines": 82,
+      "chars": 1835,
+      "title": "MySQL的索引",
+      "date": "2024-02-03T14:44:42+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "字词/链接": 1
+      },
+      "sha256": "5c32ec33ae97f1df83a7d1ff911ace65f4b1d123fd07330610e5fb34c2eb7795",
+      "report_line": 964
+    },
+    {
+      "id": 30,
+      "path": "software/database/ORM是什么/index.md",
+      "lines": 203,
+      "chars": 5343,
+      "title": "ORM是什么",
+      "date": "2025-12-12T10:54:27",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "a87bab71747ac1c892baec29ae10d91e11fce9c7aa867b039567f7c7b711c39a",
+      "report_line": 1000
+    },
+    {
+      "id": 31,
+      "path": "software/database/postgresql/PG的字符类型/index.md",
+      "lines": 58,
+      "chars": 1385,
+      "title": "PG的字符类型",
+      "date": "2026-05-17T11:47:16",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "条件/版本澄清": 1
+      },
+      "sha256": "fe1a6e5748521c1a63e9c1605823121950b0c63f699b91f6ad40b46645df5861",
+      "report_line": 1010
+    },
+    {
+      "id": 32,
+      "path": "software/database/postgresql/创建数据库、模式和表/index.md",
+      "lines": 233,
+      "chars": 3153,
+      "title": "创建数据库、模式和表",
+      "date": "2026-05-02T20:49:38",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "3bd579227e9c776e9cceb86cf1ef496fc9f8a7e48ecb7f91252366a8a1eefd0c",
+      "report_line": 1032
+    },
+    {
+      "id": 33,
+      "path": "software/database/postgresql/表连接/index.md",
+      "lines": 73,
+      "chars": 1745,
+      "title": "表连接",
+      "date": "2026-06-06T10:09:03",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "条件/版本澄清": 1
+      },
+      "sha256": "2af6eb214dc1eec95655b5af9314c8140a0f64bdf7d1fe29ddd0a102871bc5e7",
+      "report_line": 1082
+    },
+    {
+      "id": 34,
+      "path": "software/database/postgresql/角色、用户和权限/index.md",
+      "lines": 177,
+      "chars": 3632,
+      "title": "角色、用户和权限",
+      "date": "2026-01-19T15:01:21",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "0a44422a481a9f40108f40533d4e7e8f8e1be476e2b49df81dfeb34235eb5061",
+      "report_line": 1104
+    },
+    {
+      "id": 35,
+      "path": "software/database/redis/redis-py中连接池的使用/index.md",
+      "lines": 337,
+      "chars": 6504,
+      "title": "redis-py中连接池的使用",
+      "date": "2025-06-21T11:13:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 5,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 3,
+        "条件/版本澄清": 1
+      },
+      "sha256": "85873ba990d1bcbd11301983b34c69cfdbab788d3db856e3e6692e1c7fae26f9",
+      "report_line": 1154
+    },
+    {
+      "id": 36,
+      "path": "software/database/redis/redis的string类型/index.md",
+      "lines": 63,
+      "chars": 1015,
+      "title": "redis的string类型",
+      "date": "2025-06-21T11:13:00+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "c6476a39b1e614a84f1ff76030e2e44e7ccf81bc9344c6439abd518b5ba1613e",
+      "report_line": 1232
+    },
+    {
+      "id": 37,
+      "path": "software/database/redis/redis的配置文件/index.md",
+      "lines": 138,
+      "chars": 3189,
+      "title": "redis的配置文件",
+      "date": "2025-06-21T11:13:00+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "5e81221280a20a70a90878d3aba86067ade36aef92ace7654a5a042001404381",
+      "report_line": 1242
+    },
+    {
+      "id": 38,
+      "path": "software/database/SQLAlchemy入门/index.md",
+      "lines": 32,
+      "chars": 666,
+      "title": "SQLAlchemy入门",
+      "date": "2026-02-06T10:21:53",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "865d6dbb875847b70821e4e857c0036d57746f27761ba9278b41b7f1bc765fd2",
+      "report_line": 1264
+    },
+    {
+      "id": 39,
+      "path": "software/database/sqlite/sqlite创建表/index.md",
+      "lines": 125,
+      "chars": 2673,
+      "title": "sqlite创建表",
+      "date": "2025-06-20T17:25:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 3
+      },
+      "sha256": "1a0a1275e7bac6f63412963085b30536dcf41ebcbc95e74f39c1ca1746a8086a",
+      "report_line": 1286
+    },
+    {
+      "id": 40,
+      "path": "software/database/sqlite/sqlite命令行下的命令解释/index.md",
+      "lines": 153,
+      "chars": 5735,
+      "title": "sqlite命令行下的命令解释",
+      "date": "2025-06-01T10:44:00+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "9a6b2850a549e8c9357fe0b426793bc35d74d54a849ceaedbbcd9c78527acb60",
+      "report_line": 1336
+    },
+    {
+      "id": 41,
+      "path": "software/database/sqlite/sqlite的数据类型/index.md",
+      "lines": 71,
+      "chars": 1805,
+      "title": "sqlite的数据类型",
+      "date": "2025-06-02T11:05:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 2
+      },
+      "sha256": "e01835eac25dfc645dc9a9f09c33bcfce2dc1a73187c315aebf90f7735c1066b",
+      "report_line": 1346
+    },
+    {
+      "id": 42,
+      "path": "software/database/SQL中的各种连接/index.md",
+      "lines": 501,
+      "chars": 8837,
+      "title": "SQL中的各种连接",
+      "date": "2023-07-22T08:14:02+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "条件/版本澄清": 1,
+        "事实/技术错误": 2
+      },
+      "sha256": "f0d9eaa691cc3a365697a65f84e6dc8933fab511db735cf60a2ae9ec6305f512",
+      "report_line": 1382
+    },
+    {
+      "id": 43,
+      "path": "software/docker/Docker挂代理/index.md",
+      "lines": 31,
+      "chars": 428,
+      "title": "Docker挂代理",
+      "date": "2025-02-06T21:03:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "5d4144a1110f73609db70cdeed848d16d173471a35c7807d228fb52a595a18b9",
+      "report_line": 1432
+    },
+    {
+      "id": 44,
+      "path": "software/docker/Docker部署Nginx/index.md",
+      "lines": 461,
+      "chars": 11013,
+      "title": "Docker部署Nginx",
+      "date": "2023-04-30T20:01:32+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "事实/技术错误": 4
+      },
+      "sha256": "c490e752b00f4ab2d5f0296762df296ef12216c4ea2e04f3709af9f9b2c82acb",
+      "report_line": 1442
+    },
+    {
+      "id": 45,
+      "path": "software/docker/Docker部署SpringBoot应用/index.md",
+      "lines": 219,
+      "chars": 4990,
+      "title": "Docker部署SpringBoot应用",
+      "date": "2023-04-30T16:29:10+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "d2fae822098e2cdf41944c044f4b496a370d9bec9c4ea8f37d93477d11ef4cc9",
+      "report_line": 1506
+    },
+    {
+      "id": 46,
+      "path": "software/docker/Docker部署一个Gunicorn+Flask应用/index.md",
+      "lines": 133,
+      "chars": 2456,
+      "title": "Docker部署一个Gunicorn+Flask应用",
+      "date": "2023-05-02T10:26:48+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "4a86ef55db51a5f4c937a6d3da41ab47be0aca97977e1c03e22dad88b9c291bd",
+      "report_line": 1516
+    },
+    {
+      "id": 47,
+      "path": "software/elk/Elasticsearch的基本概念/index.md",
+      "lines": 217,
+      "chars": 7255,
+      "title": "Elasticsearch的基本概念",
+      "date": "2026-03-04T09:48:44",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "条件/版本澄清": 2
+      },
+      "sha256": "7b7284e5b637d6311dbde0e2f5e39d44237c91e1b2030b50fd65837fe10f88fa",
+      "report_line": 1526
+    },
+    {
+      "id": 48,
+      "path": "software/elk/elk的搭建/index.md",
+      "lines": 199,
+      "chars": 4893,
+      "title": "elk的搭建",
+      "date": "2026-03-03T11:53:40",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "4b2ba8730004bed2618fa4bf205f6e83c26b1e9d2aca9799f89cacf2be9b2aea",
+      "report_line": 1562
+    },
+    {
+      "id": 49,
+      "path": "software/elk/filebeat收集python日志/index.md",
+      "lines": 123,
+      "chars": 3399,
+      "title": "filebeat收集python日志",
+      "date": "2026-03-27T11:58:59",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "8049a2c2ef5d0b3b81c1a92eccc4bf142ce513acc95dd2593c8d0a862878e3ae",
+      "report_line": 1584
+    },
+    {
+      "id": 50,
+      "path": "software/elk/filebeat的使用/index.md",
+      "lines": 180,
+      "chars": 3256,
+      "title": "filebeat的使用",
+      "date": "2026-03-08T14:16:52",
+      "draft": true,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "4450f918e797b2d90e694837f371a25a77ff78e1366e0959fad83e0c3c03316e",
+      "report_line": 1606
+    },
+    {
+      "id": 51,
+      "path": "software/elk/QueryDSL基础/index.md",
+      "lines": 314,
+      "chars": 5700,
+      "title": "QueryDSL基础",
+      "date": "2026-04-04T19:37:08",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "c6070f9aec9709509cae6e4b4bfa430dc64f63825f0a7ccaefd07616d087166f",
+      "report_line": 1616
+    },
+    {
+      "id": 52,
+      "path": "software/fundamentals/IEEE 754标准以及0.1加0.2不等于0.3的问题/index.md",
+      "lines": 178,
+      "chars": 3925,
+      "title": "IEEE 754标准以及0.1加0.2不等于0.3的问题",
+      "date": "2024-06-17T13:56:39+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "1477203cdf3fab02b2a0ece94924dbf33c0ff6419c9e850ed0ce6788a5b9c230",
+      "report_line": 1638
+    },
+    {
+      "id": 53,
+      "path": "software/fundamentals/数据存储度量单位差异/index.md",
+      "lines": 29,
+      "chars": 587,
+      "title": "数据存储度量单位差异",
+      "date": "2024-06-13T20:11:39+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "dca4909a840a65a025818b470608e5c96df90de4d334317ccef0728484c380ff",
+      "report_line": 1660
+    },
+    {
+      "id": 54,
+      "path": "software/fundamentals/时间与计算机/index.md",
+      "lines": 292,
+      "chars": 9931,
+      "title": "时间与计算机",
+      "date": "2021-11-27T10:58:15+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 1,
+        "条件/版本澄清": 1,
+        "字词/链接": 1
+      },
+      "sha256": "91476a42dfba498e6082a43862d91dd9d787974cf7d0f47f6c014271b333422c",
+      "report_line": 1670
+    },
+    {
+      "id": 55,
+      "path": "software/fundamentals/聊聊Unicode、UTF-8、UTF-16以及UTF-32的那些事儿/index.md",
+      "lines": 492,
+      "chars": 14860,
+      "title": "聊聊Unicode、UTF-8、UTF-16以及UTF-32的那些事儿",
+      "date": "2022-08-21T21:04:42+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 5,
+      "categories": {
+        "事实/技术错误": 3,
+        "条件/版本澄清": 1,
+        "字词/链接": 1
+      },
+      "sha256": "b7c7c666f3311c2c9b58f7b68423241ed3b6970d6990c09dde9f0257a70dc787",
+      "report_line": 1720
+    },
+    {
+      "id": 56,
+      "path": "software/game/逻辑帧和渲染帧/index.md",
+      "lines": 69,
+      "chars": 1457,
+      "title": "逻辑帧和渲染帧",
+      "date": "2026-08-03T10:50:39",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "条件/版本澄清": 1
+      },
+      "sha256": "4259cbf3424017f3edb34f067ec366f2fc6cc5e19916e2b0d8af3dd9b3a4c8da",
+      "report_line": 1798
+    },
+    {
+      "id": 57,
+      "path": "software/gtk/GTK4在Linux和Windows下的HelloWorld/index.md",
+      "lines": 130,
+      "chars": 2423,
+      "title": "GTK4在Linux和Windows下的HelloWorld",
+      "date": "2025-04-13T09:01:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "343b603b5a18b39b09168d4fd388350d8a08ff32468107f1b1dc63edc593cc5b",
+      "report_line": 1834
+    },
+    {
+      "id": 58,
+      "path": "software/linux/Beszel的搭建和告警配置/index.md",
+      "lines": 113,
+      "chars": 2481,
+      "title": "Beszel的搭建和告警配置",
+      "date": "2026-02-27T14:02:51",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "daff9840854eb01767a7c65736c1521992d6c29752616d567c6ad01fb234cc1c",
+      "report_line": 1844
+    },
+    {
+      "id": 59,
+      "path": "software/linux/CentOS+Hugo建站不完全指北/index.md",
+      "lines": 278,
+      "chars": 5802,
+      "title": "CentOS+Hugo建站不完全指北",
+      "date": "2021-05-08T16:33:58+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "字词/链接": 1
+      },
+      "sha256": "791a49d8281d1d71dbd0abeb7bc9db997f6bed478bdc19f90bd21b3f6ba44614",
+      "report_line": 1866
+    },
+    {
+      "id": 60,
+      "path": "software/linux/CentOS防火墙的一些操作/index.md",
+      "lines": 93,
+      "chars": 1078,
+      "title": "CentOS防火墙的一些操作",
+      "date": "2021-05-07T16:23:29+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "3e9d008e7232b920e273ffeaab8801875fbbba318ad6ae08b9c97368d024df09",
+      "report_line": 1902
+    },
+    {
+      "id": 61,
+      "path": "software/linux/Cron在Linux中的用法/index.md",
+      "lines": 113,
+      "chars": 2864,
+      "title": "Cron在Linux中的用法",
+      "date": "2023-06-23T09:38:40+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 3
+      },
+      "sha256": "6f312486f3e543c94493f721b52a236157a8f915d5cc2c86ff0336fa63074b35",
+      "report_line": 1912
+    },
+    {
+      "id": 62,
+      "path": "software/linux/Debian/Debian12安装jdk21/index.md",
+      "lines": 79,
+      "chars": 1098,
+      "title": "Debian12安装jdk21",
+      "date": "2024-10-20T10:09:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "72aaf69fc9ec211d2654265b127d2f0987f53c853e15d9c7cb0e9653b7ebbd11",
+      "report_line": 1962
+    },
+    {
+      "id": 63,
+      "path": "software/linux/Debian/Debian12安装MongoDB/index.md",
+      "lines": 161,
+      "chars": 3230,
+      "title": "Debian12安装MongoDB",
+      "date": "2025-02-15T08:58:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "f079d3016d60f8d4d5d874d7d2a237c388f7d1b34455ae078b595c886a042b7f",
+      "report_line": 1984
+    },
+    {
+      "id": 64,
+      "path": "software/linux/Debian/Debian12安装PostgreSQL/index.md",
+      "lines": 159,
+      "chars": 2999,
+      "title": "Debian12安装PostgreSQL",
+      "date": "2024-11-10T09:04:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "cfeff67a68d45565b20b58ff08c189a8f71fb03954674c0d7f21ecdff55a4138",
+      "report_line": 2006
+    },
+    {
+      "id": 65,
+      "path": "software/linux/Debian/Debian12安装Prometheus和Grafana/index.md",
+      "lines": 359,
+      "chars": 7432,
+      "title": "Debian12安装Prometheus和Grafana",
+      "date": "2024-10-13T09:02:55+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 3
+      },
+      "sha256": "ee47e67758bf2cb52991f653097bb7d3386bcb75aea77f118198f28e6fd8ebd0",
+      "report_line": 2016
+    },
+    {
+      "id": 66,
+      "path": "software/linux/Debian/Debian12安装Redis/index.md",
+      "lines": 119,
+      "chars": 1355,
+      "title": "Debian12安装Redis",
+      "date": "2024-11-17T16:25:48+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "4e58e7d310e7d7d17d6a1c46d8f4ee0101c31b3d4197f6f70720e73c4a49fe0d",
+      "report_line": 2066
+    },
+    {
+      "id": 67,
+      "path": "software/linux/Debian/VirtualBox创建Debian12虚拟机/index.md",
+      "lines": 551,
+      "chars": 11843,
+      "title": "VirtualBox创建Debian12虚拟机",
+      "date": "2024-11-16T09:07:50+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "条件/版本澄清": 3
+      },
+      "sha256": "7ba42564b6b4866476681a30c7e3ce49bf1ac7dc6f369a1064ed8b025cebee49",
+      "report_line": 2076
+    },
+    {
+      "id": 68,
+      "path": "software/linux/df和du详解/index.md",
+      "lines": 111,
+      "chars": 1940,
+      "title": "df和du详解",
+      "date": "2024-06-18T11:00:51+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "字词/链接": 1
+      },
+      "sha256": "090c9545342e29791ad18b81b0d4abedb09e323e999a7231d4fb095b7d59014c",
+      "report_line": 2126
+    },
+    {
+      "id": 69,
+      "path": "software/linux/DroidCam下载和使用/index.md",
+      "lines": 127,
+      "chars": 2421,
+      "title": "DroidCam下载和使用",
+      "date": "2026-01-28T23:13:25",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "effeb16059c0f6757b0794083705f991e6b266e208252709f07f6f3fb85a3e1e",
+      "report_line": 2162
+    },
+    {
+      "id": 70,
+      "path": "software/linux/FHS文件系统规范/index.md",
+      "lines": 26,
+      "chars": 907,
+      "title": "FHS文件系统规范",
+      "date": "2025-02-01T15:36:00+08:00",
+      "draft": true,
+      "review_status": "空提纲／参考资料；无实质技术正文",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "b0c85f4b5304f10f8d6d0b180aaf83555ccf39a1811210f5ba729cf91dfaaa65",
+      "report_line": 2172
+    },
+    {
+      "id": 71,
+      "path": "software/linux/frp服务的使用/index.md",
+      "lines": 182,
+      "chars": 3642,
+      "title": "frp服务的使用",
+      "date": "2025-07-19T14:03:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "0094e87b84fe62c0d26468894ce0f3ab434be7b3463aeb23160b388e8f3d124f",
+      "report_line": 2182
+    },
+    {
+      "id": 72,
+      "path": "software/linux/Linux中与查找相关的命令/index.md",
+      "lines": 244,
+      "chars": 4390,
+      "title": "Linux中与查找相关的命令",
+      "date": "2024-06-19T09:00:51+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "条件/版本澄清": 1
+      },
+      "sha256": "37bdd507b4c57939988ede5a6f4511deec3c0830f2b02f8cc65b942dddea8fe8",
+      "report_line": 2204
+    },
+    {
+      "id": 73,
+      "path": "software/linux/Linux之间使用scp命令传输文件/index.md",
+      "lines": 114,
+      "chars": 2407,
+      "title": "Linux之间使用scp命令传输文件",
+      "date": "2023-05-07T11:33:54+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "6e5576c730096959faf0abca997ac55969282655222662a8b555d5d46c9f734e",
+      "report_line": 2240
+    },
+    {
+      "id": 74,
+      "path": "software/linux/Linux命令行设置代理/index.md",
+      "lines": 30,
+      "chars": 516,
+      "title": "Linux命令行设置代理",
+      "date": "2025-09-11T17:58:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "ebdfe4f93e2e2bc5f6df47be44a6b702ca32d79c8724564644a6f790d8bd1100",
+      "report_line": 2262
+    },
+    {
+      "id": 75,
+      "path": "software/linux/Linux的grep命令展示匹配项的前后n行信息/index.md",
+      "lines": 36,
+      "chars": 479,
+      "title": "Linux的grep命令展示匹配项的前后n行信息",
+      "date": "2023-07-03T17:27:59+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "9136a37fb2bd675f3d655f85b7245b5d4927fcee0e7c54fea21bffade2c823fd",
+      "report_line": 2284
+    },
+    {
+      "id": 76,
+      "path": "software/linux/Linux的排序命令sort/index.md",
+      "lines": 234,
+      "chars": 3873,
+      "title": "Linux的排序命令sort",
+      "date": "2024-06-19T14:00:51+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 2
+      },
+      "sha256": "904fa01cbefa029bfe45ea703dc04c76a5a424936c96997a53b2afc1b1f7d5c8",
+      "report_line": 2306
+    },
+    {
+      "id": 77,
+      "path": "software/linux/Linux的权限系统/index.md",
+      "lines": 533,
+      "chars": 10279,
+      "title": "Linux的权限系统",
+      "date": "2023-07-29T09:54:51+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 5,
+      "categories": {
+        "条件/版本澄清": 2,
+        "事实/技术错误": 2,
+        "字词/链接": 1
+      },
+      "sha256": "4efe4339463c080a4a2fb2f826626398632648aace21d6214229232c0dae5fcc",
+      "report_line": 2342
+    },
+    {
+      "id": 78,
+      "path": "software/linux/Linux的链接/index.md",
+      "lines": 256,
+      "chars": 5990,
+      "title": "Linux的链接",
+      "date": "2024-06-07T17:00:51+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 6,
+      "categories": {
+        "事实/技术错误": 4,
+        "字词/链接": 1,
+        "条件/版本澄清": 1
+      },
+      "sha256": "71d969d7a170a43308f5c25021152bc70c7324bff35437a2ada799eef022fc03",
+      "report_line": 2420
+    },
+    {
+      "id": 79,
+      "path": "software/linux/ntfy服务的使用/index.md",
+      "lines": 148,
+      "chars": 2900,
+      "title": "ntfy服务的使用",
+      "date": "2025-07-03T17:37:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "f4f940009ce8c9aade8b3ee8687f917c696fa4ef1b566eb3d73029d07bcdfc2c",
+      "report_line": 2512
+    },
+    {
+      "id": 80,
+      "path": "software/linux/Shell的快捷键/index.md",
+      "lines": 83,
+      "chars": 1116,
+      "title": "Shell的快捷键",
+      "date": "2026-05-24T09:52:08",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "f538dcc40bd23c42a36bde35c65a656b4408b2248535ff11e0be0ddc14bad000",
+      "report_line": 2534
+    },
+    {
+      "id": 81,
+      "path": "software/linux/ssh心跳保活/index.md",
+      "lines": 53,
+      "chars": 824,
+      "title": "ssh心跳保活",
+      "date": "2025-02-06T20:03:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "d5e3af51784ed6436bfb4fcf9cd7b512e73edb2c9ec72a1753bdc4f78f2b6ce4",
+      "report_line": 2544
+    },
+    {
+      "id": 82,
+      "path": "software/linux/SSH日志/index.md",
+      "lines": 92,
+      "chars": 1825,
+      "title": "SSH日志",
+      "date": "2025-06-29T10:00:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "b59a14282d8a7b3b828137ea1d71333310882d16027361e9dd5ff6bda4d5912b",
+      "report_line": 2566
+    },
+    {
+      "id": 83,
+      "path": "software/linux/Top命令的一些进阶用法/index.md",
+      "lines": 302,
+      "chars": 5346,
+      "title": "Top命令的一些进阶用法",
+      "date": "2024-03-10T10:20:03+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 3
+      },
+      "sha256": "8d98defa9afa3cb0010ce7e065070ca170ac41954a8942ae3fe8ac1ac79355ee",
+      "report_line": 2602
+    },
+    {
+      "id": 84,
+      "path": "software/linux/Ubuntu/TextEditor中文输入重复显示的BUG/index.md",
+      "lines": 37,
+      "chars": 444,
+      "title": "TextEditor中文输入重复显示的BUG",
+      "date": "2025-07-05T16:31:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "ecc751f1d8e261ea6c5b2be71fadd88e2a10e5f5575dcad3c6a9c677951e5ad1",
+      "report_line": 2652
+    },
+    {
+      "id": 85,
+      "path": "software/linux/Ubuntu/Ubuntu24.04时间错误的问题/index.md",
+      "lines": 100,
+      "chars": 2748,
+      "title": "Ubuntu24.04时间错误的问题",
+      "date": "2025-06-17T20:10:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "9ce79d7377708334886e3481e53d3c934a0c73b25494224c55cf1bba9fc933fe",
+      "report_line": 2662
+    },
+    {
+      "id": 86,
+      "path": "software/linux/Ubuntu/Ubuntu24.04设置桌面软件自启动/index.md",
+      "lines": 65,
+      "chars": 1080,
+      "title": "Ubuntu24.04设置桌面软件自启动",
+      "date": "2025-01-30T15:42:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "cb9621884f546f72f0dc71fe760351004709cf9fd70daa28f9b5a25c2b5aff8c",
+      "report_line": 2684
+    },
+    {
+      "id": 87,
+      "path": "software/linux/Ubuntu/Virtualbox无法打开虚拟机的问题/index.md",
+      "lines": 40,
+      "chars": 566,
+      "title": "Virtualbox无法打开虚拟机的问题",
+      "date": "2025-08-17T09:33:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "b131947130eb6e5d18a24b574ac486621e5fd4885faa944c10340a2d7d2caf55",
+      "report_line": 2694
+    },
+    {
+      "id": 88,
+      "path": "software/linux/Ubuntu/使用mitmproxy进行抓包/index.md",
+      "lines": 99,
+      "chars": 1956,
+      "title": "使用mitmproxy进行抓包",
+      "date": "2025-02-02T14:34:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "92bce56b17b1a89b861de02e4ecfd573723d0836bc359236114a319b56b3b655",
+      "report_line": 2704
+    },
+    {
+      "id": 89,
+      "path": "software/linux/Ubuntu/公网VPS下的Ubuntu系统保护措施/index.md",
+      "lines": 205,
+      "chars": 3361,
+      "title": "公网VPS下的Ubuntu系统保护措施",
+      "date": "2023-05-04T20:21:41+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "49d762fb2ccd3c21aaa7b280fd5e3f7d2a4e6860b754d28c972efde63fc569c6",
+      "report_line": 2726
+    },
+    {
+      "id": 90,
+      "path": "software/linux/Ubuntu/卸载和弹出移动硬盘/index.md",
+      "lines": 81,
+      "chars": 1394,
+      "title": "卸载和弹出移动硬盘",
+      "date": "2025-05-01T16:41:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "条件/版本澄清": 1
+      },
+      "sha256": "a24a91564a549aa9e3180b13fd092da87536ef8f75936678bf6e84904a0e9315",
+      "report_line": 2736
+    },
+    {
+      "id": 91,
+      "path": "software/linux/Ubuntu/树莓派4B安装Ubuntu Server 22.04/index.md",
+      "lines": 270,
+      "chars": 5393,
+      "title": "树莓派4B安装Ubuntu Server 22.04",
+      "date": "2023-04-30T11:53:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "9db71b6c18e5a05c6444a9a69d6ef0f0ab996e7089565503002d527c6d125395",
+      "report_line": 2758
+    },
+    {
+      "id": 92,
+      "path": "software/linux/usr目录的历史背景/index.md",
+      "lines": 25,
+      "chars": 745,
+      "title": "usr目录的历史背景",
+      "date": "2025-02-01T15:19:00+08:00",
+      "draft": true,
+      "review_status": "空提纲／参考资料；无实质技术正文",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "7280e16f85d43bf971cfbf341cd7f0ee7d3a6c97a28c392050b1ce543656ff57",
+      "report_line": 2780
+    },
+    {
+      "id": 93,
+      "path": "software/linux/VirtualBox中虚拟机运行缓慢的解决方案/index.md",
+      "lines": 40,
+      "chars": 815,
+      "title": "VirtualBox中虚拟机运行缓慢的解决方案",
+      "date": "2024-06-13T18:10:59+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "2a154e3648455ba52a7e1e9f9252056310ef00c0b14d2810dad7b17596af4561",
+      "report_line": 2790
+    },
+    {
+      "id": 94,
+      "path": "software/linux/VirtualBox创建CentOS7虚拟机/index.md",
+      "lines": 1081,
+      "chars": 24498,
+      "title": "VirtualBox创建CentOS7虚拟机",
+      "date": "2023-07-08T08:28:46+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 5,
+      "categories": {
+        "事实/技术错误": 3,
+        "条件/版本澄清": 1,
+        "字词/链接": 1
+      },
+      "sha256": "e2853a36755637780d3cb4c4be7e03e8d92a7492c1abfa9e7859b0dc4ae039d9",
+      "report_line": 2800
+    },
+    {
+      "id": 95,
+      "path": "software/linux/使用systemd管理简单的服务/index.md",
+      "lines": 353,
+      "chars": 9738,
+      "title": "使用systemd管理简单的服务",
+      "date": "2025-07-11T15:22:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1,
+        "条件/版本澄清": 2
+      },
+      "sha256": "f5687ce5a2c11289ac95cef4161eee1fecf9b142ff715429d3583b359732e657",
+      "report_line": 2878
+    },
+    {
+      "id": 96,
+      "path": "software/linux/命令行设计的艺术/index.md",
+      "lines": 348,
+      "chars": 10609,
+      "title": "命令行设计的艺术",
+      "date": "2025-11-17T17:01:23",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "bef15e878562133132db5293482127bd04820efb7b71105e17a94330d59cffc9",
+      "report_line": 2942
+    },
+    {
+      "id": 97,
+      "path": "software/linux/如何在Linux中查看机器的参数和性能/index.md",
+      "lines": 324,
+      "chars": 5781,
+      "title": "如何在Linux中查看机器的参数和性能",
+      "date": "2023-05-02T13:59:32+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 2,
+        "字词/链接": 1
+      },
+      "sha256": "585f650c1cdd4566dddda587f55bf9c3be02c29cf862d09f559d1b521ddf371c",
+      "report_line": 2964
+    },
+    {
+      "id": 98,
+      "path": "software/linux/环境变量/index.md",
+      "lines": 155,
+      "chars": 3726,
+      "title": "环境变量",
+      "date": "2025-11-14T15:13:37",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "条件/版本澄清": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "9b85423c515a2981a1487fc7bbac6a99c1f029f42231c49c769efb4de1aaa149",
+      "report_line": 3014
+    },
+    {
+      "id": 99,
+      "path": "software/linux/误删除glibc后的教训/index.md",
+      "lines": 93,
+      "chars": 2303,
+      "title": "误删除glibc后的教训",
+      "date": "2023-07-20T16:04:55+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "b02f10f3202824e05bd7afffcc275c7b5e39674c273fdcc9c24e22e2eeb9f6b0",
+      "report_line": 3050
+    },
+    {
+      "id": 100,
+      "path": "software/network/DNS和域名的一些记录/index.md",
+      "lines": 259,
+      "chars": 8673,
+      "title": "DNS和域名的一些记录",
+      "date": "2023-11-25T10:07:16+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 6,
+      "categories": {
+        "事实/技术错误": 5,
+        "字词/链接": 1
+      },
+      "sha256": "926a31445c17cc28e2e1b99184ae049dc284809dd425b82e90a0136cef969806",
+      "report_line": 3072
+    },
+    {
+      "id": 101,
+      "path": "software/network/IPv4首部和IP报文的分片重组/index.md",
+      "lines": 172,
+      "chars": 3709,
+      "title": "IPv4首部和IP报文的分片重组",
+      "date": "2024-06-14T10:21:16+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 2
+      },
+      "sha256": "a8cd4d4bfe135152f4c3764f5c73a53361d94f2f174d2587bf4235a0a9dff186",
+      "report_line": 3164
+    },
+    {
+      "id": 102,
+      "path": "software/network/MAC地址和ARP协议/index.md",
+      "lines": 132,
+      "chars": 3225,
+      "title": "MAC地址和ARP协议",
+      "date": "2024-06-12T11:22:16+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 2,
+        "条件/版本澄清": 1
+      },
+      "sha256": "88ad1c6db488eed14b63016e27346dbdcb7ad4d65f970bc925621029e4457094",
+      "report_line": 3214
+    },
+    {
+      "id": 103,
+      "path": "software/network/宽带和带宽以及服务器上下行带宽/index.md",
+      "lines": 126,
+      "chars": 2958,
+      "title": "宽带和带宽以及服务器上下行带宽",
+      "date": "2024-02-05T20:13:14+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 3
+      },
+      "sha256": "d260aee8379235df5c791249fae1375e9e3f599813b8305c3fb3e35775523e73",
+      "report_line": 3278
+    },
+    {
+      "id": 104,
+      "path": "software/network/局域网和以太网/index.md",
+      "lines": 101,
+      "chars": 3055,
+      "title": "局域网和以太网",
+      "date": "2024-06-10T16:02:16+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 2
+      },
+      "sha256": "0052edb19791844c45fb9a3a1bb5d06d21b90c2723eb81b3b7d8c1256471193a",
+      "report_line": 3328
+    },
+    {
+      "id": 105,
+      "path": "software/nginx/GoAccess可视化Nginx日志/index.md",
+      "lines": 255,
+      "chars": 6392,
+      "title": "GoAccess可视化Nginx日志",
+      "date": "2025-11-26T10:18:12",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "77b5111e4fd4c978d12ec69cb296de27685bf654ad7d028b3215541b5e958702",
+      "report_line": 3364
+    },
+    {
+      "id": 106,
+      "path": "software/nginx/Nginx上传文件大小的限制/index.md",
+      "lines": 75,
+      "chars": 1176,
+      "title": "Nginx上传文件大小的限制",
+      "date": "2025-07-21T10:20:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "50e3c27b63c3e24b59754f295be3c980fe70b8328192949cf1d8628d6b0e8bb9",
+      "report_line": 3386
+    },
+    {
+      "id": 107,
+      "path": "software/nginx/Nginx中proxy_pass的斜杠问题/index.md",
+      "lines": 238,
+      "chars": 6511,
+      "title": "Nginx中proxy_pass的斜杠问题",
+      "date": "2023-12-23T11:38:33+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "c342c24fe1be0640d0c72a3299ccf4b3643b86918697e68e411d7d6d7da9989b",
+      "report_line": 3408
+    },
+    {
+      "id": 108,
+      "path": "software/nginx/Nginx中的sites Enabled和sites Available/index.md",
+      "lines": 125,
+      "chars": 3272,
+      "title": "Nginx中的sites Enabled和sites Available",
+      "date": "2024-02-08T10:08:50+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "a2019eca872ed358dc521927aeb6c6d0ea24235bb9ffaa7cf9639a1858373a0d",
+      "report_line": 3418
+    },
+    {
+      "id": 109,
+      "path": "software/nginx/Nginx的基础用法/index.md",
+      "lines": 436,
+      "chars": 9454,
+      "title": "Nginx的基础用法",
+      "date": "2023-08-05T09:53:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "事实/技术错误": 3,
+        "字词/链接": 1
+      },
+      "sha256": "4e9069b87da7562bdcf4de8820403ca9ddc9fd1bf095c7072d41a65133a5b77d",
+      "report_line": 3440
+    },
+    {
+      "id": 110,
+      "path": "software/observability/SpringBoot埋点/index.md",
+      "lines": 173,
+      "chars": 2514,
+      "title": "SpringBoot埋点",
+      "date": "2026-07-01T16:36:41",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "ee490ae7329add4fda9f4fa78495c23dcf6c004c18abd0e95008b01bcf6b1eb9",
+      "report_line": 3504
+    },
+    {
+      "id": 111,
+      "path": "software/observability/可观测性的概念/index.md",
+      "lines": 127,
+      "chars": 3968,
+      "title": "可观测性的概念",
+      "date": "2026-06-15T16:59:05",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "f29cd17c235f3e92e4c0db4c7eccffc3ec15d0cad144ab24be470c655f4a31b1",
+      "report_line": 3514
+    },
+    {
+      "id": 112,
+      "path": "software/observability/日志的结构化和分析/index.md",
+      "lines": 189,
+      "chars": 5366,
+      "title": "日志的结构化和分析",
+      "date": "2026-08-18T11:09:40",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 2,
+        "字词/链接": 1
+      },
+      "sha256": "c4c938b8b1889069df055ec1c68632d33909e9b50288de7a8d700b339aecff34",
+      "report_line": 3536
+    },
+    {
+      "id": 113,
+      "path": "software/oss/SeaweedFS的搭建和示例/index.md",
+      "lines": 231,
+      "chars": 4505,
+      "title": "SeaweedFS的搭建和示例",
+      "date": "2026-02-28T16:14:09",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "条件/版本澄清": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "57cd71b494adb05abc27497c81d6411e32a5bb6f9f2ccec1b4e6fc45123839c4",
+      "report_line": 3586
+    },
+    {
+      "id": 114,
+      "path": "software/program/c/C的整型类型和占用大小/index.md",
+      "lines": 116,
+      "chars": 2366,
+      "title": "C的整型类型和占用大小",
+      "date": "2025-01-04T09:01:30+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 1,
+        "条件/版本澄清": 2
+      },
+      "sha256": "75f06c8a5d6a324cedd183c59a210664f303ac557cc7727a5dc137c084d7cc6e",
+      "report_line": 3622
+    },
+    {
+      "id": 115,
+      "path": "software/program/java/IDEA断点调试技巧/index.md",
+      "lines": 148,
+      "chars": 3181,
+      "title": "IDEA断点调试技巧",
+      "date": "2023-05-20T11:28:08+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "7e1ebe77175eb7cb900efe3c43f4d7ad90b3dad4d9048a252f162e5325aefbc2",
+      "report_line": 3672
+    },
+    {
+      "id": 116,
+      "path": "software/program/java/Java中的比较和排序/index.md",
+      "lines": 952,
+      "chars": 24962,
+      "title": "Java中的比较和排序",
+      "date": "2021-05-27T12:04:15+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 2,
+        "字词/链接": 1
+      },
+      "sha256": "e5270005e1eeb0c3d2b3bc80c3bd4e37bf53970b50f8a5ef445dae56991149cf",
+      "report_line": 3682
+    },
+    {
+      "id": 117,
+      "path": "software/program/java/Java基础之I／O流/index.md",
+      "lines": 896,
+      "chars": 24560,
+      "title": "Java基础之I／O流",
+      "date": "2023-02-18T14:55:18+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "条件/版本澄清": 1
+      },
+      "sha256": "f138585b9c2301454e72505d989e278d53a036aa07a58da8e2d81f3861c82295",
+      "report_line": 3732
+    },
+    {
+      "id": 118,
+      "path": "software/program/java/Java基础之文件操作/index.md",
+      "lines": 640,
+      "chars": 17662,
+      "title": "Java基础之文件操作",
+      "date": "2023-02-18T14:55:48+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "条件/版本澄清": 1,
+        "事实/技术错误": 3
+      },
+      "sha256": "d9d9f78692974b2a2be6d58069284186f5d763e4de2439d7c207b4505fb59baa",
+      "report_line": 3768
+    },
+    {
+      "id": 119,
+      "path": "software/program/java/Java基础之注解/index.md",
+      "lines": 168,
+      "chars": 2633,
+      "title": "Java基础之注解",
+      "date": "2023-09-09T11:13:55+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "b9c721584cf9aad01d8c7129ed973ff4415a104afd3502f76260fbf444a5b1d6",
+      "report_line": 3832
+    },
+    {
+      "id": 120,
+      "path": "software/program/java/Java的异常和异常处理/index.md",
+      "lines": 1021,
+      "chars": 25678,
+      "title": "Java的异常和异常处理",
+      "date": "2023-09-02T09:09:37+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 7,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 6
+      },
+      "sha256": "4f62e4d5bf2d08af2e55d4b07bc18e3d9a931b4631c814d122e32a4a8f3c2ad5",
+      "report_line": 3854
+    },
+    {
+      "id": 121,
+      "path": "software/program/java/Java获取两个时间的间隔天数/index.md",
+      "lines": 155,
+      "chars": 3927,
+      "title": "Java获取两个时间的间隔天数",
+      "date": "2023-12-23T11:37:26+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "条件/版本澄清": 1
+      },
+      "sha256": "05e21a65b9fd960ae0a5b6873097e45f8ec2f2705053081615793d6ca327772f",
+      "report_line": 3960
+    },
+    {
+      "id": 122,
+      "path": "software/program/java/跨平台的概念/index.md",
+      "lines": 50,
+      "chars": 1328,
+      "title": "跨平台的概念",
+      "date": "2026-07-18T15:13:01",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "4f6ee809e6e91cfc89e45dc5861da64b31d9050a7e88351ff05e121047bb9780",
+      "report_line": 3982
+    },
+    {
+      "id": 123,
+      "path": "software/program/python/cachetools的使用/index.md",
+      "lines": 359,
+      "chars": 6207,
+      "title": "cachetools的使用",
+      "date": "2026-08-09T14:12:17",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "c3f3d3d0362f38493c65fe38b9a63810bd4fcdd2bae2ba0f8724196d3263bb1e",
+      "report_line": 4004
+    },
+    {
+      "id": 124,
+      "path": "software/program/python/PEP282-日志系统-译文/index.md",
+      "lines": 467,
+      "chars": 12903,
+      "title": "PEP282-日志系统-译文",
+      "date": "2025-07-05T14:00:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "e504729be670e10e3b353c5e45061628ed8b07e0e07c60ec67af700d4f35dad0",
+      "report_line": 4040
+    },
+    {
+      "id": 125,
+      "path": "software/program/python/Python中的多线程编程/index.md",
+      "lines": 23,
+      "chars": 1096,
+      "title": "Python中的多线程编程",
+      "date": "2024-11-24T09:12:14+08:00",
+      "draft": true,
+      "review_status": "空提纲／参考资料；无实质技术正文",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "a8659cea12c45e1144137a23a2af4127cb8323a6e3f973f0bbb11e669bcbf7c7",
+      "report_line": 4076
+    },
+    {
+      "id": 126,
+      "path": "software/program/python/Python使用SMTP发送邮件/index.md",
+      "lines": 95,
+      "chars": 2164,
+      "title": "Python使用SMTP发送邮件",
+      "date": "2025-07-02T11:26:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "f72363d87b5ca3f03fc330cfb8c4b41e3686f2f0552072263492ef50a9e607d8",
+      "report_line": 4086
+    },
+    {
+      "id": 127,
+      "path": "software/program/python/Python压缩JPEG图片/index.md",
+      "lines": 87,
+      "chars": 2235,
+      "title": "Python压缩JPEG图片",
+      "date": "2023-05-20T10:41:51+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "0daad14b7be68d95042cc22e1b9e2f7f0c90c658dae4cabcf77297d3d93e77fc",
+      "report_line": 4096
+    },
+    {
+      "id": 128,
+      "path": "software/program/python/Python复杂脚本的日志记录实践/index.md",
+      "lines": 226,
+      "chars": 5993,
+      "title": "Python复杂脚本的日志记录实践",
+      "date": "2025-07-09T16:00:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "a5f7de680bc635904e7d5515a316732d198c21231b4da597ddc16de8475c47ef",
+      "report_line": 4118
+    },
+    {
+      "id": 129,
+      "path": "software/program/python/Python多线程下载网络图片/index.md",
+      "lines": 171,
+      "chars": 5184,
+      "title": "Python多线程下载网络图片",
+      "date": "2020-04-17T16:16:12+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "字词/链接": 1
+      },
+      "sha256": "cef4862068e8ca3d0d6bfe18231424ed2f0c80fa579bc5a28d83be20635b08d6",
+      "report_line": 4154
+    },
+    {
+      "id": 130,
+      "path": "software/program/python/Python的异常机制/index.md",
+      "lines": 475,
+      "chars": 10622,
+      "title": "Python的异常机制",
+      "date": "2025-07-31T10:10:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1,
+        "事实/技术错误": 2
+      },
+      "sha256": "6562fb1a321cc9d2f0e82991a4a54c5da97949b5c23b5aa0861a3204d8ec20de",
+      "report_line": 4190
+    },
+    {
+      "id": 131,
+      "path": "software/program/python/Python的日志记录/index.md",
+      "lines": 803,
+      "chars": 19351,
+      "title": "Python的日志记录",
+      "date": "2024-10-01T10:00:00+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "字词/链接": 1,
+        "条件/版本澄清": 1,
+        "事实/技术错误": 2
+      },
+      "sha256": "ab81f6b440afdf956c158dfdf9e15a3d07e3bf670968eb7faac988bba54ef00c",
+      "report_line": 4254
+    },
+    {
+      "id": 132,
+      "path": "software/program/python/Python的模块和包/index.md",
+      "lines": 597,
+      "chars": 11416,
+      "title": "Python的模块和包",
+      "date": "2025-09-19T14:52:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "字词/链接": 1,
+        "条件/版本澄清": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "046b65190475b02ea8768e815bfff22bdd126bff7d2d197d52ebf4adf20aef44",
+      "report_line": 4318
+    },
+    {
+      "id": 133,
+      "path": "software/program/python/Python简单脚本的日志记录实践/index.md",
+      "lines": 190,
+      "chars": 3815,
+      "title": "Python简单脚本的日志记录实践",
+      "date": "2025-07-08T16:15:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "977420ce043ef949164b7b6e8556ec4b9a2e353e5f08b0b773303bbd982c0205",
+      "report_line": 4368
+    },
+    {
+      "id": 134,
+      "path": "software/program/python/Python解释器的-m参数/index.md",
+      "lines": 213,
+      "chars": 4685,
+      "title": "Python解释器的-m参数",
+      "date": "2025-09-13T09:11:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 2
+      },
+      "sha256": "15a9c9fd5204764be25bbefc14abb72f23411cee5971cf8e2ac98b65145ff2ed",
+      "report_line": 4390
+    },
+    {
+      "id": 135,
+      "path": "software/program/python/uv设置镜像源/index.md",
+      "lines": 56,
+      "chars": 724,
+      "title": "uv设置镜像源",
+      "date": "2025-10-25T12:00:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "59d3ed28e33203330a57d53303fef1ab1ae5156c7ff1f54a86306b4e93c9b8e4",
+      "report_line": 4426
+    },
+    {
+      "id": 136,
+      "path": "software/program/python/上下文管理器/index.md",
+      "lines": 279,
+      "chars": 6043,
+      "title": "上下文管理器",
+      "date": "2025-12-09T16:35:05",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "59feee11478847168e09bc81af693b365f5a34e96ed6880232498b6870f37e42",
+      "report_line": 4448
+    },
+    {
+      "id": 137,
+      "path": "software/program/python/使用devpi搭建pypi缓存服务器/index.md",
+      "lines": 145,
+      "chars": 2755,
+      "title": "使用devpi搭建pypi缓存服务器",
+      "date": "2025-10-22T15:00:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 2
+      },
+      "sha256": "9ecfff046a9d338839d197c13e704b3a36a49b427000dab957553cecc991a873",
+      "report_line": 4484
+    },
+    {
+      "id": 138,
+      "path": "software/program/python/使用uv和typer编写CLI工具的流程/index.md",
+      "lines": 12,
+      "chars": 186,
+      "title": "使用uv和typer编写CLI工具的流程",
+      "date": "2025-11-19T16:48:46",
+      "draft": false,
+      "review_status": "内容未完成；现有文本已核阅",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "f62259584e60c00334128e83cb5b04e41397faec1d088ed0329acee3b79d428c",
+      "report_line": 4520
+    },
+    {
+      "id": 139,
+      "path": "software/prometheus/springboot接入prometheus/index.md",
+      "lines": 80,
+      "chars": 2218,
+      "title": "springboot接入prometheus",
+      "date": "2026-06-27T21:10:58",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "条件/版本澄清": 1
+      },
+      "sha256": "7c561adac05e959b70aecf37a9e9edd61af167c2f9cbe7d9cbe602c291089898",
+      "report_line": 4532
+    },
+    {
+      "id": 140,
+      "path": "software/rabbitmq/RabbitMQ的基本概念和使用/index.md",
+      "lines": 550,
+      "chars": 13231,
+      "title": "RabbitMQ的基本概念和使用",
+      "date": "2026-02-13T11:46:55",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "条件/版本澄清": 1,
+        "事实/技术错误": 2,
+        "字词/链接": 1
+      },
+      "sha256": "c2e97ab774f7d78d12e57751fc70447acfbe65f95dc8d7855706cdd78f702934",
+      "report_line": 4554
+    },
+    {
+      "id": 141,
+      "path": "software/vagrant/批量创建虚拟机/index.md",
+      "lines": 247,
+      "chars": 5355,
+      "title": "批量创建虚拟机",
+      "date": "2026-02-13T14:32:52",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "6a931c3875204a5fbe07f0581d0923e039a880f7ee38eca69811a3ed10912db2",
+      "report_line": 4618
+    },
+    {
+      "id": 142,
+      "path": "software/web/backend/cookie和session/index.md",
+      "lines": 154,
+      "chars": 3856,
+      "title": "cookie和session",
+      "date": "2025-07-23T16:21:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 2,
+        "条件/版本澄清": 1
+      },
+      "sha256": "5210e482cc2d82b021829c8b0e4c95d2e724767b27c8044805e2f001d510935c",
+      "report_line": 4640
+    },
+    {
+      "id": 143,
+      "path": "software/web/backend/CORS的基础知识/index.md",
+      "lines": 277,
+      "chars": 7770,
+      "title": "CORS的基础知识",
+      "date": "2023-11-19T09:43:04+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "事实/技术错误": 2,
+        "字词/链接": 1,
+        "条件/版本澄清": 1
+      },
+      "sha256": "1e2b22453cf8034c468442032a4e475f75359b78bb662fbc438bad366c598966",
+      "report_line": 4690
+    },
+    {
+      "id": 144,
+      "path": "software/web/backend/Flask实现简单的登陆功能/index.md",
+      "lines": 198,
+      "chars": 4653,
+      "title": "Flask实现简单的登陆功能",
+      "date": "2025-07-27T08:43:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "条件/版本澄清": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "f334142f96b4298c91bbd721c9e40fbc48e58d207c3eaf3c1215dad1e5c89d36",
+      "report_line": 4754
+    },
+    {
+      "id": 145,
+      "path": "software/web/backend/Gunicorn+Flask的基本应用/index.md",
+      "lines": 376,
+      "chars": 9715,
+      "title": "Gunicorn+Flask的基本应用",
+      "date": "2024-12-08T10:38:22+08:00",
+      "draft": true,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "事实/技术错误": 3,
+        "条件/版本澄清": 1
+      },
+      "sha256": "0d64f98a7d4b626038e50259bd67cc17a2a5cc1709da1cbf65db3979ba68fe9c",
+      "report_line": 4790
+    },
+    {
+      "id": 146,
+      "path": "software/web/backend/RBAC权限模型概述/index.md",
+      "lines": 14,
+      "chars": 127,
+      "title": "RBAC权限模型概述",
+      "date": "2025-01-30T10:35:00+08:00",
+      "draft": true,
+      "review_status": "空提纲／参考资料；无实质技术正文",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "836188c30d5111f98e9355592eb8b5d436ed833ec498e9c566111c2f55b91d01",
+      "report_line": 4854
+    },
+    {
+      "id": 147,
+      "path": "software/web/backend/Servlet初探/index.md",
+      "lines": 447,
+      "chars": 13800,
+      "title": "Servlet初探",
+      "date": "2023-05-21T10:40:45+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 3
+      },
+      "sha256": "b084a05f9d506f5f31f5e70fff5ddd957435e8cd30e23f0fbc88164fafd78807",
+      "report_line": 4864
+    },
+    {
+      "id": 148,
+      "path": "software/web/backend/Windows安装OpenSSH服务端/index.md",
+      "lines": 58,
+      "chars": 775,
+      "title": "Windows安装OpenSSH服务端",
+      "date": "2024-10-30T20:22:06+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "065c531f921680ebad26f6c0926216d29060156f30381e689d49f9f9b92b3f9b",
+      "report_line": 4914
+    },
+    {
+      "id": 149,
+      "path": "software/web/backend/一个软件全量更新的简单方式/index.md",
+      "lines": 860,
+      "chars": 25626,
+      "title": "一个软件全量更新的简单方式",
+      "date": "2025-07-23T16:21:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "事实/技术错误": 4
+      },
+      "sha256": "4fa8de3d0883aaa96502dc322d0f71cf42ddbe2d0ff57b4bcf1f0ffea41682b3",
+      "report_line": 4936
+    },
+    {
+      "id": 150,
+      "path": "software/web/backend/一种直白有效的前缀匹配方案/index.md",
+      "lines": 459,
+      "chars": 9648,
+      "title": "一种直白有效的前缀匹配方案",
+      "date": "2024-10-20T12:12:04+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 2,
+        "条件/版本澄清": 1
+      },
+      "sha256": "a5654db240592641bda168c108d63843c0f7c0206c6dc116cae733c05b7c96a7",
+      "report_line": 5000
+    },
+    {
+      "id": 151,
+      "path": "software/web/backend/使用MMDB来获取客户端的IP信息/index.md",
+      "lines": 281,
+      "chars": 8614,
+      "title": "使用MMDB来获取客户端的IP信息",
+      "date": "2024-11-09T09:25:48+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "事实/技术错误": 3
+      },
+      "sha256": "4d9a4b6a5a9568c12e934ef4b781f77660af87b174fdda7b9557f6319ad42125",
+      "report_line": 5050
+    },
+    {
+      "id": 152,
+      "path": "software/web/backend/使用Redis实现分页和搜索的功能/index.md",
+      "lines": 355,
+      "chars": 6643,
+      "title": "使用Redis实现分页和搜索的功能",
+      "date": "2024-12-07T14:51:04+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1
+      },
+      "sha256": "e6a4a94fbc931f4e84677ff930356061527c958c9744d379d9820a2564d34a7b",
+      "report_line": 5100
+    },
+    {
+      "id": 153,
+      "path": "software/web/backend/在Tomcat中部署一个简单的Servlet/index.md",
+      "lines": 198,
+      "chars": 6393,
+      "title": "在Tomcat中部署一个简单的Servlet",
+      "date": "2023-05-23T18:51:18+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1,
+        "条件/版本澄清": 1
+      },
+      "sha256": "f6ffd01d7e7fdaef1f7ec99ac1abbdac59febd2ff73a923cf235f7c6ac4e6934",
+      "report_line": 5136
+    },
+    {
+      "id": 154,
+      "path": "software/web/backend/拦截器和过滤器/index.md",
+      "lines": 750,
+      "chars": 26586,
+      "title": "拦截器和过滤器",
+      "date": "2023-11-04T09:56:41+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "字词/链接": 1
+      },
+      "sha256": "b057a6c580c208364dab6459f4447849a2b67ad0d4d16c3bbaf09c8bbc4ef45d",
+      "report_line": 5186
+    },
+    {
+      "id": 155,
+      "path": "software/web/backend/用户系统设计下的通用概念/index.md",
+      "lines": 159,
+      "chars": 3637,
+      "title": "用户系统设计下的通用概念",
+      "date": "2025-12-12T11:24:20",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "字词/链接": 1
+      },
+      "sha256": "4f6e5fe9ba2bd1aa30ebecbc44bf77a0e921ab0d963f2ff85cfb79ad789836e3",
+      "report_line": 5222
+    },
+    {
+      "id": 156,
+      "path": "software/web/backend/登录注册体系的安全手段/index.md",
+      "lines": 116,
+      "chars": 2331,
+      "title": "登录注册体系的安全手段",
+      "date": "2025-08-19T10:30:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "c3b5ddff1541aac2fc312c564e93d3fe9aeeb5db6ea3740b9b8778a1aa4bea45",
+      "report_line": 5258
+    },
+    {
+      "id": 157,
+      "path": "software/web/backend/自制一个聚合搜索引擎的页面/index.md",
+      "lines": 166,
+      "chars": 3954,
+      "title": "自制一个聚合搜索引擎的页面",
+      "date": "2022-08-16T11:29:09+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "36c333a22f654842ce0d6ba88304e3f919749e0af2d2805a4fb15fa9f2127908",
+      "report_line": 5308
+    },
+    {
+      "id": 158,
+      "path": "software/web/backend/阿里云短信认证服务的使用/index.md",
+      "lines": 198,
+      "chars": 6436,
+      "title": "阿里云短信认证服务的使用",
+      "date": "2025-11-12T11:02:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "条件/版本澄清": 1
+      },
+      "sha256": "9677a045e3d711ca16672dcd245f77ac3c0471843137cda07dc74d0367928f73",
+      "report_line": 5344
+    },
+    {
+      "id": 159,
+      "path": "software/web/frontend/SPA和SSR/index.md",
+      "lines": 86,
+      "chars": 1163,
+      "title": "SPA和SSR",
+      "date": "2026-02-01T10:48:21",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "97cd626ca5e550ed751dff951f17eb3ba45a0ea350ac348a2fa1b16ef88441fe",
+      "report_line": 5366
+    },
+    {
+      "id": 160,
+      "path": "software/web/frontend/自己动手写一个博客静态页面生成器/index.md",
+      "lines": 733,
+      "chars": 16925,
+      "title": "自己动手写一个博客静态页面生成器",
+      "date": "2025-01-29T09:30:00+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "5b590047b60c0f3b6b2ca9c5afe329ef671bfd831ee1fe39f21e08474feac587",
+      "report_line": 5388
+    },
+    {
+      "id": 161,
+      "path": "software/web/spring-security/Spring Boot 3+Spring Security+Thymeleaf的示例/index.md",
+      "lines": 424,
+      "chars": 11382,
+      "title": "Spring Boot 3+Spring Security+Thymeleaf的示例",
+      "date": "2024-11-10T10:56:08+08:00",
+      "draft": false,
+      "review_status": "内容未完成；现有文本已核阅",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "f89292b1fdbc1f79cbfcb869efdb8d4211f74f64ba0f03675133eeb6e772472b",
+      "report_line": 5410
+    },
+    {
+      "id": 162,
+      "path": "software/web/spring-security/Spring Security 初探/index.md",
+      "lines": 693,
+      "chars": 18360,
+      "title": "Spring Security 初探",
+      "date": "2023-12-30T14:44:37+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 5,
+      "categories": {
+        "事实/技术错误": 3,
+        "条件/版本澄清": 2
+      },
+      "sha256": "db2c251ae446e4e17eba6e765a280149b5f9b1a167f8e0416d83716821fc81a4",
+      "report_line": 5422
+    },
+    {
+      "id": 163,
+      "path": "software/web/spring-security/Spring Security用户管理/index.md",
+      "lines": 678,
+      "chars": 16914,
+      "title": "Spring Security用户管理",
+      "date": "2026-07-14T10:32:10",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "条件/版本澄清": 1,
+        "字词/链接": 1
+      },
+      "sha256": "87dfc9cf44af68e6d53e72715a8999b8b4dad60c7c4279819c86e81b4a0a27f6",
+      "report_line": 5496
+    },
+    {
+      "id": 164,
+      "path": "software/web/spring-security/Spring Security认证过程/index.md",
+      "lines": 832,
+      "chars": 27420,
+      "title": "Spring Security认证过程",
+      "date": "2026-07-15T10:23:26",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 2
+      },
+      "sha256": "6febd4fd65e6f8e09984f49eb6b523435a2b1297de4a7cc6a9a22923afd4a669",
+      "report_line": 5532
+    },
+    {
+      "id": 165,
+      "path": "software/web/spring-security/Spring Security配置SecurityFilterChain/index.md",
+      "lines": 482,
+      "chars": 13252,
+      "title": "Spring Security配置SecurityFilterChain",
+      "date": "2026-07-12T13:53:57",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "事实/技术错误": 1,
+        "字词/链接": 1
+      },
+      "sha256": "69e814d22510265fd8e799f26ef16371dd75be239b7e53e9617b181861a8f3e8",
+      "report_line": 5568
+    },
+    {
+      "id": 166,
+      "path": "software/web/spring-security/Spring Security默认配置/index.md",
+      "lines": 399,
+      "chars": 13072,
+      "title": "Spring Security默认配置",
+      "date": "2026-07-11T15:01:06",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 2,
+      "categories": {
+        "条件/版本澄清": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "179804e4797f5870822e84728c33593880937c5c0151f7c8aec5031f0fbeade3",
+      "report_line": 5604
+    },
+    {
+      "id": 167,
+      "path": "software/web/spring/Spring Boot 中 @Component 和 @Bean 的区别/index.md",
+      "lines": 408,
+      "chars": 8603,
+      "title": "Spring Boot 中 @Component 和 @Bean 的区别",
+      "date": "2026-07-10T10:11:47",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "条件/版本澄清": 2,
+        "字词/链接": 1
+      },
+      "sha256": "09975742f9113638cb5e0c6962ac921e712cb68caac39bc16dc224c9c2368ba9",
+      "report_line": 5640
+    },
+    {
+      "id": 168,
+      "path": "software/web/spring/Spring Boot 中 Session 的使用/index.md",
+      "lines": 420,
+      "chars": 12168,
+      "title": "Spring Boot 中 Session 的使用",
+      "date": "2026-07-02T11:04:46",
+      "draft": false,
+      "review_status": "正文已核阅；未发现可确认的明显错误",
+      "finding_count": 0,
+      "categories": {},
+      "sha256": "b455b73e54d2ac59a242607fcf42fcd25ce53104d2b5ffad6a6d3c5daa511279",
+      "report_line": 5690
+    },
+    {
+      "id": 169,
+      "path": "software/web/spring/Spring Boot+JPA的日志打印问题/index.md",
+      "lines": 118,
+      "chars": 2347,
+      "title": "Spring Boot+JPA的日志打印问题",
+      "date": "2023-08-12T10:55:46+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "735de8f22670455299220322725acf63c0c5df1718db05f9d4981816b513bf35",
+      "report_line": 5700
+    },
+    {
+      "id": 170,
+      "path": "software/web/spring/Spring MVC 接收前端参数的 N 种方式/index.md",
+      "lines": 555,
+      "chars": 11920,
+      "title": "Spring MVC 接收前端参数的 N 种方式",
+      "date": "2023-02-12T18:23:56+08:00",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "字词/链接": 1
+      },
+      "sha256": "5d3008c294b347fd489e0f9c0e63514629cb323beec13ab123e04eb23b6e19f3",
+      "report_line": 5722
+    },
+    {
+      "id": 171,
+      "path": "software/web/telegram/telegram-bot入门/index.md",
+      "lines": 615,
+      "chars": 13987,
+      "title": "telegram-bot入门",
+      "date": "2026-08-24T23:16:34",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 3
+      },
+      "sha256": "f1a9f1268261892bcc416300068b5de6193ee70e1a07191ada69c29e3fd6b91d",
+      "report_line": 5744
+    },
+    {
+      "id": 172,
+      "path": "software/web/telegram/使用Telegram机器人实现告警功能/index.md",
+      "lines": 234,
+      "chars": 4911,
+      "title": "使用Telegram机器人实现告警功能",
+      "date": "2026-03-12T10:24:49",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 1,
+        "条件/版本澄清": 1
+      },
+      "sha256": "5c9868cb55eca6b7e31995d76feb09115df361910509a415c3c81703e99cf15a",
+      "report_line": 5808
+    },
+    {
+      "id": 173,
+      "path": "software/web/关于前后端接口规范的讨论/index.md",
+      "lines": 163,
+      "chars": 3910,
+      "title": "关于前后端接口规范的讨论",
+      "date": "2026-02-26T16:29:54",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 1,
+      "categories": {
+        "事实/技术错误": 1
+      },
+      "sha256": "2220e0541a49d441073e10dae85ab834f66f61dfafbbb7c91fb4cd83516cb371",
+      "report_line": 5858
+    },
+    {
+      "id": 174,
+      "path": "software/web/请求外部接口需要做的准备/index.md",
+      "lines": 594,
+      "chars": 21761,
+      "title": "请求外部接口需要做的准备",
+      "date": "2026-08-28T21:06:03",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 4,
+      "categories": {
+        "字词/链接": 1,
+        "事实/技术错误": 2,
+        "条件/版本澄清": 1
+      },
+      "sha256": "8c46c30fe16bf2b93c01b95f271abb503b10a107a944a8faddc0afa2b034b68d",
+      "report_line": 5880
+    },
+    {
+      "id": 175,
+      "path": "software/我的技术小结-2025/index.md",
+      "lines": 107,
+      "chars": 4533,
+      "title": "我的技术小结-2025",
+      "date": "2025-11-22T09:37:54",
+      "draft": false,
+      "review_status": "正文已核阅；有修改意见",
+      "finding_count": 3,
+      "categories": {
+        "字词/链接": 1,
+        "条件/版本澄清": 1,
+        "事实/技术错误": 1
+      },
+      "sha256": "0e2fa66c81c0181893ca582f8eccde471d6849a99e6d356cb3b0a5078dda785e",
+      "report_line": 5944
+    }
+  ],
+  "finding_report_lines": {
+    "R001": 72,
+    "R002": 94,
+    "R003": 108,
+    "R004": 122,
+    "R005": 144,
+    "R006": 158,
+    "R007": 172,
+    "R008": 202,
+    "R009": 216,
+    "R010": 238,
+    "R011": 260,
+    "R012": 292,
+    "R013": 306,
+    "R014": 328,
+    "R015": 342,
+    "R016": 356,
+    "R017": 370,
+    "R018": 392,
+    "R019": 424,
+    "R020": 438,
+    "R021": 452,
+    "R022": 466,
+    "R023": 488,
+    "R024": 502,
+    "R025": 516,
+    "R026": 530,
+    "R027": 552,
+    "R028": 574,
+    "R029": 596,
+    "R030": 610,
+    "R031": 624,
+    "R032": 638,
+    "R033": 652,
+    "R034": 666,
+    "R035": 688,
+    "R036": 720,
+    "R037": 752,
+    "R038": 766,
+    "R039": 780,
+    "R040": 794,
+    "R041": 816,
+    "R042": 838,
+    "R043": 852,
+    "R044": 866,
+    "R045": 888,
+    "R046": 902,
+    "R047": 922,
+    "R048": 936,
+    "R049": 950,
+    "R050": 972,
+    "R051": 986,
+    "R052": 1018,
+    "R053": 1040,
+    "R054": 1054,
+    "R055": 1068,
+    "R056": 1090,
+    "R057": 1112,
+    "R058": 1126,
+    "R059": 1140,
+    "R060": 1162,
+    "R061": 1176,
+    "R062": 1190,
+    "R063": 1204,
+    "R064": 1218,
+    "R065": 1250,
+    "R066": 1272,
+    "R067": 1294,
+    "R068": 1308,
+    "R069": 1322,
+    "R070": 1354,
+    "R071": 1368,
+    "R072": 1390,
+    "R073": 1404,
+    "R074": 1418,
+    "R075": 1450,
+    "R076": 1464,
+    "R077": 1478,
+    "R078": 1492,
+    "R079": 1534,
+    "R080": 1548,
+    "R081": 1570,
+    "R082": 1592,
+    "R083": 1624,
+    "R084": 1646,
+    "R085": 1678,
+    "R086": 1692,
+    "R087": 1706,
+    "R088": 1728,
+    "R089": 1742,
+    "R090": 1756,
+    "R091": 1770,
+    "R092": 1784,
+    "R093": 1806,
+    "R094": 1820,
+    "R095": 1852,
+    "R096": 1874,
+    "R097": 1888,
+    "R098": 1920,
+    "R099": 1934,
+    "R100": 1948,
+    "R101": 1970,
+    "R102": 1992,
+    "R103": 2024,
+    "R104": 2038,
+    "R105": 2052,
+    "R106": 2084,
+    "R107": 2098,
+    "R108": 2112,
+    "R109": 2134,
+    "R110": 2148,
+    "R111": 2190,
+    "R112": 2212,
+    "R113": 2226,
+    "R114": 2248,
+    "R115": 2270,
+    "R116": 2292,
+    "R117": 2314,
+    "R118": 2328,
+    "R119": 2350,
+    "R120": 2364,
+    "R121": 2378,
+    "R122": 2392,
+    "R123": 2406,
+    "R124": 2428,
+    "R125": 2442,
+    "R126": 2456,
+    "R127": 2470,
+    "R128": 2484,
+    "R129": 2498,
+    "R130": 2520,
+    "R131": 2552,
+    "R132": 2574,
+    "R133": 2588,
+    "R134": 2610,
+    "R135": 2624,
+    "R136": 2638,
+    "R137": 2670,
+    "R138": 2712,
+    "R139": 2744,
+    "R140": 2766,
+    "R141": 2808,
+    "R142": 2822,
+    "R143": 2836,
+    "R144": 2850,
+    "R145": 2864,
+    "R146": 2886,
+    "R147": 2900,
+    "R148": 2914,
+    "R149": 2928,
+    "R150": 2950,
+    "R151": 2972,
+    "R152": 2986,
+    "R153": 3000,
+    "R154": 3022,
+    "R155": 3036,
+    "R156": 3058,
+    "R157": 3080,
+    "R158": 3094,
+    "R159": 3108,
+    "R160": 3122,
+    "R161": 3136,
+    "R162": 3150,
+    "R163": 3172,
+    "R164": 3186,
+    "R165": 3200,
+    "R166": 3222,
+    "R167": 3236,
+    "R168": 3250,
+    "R169": 3264,
+    "R170": 3286,
+    "R171": 3300,
+    "R172": 3314,
+    "R173": 3336,
+    "R174": 3350,
+    "R175": 3372,
+    "R176": 3394,
+    "R177": 3426,
+    "R178": 3448,
+    "R179": 3462,
+    "R180": 3476,
+    "R181": 3490,
+    "R182": 3522,
+    "R183": 3544,
+    "R184": 3558,
+    "R185": 3572,
+    "R186": 3594,
+    "R187": 3608,
+    "R188": 3630,
+    "R189": 3644,
+    "R190": 3658,
+    "R191": 3690,
+    "R192": 3704,
+    "R193": 3718,
+    "R194": 3740,
+    "R195": 3754,
+    "R196": 3776,
+    "R197": 3790,
+    "R198": 3804,
+    "R199": 3818,
+    "R200": 3840,
+    "R201": 3862,
+    "R202": 3876,
+    "R203": 3890,
+    "R204": 3904,
+    "R205": 3918,
+    "R206": 3932,
+    "R207": 3946,
+    "R208": 3968,
+    "R209": 3990,
+    "R210": 4012,
+    "R211": 4026,
+    "R212": 4048,
+    "R213": 4062,
+    "R214": 4104,
+    "R215": 4126,
+    "R216": 4140,
+    "R217": 4162,
+    "R218": 4176,
+    "R219": 4198,
+    "R220": 4212,
+    "R221": 4226,
+    "R222": 4240,
+    "R223": 4262,
+    "R224": 4276,
+    "R225": 4290,
+    "R226": 4304,
+    "R227": 4326,
+    "R228": 4340,
+    "R229": 4354,
+    "R230": 4376,
+    "R231": 4398,
+    "R232": 4412,
+    "R233": 4434,
+    "R234": 4456,
+    "R235": 4470,
+    "R236": 4492,
+    "R237": 4506,
+    "R238": 4540,
+    "R239": 4562,
+    "R240": 4576,
+    "R241": 4590,
+    "R242": 4604,
+    "R243": 4626,
+    "R244": 4648,
+    "R245": 4662,
+    "R246": 4676,
+    "R247": 4698,
+    "R248": 4712,
+    "R249": 4726,
+    "R250": 4740,
+    "R251": 4762,
+    "R252": 4776,
+    "R253": 4798,
+    "R254": 4812,
+    "R255": 4826,
+    "R256": 4840,
+    "R257": 4872,
+    "R258": 4886,
+    "R259": 4900,
+    "R260": 4922,
+    "R261": 4944,
+    "R262": 4958,
+    "R263": 4972,
+    "R264": 4986,
+    "R265": 5008,
+    "R266": 5022,
+    "R267": 5036,
+    "R268": 5058,
+    "R269": 5072,
+    "R270": 5086,
+    "R271": 5108,
+    "R272": 5122,
+    "R273": 5144,
+    "R274": 5158,
+    "R275": 5172,
+    "R276": 5194,
+    "R277": 5208,
+    "R278": 5230,
+    "R279": 5244,
+    "R280": 5266,
+    "R281": 5280,
+    "R282": 5294,
+    "R283": 5316,
+    "R284": 5330,
+    "R285": 5352,
+    "R286": 5374,
+    "R287": 5396,
+    "R288": 5430,
+    "R289": 5444,
+    "R290": 5458,
+    "R291": 5470,
+    "R292": 5482,
+    "R293": 5504,
+    "R294": 5518,
+    "R295": 5540,
+    "R296": 5554,
+    "R297": 5576,
+    "R298": 5590,
+    "R299": 5612,
+    "R300": 5626,
+    "R301": 5648,
+    "R302": 5662,
+    "R303": 5676,
+    "R304": 5708,
+    "R305": 5730,
+    "R306": 5752,
+    "R307": 5766,
+    "R308": 5780,
+    "R309": 5794,
+    "R310": 5816,
+    "R311": 5830,
+    "R312": 5844,
+    "R313": 5866,
+    "R314": 5888,
+    "R315": 5902,
+    "R316": 5916,
+    "R317": 5930,
+    "R318": 5952,
+    "R319": 5966,
+    "R320": 5980
+  }
+}
