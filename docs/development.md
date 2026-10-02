@@ -54,7 +54,7 @@ uv run pytest --basetemp .cache/pytest -p no:cacheprovider
 - 远程摘要/展开失败、首次迁移、重复部署保留数量、切换失败恢复。
 - 兼容 CLI、配置优先级、部署失败不刷新、刷新失败退出码 3。
 
-远程真实符号链接测试在无法创建 symlink 的 Windows 主机上跳过，在 Linux CI 执行。同时用 pyfakefs 的 POSIX 模拟覆盖首次迁移、连续切换、保留数量和旧站点/备份恢复。本次本机为 67 通过、2 项真实 symlink 测试跳过。测试 fixture 只使用临时目录；禁止将真实博客或服务器目录作为测试清理目标。
+远程真实符号链接测试在无法创建 symlink 的 Windows 主机上跳过，需要在 Linux 环境手动运行以验证。同时用 pyfakefs 的 POSIX 模拟覆盖首次迁移、连续切换、保留数量和旧站点/备份恢复。本次本机为 67 通过、2 项真实 symlink 测试跳过。测试 fixture 只使用临时目录；禁止将真实博客或服务器目录作为测试清理目标。
 
 ## 修改约定
 
